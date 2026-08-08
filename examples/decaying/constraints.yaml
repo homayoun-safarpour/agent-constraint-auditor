@@ -1,0 +1,10 @@
+name: decaying-agent
+constraints:
+  - id: never_skip_lint
+    description: Do not advance when lint gate is FAIL
+    pattern: "lint\\s*=\\s*FAIL"
+    forbid: true
+  - id: no_force_push
+    description: Never record a force-push decision
+    pattern: "force-push|git push --force"
+    forbid: true

@@ -11,7 +11,7 @@ Week: opened Mon 2026-08-31 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-08-31 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | Pending first Actions run after public push |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `0a916b2` (2026-08-31) |
 | 2 | Named claim tests | PASS — `pytest` 16 passed |
 | 3 | Worked example real output | PASS — stable exit 0; decaying exit 2 (see `examples/benchmark_gate_2026-08-31.md`) |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |

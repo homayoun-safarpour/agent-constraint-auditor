@@ -44,6 +44,6 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 
 ## NEXT TICK
 
-- Confirm CI green on first Actions run
-- Boss: retarget Cursor Autos 1–6 to this repo @ `main`
-- Profile table row + growth pulse if not done in this tick
+- Boss: retarget Cursor Autos 1–6 → this repo @ `main`
+- Optional: LinkedIn draft from README Quickstart + decay exit codes
+- Keep one bounded tick/day on decay report polish or adapter docs

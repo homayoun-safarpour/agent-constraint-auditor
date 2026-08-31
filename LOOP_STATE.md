@@ -41,9 +41,15 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 ## Build log
 
 - 2026-08-31: Local gate re-run green; public create + Homayoun push; benchmark paste under `examples/`.
+- 2026-08-31 evening: README live URL; `docs/ADAPTER.md` for loop-engine journal wiring; mind-learn card in live_memory.
 
-## NEXT TICK
+## NEXT TICK (daily 2026-08-31)
 
-- Boss: retarget Cursor Autos 1–6 → this repo @ `main`
-- Optional: LinkedIn draft from README Quickstart + decay exit codes
-- Keep one bounded tick/day on decay report polish or adapter docs
+- Polish decay report wording in `--report` output OR add one named test that locks a decaying fixture line from `examples/decaying/`
+- Why next: W1–W8 closed; deepen claim tests so README decay story stays interview-defensible
+- Verify: `python -m pytest -q` and `constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md` (expect exit 2)
+
+## NEXT TICK (heartbeat 2026-08-31)
+
+- Same as daily: one named test or decay-report polish; third-person verdict ENRICH
+- Boss still: Autos Save+Active 1–6; pins; LinkedIn when ready

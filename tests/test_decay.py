@@ -1,5 +1,5 @@
 from constraintauditor.checkers import Violation
-from constraintauditor.decay import compute_decay
+from constraintauditor.decay import compute_decay, markdown_timeline
 
 
 def test_quartile_violation_rate():
@@ -25,3 +25,11 @@ def test_decay_slope_detects_increase():
     violations = [Violation("c", i, "t", "d") for i in (6, 7)]
     decay = compute_decay(8, violations)
     assert decay.decay_slope > 0
+
+
+def test_markdown_timeline_clean_verdict():
+    decay = compute_decay(4, [])
+    text = markdown_timeline("stable-agent", decay, [])
+    assert "Verdict: CLEAN" in text
+    assert "The transcript holds all declared constraints across 4 events." in text
+    assert "None." in text

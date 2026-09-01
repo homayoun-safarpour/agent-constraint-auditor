@@ -47,9 +47,29 @@ def compute_decay(n_events: int, violations: list[Violation]) -> DecayReport:
     )
 
 
+def _verdict_sentence(decay: DecayReport) -> tuple[str, str]:
+    if decay.n_violations:
+        noun = "violation" if decay.n_violations == 1 else "violations"
+        return (
+            "DECAY",
+            (
+                f"The transcript records {decay.n_violations} constraint {noun}, "
+                f"first at event {decay.first_violation_index}."
+            ),
+        )
+    return (
+        "CLEAN",
+        f"The transcript holds all declared constraints across {decay.n_events} events.",
+    )
+
+
 def markdown_timeline(spec_name: str, decay: DecayReport, violations: list[Violation]) -> str:
+    verdict, sentence = _verdict_sentence(decay)
     lines = [
         f"# Constraint decay report: {spec_name}",
+        "",
+        f"Verdict: {verdict}",
+        sentence,
         "",
         f"Events: {decay.n_events} · Violations: {decay.n_violations}",
         f"First violation index: {decay.first_violation_index}",

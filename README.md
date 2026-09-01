@@ -31,7 +31,7 @@ constraint-auditor audit \
   --constraints examples/decaying/constraints.yaml \
   --transcript examples/decaying/journal.md \
   --report /tmp/decay.md
-# expect exit 2
+# expect exit 2; report starts with Verdict: DECAY
 ```
 
 ## Exit codes

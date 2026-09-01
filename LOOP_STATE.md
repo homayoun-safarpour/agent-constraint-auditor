@@ -12,7 +12,7 @@ Week: opened Mon 2026-08-31 · repo: agent-constraint-auditor
 | # | Check | Status 2026-08-31 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `0a916b2` (2026-08-31) |
-| 2 | Named claim tests | PASS — `pytest` 16 passed |
+| 2 | Named claim tests | PASS — `pytest` 18 passed (2026-09-01) |
 | 3 | Worked example real output | PASS — stable exit 0; decaying exit 2 (see `examples/benchmark_gate_2026-08-31.md`) |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -37,19 +37,21 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W6 Markdown decay report `--report` (local 2026-08-08)
 - [x] W7 GitHub Actions on public repo (2026-08-31 publish)
 - [x] W8 Two worked examples stable vs decaying (local 2026-08-08)
+- [x] W9 Named decaying-fixture lock + third-person `--report` verdict (2026-09-01)
 
 ## Build log
 
 - 2026-08-31: Local gate re-run green; public create + Homayoun push; benchmark paste under `examples/`.
 - 2026-08-31 evening: README live URL; `docs/ADAPTER.md` for loop-engine journal wiring; mind-learn card in live_memory.
+- 2026-09-01: `--report` opens with third-person `Verdict: CLEAN|DECAY`; named test locks decaying fixture `git push --force` line and constraint ids.
 
-## NEXT TICK (daily 2026-08-31)
+## NEXT TICK (daily 2026-09-01)
 
-- Polish decay report wording in `--report` output OR add one named test that locks a decaying fixture line from `examples/decaying/`
-- Why next: W1–W8 closed; deepen claim tests so README decay story stays interview-defensible
-- Verify: `python -m pytest -q` and `constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md` (expect exit 2)
+- Add a named test that locks `forbid: false` (required pattern missing) as a violation
+- Why next: checkers already treat a missing required pattern as a violation; only `forbid: true` fixtures are locked today
+- Verify: `python -m pytest -q tests/test_checkers.py tests/test_examples.py` and `ruff check .`
 
-## NEXT TICK (heartbeat 2026-08-31)
+## NEXT TICK (heartbeat 2026-09-01)
 
-- Same as daily: one named test or decay-report polish; third-person verdict ENRICH
+- Same as daily: required-pattern (`forbid: false`) named test
 - Boss still: Autos Save+Active 1–6; pins; LinkedIn when ready

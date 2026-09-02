@@ -1,0 +1,6 @@
+name: required-present-agent
+constraints:
+  - id: require_lint_pass
+    description: Every event must record lint=PASS
+    pattern: "lint\\s*=\\s*PASS"
+    forbid: false

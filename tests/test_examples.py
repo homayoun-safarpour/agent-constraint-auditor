@@ -47,6 +47,39 @@ def test_decaying_agent_fixture_exit_2():
     )
 
 
+def test_required_present_fixture_exit_0():
+    assert (
+        main(
+            [
+                "audit",
+                "--constraints",
+                str(ROOT / "examples" / "required_present" / "constraints.yaml"),
+                "--transcript",
+                str(ROOT / "examples" / "required_present" / "journal.md"),
+            ]
+        )
+        == 0
+    )
+
+
+def test_required_missing_fixture_exit_2(capsys):
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            str(ROOT / "examples" / "required_missing" / "constraints.yaml"),
+            "--transcript",
+            str(ROOT / "examples" / "required_missing" / "journal.md"),
+            "--json",
+        ]
+    )
+    assert code == 2
+    data = json.loads(capsys.readouterr().out)
+    assert data["verdict"] == "DECAY"
+    assert {v["constraint_id"] for v in data["violations"]} == {"require_lint_pass"}
+    assert all(v["detail"].startswith("required pattern missing:") for v in data["violations"])
+
+
 def test_markdown_report_contains_quartile_timeline(tmp_path):
     report = tmp_path / "report.md"
     code = main(

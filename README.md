@@ -32,6 +32,16 @@ constraint-auditor audit \
   --transcript examples/decaying/journal.md \
   --report /tmp/decay.md
 # expect exit 2; report starts with Verdict: DECAY
+
+constraint-auditor audit \
+  --constraints examples/required_present/constraints.yaml \
+  --transcript examples/required_present/journal.md
+# expect exit 0 (forbid: false, required lint=PASS present)
+
+constraint-auditor audit \
+  --constraints examples/required_missing/constraints.yaml \
+  --transcript examples/required_missing/journal.md
+# expect exit 2 (forbid: false, required lint=PASS missing)
 ```
 
 ## Constraint spec

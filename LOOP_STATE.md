@@ -49,6 +49,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-02: named tests lock `forbid: false` (required pattern missing) as DECAY; YAML `forbid: false` parses and audits to exit 2.
 - 2026-09-02 evening: `examples/required_present` (exit 0) + `examples/required_missing` (exit 2); README Quickstart updated.
 - 2026-09-02 freedom pass: `docs/ADAPTER.md` documents forbid vs required pair with verify commands.
+- 2026-09-02 evening nudge: gates green on `604deac`; NEXT TICK HOLD (ADAPTER verify). Third-person: HOLD
 
 ## NEXT TICK (daily 2026-09-02)
 
@@ -58,5 +59,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 
 ## NEXT TICK (evening 2026-09-02)
 
-- Same as daily; Boss: Save Daily/Heartbeat/Evening v3 Instructions (main-only push)
-- Third-person: ENRICH
+- HOLD: re-confirm ADAPTER required-pattern pair; no new auditor scope
+- Why next: W1–W11 closed and CI green on `604deac`; Daily 2026-09-03 must not invent product work
+- Verify: `python -m pytest -q` && `constraint-auditor audit --constraints examples/required_present/constraints.yaml --transcript examples/required_present/journal.md` && `constraint-auditor audit --constraints examples/required_missing/constraints.yaml --transcript examples/required_missing/journal.md`
+- Third-person: HOLD

@@ -48,14 +48,15 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-01: `--report` opens with third-person `Verdict: CLEAN|DECAY`; named test locks decaying fixture `git push --force` line and constraint ids.
 - 2026-09-02: named tests lock `forbid: false` (required pattern missing) as DECAY; YAML `forbid: false` parses and audits to exit 2.
 - 2026-09-02 evening: `examples/required_present` (exit 0) + `examples/required_missing` (exit 2); README Quickstart updated.
+- 2026-09-02 freedom pass: `docs/ADAPTER.md` documents forbid vs required pair with verify commands.
 
 ## NEXT TICK (daily 2026-09-02)
 
-- Wire `examples/required_*` into docs/ADAPTER.md as the required-pattern pair next to forbid examples
-- Why next: fixtures exist; adapter doc still only shows forbid-style journals
-- Verify: `python -m pytest -q` and open `docs/ADAPTER.md` for the new pair
+- Optional: triage sentinel GFI #9 if a community PR arrives; else keep auditor ADAPTER verify commands green
+- Why next: W11 ADAPTER required-pattern pair shipped; week deepen stays interview-defensible
+- Verify: `python -m pytest -q` and `constraint-auditor audit --constraints examples/required_present/constraints.yaml --transcript examples/required_present/journal.md`
 
 ## NEXT TICK (evening 2026-09-02)
 
-- Same as daily: ADAPTER.md required-pattern pair
-- Boss: re-paste Autos #1/#2/#5 Instructions from `automations_paste/` (main-only push fix); pins + LinkedIn optional
+- Same as daily; Boss: Save Daily/Heartbeat/Evening v3 Instructions (main-only push)
+- Third-person: ENRICH

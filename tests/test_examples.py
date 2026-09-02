@@ -13,6 +13,8 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "exit `0`" in README or "exit 0" in README or "`0`" in README
     assert "`2`" in README or "exit 2" in README
     assert "Verdict: DECAY" in README
+    assert "`forbid: false`" in README
+    assert "missing required pattern" in README
 
 
 def test_stable_agent_fixture_exit_0():
@@ -63,6 +65,49 @@ def test_markdown_report_contains_quartile_timeline(tmp_path):
     assert "Quartile violation rates" in text
     assert "Q1" in text
     assert "Verdict: DECAY" in text
+
+
+def test_required_pattern_missing_yaml_audit_exit_2(tmp_path, capsys):
+    constraints = tmp_path / "constraints.yaml"
+    constraints.write_text(
+        (
+            "name: require-lint-pass\n"
+            "constraints:\n"
+            "  - id: require_lint_pass\n"
+            "    description: Every event records lint=PASS\n"
+            '    pattern: "lint=PASS"\n'
+            "    forbid: false\n"
+        ),
+        encoding="utf-8",
+    )
+    journal = tmp_path / "journal.md"
+    journal.write_text(
+        (
+            "# missing required pattern\n"
+            "\n"
+            "## 2026-08-11 09:00\n"
+            "- gates: tests=PASS\n"
+            "- decision: **advance**\n"
+            "- reason: skipped lint\n"
+        ),
+        encoding="utf-8",
+    )
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            str(constraints),
+            "--transcript",
+            str(journal),
+            "--json",
+        ]
+    )
+    assert code == 2
+    data = json.loads(capsys.readouterr().out)
+    assert data["verdict"] == "DECAY"
+    ids = {v["constraint_id"] for v in data["violations"]}
+    assert ids == {"require_lint_pass"}
+    assert data["violations"][0]["detail"].startswith("required pattern missing:")
 
 
 def test_decaying_fixture_locks_force_push_line(tmp_path, capsys):

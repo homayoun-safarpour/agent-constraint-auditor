@@ -12,7 +12,7 @@ Week: opened Mon 2026-08-31 · repo: agent-constraint-auditor
 | # | Check | Status 2026-08-31 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `0a916b2` (2026-08-31) |
-| 2 | Named claim tests | PASS — `pytest` 18 passed (2026-09-01) |
+| 2 | Named claim tests | PASS — `pytest` 22 passed (2026-09-02) |
 | 3 | Worked example real output | PASS — stable exit 0; decaying exit 2 (see `examples/benchmark_gate_2026-08-31.md`) |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -38,20 +38,22 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W7 GitHub Actions on public repo (2026-08-31 publish)
 - [x] W8 Two worked examples stable vs decaying (local 2026-08-08)
 - [x] W9 Named decaying-fixture lock + third-person `--report` verdict (2026-09-01)
+- [x] W10 Named `forbid: false` required-pattern-missing lock (2026-09-02)
 
 ## Build log
 
 - 2026-08-31: Local gate re-run green; public create + Homayoun push; benchmark paste under `examples/`.
 - 2026-08-31 evening: README live URL; `docs/ADAPTER.md` for loop-engine journal wiring; mind-learn card in live_memory.
 - 2026-09-01: `--report` opens with third-person `Verdict: CLEAN|DECAY`; named test locks decaying fixture `git push --force` line and constraint ids.
+- 2026-09-02: named tests lock `forbid: false` (required pattern missing) as DECAY; YAML `forbid: false` parses and audits to exit 2.
 
-## NEXT TICK (daily 2026-09-01)
+## NEXT TICK (daily 2026-09-02)
 
-- Add a named test that locks `forbid: false` (required pattern missing) as a violation
-- Why next: checkers already treat a missing required pattern as a violation; only `forbid: true` fixtures are locked today
-- Verify: `python -m pytest -q tests/test_checkers.py tests/test_examples.py` and `ruff check .`
+- Add a worked example under `examples/` that uses `forbid: false` (required pattern present vs missing)
+- Why next: checkers and YAML audit now lock required-pattern decay; public fixtures still only cover `forbid: true`
+- Verify: `python -m pytest -q tests/test_examples.py tests/test_checkers.py` and `ruff check .` plus `constraint-auditor audit --constraints examples/<required>/constraints.yaml --transcript examples/<required>/journal.md`
 
-## NEXT TICK (heartbeat 2026-09-01)
+## NEXT TICK (heartbeat 2026-09-02)
 
-- Same as daily: required-pattern (`forbid: false`) named test
+- Same as daily: worked `forbid: false` example fixture under `examples/`
 - Boss still: Autos Save+Active 1–6; pins; LinkedIn when ready

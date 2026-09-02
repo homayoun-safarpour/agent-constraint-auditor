@@ -34,6 +34,10 @@ constraint-auditor audit \
 # expect exit 2; report starts with Verdict: DECAY
 ```
 
+## Constraint spec
+
+Each YAML rule is a regex over a journal event. `forbid: true` (default) treats a match as decay. `forbid: false` treats a missing required pattern as decay (exit `2`).
+
 ## Exit codes
 
 | Code | Verdict | Meaning |

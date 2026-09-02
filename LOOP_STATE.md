@@ -11,7 +11,7 @@ Week: opened Mon 2026-08-31 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-08-31 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `0a916b2` (2026-08-31) |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `d36335c` (2026-09-02); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 22 passed (2026-09-02) |
 | 3 | Worked example real output | PASS — stable exit 0; decaying exit 2 (see `examples/benchmark_gate_2026-08-31.md`) |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -39,6 +39,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W8 Two worked examples stable vs decaying (local 2026-08-08)
 - [x] W9 Named decaying-fixture lock + third-person `--report` verdict (2026-09-01)
 - [x] W10 Named `forbid: false` required-pattern-missing lock (2026-09-02)
+- [ ] W11 Public `examples/` fixture for `forbid: false` (required pattern present vs missing)
 
 ## Build log
 
@@ -55,5 +56,10 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 
 ## NEXT TICK (heartbeat 2026-09-02)
 
-- Same as daily: worked `forbid: false` example fixture under `examples/`
-- Boss still: Autos Save+Active 1–6; pins; LinkedIn when ready
+- Execute W11: add a public worked example under `examples/` that uses `forbid: false` (one transcript with the required pattern present, one with it missing)
+- Why next: `d36335c` locks the checker and YAML-audit contract in tmp fixtures, but README now documents `forbid: false` while `examples/stable` and `examples/decaying` still only cover `forbid: true`
+- Verify: `python3 -m pytest -q tests/test_examples.py tests/test_checkers.py tests/test_spec.py` and `ruff check .`; `constraint-auditor audit --constraints examples/<required>/constraints.yaml --transcript examples/<required>/present.md` (expect exit 0) and the matching missing transcript (expect exit 2)
+
+## Journal
+
+- 2026-09-02 heartbeat: OK (W10 matches `d36335c`; CI green; README `forbid: false` claim has named tests). ENRICH. Next tick: W11 public `examples/` `forbid: false` fixture.

@@ -1,39 +1,23 @@
-# Daily learning  -  2026-09-02
+# Daily learning — 2026-09-03
 
-**Skill.** `forbid: false` is a required regex: every journal event must match. Miss = violation (`required pattern missing`). Default `forbid: true` is the inverse: a match is a violation (`forbid pattern matched`).
+**Skill.** Exit `2` is binary DECAY. `first_violation_index` and `decay_slope` (Q4 rate − Q1 rate) say *when* rules dropped and *how fast*. Quartile rate = violations in that slice / events in that slice. One event can fire several constraints, so a rate can exceed `1.0`.
 
-**Why.** Named tests lock both polarities. Public fixtures: `examples/stable` / `examples/decaying` (`forbid: true`) and `examples/required_present` / `examples/required_missing` (`forbid: false`). Hire signal: deterministic decay gate over a declared spec  -  not an LLM judge.
+**Why.** This CLI is a deterministic decay gate, not an LLM judge (`docs/INTERVIEW.md`, `docs/RELIABILITY_CARD.md`). Named tests lock the decaying fixture at first index `2` and three violations. The portable claim is fail-closed measurement, not a model score.
 
-**Worked example** (this repo). Stable fixture is CLEAN: no event contains `lint=FAIL` or `git push --force`.
+**Worked example** (this repo). Four-event journal: events 0–1 stay `lint=PASS`; event 2 records `lint=FAIL`; event 3 records `lint=FAIL` plus `git push --force`.
 
 ```bash
 constraint-auditor audit \
-  --constraints examples/stable/constraints.yaml \
-  --transcript examples/stable/journal.md
-# verdict=CLEAN exit=0
+  --constraints examples/decaying/constraints.yaml \
+  --transcript examples/decaying/journal.md \
+  --report /tmp/decay.md
+# verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000
 ```
 
-Polarity lives in `check_event` (`src/constraintauditor/checkers.py`):
+`compute_decay` (`src/constraintauditor/decay.py`) buckets with `min(3, (i * 4) // n)`. For `n=4` each event is its own quartile → rates `(0.0, 0.0, 1.0, 2.0)`. Slope `2.0` because Q4 has two hits on one event (`never_skip_lint` + `no_force_push`). Report opens `Verdict: DECAY`.
 
-```python
-if constraint.forbid and matched:            # banned string appeared
-if (not constraint.forbid) and not matched:  # required string absent
-```
+**Recall probe.** Eight events, violations only at indices 6 and 7 (one each). What is `first_violation_index`? Is `decay_slope` positive, zero, or negative? Which quartile holds the first hit?
 
-YAML may omit `forbid`; `Constraint` defaults it to `True` (`src/constraintauditor/spec.py`). Required-pattern lock:
+Answer: index `6`. Slope positive (`test_decay_slope_detects_increase`: Q4 rate `1.0`, Q1 rate `0.0`). First hit is Q4: `_quartile_index(6, 8) = min(3, 24 // 8) = 3`.
 
-```python
-from constraintauditor.checkers import check_transcript
-from constraintauditor.journal import JournalEvent
-from constraintauditor.spec import Constraint, ConstraintSpec
-
-spec = ConstraintSpec("t", (Constraint("must_log_gates", "", r"gates:", forbid=False),))
-events = [JournalEvent("2026-09-02 07:00", "- decision: advance", {})]
-assert check_transcript(spec, events)[0].detail.startswith("required pattern missing")
-```
-
-**Recall probe.** Event text is `- gates: tests=PASS` (no lint line). Spec: `pattern: "lint="`, `forbid: false`. CLEAN or DECAY? Is the check over the whole transcript or per event?
-
-Answer: DECAY  -  required pattern missing on that event. `check_transcript` multiplies constraints × events; a required pattern must hit *every* event, not once somewhere.
-
-**Retrieve.** `src/constraintauditor/checkers.py` · `spec.py` · `tests/test_checkers.py` · `LOOP_STATE.md` NEXT TICK · `docs/INTERVIEW.md`
+**Retrieve.** `src/constraintauditor/decay.py` · `cli.py` · `tests/test_decay.py` · `tests/test_examples.py` · `examples/decaying/` · `docs/INTERVIEW.md`

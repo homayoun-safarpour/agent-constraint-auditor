@@ -53,9 +53,17 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-02 freedom pass: `docs/ADAPTER.md` documents forbid vs required pair with verify commands.
 - 2026-09-03: empty or headerless journal is ERROR exit 1 (fail-closed); not CLEAN.
 - 2026-09-03: uncompilable constraint `pattern` is SpecError at load (`audit` / `check-constraints` exit 1).
+- 2026-09-03 evening nudge: gates green on `cb1e088`; NEXT TICK named `--report` lock for required_missing. Third-person: SHIP
 
 ## NEXT TICK (daily 2026-09-03)
 
 - Named `--report` lock for `examples/required_missing` (Verdict: DECAY + required-pattern-missing detail)
 - Why next: W13 closed fail-closed spec load; required polarity still lacks the decaying-fixture report freeze from W9
 - Verify: `python -m pytest -q` and `constraint-auditor audit --constraints examples/required_missing/constraints.yaml --transcript examples/required_missing/journal.md --report /tmp/required-decay.md`
+
+## NEXT TICK (evening 2026-09-03)
+
+- Named `--report` lock for `examples/required_missing` (Verdict: DECAY + required-pattern-missing detail)
+- Why next: W13 closed fail-closed spec load; required polarity still lacks the decaying-fixture report freeze from W9
+- Verify: `python -m pytest -q` and `constraint-auditor audit --constraints examples/required_missing/constraints.yaml --transcript examples/required_missing/journal.md --report /tmp/required-decay.md`
+- Third-person: SHIP

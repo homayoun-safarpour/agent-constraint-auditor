@@ -46,7 +46,7 @@ constraint-auditor audit \
 
 ## Constraint spec
 
-Each YAML rule is a regex over a journal event. `forbid: true` (default) treats a match as decay. `forbid: false` treats a missing required pattern as decay (exit `2`).
+Each YAML rule is a regex over a journal event. `forbid: true` (default) treats a match as decay. `forbid: false` treats a missing required pattern as decay (exit `2`). Invalid regex is a spec error (exit `1`).
 
 ## Exit codes
 
@@ -54,7 +54,7 @@ Each YAML rule is a regex over a journal event. `forbid: true` (default) treats 
 | --- | --- | --- |
 | `0` | CLEAN | No constraint decay |
 | `2` | DECAY | One or more constraints violated |
-| `1` | ERROR | Bad args / missing files / invalid spec / empty transcript |
+| `1` | ERROR | Bad args / missing files / invalid spec / invalid regex / empty transcript |
 
 Wire into [agent-loop-engine](https://github.com/homayoun-safarpour/agent-loop-engine):
 

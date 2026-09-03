@@ -19,6 +19,22 @@ def test_invalid_spec_raises():
         parse_constraint_spec({"name": "x", "constraints": []})
 
 
+def test_invalid_regex_pattern_is_spec_error():
+    with pytest.raises(SpecError, match="not a valid regex"):
+        parse_constraint_spec(
+            {
+                "name": "bad-regex",
+                "constraints": [
+                    {
+                        "id": "broken",
+                        "description": "",
+                        "pattern": "(",
+                    }
+                ],
+            }
+        )
+
+
 def test_forbid_false_parses_as_required_pattern():
     spec = parse_constraint_spec(
         {

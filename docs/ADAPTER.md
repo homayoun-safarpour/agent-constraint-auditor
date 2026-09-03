@@ -13,7 +13,7 @@
 constraint-auditor audit \
   --constraints constraints/agent.yaml \
   --transcript path/to/JOURNAL.md
-# exit 0 = CLEAN, exit 2 = DECAY, exit 1 = ERROR (empty / headerless journal is not CLEAN)
+# exit 0 = CLEAN, exit 2 = DECAY, exit 1 = ERROR (empty journal or invalid regex is not CLEAN)
 ```
 
 ## Forbid vs required patterns
@@ -47,6 +47,7 @@ Use forbid rules for “never do X”. Use required rules for “every event mus
 ```bash
 pip install -e ".[dev]"
 python -m pytest -q
+constraint-auditor check-constraints examples/stable/constraints.yaml
 constraint-auditor audit --constraints examples/stable/constraints.yaml --transcript examples/stable/journal.md
 constraint-auditor audit --constraints examples/required_present/constraints.yaml --transcript examples/required_present/journal.md
 ```

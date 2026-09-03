@@ -41,6 +41,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W10 Named `forbid: false` required-pattern-missing lock (2026-09-02)
 - [x] W11 Worked `forbid: false` fixtures under `examples/required_*` (2026-09-02)
 - [x] W12 Fail-closed empty / headerless transcript (exit 1, not CLEAN) (2026-09-03)
+- [x] W13 Compile constraint regex at spec load (invalid pattern exit 1) (2026-09-03)
 
 ## Build log
 
@@ -51,9 +52,10 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-02 evening: `examples/required_present` (exit 0) + `examples/required_missing` (exit 2); README Quickstart updated.
 - 2026-09-02 freedom pass: `docs/ADAPTER.md` documents forbid vs required pair with verify commands.
 - 2026-09-03: empty or headerless journal is ERROR exit 1 (fail-closed); not CLEAN.
+- 2026-09-03: uncompilable constraint `pattern` is SpecError at load (`audit` / `check-constraints` exit 1).
 
 ## NEXT TICK (daily 2026-09-03)
 
-- Compile constraint regex at spec load so an invalid `pattern` is ERROR exit 1, not a traceback
-- Why next: sibling fail-closed on the spec side; empty transcript now exits 1
-- Verify: `python -m pytest -q` plus a named test that a YAML spec with an uncompilable `pattern` exits 1 on `audit` and `check-constraints`
+- Named `--report` lock for `examples/required_missing` (Verdict: DECAY + required-pattern-missing detail)
+- Why next: W13 closed fail-closed spec load; required polarity still lacks the decaying-fixture report freeze from W9
+- Verify: `python -m pytest -q` and `constraint-auditor audit --constraints examples/required_missing/constraints.yaml --transcript examples/required_missing/journal.md --report /tmp/required-decay.md`

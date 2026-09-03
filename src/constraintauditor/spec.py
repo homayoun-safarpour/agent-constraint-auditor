@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -60,6 +61,10 @@ def parse_constraint_spec(data: Any) -> ConstraintSpec:
             raise SpecError(f"duplicate constraint id: {cid}")
         if not isinstance(pattern, str) or not pattern:
             raise SpecError(f"constraints[{i}].pattern required")
+        try:
+            re.compile(pattern)
+        except re.error as exc:
+            raise SpecError(f"constraints[{i}].pattern is not a valid regex: {exc}") from exc
         if not isinstance(forbid, bool):
             raise SpecError(f"constraints[{i}].forbid must be bool")
         seen.add(cid)

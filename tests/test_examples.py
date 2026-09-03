@@ -16,6 +16,7 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "`forbid: false`" in README
     assert "missing required pattern" in README
     assert "empty transcript" in README
+    assert "invalid regex" in README
 
 
 def test_stable_agent_fixture_exit_0():

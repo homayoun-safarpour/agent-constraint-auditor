@@ -9,7 +9,7 @@
    Reads agent-loop-engine journals natively; exit `0`/`2` plugs into `--gate`; sentinel handles judge drift, auditor handles agent rule drift.
 
 3. **What does exit 2 mean in CI?**
-   Measurable constraint decay - fail the build, repair before new feature work (same contract family as sentinel JUDGE_DRIFT).
+   Measurable constraint decay - fail the build, repair before new feature work (same contract family as sentinel JUDGE_DRIFT). Empty or headerless journals exit `1` (ERROR), not `0`.
 
 ## 2-min demo
 

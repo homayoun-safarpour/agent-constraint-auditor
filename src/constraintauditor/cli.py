@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 from .audit import run_audit, write_report
-from .journal import parse_loop_engine_journal
+from .journal import TranscriptError, parse_loop_engine_journal
 from .spec import SpecError, load_constraint_spec
 
 
@@ -60,6 +60,9 @@ def main(argv: list[str] | None = None) -> int:
                 )
             return result.exit_code
     except SpecError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
+    except TranscriptError as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1
     except OSError as exc:

@@ -6,6 +6,11 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
+
+class TranscriptError(ValueError):
+    """Empty or unparseable transcript."""
+
+
 HEADER_RE = re.compile(r"^##\s+(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2})\s*$")
 LINE_RE = re.compile(r"^-\s+(?P<key>[^:]+):\s*(?P<value>.*)$")
 

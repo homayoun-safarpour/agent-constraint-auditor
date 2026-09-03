@@ -13,7 +13,7 @@
 constraint-auditor audit \
   --constraints constraints/agent.yaml \
   --transcript path/to/JOURNAL.md
-# exit 0 = CLEAN, exit 2 = DECAY (safe for CI / loop-engine gates)
+# exit 0 = CLEAN, exit 2 = DECAY, exit 1 = ERROR (empty / headerless journal is not CLEAN)
 ```
 
 ## Forbid vs required patterns

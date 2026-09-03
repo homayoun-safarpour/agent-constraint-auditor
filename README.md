@@ -54,7 +54,7 @@ Each YAML rule is a regex over a journal event. `forbid: true` (default) treats 
 | --- | --- | --- |
 | `0` | CLEAN | No constraint decay |
 | `2` | DECAY | One or more constraints violated |
-| `1` | ERROR | Bad args / missing files / invalid spec |
+| `1` | ERROR | Bad args / missing files / invalid spec / empty transcript |
 
 Wire into [agent-loop-engine](https://github.com/homayoun-safarpour/agent-loop-engine):
 

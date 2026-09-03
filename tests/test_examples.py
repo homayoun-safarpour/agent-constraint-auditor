@@ -15,6 +15,7 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "Verdict: DECAY" in README
     assert "`forbid: false`" in README
     assert "missing required pattern" in README
+    assert "empty transcript" in README
 
 
 def test_stable_agent_fixture_exit_0():

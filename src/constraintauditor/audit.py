@@ -7,7 +7,7 @@ from pathlib import Path
 
 from .checkers import Violation, check_transcript
 from .decay import DecayReport, compute_decay, markdown_timeline
-from .journal import detect_format, parse_loop_engine_journal
+from .journal import TranscriptError, detect_format, parse_loop_engine_journal
 from .spec import ConstraintSpec, load_constraint_spec
 
 
@@ -42,6 +42,8 @@ def run_audit(
         events = parse_loop_engine_journal(transcript_path)
     else:
         events = parse_loop_engine_journal(transcript_path)
+    if not events:
+        raise TranscriptError("transcript contains no parseable events")
     violations = check_transcript(spec, events)
     decay = compute_decay(len(events), violations)
     if violations:

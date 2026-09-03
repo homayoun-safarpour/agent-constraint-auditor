@@ -45,6 +45,38 @@ def test_cli_exit_code_1_on_bad_args(tmp_path):
     assert code == 1
 
 
+def test_empty_transcript_is_error_exit_1(tmp_path, capsys):
+    journal = tmp_path / "empty.md"
+    journal.write_text("", encoding="utf-8")
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            str(ROOT / "examples" / "stable" / "constraints.yaml"),
+            "--transcript",
+            str(journal),
+        ]
+    )
+    assert code == 1
+    assert "no parseable events" in capsys.readouterr().err
+
+
+def test_headerless_journal_is_error_exit_1(tmp_path, capsys):
+    journal = tmp_path / "headerless.md"
+    journal.write_text("# notes\n- gates: lint=PASS\n", encoding="utf-8")
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            str(ROOT / "examples" / "stable" / "constraints.yaml"),
+            "--transcript",
+            str(journal),
+        ]
+    )
+    assert code == 1
+    assert "no parseable events" in capsys.readouterr().err
+
+
 def test_audit_json_output_schema(capsys):
     code = main(
         [

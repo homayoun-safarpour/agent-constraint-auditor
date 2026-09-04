@@ -9,6 +9,8 @@ DECAYING_JOURNAL = ROOT / "examples" / "decaying" / "journal.md"
 DECAYING_CONSTRAINTS = ROOT / "examples" / "decaying" / "constraints.yaml"
 REQUIRED_MISSING_JOURNAL = ROOT / "examples" / "required_missing" / "journal.md"
 REQUIRED_MISSING_CONSTRAINTS = ROOT / "examples" / "required_missing" / "constraints.yaml"
+REQUIRED_PRESENT_JOURNAL = ROOT / "examples" / "required_present" / "journal.md"
+REQUIRED_PRESENT_CONSTRAINTS = ROOT / "examples" / "required_present" / "constraints.yaml"
 
 
 def test_readme_mentions_exit_codes_0_and_2():
@@ -20,6 +22,8 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "empty transcript" in README
     assert "invalid regex" in README
     assert "required-decay.md" in README
+    assert "required-clean.md" in README
+    assert "Verdict: CLEAN" in README
 
 
 def test_stable_agent_fixture_exit_0():
@@ -208,3 +212,35 @@ def test_required_missing_fixture_locks_report(tmp_path, capsys):
     assert "The transcript records 4 constraint violations, first at event 0." in text
     assert "`require_lint_pass`" in text
     assert "required pattern missing:" in text
+
+
+def test_required_present_fixture_locks_report_clean(tmp_path, capsys):
+    journal = REQUIRED_PRESENT_JOURNAL.read_text(encoding="utf-8")
+    spec = REQUIRED_PRESENT_CONSTRAINTS.read_text(encoding="utf-8")
+    assert "lint=PASS" in journal
+    assert "forbid: false" in spec
+    assert "require_lint_pass" in spec
+    report = tmp_path / "required-clean.md"
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            str(REQUIRED_PRESENT_CONSTRAINTS),
+            "--transcript",
+            str(REQUIRED_PRESENT_JOURNAL),
+            "--report",
+            str(report),
+            "--json",
+        ]
+    )
+    assert code == 0
+    data = json.loads(capsys.readouterr().out)
+    assert data["verdict"] == "CLEAN"
+    assert data["decay"]["n_violations"] == 0
+    assert data["decay"]["first_violation_index"] is None
+    assert data["violations"] == []
+    text = report.read_text(encoding="utf-8")
+    assert text.startswith("# Constraint decay report: required-present-agent")
+    assert "Verdict: CLEAN" in text
+    assert "The transcript holds all declared constraints across 4 events." in text
+    assert "None." in text

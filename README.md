@@ -35,8 +35,9 @@ constraint-auditor audit \
 
 constraint-auditor audit \
   --constraints examples/required_present/constraints.yaml \
-  --transcript examples/required_present/journal.md
-# expect exit 0 (forbid: false, required lint=PASS present)
+  --transcript examples/required_present/journal.md \
+  --report /tmp/required-clean.md
+# expect exit 0; report starts with Verdict: CLEAN
 
 constraint-auditor audit \
   --constraints examples/required_missing/constraints.yaml \

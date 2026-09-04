@@ -43,6 +43,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W12 Fail-closed empty / headerless transcript (exit 1, not CLEAN) (2026-09-03)
 - [x] W13 Compile constraint regex at spec load (invalid pattern exit 1) (2026-09-03)
 - [x] W14 Named `--report` lock for `examples/required_missing` (2026-09-04)
+- [x] W15 Named `--report` lock for `examples/required_present` (2026-09-04)
 
 ## Build log
 
@@ -55,9 +56,10 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-03: empty or headerless journal is ERROR exit 1 (fail-closed); not CLEAN.
 - 2026-09-03: uncompilable constraint `pattern` is SpecError at load (`audit` / `check-constraints` exit 1).
 - 2026-09-04: named `--report` lock for `examples/required_missing` (Verdict: DECAY, `require_lint_pass`, required-pattern-missing, first event 0).
+- 2026-09-04: named `--report` lock for `examples/required_present` (Verdict: CLEAN, holds-all-constraints across 4 events).
 
 ## NEXT TICK (daily 2026-09-04)
 
-- Named `--report` lock for `examples/required_present` (Verdict: CLEAN + holds-all-constraints sentence)
-- Why next: W14 froze the required-missing DECAY report; the `forbid: false` CLEAN polarity still lacks the report freeze that W9 gave decaying
-- Verify: `python -m pytest -q` and `constraint-auditor audit --constraints examples/required_present/constraints.yaml --transcript examples/required_present/journal.md --report /tmp/required-clean.md`
+- Document `examples/required_present` and `examples/required_missing` in `examples/README.md`
+- Why next: W15 froze the CLEAN required report; the examples index still lists only the `forbid: true` pair
+- Verify: `python -m pytest -q` and confirm `examples/README.md` names both required fixtures with exit 0 / 2

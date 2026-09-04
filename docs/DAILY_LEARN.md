@@ -1,39 +1,30 @@
-# Daily learning  -  2026-09-02
+# Daily learning  —  2026-09-04
 
-**Skill.** `forbid: false` is a required regex: every journal event must match. Miss = violation (`required pattern missing`). Default `forbid: true` is the inverse: a match is a violation (`forbid pattern matched`).
+**Skill.** Freeze the markdown `--report`, not just the exit code. W9 locked `examples/decaying` (`Verdict: DECAY`, third-person count, constraint ids). `examples/required_missing` is JSON-locked (`test_required_missing_fixture_exit_2`) but has no named report freeze yet — LOOP_STATE NEXT TICK.
 
-**Why.** Named tests lock both polarities. Public fixtures: `examples/stable` / `examples/decaying` (`forbid: true`) and `examples/required_present` / `examples/required_missing` (`forbid: false`). Hire signal: deterministic decay gate over a declared spec  -  not an LLM judge.
+**Why.** Hire signal: a CI gate you can read. Exit `2` is the contract; the report is the artifact. Same family as sentinel JUDGE_DRIFT — fail the build, show which rule, when. Deterministic regex over a declared spec, not an LLM judge.
 
-**Worked example** (this repo). Stable fixture is CLEAN: no event contains `lint=FAIL` or `git push --force`.
+**Worked example** (this repo). Four `##` events, each missing `lint=PASS`, `forbid: false`:
 
 ```bash
 constraint-auditor audit \
-  --constraints examples/stable/constraints.yaml \
-  --transcript examples/stable/journal.md
-# verdict=CLEAN exit=0
+  --constraints examples/required_missing/constraints.yaml \
+  --transcript examples/required_missing/journal.md \
+  --report /tmp/required-decay.md
+# verdict=DECAY exit=2 violations=4 first_index=0 slope=0.000
 ```
 
-Polarity lives in `check_event` (`src/constraintauditor/checkers.py`):
+Report opens:
 
-```python
-if constraint.forbid and matched:            # banned string appeared
-if (not constraint.forbid) and not matched:  # required string absent
+```
+Verdict: DECAY
+The transcript records 4 constraint violations, first at event 0.
 ```
 
-YAML may omit `forbid`; `Constraint` defaults it to `True` (`src/constraintauditor/spec.py`). Required-pattern lock:
+Each bullet is `required pattern missing: lint\s*=\s*PASS` (`markdown_timeline` in `src/constraintauditor/decay.py`). Contrast W9: decaying fixture first_index=2, slope>0 (late `lint=FAIL` / `git push --force`). Uniform required-absence is first_index=0, slope=0 (Q4−Q1 = 1.00−1.00).
 
-```python
-from constraintauditor.checkers import check_transcript
-from constraintauditor.journal import JournalEvent
-from constraintauditor.spec import Constraint, ConstraintSpec
+**Recall probe.** You add a named test like `test_decaying_fixture_locks_force_push_line` for `examples/required_missing`. Which three strings must the report contain? Why is `first_violation_index` 0, not 2?
 
-spec = ConstraintSpec("t", (Constraint("must_log_gates", "", r"gates:", forbid=False),))
-events = [JournalEvent("2026-09-02 07:00", "- decision: advance", {})]
-assert check_transcript(spec, events)[0].detail.startswith("required pattern missing")
-```
+Answer: `Verdict: DECAY`; `The transcript records 4 constraint violations, first at event 0.`; `` `require_lint_pass` `` (and `required pattern missing`). Index 0 because the first `##` block already lacks `lint=PASS`. Slope 0 is not CLEAN — it means decay did not *increase* later.
 
-**Recall probe.** Event text is `- gates: tests=PASS` (no lint line). Spec: `pattern: "lint="`, `forbid: false`. CLEAN or DECAY? Is the check over the whole transcript or per event?
-
-Answer: DECAY  -  required pattern missing on that event. `check_transcript` multiplies constraints × events; a required pattern must hit *every* event, not once somewhere.
-
-**Retrieve.** `src/constraintauditor/checkers.py` · `spec.py` · `tests/test_checkers.py` · `LOOP_STATE.md` NEXT TICK · `docs/INTERVIEW.md`
+**Retrieve.** `src/constraintauditor/decay.py` · `audit.write_report` · `tests/test_examples.py` · `LOOP_STATE.md` NEXT TICK · `docs/INTERVIEW.md`

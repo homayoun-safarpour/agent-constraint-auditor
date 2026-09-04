@@ -40,8 +40,9 @@ constraint-auditor audit \
 
 constraint-auditor audit \
   --constraints examples/required_missing/constraints.yaml \
-  --transcript examples/required_missing/journal.md
-# expect exit 2 (forbid: false, required lint=PASS missing)
+  --transcript examples/required_missing/journal.md \
+  --report /tmp/required-decay.md
+# expect exit 2; report starts with Verdict: DECAY and required pattern missing
 ```
 
 ## Constraint spec

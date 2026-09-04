@@ -7,6 +7,8 @@ ROOT = Path(__file__).parent.parent
 README = (ROOT / "README.md").read_text(encoding="utf-8")
 DECAYING_JOURNAL = ROOT / "examples" / "decaying" / "journal.md"
 DECAYING_CONSTRAINTS = ROOT / "examples" / "decaying" / "constraints.yaml"
+REQUIRED_MISSING_JOURNAL = ROOT / "examples" / "required_missing" / "journal.md"
+REQUIRED_MISSING_CONSTRAINTS = ROOT / "examples" / "required_missing" / "constraints.yaml"
 
 
 def test_readme_mentions_exit_codes_0_and_2():
@@ -17,6 +19,7 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "missing required pattern" in README
     assert "empty transcript" in README
     assert "invalid regex" in README
+    assert "required-decay.md" in README
 
 
 def test_stable_agent_fixture_exit_0():
@@ -69,9 +72,9 @@ def test_required_missing_fixture_exit_2(capsys):
         [
             "audit",
             "--constraints",
-            str(ROOT / "examples" / "required_missing" / "constraints.yaml"),
+            str(REQUIRED_MISSING_CONSTRAINTS),
             "--transcript",
-            str(ROOT / "examples" / "required_missing" / "journal.md"),
+            str(REQUIRED_MISSING_JOURNAL),
             "--json",
         ]
     )
@@ -172,3 +175,36 @@ def test_decaying_fixture_locks_force_push_line(tmp_path, capsys):
     assert "The transcript records 3 constraint violations, first at event 2." in text
     assert "`never_skip_lint`" in text
     assert "`no_force_push`" in text
+
+
+def test_required_missing_fixture_locks_report(tmp_path, capsys):
+    journal = REQUIRED_MISSING_JOURNAL.read_text(encoding="utf-8")
+    assert "lint line omitted" in journal
+    assert "lint=PASS" not in journal
+    report = tmp_path / "required-decay.md"
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            str(REQUIRED_MISSING_CONSTRAINTS),
+            "--transcript",
+            str(REQUIRED_MISSING_JOURNAL),
+            "--report",
+            str(report),
+            "--json",
+        ]
+    )
+    assert code == 2
+    data = json.loads(capsys.readouterr().out)
+    assert data["verdict"] == "DECAY"
+    assert data["decay"]["n_events"] == 4
+    assert data["decay"]["n_violations"] == 4
+    assert data["decay"]["first_violation_index"] == 0
+    ids = {v["constraint_id"] for v in data["violations"]}
+    assert ids == {"require_lint_pass"}
+    assert all(v["detail"].startswith("required pattern missing:") for v in data["violations"])
+    text = report.read_text(encoding="utf-8")
+    assert "Verdict: DECAY" in text
+    assert "The transcript records 4 constraint violations, first at event 0." in text
+    assert "`require_lint_pass`" in text
+    assert "required pattern missing:" in text

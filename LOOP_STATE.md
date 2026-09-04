@@ -58,6 +58,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-03: uncompilable constraint `pattern` is SpecError at load (`audit` / `check-constraints` exit 1).
 - 2026-09-04: named `--report` lock for `examples/required_missing` (Verdict: DECAY, `require_lint_pass`, required-pattern-missing, first event 0).
 - 2026-09-04: named `--report` lock for `examples/required_present` (Verdict: CLEAN, holds-all-constraints across 4 events).
+- 2026-09-04 evening nudge: gates green on `8698359`; NEXT TICK W16 document required fixtures in `examples/README.md`. Third-person: SHIP
 
 ## NEXT TICK (heartbeat 2026-09-04)
 
@@ -68,3 +69,11 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 ## Journal
 
 - 2026-09-04 heartbeat: OK (W15 matches `df3882e`; named `--report` CLEAN lock; CI green). ENRICH. Next tick: W16 document required fixtures in `examples/README.md`.
+- 2026-09-04 evening: OK (W16 queued; CI green on `8698359`). SHIP. Next tick: document required fixtures in `examples/README.md`.
+
+## NEXT TICK (evening 2026-09-04)
+
+- Execute W16: document `examples/required_present` and `examples/required_missing` in `examples/README.md` (exit 0 / 2)
+- Why next: W15 froze the `forbid: false` CLEAN report; the examples index still lists only the `forbid: true` pair, so a fork following `examples/README.md` never sees required-pattern polarity
+- Verify: `python -m pytest -q` and confirm `examples/README.md` names `required_present` (exit 0) and `required_missing` (exit 2)
+- Third-person: SHIP

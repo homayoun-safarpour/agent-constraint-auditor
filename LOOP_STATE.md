@@ -11,8 +11,8 @@ Week: opened Mon 2026-08-31 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-08-31 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `0a916b2` (2026-08-31) |
-| 2 | Named claim tests | PASS — `pytest` (see latest local/CI) |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `df3882e` (2026-09-04); first public green `0a916b2` |
+| 2 | Named claim tests | PASS — `pytest` 32 passed (2026-09-04) |
 | 3 | Worked example real output | PASS — stable/decaying + required_present/missing |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -44,6 +44,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W13 Compile constraint regex at spec load (invalid pattern exit 1) (2026-09-03)
 - [x] W14 Named `--report` lock for `examples/required_missing` (2026-09-04)
 - [x] W15 Named `--report` lock for `examples/required_present` (2026-09-04)
+- [ ] W16 Document `examples/required_present` and `examples/required_missing` in `examples/README.md`
 
 ## Build log
 
@@ -58,8 +59,12 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-04: named `--report` lock for `examples/required_missing` (Verdict: DECAY, `require_lint_pass`, required-pattern-missing, first event 0).
 - 2026-09-04: named `--report` lock for `examples/required_present` (Verdict: CLEAN, holds-all-constraints across 4 events).
 
-## NEXT TICK (daily 2026-09-04)
+## NEXT TICK (heartbeat 2026-09-04)
 
-- Document `examples/required_present` and `examples/required_missing` in `examples/README.md`
-- Why next: W15 froze the CLEAN required report; the examples index still lists only the `forbid: true` pair
-- Verify: `python -m pytest -q` and confirm `examples/README.md` names both required fixtures with exit 0 / 2
+- Execute W16: document `examples/required_present` and `examples/required_missing` in `examples/README.md` (exit 0 / 2)
+- Why next: W15 froze the `forbid: false` CLEAN report; the examples index still lists only the `forbid: true` pair, so a fork following `examples/README.md` never sees required-pattern polarity
+- Verify: `python -m pytest -q` and confirm `examples/README.md` names `required_present` (exit 0) and `required_missing` (exit 2)
+
+## Journal
+
+- 2026-09-04 heartbeat: OK (W15 matches `df3882e`; named `--report` CLEAN lock; CI green). ENRICH. Next tick: W16 document required fixtures in `examples/README.md`.

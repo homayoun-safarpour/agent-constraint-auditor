@@ -5,6 +5,7 @@ from constraintauditor.cli import main
 
 ROOT = Path(__file__).parent.parent
 README = (ROOT / "README.md").read_text(encoding="utf-8")
+EXAMPLES_README = (ROOT / "examples" / "README.md").read_text(encoding="utf-8")
 DECAYING_JOURNAL = ROOT / "examples" / "decaying" / "journal.md"
 DECAYING_CONSTRAINTS = ROOT / "examples" / "decaying" / "constraints.yaml"
 REQUIRED_MISSING_JOURNAL = ROOT / "examples" / "required_missing" / "journal.md"
@@ -24,6 +25,19 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "required-decay.md" in README
     assert "required-clean.md" in README
     assert "Verdict: CLEAN" in README
+
+
+def test_examples_readme_locks_required_pair_rows():
+    present_line = next(line for line in EXAMPLES_README.splitlines() if "required_present/" in line)
+    missing_line = next(line for line in EXAMPLES_README.splitlines() if "required_missing/" in line)
+    assert "**0**" in present_line or "exit 0" in present_line
+    assert "CLEAN" in present_line
+    assert "**2**" in missing_line or "exit 2" in missing_line
+    assert "DECAY" in missing_line
+    assert "forbid: false" in present_line
+    assert "forbid: false" in missing_line
+    assert "examples/required_present/constraints.yaml" in EXAMPLES_README
+    assert "examples/required_missing/constraints.yaml" in EXAMPLES_README
 
 
 def test_stable_agent_fixture_exit_0():

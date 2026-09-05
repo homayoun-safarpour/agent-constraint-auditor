@@ -12,7 +12,7 @@ Week: opened Mon 2026-08-31 · repo: agent-constraint-auditor
 | # | Check | Status 2026-08-31 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `df3882e` (2026-09-04); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 32 passed (2026-09-04) |
+| 2 | Named claim tests | PASS — `pytest` 33 passed (2026-09-05) |
 | 3 | Worked example real output | PASS — stable/decaying + required_present/missing |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -45,7 +45,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W14 Named `--report` lock for `examples/required_missing` (2026-09-04)
 - [x] W15 Named `--report` lock for `examples/required_present` (2026-09-04)
 - [x] W16 Document `examples/required_present` and `examples/required_missing` in `examples/README.md` (2026-09-05)
-- [ ] W17 Named test locks `examples/README.md` required-pair rows (exit 0 / 2)
+- [x] W17 Named test locks `examples/README.md` required-pair rows (exit 0 / 2) (2026-09-05)
+- [ ] W18 Worked ERROR fixtures under `examples/` for empty and headerless transcripts (exit 1)
 
 ## Build log
 
@@ -60,14 +61,16 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-04: named `--report` lock for `examples/required_missing` (Verdict: DECAY, `require_lint_pass`, required-pattern-missing, first event 0).
 - 2026-09-04: named `--report` lock for `examples/required_present` (Verdict: CLEAN, holds-all-constraints across 4 events).
 - 2026-09-05: `examples/README.md` lists `required_present` (exit 0) and `required_missing` (exit 2) beside the `forbid: true` pair.
+- 2026-09-05: named test locks `examples/README.md` required-pair rows (exit 0 CLEAN / exit 2 DECAY, `forbid: false`).
 
 ## NEXT TICK (daily 2026-09-05)
 
-- Execute W17: named test locks `examples/README.md` names `required_present` (exit 0) and `required_missing` (exit 2)
-- Why next: W16 added the required-pair rows; a named test keeps the examples index from drifting back to the `forbid: true` pair only
-- Verify: `python -m pytest -q` and fail if `examples/README.md` drops `required_present` / `required_missing` or their exit 0 / 2 expectations
+- Execute W18: add worked ERROR fixtures under `examples/` for empty and headerless transcripts (exit 1)
+- Why next: W12 locked fail-closed ERROR in tests only; the examples index now covers both CLEAN/DECAY polarities and still has no forkable exit-1 fixture
+- Verify: `python -m pytest -q` and `constraint-auditor audit` on the empty and headerless fixtures exits 1 (not CLEAN)
 
 ## Journal
 
 - 2026-09-04 heartbeat: OK (W15 matches `df3882e`; named `--report` CLEAN lock; CI green). ENRICH. Next tick: W16 document required fixtures in `examples/README.md`.
 - 2026-09-05 daily: W16 done; `examples/README.md` documents required_present (exit 0) and required_missing (exit 2). Next tick: W17 named test lock on those rows.
+- 2026-09-05 daily: W17 shipped; named test locks required-pair rows in `examples/README.md`. Next tick: W18 worked ERROR fixtures (empty / headerless, exit 1).

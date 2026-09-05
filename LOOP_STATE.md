@@ -44,7 +44,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W13 Compile constraint regex at spec load (invalid pattern exit 1) (2026-09-03)
 - [x] W14 Named `--report` lock for `examples/required_missing` (2026-09-04)
 - [x] W15 Named `--report` lock for `examples/required_present` (2026-09-04)
-- [ ] W16 Document `examples/required_present` and `examples/required_missing` in `examples/README.md`
+- [x] W16 Document `examples/required_present` and `examples/required_missing` in `examples/README.md` (2026-09-05)
+- [ ] W17 Named test locks `examples/README.md` required-pair rows (exit 0 / 2)
 
 ## Build log
 
@@ -58,13 +59,15 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-03: uncompilable constraint `pattern` is SpecError at load (`audit` / `check-constraints` exit 1).
 - 2026-09-04: named `--report` lock for `examples/required_missing` (Verdict: DECAY, `require_lint_pass`, required-pattern-missing, first event 0).
 - 2026-09-04: named `--report` lock for `examples/required_present` (Verdict: CLEAN, holds-all-constraints across 4 events).
+- 2026-09-05: `examples/README.md` lists `required_present` (exit 0) and `required_missing` (exit 2) beside the `forbid: true` pair.
 
-## NEXT TICK (heartbeat 2026-09-04)
+## NEXT TICK (daily 2026-09-05)
 
-- Execute W16: document `examples/required_present` and `examples/required_missing` in `examples/README.md` (exit 0 / 2)
-- Why next: W15 froze the `forbid: false` CLEAN report; the examples index still lists only the `forbid: true` pair, so a fork following `examples/README.md` never sees required-pattern polarity
-- Verify: `python -m pytest -q` and confirm `examples/README.md` names `required_present` (exit 0) and `required_missing` (exit 2)
+- Execute W17: named test locks `examples/README.md` names `required_present` (exit 0) and `required_missing` (exit 2)
+- Why next: W16 added the required-pair rows; a named test keeps the examples index from drifting back to the `forbid: true` pair only
+- Verify: `python -m pytest -q` and fail if `examples/README.md` drops `required_present` / `required_missing` or their exit 0 / 2 expectations
 
 ## Journal
 
 - 2026-09-04 heartbeat: OK (W15 matches `df3882e`; named `--report` CLEAN lock; CI green). ENRICH. Next tick: W16 document required fixtures in `examples/README.md`.
+- 2026-09-05 daily: W16 done; `examples/README.md` documents required_present (exit 0) and required_missing (exit 2). Next tick: W17 named test lock on those rows.

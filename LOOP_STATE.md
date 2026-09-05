@@ -62,6 +62,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-04: named `--report` lock for `examples/required_present` (Verdict: CLEAN, holds-all-constraints across 4 events).
 - 2026-09-05: `examples/README.md` lists `required_present` (exit 0) and `required_missing` (exit 2) beside the `forbid: true` pair.
 - 2026-09-05: named test locks `examples/README.md` required-pair rows (exit 0 CLEAN / exit 2 DECAY, `forbid: false`).
+- 2026-09-05 evening nudge: gates green on `5c2bdf8`; NEXT TICK W18 worked ERROR fixtures (empty / headerless, exit 1). Third-person: SHIP
 
 ## NEXT TICK (daily 2026-09-05)
 
@@ -74,3 +75,11 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-04 heartbeat: OK (W15 matches `df3882e`; named `--report` CLEAN lock; CI green). ENRICH. Next tick: W16 document required fixtures in `examples/README.md`.
 - 2026-09-05 daily: W16 done; `examples/README.md` documents required_present (exit 0) and required_missing (exit 2). Next tick: W17 named test lock on those rows.
 - 2026-09-05 daily: W17 shipped; named test locks required-pair rows in `examples/README.md`. Next tick: W18 worked ERROR fixtures (empty / headerless, exit 1).
+- 2026-09-05 evening: OK (W18 queued; CI green on `5c2bdf8`). SHIP. Next tick: worked ERROR fixtures (empty / headerless, exit 1).
+
+## NEXT TICK (evening 2026-09-05)
+
+- Execute W18: add worked ERROR fixtures under `examples/` for empty and headerless transcripts (exit 1)
+- Why next: W12 locked fail-closed ERROR in tests only; the examples index now covers both CLEAN/DECAY polarities and still has no forkable exit-1 fixture
+- Verify: `python -m pytest -q` and `constraint-auditor audit` on the empty and headerless fixtures exits 1 (not CLEAN)
+- Third-person: SHIP

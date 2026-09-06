@@ -1,6 +1,6 @@
 # LinkedIn draft (from Sunday close 2026-09-06)
 
-Public-safe. Paste when ready. No SLR / employer demand invented.
+Public-safe. Paste when ready. No private research content. No invented employer demand.
 
 1. Long-horizon agent loops can drop the rules you wrote down and still look busy - the transcript has no fail-closed check.
 2. I keep a narrow public CLI that audits your journal against your YAML constraint spec (regex/predicate, not an LLM judge).

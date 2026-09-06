@@ -1,39 +1,32 @@
-# Daily learning  -  2026-09-02
+# Daily learning  -  2026-09-06
 
-**Skill.** `forbid: false` is a required regex: every journal event must match. Miss = violation (`required pattern missing`). Default `forbid: true` is the inverse: a match is a violation (`forbid pattern matched`).
+**Skill.** `parse-transcript` is a dry-run. It never fail-closes. Empty and headerless files both parse to `[]`; the command prints `OK: 0 events` and exits `0`. Only `audit` raises `TranscriptError` when the event list is empty (`exit 1`). Same exception, two human fixtures — not two code paths.
 
-**Why.** Named tests lock both polarities. Public fixtures: `examples/stable` / `examples/decaying` (`forbid: true`) and `examples/required_present` / `examples/required_missing` (`forbid: false`). Hire signal: deterministic decay gate over a declared spec  -  not an LLM judge.
+**Why.** W18 needs forkable ERROR examples. If you verify those files with `parse-transcript`, they look healthy. The hire-facing gate is `audit` exit `1` (ERROR), never CLEAN. Interview pack: empty journals are not silent passes.
 
-**Worked example** (this repo). Stable fixture is CLEAN: no event contains `lint=FAIL` or `git push --force`.
+**Worked example** (this repo). Parser starts an event only on `HEADER_RE` = `## YYYY-MM-DD HH:MM` (time required; `# notes` does not count). Lines before the first header are skipped.
 
 ```bash
+constraint-auditor parse-transcript examples/stable/journal.md
+# OK: 4 events   exit 0
+
 constraint-auditor audit \
   --constraints examples/stable/constraints.yaml \
   --transcript examples/stable/journal.md
 # verdict=CLEAN exit=0
 ```
 
-Polarity lives in `check_event` (`src/constraintauditor/checkers.py`):
+`parse_loop_engine_journal` (`src/constraintauditor/journal.py`) returns `[]` and does not raise. The gate lives in `run_audit`:
 
 ```python
-if constraint.forbid and matched:            # banned string appeared
-if (not constraint.forbid) and not matched:  # required string absent
+if not events:
+    raise TranscriptError("transcript contains no parseable events")
 ```
 
-YAML may omit `forbid`; `Constraint` defaults it to `True` (`src/constraintauditor/spec.py`). Required-pattern lock:
+CLI: `parse-transcript` always `return 0` after a successful read. `audit` maps `TranscriptError` to exit `1`. W18 empty (zero bytes) and headerless (`# notes` + bullets) both hit that one `if not events`.
 
-```python
-from constraintauditor.checkers import check_transcript
-from constraintauditor.journal import JournalEvent
-from constraintauditor.spec import Constraint, ConstraintSpec
+**Recall probe.** You write `examples/headerless/journal.md` as `# notes` plus `- gates: lint=PASS`. You run `parse-transcript` on it, then `audit` against `examples/stable/constraints.yaml`. What two exit codes? Why is this not DECAY?
 
-spec = ConstraintSpec("t", (Constraint("must_log_gates", "", r"gates:", forbid=False),))
-events = [JournalEvent("2026-09-02 07:00", "- decision: advance", {})]
-assert check_transcript(spec, events)[0].detail.startswith("required pattern missing")
-```
+Answer: `0` then `1`. Zero parseable events — `current_ts` stays `None`, flush never appends. DECAY (`2`) needs at least one event plus a constraint miss. No events is ERROR, not "holds all constraints".
 
-**Recall probe.** Event text is `- gates: tests=PASS` (no lint line). Spec: `pattern: "lint="`, `forbid: false`. CLEAN or DECAY? Is the check over the whole transcript or per event?
-
-Answer: DECAY  -  required pattern missing on that event. `check_transcript` multiplies constraints × events; a required pattern must hit *every* event, not once somewhere.
-
-**Retrieve.** `src/constraintauditor/checkers.py` · `spec.py` · `tests/test_checkers.py` · `LOOP_STATE.md` NEXT TICK · `docs/INTERVIEW.md`
+**Retrieve.** `src/constraintauditor/journal.py` · `audit.py` · `cli.py` · `tests/test_cli.py` (`test_empty_transcript_is_error_exit_1`, `test_headerless_journal_is_error_exit_1`) · `docs/INTERVIEW.md` · `LOOP_STATE.md` NEXT TICK (W18)

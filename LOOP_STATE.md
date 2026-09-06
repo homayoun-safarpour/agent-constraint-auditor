@@ -9,10 +9,10 @@ Week: opened Mon 2026-08-31 · repo: agent-constraint-auditor
 
 ### A. Our benchmarks (always)
 
-| # | Check | Status 2026-08-31 |
+| # | Check | Status 2026-09-06 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `df3882e` (2026-09-04); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 36 passed (2026-09-06) |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `ae1879c` (2026-09-06, run 34019459544); first public green `0a916b2` |
+| 2 | Named claim tests | PASS — `pytest` 36 passed; `ruff check .` clean (2026-09-06) |
 | 3 | Worked example real output | PASS — stable/decaying + required_present/missing + empty/headerless |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -67,11 +67,33 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-06: `examples/empty` and `examples/headerless` audit to ERROR exit 1 (no parseable events); not CLEAN.
 - 2026-09-06: named test locks `examples/README.md` empty/headerless ERROR rows (exit 1).
 
-## NEXT TICK (daily 2026-09-06)
+## SUNDAY CLOSE (2026-09-06)
+
+Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/main).
+
+| Signal | Result |
+| --- | --- |
+| CI status | PASS — Actions success 3.10 / 3.11 / 3.12 on `ae1879c` ([run 34019459544](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/34019459544)) |
+| Local gate | PASS — `ruff check .` clean; `pytest` 36 passed |
+| Claim still true? | YES — YAML spec + loop-engine journal → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000 |
+| Example still runnable? | YES — stable 0, decaying 2, required_present 0, required_missing 2, empty 1, headerless 1; `--report` still opens `Verdict: CLEAN\|DECAY` |
+
+### LinkedIn draft (field pain first; no employer demand)
+
+1. Long-horizon agent loops can drop the rules you wrote down and still look busy — the transcript has no fail-closed check.
+2. I keep a narrow public CLI that audits *your* journal against *your* YAML constraint spec (regex/predicate, not an LLM judge).
+3. Exit contract: `0` CLEAN, `2` DECAY, `1` ERROR. An empty or headerless transcript is ERROR, not a free CLEAN.
+4. This week locked both polarities in fixtures: forbid-match decay and required-pattern-missing decay, plus named `--report` verdicts.
+5. Fork path is the README Quickstart: six worked examples, `pip install -e ".[dev]"`, under 30 minutes.
+
+## NEXT TICK (sunday 2026-09-06)
+
+Monday 2026-09-07 is a week boundary — retarget the LOOP_STATE week header from 2026-08-31 to 2026-09-07 after the first Monday tick. Do not invent field/employer demand.
 
 - Execute W20: document `examples/empty` and `examples/headerless` in `docs/ADAPTER.md`
 - Why next: W19 locked the examples index ERROR rows; the adapter table still lists only CLEAN/DECAY polarities
 - Verify: `python -m pytest -q` and `docs/ADAPTER.md` names both ERROR fixtures with exit 1
+- Scaffold: bump BENCHMARK GATE week line; keep claim / examples / CI as the DoD
 
 ## Journal
 
@@ -80,3 +102,4 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-05 daily: W17 shipped; named test locks required-pair rows in `examples/README.md`. Next tick: W18 worked ERROR fixtures (empty / headerless, exit 1).
 - 2026-09-06 daily: W18 shipped; `examples/empty` and `examples/headerless` are ERROR exit 1 (no parseable events). Next tick: W19 named test lock on those `examples/README.md` rows.
 - 2026-09-06 daily: W19 shipped; named test locks empty/headerless ERROR rows in `examples/README.md`. Next tick: W20 document those fixtures in `docs/ADAPTER.md`.
+- 2026-09-06 sunday: usefulness gate green (CI `ae1879c`, ruff + 36 pytest, six examples). Claim holds. Next tick: W20 + Monday week retarget 2026-09-07.

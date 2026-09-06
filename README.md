@@ -44,6 +44,16 @@ constraint-auditor audit \
   --transcript examples/required_missing/journal.md \
   --report /tmp/required-decay.md
 # expect exit 2; report starts with Verdict: DECAY and required pattern missing
+
+constraint-auditor audit \
+  --constraints examples/empty/constraints.yaml \
+  --transcript examples/empty/journal.md
+# expect exit 1; empty transcript is ERROR, not CLEAN
+
+constraint-auditor audit \
+  --constraints examples/headerless/constraints.yaml \
+  --transcript examples/headerless/journal.md
+# expect exit 1; headerless transcript is ERROR, not CLEAN
 ```
 
 ## Constraint spec
@@ -56,7 +66,7 @@ Each YAML rule is a regex over a journal event. `forbid: true` (default) treats 
 | --- | --- | --- |
 | `0` | CLEAN | No constraint decay |
 | `2` | DECAY | One or more constraints violated |
-| `1` | ERROR | Bad args / missing files / invalid spec / invalid regex / empty transcript |
+| `1` | ERROR | Bad args / missing files / invalid spec / invalid regex / empty or headerless transcript |
 
 Wire into [agent-loop-engine](https://github.com/homayoun-safarpour/agent-loop-engine):
 

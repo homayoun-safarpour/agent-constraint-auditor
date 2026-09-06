@@ -1,0 +1,6 @@
+name: headerless-transcript
+constraints:
+  - id: never_skip_lint
+    description: Do not advance when lint gate is FAIL
+    pattern: "lint\\s*=\\s*FAIL"
+    forbid: true

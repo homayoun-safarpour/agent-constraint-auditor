@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 from constraintauditor.cli import main
@@ -12,6 +13,11 @@ REQUIRED_MISSING_JOURNAL = ROOT / "examples" / "required_missing" / "journal.md"
 REQUIRED_MISSING_CONSTRAINTS = ROOT / "examples" / "required_missing" / "constraints.yaml"
 REQUIRED_PRESENT_JOURNAL = ROOT / "examples" / "required_present" / "journal.md"
 REQUIRED_PRESENT_CONSTRAINTS = ROOT / "examples" / "required_present" / "constraints.yaml"
+EMPTY_JOURNAL = ROOT / "examples" / "empty" / "journal.md"
+EMPTY_CONSTRAINTS = ROOT / "examples" / "empty" / "constraints.yaml"
+HEADERLESS_JOURNAL = ROOT / "examples" / "headerless" / "journal.md"
+HEADERLESS_CONSTRAINTS = ROOT / "examples" / "headerless" / "constraints.yaml"
+EVENT_HEADER_RE = re.compile(r"^##\s+\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}\s*$", re.MULTILINE)
 
 
 def test_readme_mentions_exit_codes_0_and_2():
@@ -21,10 +27,13 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "`forbid: false`" in README
     assert "missing required pattern" in README
     assert "empty transcript" in README
+    assert "headerless transcript" in README
     assert "invalid regex" in README
     assert "required-decay.md" in README
     assert "required-clean.md" in README
     assert "Verdict: CLEAN" in README
+    assert "examples/empty/journal.md" in README
+    assert "examples/headerless/journal.md" in README
 
 
 def test_examples_readme_locks_required_pair_rows():
@@ -226,6 +235,42 @@ def test_required_missing_fixture_locks_report(tmp_path, capsys):
     assert "The transcript records 4 constraint violations, first at event 0." in text
     assert "`require_lint_pass`" in text
     assert "required pattern missing:" in text
+
+
+def test_empty_fixture_exit_1(capsys):
+    assert EMPTY_JOURNAL.read_text(encoding="utf-8") == ""
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            str(EMPTY_CONSTRAINTS),
+            "--transcript",
+            str(EMPTY_JOURNAL),
+        ]
+    )
+    assert code == 1
+    err = capsys.readouterr().err
+    assert "no parseable events" in err
+    assert "CLEAN" not in err
+
+
+def test_headerless_fixture_exit_1(capsys):
+    journal = HEADERLESS_JOURNAL.read_text(encoding="utf-8")
+    assert EVENT_HEADER_RE.search(journal) is None
+    assert "lint=PASS" in journal
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            str(HEADERLESS_CONSTRAINTS),
+            "--transcript",
+            str(HEADERLESS_JOURNAL),
+        ]
+    )
+    assert code == 1
+    err = capsys.readouterr().err
+    assert "no parseable events" in err
+    assert "CLEAN" not in err
 
 
 def test_required_present_fixture_locks_report_clean(tmp_path, capsys):

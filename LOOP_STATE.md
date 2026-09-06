@@ -12,7 +12,7 @@ Week: opened Mon 2026-08-31 · repo: agent-constraint-auditor
 | # | Check | Status 2026-08-31 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `df3882e` (2026-09-04); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 35 passed (2026-09-06) |
+| 2 | Named claim tests | PASS — `pytest` 36 passed (2026-09-06) |
 | 3 | Worked example real output | PASS — stable/decaying + required_present/missing + empty/headerless |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -47,6 +47,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W16 Document `examples/required_present` and `examples/required_missing` in `examples/README.md` (2026-09-05)
 - [x] W17 Named test locks `examples/README.md` required-pair rows (exit 0 / 2) (2026-09-05)
 - [x] W18 Worked ERROR fixtures under `examples/` for empty and headerless transcripts (exit 1) (2026-09-06)
+- [x] W19 Named test locks `examples/README.md` empty/headerless ERROR rows (exit 1) (2026-09-06)
+- [ ] W20 Document `examples/empty` and `examples/headerless` in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -63,12 +65,13 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-05: `examples/README.md` lists `required_present` (exit 0) and `required_missing` (exit 2) beside the `forbid: true` pair.
 - 2026-09-05: named test locks `examples/README.md` required-pair rows (exit 0 CLEAN / exit 2 DECAY, `forbid: false`).
 - 2026-09-06: `examples/empty` and `examples/headerless` audit to ERROR exit 1 (no parseable events); not CLEAN.
+- 2026-09-06: named test locks `examples/README.md` empty/headerless ERROR rows (exit 1).
 
 ## NEXT TICK (daily 2026-09-06)
 
-- Execute W19: named test locks `examples/README.md` empty/headerless ERROR rows (exit 1)
-- Why next: W18 added the forkable ERROR fixtures and index rows; those rows are not yet locked the way the required pair is
-- Verify: `python -m pytest -q` and assert the `empty/` / `headerless/` rows name exit 1 and ERROR
+- Execute W20: document `examples/empty` and `examples/headerless` in `docs/ADAPTER.md`
+- Why next: W19 locked the examples index ERROR rows; the adapter table still lists only CLEAN/DECAY polarities
+- Verify: `python -m pytest -q` and `docs/ADAPTER.md` names both ERROR fixtures with exit 1
 
 ## Journal
 
@@ -76,3 +79,4 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-05 daily: W16 done; `examples/README.md` documents required_present (exit 0) and required_missing (exit 2). Next tick: W17 named test lock on those rows.
 - 2026-09-05 daily: W17 shipped; named test locks required-pair rows in `examples/README.md`. Next tick: W18 worked ERROR fixtures (empty / headerless, exit 1).
 - 2026-09-06 daily: W18 shipped; `examples/empty` and `examples/headerless` are ERROR exit 1 (no parseable events). Next tick: W19 named test lock on those `examples/README.md` rows.
+- 2026-09-06 daily: W19 shipped; named test locks empty/headerless ERROR rows in `examples/README.md`. Next tick: W20 document those fixtures in `docs/ADAPTER.md`.

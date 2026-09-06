@@ -49,6 +49,17 @@ def test_examples_readme_locks_required_pair_rows():
     assert "examples/required_missing/constraints.yaml" in EXAMPLES_README
 
 
+def test_examples_readme_locks_error_pair_rows():
+    empty_line = next(line for line in EXAMPLES_README.splitlines() if "[empty/]" in line)
+    headerless_line = next(line for line in EXAMPLES_README.splitlines() if "[headerless/]" in line)
+    assert "**1**" in empty_line or "exit 1" in empty_line
+    assert "ERROR" in empty_line
+    assert "**1**" in headerless_line or "exit 1" in headerless_line
+    assert "ERROR" in headerless_line
+    assert "examples/empty/constraints.yaml" in EXAMPLES_README
+    assert "examples/headerless/constraints.yaml" in EXAMPLES_README
+
+
 def test_stable_agent_fixture_exit_0():
     assert (
         main(

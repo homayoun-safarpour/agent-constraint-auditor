@@ -99,6 +99,7 @@ Monday 2026-09-07 is a week boundary — retarget the LOOP_STATE week header fro
 
 - Same as sunday Monday open: week header retarget 2026-09-07
 - Boss: pins + LinkedIn from Sunday draft; Autos Save if still on old Instructions
+- **If Boss away:** follow `D:\live_memory\DATED_RECOVERY_PLAN_2026-09-06.md` (dated if-missed → agent does)
 
 ## Journal
 

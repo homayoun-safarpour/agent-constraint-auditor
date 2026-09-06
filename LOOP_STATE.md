@@ -48,7 +48,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W17 Named test locks `examples/README.md` required-pair rows (exit 0 / 2) (2026-09-05)
 - [x] W18 Worked ERROR fixtures under `examples/` for empty and headerless transcripts (exit 1) (2026-09-06)
 - [x] W19 Named test locks `examples/README.md` empty/headerless ERROR rows (exit 1) (2026-09-06)
-- [ ] W20 Document `examples/empty` and `examples/headerless` in `docs/ADAPTER.md`
+- [x] W20 Document `examples/empty` and `examples/headerless` in `docs/ADAPTER.md` (2026-09-06)
 
 ## Build log
 
@@ -66,6 +66,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-05: named test locks `examples/README.md` required-pair rows (exit 0 CLEAN / exit 2 DECAY, `forbid: false`).
 - 2026-09-06: `examples/empty` and `examples/headerless` audit to ERROR exit 1 (no parseable events); not CLEAN.
 - 2026-09-06: named test locks `examples/README.md` empty/headerless ERROR rows (exit 1).
+- 2026-09-06 local run: Midday gates green (36 pytest); Sunday close landed on main; W20 ADAPTER ERROR fixtures documented.
 
 ## SUNDAY CLOSE (2026-09-06)
 
@@ -90,10 +91,14 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 
 Monday 2026-09-07 is a week boundary — retarget the LOOP_STATE week header from 2026-08-31 to 2026-09-07 after the first Monday tick. Do not invent field/employer demand.
 
-- Execute W20: document `examples/empty` and `examples/headerless` in `docs/ADAPTER.md`
-- Why next: W19 locked the examples index ERROR rows; the adapter table still lists only CLEAN/DECAY polarities
-- Verify: `python -m pytest -q` and `docs/ADAPTER.md` names both ERROR fixtures with exit 1
-- Scaffold: bump BENCHMARK GATE week line; keep claim / examples / CI as the DoD
+- W20 done on main (ADAPTER ERROR table). Monday: bump BENCHMARK GATE week line; optional LinkedIn paste from Sunday draft below
+- Why next: usefulness gate closed; week retarget is the Mon open
+- Verify: `python -m pytest -q` and README Quickstart still shows six examples
+
+## NEXT TICK (evening 2026-09-06)
+
+- Same as sunday Monday open: week header retarget 2026-09-07
+- Boss: pins + LinkedIn from Sunday draft; Autos Save if still on old Instructions
 
 ## Journal
 
@@ -103,3 +108,4 @@ Monday 2026-09-07 is a week boundary — retarget the LOOP_STATE week header fro
 - 2026-09-06 daily: W18 shipped; `examples/empty` and `examples/headerless` are ERROR exit 1 (no parseable events). Next tick: W19 named test lock on those `examples/README.md` rows.
 - 2026-09-06 daily: W19 shipped; named test locks empty/headerless ERROR rows in `examples/README.md`. Next tick: W20 document those fixtures in `docs/ADAPTER.md`.
 - 2026-09-06 sunday: usefulness gate green (CI `ae1879c`, ruff + 36 pytest, six examples). Claim holds. Next tick: W20 + Monday week retarget 2026-09-07.
+- 2026-09-06 local Midday+Daily+Sunday: W20 ADAPTER ERROR docs on main; growth pulse + second-brain card written. ENRICH→SHIP. Next: Monday week retarget.

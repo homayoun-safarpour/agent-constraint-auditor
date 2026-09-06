@@ -22,6 +22,7 @@ constraint-auditor audit \
 | --- | --- | --- | --- |
 | Forbid (default) | `forbid: true` | Match = decay | `examples/stable` (exit 0) · `examples/decaying` (exit 2) |
 | Required | `forbid: false` | Missing match = decay | `examples/required_present` (exit 0) · `examples/required_missing` (exit 2) |
+| ERROR (fail-closed) | n/a | No parseable dated events | `examples/empty` (exit 1) · `examples/headerless` (exit 1) |
 
 ```bash
 # Required pattern present → CLEAN
@@ -33,9 +34,17 @@ constraint-auditor audit \
 constraint-auditor audit \
   --constraints examples/required_missing/constraints.yaml \
   --transcript examples/required_missing/journal.md
+
+# Empty or headerless transcript → ERROR (not CLEAN)
+constraint-auditor audit \
+  --constraints examples/empty/constraints.yaml \
+  --transcript examples/empty/journal.md
+constraint-auditor audit \
+  --constraints examples/headerless/constraints.yaml \
+  --transcript examples/headerless/journal.md
 ```
 
-Use forbid rules for “never do X”. Use required rules for “every event must still show Y” (for example `lint=PASS`).
+Use forbid rules for "never do X". Use required rules for "every event must still show Y" (for example `lint=PASS`). Empty or headerless journals must fail closed as exit `1`, never a free CLEAN.
 
 ## What this does not do
 
@@ -50,4 +59,6 @@ python -m pytest -q
 constraint-auditor check-constraints examples/stable/constraints.yaml
 constraint-auditor audit --constraints examples/stable/constraints.yaml --transcript examples/stable/journal.md
 constraint-auditor audit --constraints examples/required_present/constraints.yaml --transcript examples/required_present/journal.md
+constraint-auditor audit --constraints examples/empty/constraints.yaml --transcript examples/empty/journal.md
+# expect exit 1
 ```

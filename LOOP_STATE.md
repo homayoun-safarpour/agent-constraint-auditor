@@ -67,6 +67,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-06: `examples/empty` and `examples/headerless` audit to ERROR exit 1 (no parseable events); not CLEAN.
 - 2026-09-06: named test locks `examples/README.md` empty/headerless ERROR rows (exit 1).
 - 2026-09-06 local run: Midday gates green (36 pytest); Sunday close landed on main; W20 ADAPTER ERROR fixtures documented.
+- 2026-09-06 evening nudge: gates green on `9eb13ee` (Actions 34035746559); NEXT TICK Monday week-header retarget 2026-09-07. Third-person: HOLD
 
 ## SUNDAY CLOSE (2026-09-06)
 
@@ -97,9 +98,10 @@ Monday 2026-09-07 is a week boundary — retarget the LOOP_STATE week header fro
 
 ## NEXT TICK (evening 2026-09-06)
 
-- Same as sunday Monday open: week header retarget 2026-09-07
-- Boss: pins + LinkedIn from Sunday draft; Autos Save if still on old Instructions
-- **If Boss away:** follow `D:\live_memory\DATED_RECOVERY_PLAN_2026-09-06.md` (dated if-missed → agent does)
+- Monday open: retarget the LOOP_STATE BENCHMARK GATE week header from 2026-08-31 to 2026-09-07. Do not invent W21 or field/employer demand.
+- Why next: Sunday usefulness gate closed; W20 ADAPTER ERROR docs are on main; week boundary is the only queued chore
+- Verify: `python -m pytest -q` and confirm the week line reads `opened Mon 2026-09-07`
+- Third-person: HOLD
 
 ## Journal
 
@@ -110,3 +112,4 @@ Monday 2026-09-07 is a week boundary — retarget the LOOP_STATE week header fro
 - 2026-09-06 daily: W19 shipped; named test locks empty/headerless ERROR rows in `examples/README.md`. Next tick: W20 document those fixtures in `docs/ADAPTER.md`.
 - 2026-09-06 sunday: usefulness gate green (CI `ae1879c`, ruff + 36 pytest, six examples). Claim holds. Next tick: W20 + Monday week retarget 2026-09-07.
 - 2026-09-06 local Midday+Daily+Sunday: W20 ADAPTER ERROR docs on main; growth pulse + second-brain card written. ENRICH→SHIP. Next: Monday week retarget.
+- 2026-09-06 evening: OK (CI green on `9eb13ee`; W20 on main). HOLD. Next tick: Monday week header retarget 2026-09-07.

@@ -1,18 +1,18 @@
-﻿# LOOP_STATE - agent-constraint-auditor (LIVE Week focus 2026-08-31)
+﻿# LOOP_STATE - agent-constraint-auditor (LIVE Week focus 2026-09-07)
 
 > Public: https://github.com/homayoun-safarpour/agent-constraint-auditor  
 > Local: `D:\ship\agent-constraint-auditor`
 
 ## BENCHMARK GATE
 
-Week: opened Mon 2026-08-31 · repo: agent-constraint-auditor
+Week: opened Mon 2026-09-07 · repo: agent-constraint-auditor
 
 ### A. Our benchmarks (always)
 
-| # | Check | Status 2026-09-06 |
+| # | Check | Status 2026-09-07 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `ae1879c` (2026-09-06, run 34019459544); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 36 passed; `ruff check .` clean (2026-09-06) |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — last Actions success on `ae1879c` (2026-09-06, run 34019459544); first public green `0a916b2` |
+| 2 | Named claim tests | PASS — `pytest` 37 passed; `ruff check .` clean (2026-09-07) |
 | 3 | Worked example real output | PASS — stable/decaying + required_present/missing + empty/headerless |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -49,6 +49,9 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W18 Worked ERROR fixtures under `examples/` for empty and headerless transcripts (exit 1) (2026-09-06)
 - [x] W19 Named test locks `examples/README.md` empty/headerless ERROR rows (exit 1) (2026-09-06)
 - [x] W20 Document `examples/empty` and `examples/headerless` in `docs/ADAPTER.md` (2026-09-06)
+- [x] W21 Named test locks `docs/ADAPTER.md` ERROR fixture rows (exit 1) (2026-09-07)
+- [ ] W22 `parse-transcript` fail-closed empty / headerless (exit 1, not OK: 0 events)
+- [ ] W22 `parse-transcript` fail-closed empty / headerless (exit 1, not OK: 0 events)
 
 ## Build log
 
@@ -67,6 +70,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-06: `examples/empty` and `examples/headerless` audit to ERROR exit 1 (no parseable events); not CLEAN.
 - 2026-09-06: named test locks `examples/README.md` empty/headerless ERROR rows (exit 1).
 - 2026-09-06 local run: Midday gates green (36 pytest); Sunday close landed on main; W20 ADAPTER ERROR fixtures documented.
+- 2026-09-07: week retarget Mon 2026-09-07; named test locks `docs/ADAPTER.md` ERROR rows (`examples/empty` / `examples/headerless`, exit 1).
 
 ## SUNDAY CLOSE (2026-09-06)
 
@@ -110,3 +114,10 @@ Monday 2026-09-07 is a week boundary — retarget the LOOP_STATE week header fro
 - 2026-09-06 daily: W19 shipped; named test locks empty/headerless ERROR rows in `examples/README.md`. Next tick: W20 document those fixtures in `docs/ADAPTER.md`.
 - 2026-09-06 sunday: usefulness gate green (CI `ae1879c`, ruff + 36 pytest, six examples). Claim holds. Next tick: W20 + Monday week retarget 2026-09-07.
 - 2026-09-06 local Midday+Daily+Sunday: W20 ADAPTER ERROR docs on main; growth pulse + second-brain card written. ENRICH→SHIP. Next: Monday week retarget.
+- 2026-09-07 daily: week header 2026-09-07; W21 named test locks `docs/ADAPTER.md` ERROR fixture rows (exit 1). Next tick: W22 `parse-transcript` fail-closed on empty/headerless.
+
+## NEXT TICK (daily 2026-09-07)
+
+- W22: `parse-transcript` on empty or headerless journal exits 1 (ERROR), not `OK: 0 events`
+- Why next: `audit` already fail-closes those transcripts; the dry-run parser still prints OK on zero events
+- Verify: `python -m pytest -q tests/test_cli.py tests/test_examples.py` and `constraint-auditor parse-transcript examples/empty/journal.md` (expect exit 1)

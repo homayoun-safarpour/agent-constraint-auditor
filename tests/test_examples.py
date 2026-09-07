@@ -7,6 +7,7 @@ from constraintauditor.cli import main
 ROOT = Path(__file__).parent.parent
 README = (ROOT / "README.md").read_text(encoding="utf-8")
 EXAMPLES_README = (ROOT / "examples" / "README.md").read_text(encoding="utf-8")
+ADAPTER = (ROOT / "docs" / "ADAPTER.md").read_text(encoding="utf-8")
 DECAYING_JOURNAL = ROOT / "examples" / "decaying" / "journal.md"
 DECAYING_CONSTRAINTS = ROOT / "examples" / "decaying" / "constraints.yaml"
 REQUIRED_MISSING_JOURNAL = ROOT / "examples" / "required_missing" / "journal.md"
@@ -58,6 +59,18 @@ def test_examples_readme_locks_error_pair_rows():
     assert "ERROR" in headerless_line
     assert "examples/empty/constraints.yaml" in EXAMPLES_README
     assert "examples/headerless/constraints.yaml" in EXAMPLES_README
+
+
+def test_adapter_locks_error_fixture_rows():
+    error_line = next(line for line in ADAPTER.splitlines() if "ERROR (fail-closed)" in line)
+    assert "`examples/empty`" in error_line
+    assert "`examples/headerless`" in error_line
+    assert "exit 1" in error_line
+    assert "examples/empty/constraints.yaml" in ADAPTER
+    assert "examples/empty/journal.md" in ADAPTER
+    assert "examples/headerless/constraints.yaml" in ADAPTER
+    assert "examples/headerless/journal.md" in ADAPTER
+    assert "never a free CLEAN" in ADAPTER
 
 
 def test_stable_agent_fixture_exit_0():

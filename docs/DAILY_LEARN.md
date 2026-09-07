@@ -1,39 +1,30 @@
-# Daily learning  -  2026-09-02
+# Daily learning  -  2026-09-07
 
-**Skill.** `forbid: false` is a required regex: every journal event must match. Miss = violation (`required pattern missing`). Default `forbid: true` is the inverse: a match is a violation (`forbid pattern matched`).
+**Skill.** Constraint regexes search `event.text`, not `event.fields` and not the `##` header. The parser keeps the heading in `timestamp`; only following lines enter the blob. `parse-transcript` prints field keys as a debug view — `check_event` never reads that map.
 
-**Why.** Named tests lock both polarities. Public fixtures: `examples/stable` / `examples/decaying` (`forbid: true`) and `examples/required_present` / `examples/required_missing` (`forbid: false`). Hire signal: deterministic decay gate over a declared spec  -  not an LLM judge.
+**Why.** Hire signal: a deterministic predicate over the declared event body. A rule aimed at the timestamp, or at the field dict, is a silent miss. Week open 2026-09-07; same repo; exit contract stays `0` CLEAN / `2` DECAY / `1` ERROR.
 
-**Worked example** (this repo). Stable fixture is CLEAN: no event contains `lint=FAIL` or `git push --force`.
+**Worked example** (this repo). Decaying event 2:
+
+```
+## 2026-08-11 11:00
+- gates: tests=PASS, lint=FAIL
+```
+
+`timestamp` is `2026-08-11 11:00`. `text` is the bullet block. `fields["gates"]` is `tests=PASS, lint=FAIL`. Pattern `lint\s*=\s*FAIL` hits because it is in the body.
 
 ```bash
+constraint-auditor parse-transcript examples/decaying/journal.md
+# OK: 4 events — keys only, not the match surface
+
 constraint-auditor audit \
-  --constraints examples/stable/constraints.yaml \
-  --transcript examples/stable/journal.md
-# verdict=CLEAN exit=0
+  --constraints examples/decaying/constraints.yaml \
+  --transcript examples/decaying/journal.md
+# verdict=DECAY exit=2
 ```
 
-Polarity lives in `check_event` (`src/constraintauditor/checkers.py`):
+**Recall probe.** Spec: `pattern: "2026-08-11"`, `forbid: true`. Transcript: `examples/stable/journal.md` (headers dated that day; bodies have no date string). CLEAN or DECAY?
 
-```python
-if constraint.forbid and matched:            # banned string appeared
-if (not constraint.forbid) and not matched:  # required string absent
-```
+Answer: CLEAN. `HEADER_RE` consumes the heading (`continue`); `re.search` runs on `event.text` only. The date lives in `timestamp`.
 
-YAML may omit `forbid`; `Constraint` defaults it to `True` (`src/constraintauditor/spec.py`). Required-pattern lock:
-
-```python
-from constraintauditor.checkers import check_transcript
-from constraintauditor.journal import JournalEvent
-from constraintauditor.spec import Constraint, ConstraintSpec
-
-spec = ConstraintSpec("t", (Constraint("must_log_gates", "", r"gates:", forbid=False),))
-events = [JournalEvent("2026-09-02 07:00", "- decision: advance", {})]
-assert check_transcript(spec, events)[0].detail.startswith("required pattern missing")
-```
-
-**Recall probe.** Event text is `- gates: tests=PASS` (no lint line). Spec: `pattern: "lint="`, `forbid: false`. CLEAN or DECAY? Is the check over the whole transcript or per event?
-
-Answer: DECAY  -  required pattern missing on that event. `check_transcript` multiplies constraints × events; a required pattern must hit *every* event, not once somewhere.
-
-**Retrieve.** `src/constraintauditor/checkers.py` · `spec.py` · `tests/test_checkers.py` · `LOOP_STATE.md` NEXT TICK · `docs/INTERVIEW.md`
+**Retrieve.** `src/constraintauditor/journal.py` · `checkers.py` · `docs/ADAPTER.md` · `docs/INTERVIEW.md`

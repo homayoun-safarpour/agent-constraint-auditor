@@ -11,8 +11,8 @@ Week: opened Mon 2026-09-07 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-07 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — last Actions success on `ae1879c` (2026-09-06, run 34019459544); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 43 passed; `ruff check .` clean (2026-09-07 local) |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `7dbfb34` (2026-09-07, run 34096249251); first public green `0a916b2` |
+| 2 | Named claim tests | PASS — `pytest` 43 passed; `ruff check .` clean (2026-09-07) |
 | 3 | Worked example real output | PASS — stable/decaying + required_present/missing + empty/headerless |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -103,9 +103,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-06 local Midday+Daily+Sunday: W20 ADAPTER ERROR docs on main; growth pulse + second-brain card written. ENRICH→SHIP. Next: Monday week retarget.
 - 2026-09-07 daily: week header 2026-09-07; W21 named test locks `docs/ADAPTER.md` ERROR fixture rows (exit 1). Next tick: W22 `parse-transcript` fail-closed on empty/headerless.
 - 2026-09-07 daily: W22 JSONL transcript parse (`--format jsonl` / `{` auto-detect). Next tick: W23 `parse-transcript` fail-closed on empty/headerless.
+- 2026-09-07 heartbeat: OK (W22 `7dbfb34` JSONL claims hold; named tests lock `--format jsonl` and invalid/empty ERROR; CI run 34096249251). ENRICH. Next tick: W23 `parse-transcript` fail-closed empty/headerless.
 
-## NEXT TICK (daily 2026-09-07)
+## NEXT TICK (heartbeat 2026-09-07)
 
 - W23: `parse-transcript` on empty or headerless journal exits 1 (ERROR), not `OK: 0 events`
-- Why next: `audit` already fail-closes those transcripts; the dry-run parser still prints OK on zero events
-- Verify: `python -m pytest -q tests/test_cli.py tests/test_examples.py` and `constraint-auditor parse-transcript examples/empty/journal.md` (expect exit 1)
+- Why next: W22 JSONL audit path is tested and the README claim holds; `audit` already fail-closes empty/headerless, but the dry-run parser still prints `OK: 0 events` and exits 0
+- Verify: `python -m pytest -q tests/test_cli.py tests/test_journal.py` and `constraint-auditor parse-transcript examples/empty/journal.md` (expect exit 1); same for `examples/headerless/journal.md`

@@ -104,6 +104,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-07 daily: week header 2026-09-07; W21 named test locks `docs/ADAPTER.md` ERROR fixture rows (exit 1). Next tick: W22 `parse-transcript` fail-closed on empty/headerless.
 - 2026-09-07 daily: W22 JSONL transcript parse (`--format jsonl` / `{` auto-detect). Next tick: W23 `parse-transcript` fail-closed on empty/headerless.
 - 2026-09-07 heartbeat: OK (W22 matches `7dbfb34`; named JSONL audit locks; CI green run 34096249251). ENRICH. Next tick: W23 `parse-transcript` fail-closed empty/headerless.
+- 2026-09-07 evening: CI green on `1a24f79` (Actions 34098895749); W22 on main. SHIP. Next tick: W23 `parse-transcript` fail-closed empty/headerless.
 
 ## NEXT TICK (daily 2026-09-07)
 
@@ -115,4 +116,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 
 - W23: `parse-transcript` on empty or headerless journal exits 1 (ERROR), not `OK: 0 events`
 - Why: quality pass on `7dbfb34` (JSONL audit) is OK; `audit` fail-closes empty/headerless/invalid JSONL, but `parse-transcript` still prints `OK: 0 events` and exits 0
+- Verify: `python -m pytest -q` ; `ruff check .` ; `constraint-auditor parse-transcript examples/empty/journal.md` (expect exit 1) ; `constraint-auditor parse-transcript examples/headerless/journal.md` (expect exit 1)
+
+## NEXT TICK (evening 2026-09-07)
+
+- W23: `parse-transcript` on empty or headerless journal exits 1 (ERROR), not `OK: 0 events`
+- Why: evening gates green on `1a24f79` (CI run 34098895749); `audit` already fail-closes those transcripts, but the dry-run parser still prints `OK: 0 events` and exits 0
 - Verify: `python -m pytest -q` ; `ruff check .` ; `constraint-auditor parse-transcript examples/empty/journal.md` (expect exit 1) ; `constraint-auditor parse-transcript examples/headerless/journal.md` (expect exit 1)

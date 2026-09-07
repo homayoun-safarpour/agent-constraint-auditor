@@ -35,6 +35,9 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "Verdict: CLEAN" in README
     assert "examples/empty/journal.md" in README
     assert "examples/headerless/journal.md" in README
+    assert "--format jsonl" in README
+    assert "timestamp" in README
+    assert "invalid or empty JSONL" in README
 
 
 def test_examples_readme_locks_required_pair_rows():

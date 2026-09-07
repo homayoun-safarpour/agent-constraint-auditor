@@ -60,13 +60,15 @@ constraint-auditor audit \
 
 Each YAML rule is a regex over a journal event. `forbid: true` (default) treats a match as decay. `forbid: false` treats a missing required pattern as decay (exit `2`). Invalid regex is a spec error (exit `1`).
 
+`--format jsonl` (or auto-detect when the first non-empty line starts with `{`) reads one JSON object per line. Each object needs `timestamp` plus `text` and/or `fields`. Invalid or empty JSONL is ERROR (exit `1`).
+
 ## Exit codes
 
 | Code | Verdict | Meaning |
 | --- | --- | --- |
 | `0` | CLEAN | No constraint decay |
 | `2` | DECAY | One or more constraints violated |
-| `1` | ERROR | Bad args / missing files / invalid spec / invalid regex / empty or headerless transcript |
+| `1` | ERROR | Bad args / missing files / invalid spec / invalid regex / empty or headerless transcript / invalid or empty JSONL |
 
 Wire into [agent-loop-engine](https://github.com/homayoun-safarpour/agent-loop-engine):
 

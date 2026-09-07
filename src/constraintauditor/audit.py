@@ -7,7 +7,12 @@ from pathlib import Path
 
 from .checkers import Violation, check_transcript
 from .decay import DecayReport, compute_decay, markdown_timeline
-from .journal import TranscriptError, detect_format, parse_loop_engine_journal
+from .journal import (
+    TranscriptError,
+    detect_format,
+    parse_jsonl_transcript,
+    parse_loop_engine_journal,
+)
 from .spec import ConstraintSpec, load_constraint_spec
 
 
@@ -37,9 +42,8 @@ def run_audit(
     spec: ConstraintSpec = load_constraint_spec(constraints_path)
     if fmt == "auto":
         fmt = detect_format(transcript_path)
-    if fmt not in {"journal", "auto"}:
-        # v0.1: journal only
-        events = parse_loop_engine_journal(transcript_path)
+    if fmt == "jsonl":
+        events = parse_jsonl_transcript(transcript_path)
     else:
         events = parse_loop_engine_journal(transcript_path)
     if not events:

@@ -8,7 +8,12 @@ import sys
 from pathlib import Path
 
 from .audit import run_audit, write_report
-from .journal import TranscriptError, parse_loop_engine_journal
+from .journal import (
+    TranscriptError,
+    detect_format,
+    parse_jsonl_transcript,
+    parse_loop_engine_journal,
+)
 from .spec import SpecError, load_constraint_spec
 
 
@@ -37,7 +42,12 @@ def main(argv: list[str] | None = None) -> int:
             print(f"OK: {spec.name} ({len(spec.constraints)} constraints)")
             return 0
         if args.cmd == "parse-transcript":
-            events = parse_loop_engine_journal(args.path)
+            fmt = detect_format(args.path)
+            events = (
+                parse_jsonl_transcript(args.path)
+                if fmt == "jsonl"
+                else parse_loop_engine_journal(args.path)
+            )
             print(f"OK: {len(events)} events")
             for e in events:
                 print(f"- {e.timestamp}: {list(e.fields.keys())}")

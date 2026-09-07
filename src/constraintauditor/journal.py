@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -20,6 +21,48 @@ class JournalEvent:
     timestamp: str
     text: str
     fields: dict[str, str]
+
+
+def _fields_from_mapping(raw: object, line_no: int) -> dict[str, str]:
+    if raw is None:
+        return {}
+    if not isinstance(raw, dict):
+        raise TranscriptError(f"JSONL line {line_no} fields must be a mapping")
+    return {str(key): "" if value is None else str(value) for key, value in raw.items()}
+
+
+def _text_from_fields(fields: dict[str, str]) -> str:
+    return "\n".join(f"- {key}: {value}" for key, value in fields.items())
+
+
+def parse_jsonl_transcript(path: str | Path) -> list[JournalEvent]:
+    """Parse one JSON object per line into journal events.
+
+    Each object requires ``timestamp``. Matching text is ``text`` when set,
+    otherwise synthesized from ``fields``.
+    """
+    events: list[JournalEvent] = []
+    for line_no, raw_line in enumerate(Path(path).read_text(encoding="utf-8").splitlines(), 1):
+        line = raw_line.strip()
+        if not line:
+            continue
+        try:
+            obj = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise TranscriptError(f"invalid JSONL at line {line_no}: {exc}") from exc
+        if not isinstance(obj, dict):
+            raise TranscriptError(f"JSONL line {line_no} must be an object")
+        timestamp = obj.get("timestamp")
+        if not isinstance(timestamp, str) or not timestamp.strip():
+            raise TranscriptError(f"JSONL line {line_no} missing timestamp")
+        fields = _fields_from_mapping(obj.get("fields"), line_no)
+        text = obj.get("text")
+        if isinstance(text, str) and text.strip():
+            body = text
+        else:
+            body = _text_from_fields(fields)
+        events.append(JournalEvent(timestamp=timestamp.strip(), text=body, fields=fields))
+    return events
 
 
 def parse_loop_engine_journal(path: str | Path) -> list[JournalEvent]:
@@ -59,4 +102,11 @@ def detect_format(path: str | Path) -> str:
     sample = Path(path).read_text(encoding="utf-8")[:2000]
     if HEADER_RE.search(sample):
         return "journal"
+    for line in sample.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if stripped.startswith("{"):
+            return "jsonl"
+        break
     return "journal"

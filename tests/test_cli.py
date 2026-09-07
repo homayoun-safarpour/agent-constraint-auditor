@@ -127,6 +127,96 @@ def test_headerless_journal_is_error_exit_1(tmp_path, capsys):
     assert "no parseable events" in capsys.readouterr().err
 
 
+def test_audit_jsonl_clean_exit_0(tmp_path):
+    constraints = tmp_path / "constraints.yaml"
+    constraints.write_text(
+        (
+            "name: jsonl-clean\n"
+            "constraints:\n"
+            "  - id: never_skip_lint\n"
+            '    pattern: "lint=FAIL"\n'
+        ),
+        encoding="utf-8",
+    )
+    transcript = tmp_path / "events.jsonl"
+    transcript.write_text(
+        '{"timestamp": "2026-08-11 09:00", "text": "- gates: lint=PASS"}\n',
+        encoding="utf-8",
+    )
+    assert (
+        main(
+            [
+                "audit",
+                "--constraints",
+                str(constraints),
+                "--transcript",
+                str(transcript),
+                "--format",
+                "jsonl",
+            ]
+        )
+        == 0
+    )
+
+
+def test_audit_jsonl_forbid_match_exit_2(tmp_path, capsys):
+    constraints = tmp_path / "constraints.yaml"
+    constraints.write_text(
+        (
+            "name: jsonl-decay\n"
+            "constraints:\n"
+            "  - id: never_skip_lint\n"
+            '    pattern: "lint=FAIL"\n'
+        ),
+        encoding="utf-8",
+    )
+    transcript = tmp_path / "events.jsonl"
+    transcript.write_text(
+        '{"timestamp": "2026-08-11 09:00", "fields": {"gates": "lint=FAIL"}}\n',
+        encoding="utf-8",
+    )
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            str(constraints),
+            "--transcript",
+            str(transcript),
+            "--json",
+        ]
+    )
+    assert code == 2
+    data = json.loads(capsys.readouterr().out)
+    assert data["verdict"] == "DECAY"
+    assert {v["constraint_id"] for v in data["violations"]} == {"never_skip_lint"}
+
+
+def test_audit_jsonl_invalid_or_empty_exit_1(tmp_path, capsys):
+    constraints = str(ROOT / "examples" / "stable" / "constraints.yaml")
+    empty = tmp_path / "empty.jsonl"
+    empty.write_text("", encoding="utf-8")
+    assert main(["audit", "--constraints", constraints, "--transcript", str(empty)]) == 1
+    assert "no parseable events" in capsys.readouterr().err
+
+    bad = tmp_path / "bad.jsonl"
+    bad.write_text("{not json\n", encoding="utf-8")
+    assert (
+        main(
+            [
+                "audit",
+                "--constraints",
+                constraints,
+                "--transcript",
+                str(bad),
+                "--format",
+                "jsonl",
+            ]
+        )
+        == 1
+    )
+    assert "invalid JSONL" in capsys.readouterr().err
+
+
 def test_audit_json_output_schema(capsys):
     code = main(
         [

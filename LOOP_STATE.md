@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-07 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-07 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — last Actions success on `ae1879c` (2026-09-06, run 34019459544); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 37 passed; `ruff check .` clean (2026-09-07) |
+| 2 | Named claim tests | PASS — `pytest` 43 passed; `ruff check .` clean (2026-09-07 local) |
 | 3 | Worked example real output | PASS — stable/decaying + required_present/missing + empty/headerless |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -50,8 +50,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W19 Named test locks `examples/README.md` empty/headerless ERROR rows (exit 1) (2026-09-06)
 - [x] W20 Document `examples/empty` and `examples/headerless` in `docs/ADAPTER.md` (2026-09-06)
 - [x] W21 Named test locks `docs/ADAPTER.md` ERROR fixture rows (exit 1) (2026-09-07)
-- [ ] W22 `parse-transcript` fail-closed empty / headerless (exit 1, not OK: 0 events)
-- [ ] W22 `parse-transcript` fail-closed empty / headerless (exit 1, not OK: 0 events)
+- [x] W22 Parse `--format jsonl` transcripts (timestamp + text/fields; invalid/empty → exit 1) (2026-09-07)
+- [ ] W23 `parse-transcript` fail-closed empty / headerless (exit 1, not OK: 0 events)
 
 ## Build log
 
@@ -71,6 +71,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-06: named test locks `examples/README.md` empty/headerless ERROR rows (exit 1).
 - 2026-09-06 local run: Midday gates green (36 pytest); Sunday close landed on main; W20 ADAPTER ERROR fixtures documented.
 - 2026-09-07: week retarget Mon 2026-09-07; named test locks `docs/ADAPTER.md` ERROR rows (`examples/empty` / `examples/headerless`, exit 1).
+- 2026-09-07: `--format jsonl` parses one object per line (`timestamp` + `text`/`fields`); invalid or empty JSONL is ERROR.
 
 ## SUNDAY CLOSE (2026-09-06)
 
@@ -91,20 +92,6 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 4. This week locked both polarities in fixtures: forbid-match decay and required-pattern-missing decay, plus named `--report` verdicts.
 5. Fork path is the README Quickstart: six worked examples, `pip install -e ".[dev]"`, under 30 minutes.
 
-## NEXT TICK (sunday 2026-09-06)
-
-Monday 2026-09-07 is a week boundary — retarget the LOOP_STATE week header from 2026-08-31 to 2026-09-07 after the first Monday tick. Do not invent field/employer demand.
-
-- W20 done on main (ADAPTER ERROR table). Monday: bump BENCHMARK GATE week line; optional LinkedIn paste from Sunday draft below
-- Why next: usefulness gate closed; week retarget is the Mon open
-- Verify: `python -m pytest -q` and README Quickstart still shows six examples
-
-## NEXT TICK (evening 2026-09-06)
-
-- Same as sunday Monday open: week header retarget 2026-09-07
-- Boss: pins + LinkedIn from Sunday draft; Autos Save if still on old Instructions
-- **If Boss away:** follow `D:\live_memory\DATED_RECOVERY_PLAN_2026-09-06.md` (dated if-missed → agent does)
-
 ## Journal
 
 - 2026-09-04 heartbeat: OK (W15 matches `df3882e`; named `--report` CLEAN lock; CI green). ENRICH. Next tick: W16 document required fixtures in `examples/README.md`.
@@ -115,9 +102,10 @@ Monday 2026-09-07 is a week boundary — retarget the LOOP_STATE week header fro
 - 2026-09-06 sunday: usefulness gate green (CI `ae1879c`, ruff + 36 pytest, six examples). Claim holds. Next tick: W20 + Monday week retarget 2026-09-07.
 - 2026-09-06 local Midday+Daily+Sunday: W20 ADAPTER ERROR docs on main; growth pulse + second-brain card written. ENRICH→SHIP. Next: Monday week retarget.
 - 2026-09-07 daily: week header 2026-09-07; W21 named test locks `docs/ADAPTER.md` ERROR fixture rows (exit 1). Next tick: W22 `parse-transcript` fail-closed on empty/headerless.
+- 2026-09-07 daily: W22 JSONL transcript parse (`--format jsonl` / `{` auto-detect). Next tick: W23 `parse-transcript` fail-closed on empty/headerless.
 
 ## NEXT TICK (daily 2026-09-07)
 
-- W22: `parse-transcript` on empty or headerless journal exits 1 (ERROR), not `OK: 0 events`
+- W23: `parse-transcript` on empty or headerless journal exits 1 (ERROR), not `OK: 0 events`
 - Why next: `audit` already fail-closes those transcripts; the dry-run parser still prints OK on zero events
 - Verify: `python -m pytest -q tests/test_cli.py tests/test_examples.py` and `constraint-auditor parse-transcript examples/empty/journal.md` (expect exit 1)

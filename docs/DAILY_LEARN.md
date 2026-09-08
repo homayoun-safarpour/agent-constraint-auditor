@@ -1,39 +1,27 @@
-# Daily learning  -  2026-09-02
+# Daily learning  -  2026-09-08
 
-**Skill.** `forbid: false` is a required regex: every journal event must match. Miss = violation (`required pattern missing`). Default `forbid: true` is the inverse: a match is a violation (`forbid pattern matched`).
+**Skill.** JSONL still matches on `event.text`. Missing or blank `text` is filled from `fields` as `- key: value` lines (`_text_from_fields`). A non-empty `text` wins; the field map is then unused by `check_event`.
 
-**Why.** Named tests lock both polarities. Public fixtures: `examples/stable` / `examples/decaying` (`forbid: true`) and `examples/required_present` / `examples/required_missing` (`forbid: false`). Hire signal: deterministic decay gate over a declared spec  -  not an LLM judge.
+**Why.** W22 added `--format jsonl` / `{` auto-detect. Same hire-facing gate as markdown journals: regex over a declared spec, not an LLM judge. Empty or invalid JSONL is ERROR on `audit` (exit `1`). `parse-transcript` still prints `OK: 0 events` and exits `0` (W23).
 
-**Worked example** (this repo). Stable fixture is CLEAN: no event contains `lint=FAIL` or `git push --force`.
+**Worked example** (this repo). Fields-only JSONL with `lint=FAIL` is DECAY; empty JSONL is ERROR.
 
 ```bash
-constraint-auditor audit \
-  --constraints examples/stable/constraints.yaml \
-  --transcript examples/stable/journal.md
-# verdict=CLEAN exit=0
+python -m pytest -q tests/test_cli.py::test_audit_jsonl_forbid_match_exit_2
+# {"timestamp": "...", "fields": {"gates": "lint=FAIL"}}
+# body = "- gates: lint=FAIL"; forbid match; audit exit 2
+
+python -m pytest -q tests/test_cli.py::test_audit_jsonl_invalid_or_empty_exit_1
+# empty or invalid JSONL -> audit exit 1
+
+constraint-auditor parse-transcript examples/empty/journal.md
+# today: OK: 0 events, exit 0 (dry-run; W23 still open)
 ```
 
-Polarity lives in `check_event` (`src/constraintauditor/checkers.py`):
+`detect_format`: `HEADER_RE` in the first 2k chars -> journal; else first non-empty line starting `{` -> jsonl; else journal.
 
-```python
-if constraint.forbid and matched:            # banned string appeared
-if (not constraint.forbid) and not matched:  # required string absent
-```
+**Recall probe.** Line: `{"timestamp": "2026-08-11 09:00", "text": "- gates: lint=PASS", "fields": {"gates": "lint=FAIL"}}`. Spec: `pattern: "lint=FAIL"`, `forbid: true`. CLEAN or DECAY?
 
-YAML may omit `forbid`; `Constraint` defaults it to `True` (`src/constraintauditor/spec.py`). Required-pattern lock:
+Answer: CLEAN. Non-empty `text` is the match surface. `fields` is not searched.
 
-```python
-from constraintauditor.checkers import check_transcript
-from constraintauditor.journal import JournalEvent
-from constraintauditor.spec import Constraint, ConstraintSpec
-
-spec = ConstraintSpec("t", (Constraint("must_log_gates", "", r"gates:", forbid=False),))
-events = [JournalEvent("2026-09-02 07:00", "- decision: advance", {})]
-assert check_transcript(spec, events)[0].detail.startswith("required pattern missing")
-```
-
-**Recall probe.** Event text is `- gates: tests=PASS` (no lint line). Spec: `pattern: "lint="`, `forbid: false`. CLEAN or DECAY? Is the check over the whole transcript or per event?
-
-Answer: DECAY  -  required pattern missing on that event. `check_transcript` multiplies constraints × events; a required pattern must hit *every* event, not once somewhere.
-
-**Retrieve.** `src/constraintauditor/checkers.py` · `spec.py` · `tests/test_checkers.py` · `LOOP_STATE.md` NEXT TICK · `docs/INTERVIEW.md`
+**Retrieve.** `src/constraintauditor/journal.py` (`parse_jsonl_transcript`, `detect_format`) · `audit.py` · `tests/test_cli.py` · `LOOP_STATE.md` NEXT TICK (W23)

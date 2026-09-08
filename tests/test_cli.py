@@ -134,6 +134,50 @@ def test_parse_transcript_headerless_is_error_exit_1(capsys):
     assert "OK:" not in captured.out
 
 
+def test_parse_transcript_format_jsonl_ok(tmp_path, capsys):
+    path = tmp_path / "events.jsonl"
+    path.write_text(
+        '{"timestamp": "2026-08-11 09:00", "text": "- gates: lint=PASS"}\n',
+        encoding="utf-8",
+    )
+    code = main(["parse-transcript", str(path), "--format", "jsonl"])
+    assert code == 0
+    assert "OK: 1 events" in capsys.readouterr().out
+
+
+def test_parse_transcript_format_jsonl_empty_exit_1(tmp_path, capsys):
+    path = tmp_path / "empty.jsonl"
+    path.write_text("", encoding="utf-8")
+    code = main(["parse-transcript", str(path), "--format", "jsonl"])
+    assert code == 1
+    captured = capsys.readouterr()
+    assert "no parseable events" in captured.err
+    assert "OK:" not in captured.out
+
+
+def test_parse_transcript_format_jsonl_forces_invalid_line(tmp_path, capsys):
+    path = tmp_path / "events.jsonl"
+    path.write_text("not-an-object\n", encoding="utf-8")
+    assert main(["parse-transcript", str(path)]) == 1
+    capsys.readouterr()
+    code = main(["parse-transcript", str(path), "--format", "jsonl"])
+    assert code == 1
+    assert "invalid JSONL" in capsys.readouterr().err
+
+
+def test_parse_transcript_format_journal_on_stable(capsys):
+    code = main(
+        [
+            "parse-transcript",
+            str(ROOT / "examples" / "stable" / "journal.md"),
+            "--format",
+            "journal",
+        ]
+    )
+    assert code == 0
+    assert "OK: 4 events" in capsys.readouterr().out
+
+
 def test_headerless_journal_is_error_exit_1(tmp_path, capsys):
     journal = tmp_path / "headerless.md"
     journal.write_text("# notes\n- gates: lint=PASS\n", encoding="utf-8")

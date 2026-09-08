@@ -38,8 +38,9 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "--format jsonl" in README
     assert "timestamp" in README
     assert "invalid or empty JSONL" in README
-    assert "parse-transcript PATH" in README
+    assert "parse-transcript PATH [--format jsonl|journal|auto]" in README
     assert "OK: 0 events" in README
+    assert "`audit` and `parse-transcript` both accept `--format jsonl|journal|auto`" in README
 
 
 def test_examples_readme_locks_required_pair_rows():

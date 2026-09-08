@@ -33,6 +33,7 @@ def main(argv: list[str] | None = None) -> int:
 
     p_parse = sub.add_parser("parse-transcript", help="dry-run journal parser")
     p_parse.add_argument("path")
+    p_parse.add_argument("--format", default="auto", choices=["auto", "journal", "jsonl"])
 
     args = parser.parse_args(argv)
 
@@ -42,7 +43,9 @@ def main(argv: list[str] | None = None) -> int:
             print(f"OK: {spec.name} ({len(spec.constraints)} constraints)")
             return 0
         if args.cmd == "parse-transcript":
-            fmt = detect_format(args.path)
+            fmt = args.format
+            if fmt == "auto":
+                fmt = detect_format(args.path)
             events = (
                 parse_jsonl_transcript(args.path)
                 if fmt == "jsonl"

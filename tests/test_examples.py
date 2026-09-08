@@ -35,6 +35,7 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "Verdict: CLEAN" in README
     assert "examples/empty/journal.md" in README
     assert "examples/headerless/journal.md" in README
+    assert "examples/jsonl_stable/events.jsonl" in README
     assert "--format jsonl" in README
     assert "timestamp" in README
     assert "invalid or empty JSONL" in README
@@ -65,6 +66,38 @@ def test_examples_readme_locks_error_pair_rows():
     assert "ERROR" in headerless_line
     assert "examples/empty/constraints.yaml" in EXAMPLES_README
     assert "examples/headerless/constraints.yaml" in EXAMPLES_README
+
+
+def test_examples_readme_locks_jsonl_stable_row():
+    jsonl_line = next(line for line in EXAMPLES_README.splitlines() if "[jsonl_stable/]" in line)
+    assert "**0**" in jsonl_line or "exit 0" in jsonl_line
+    assert "CLEAN" in jsonl_line
+    assert "jsonl" in jsonl_line.lower()
+    assert "examples/jsonl_stable/events.jsonl" in EXAMPLES_README
+    assert "examples/jsonl_stable/constraints.yaml" in EXAMPLES_README
+
+
+def test_jsonl_stable_fixture_parse_and_audit_exit_0(capsys):
+    events = ROOT / "examples" / "jsonl_stable" / "events.jsonl"
+    constraints = ROOT / "examples" / "jsonl_stable" / "constraints.yaml"
+    assert events.is_file() and constraints.is_file()
+    code = main(["parse-transcript", "--format", "jsonl", str(events)])
+    assert code == 0
+    assert "OK: 4 events" in capsys.readouterr().out
+    assert (
+        main(
+            [
+                "audit",
+                "--constraints",
+                str(constraints),
+                "--transcript",
+                str(events),
+                "--format",
+                "jsonl",
+            ]
+        )
+        == 0
+    )
 
 
 def test_adapter_locks_error_fixture_rows():

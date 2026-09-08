@@ -70,6 +70,8 @@ Each YAML rule is a regex over a journal event. `forbid: true` (default) treats 
 | `2` | DECAY | One or more constraints violated |
 | `1` | ERROR | Bad args / missing files / invalid spec / invalid regex / empty or headerless transcript / invalid or empty JSONL |
 
+`parse-transcript PATH` dry-runs the journal parser. Empty or headerless input exits `1` (ERROR), not `OK: 0 events`.
+
 Wire into [agent-loop-engine](https://github.com/homayoun-safarpour/agent-loop-engine):
 
 ```bash

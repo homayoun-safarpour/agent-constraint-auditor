@@ -111,6 +111,29 @@ def test_check_constraints_invalid_regex_exit_1(tmp_path, capsys):
     assert "not a valid regex" in capsys.readouterr().err
 
 
+def test_parse_transcript_ok_on_dated_journal(capsys):
+    code = main(["parse-transcript", str(ROOT / "examples" / "stable" / "journal.md")])
+    assert code == 0
+    out = capsys.readouterr().out
+    assert "OK: 4 events" in out
+
+
+def test_parse_transcript_empty_is_error_exit_1(capsys):
+    code = main(["parse-transcript", str(ROOT / "examples" / "empty" / "journal.md")])
+    assert code == 1
+    captured = capsys.readouterr()
+    assert "no parseable events" in captured.err
+    assert "OK:" not in captured.out
+
+
+def test_parse_transcript_headerless_is_error_exit_1(capsys):
+    code = main(["parse-transcript", str(ROOT / "examples" / "headerless" / "journal.md")])
+    assert code == 1
+    captured = capsys.readouterr()
+    assert "no parseable events" in captured.err
+    assert "OK:" not in captured.out
+
+
 def test_headerless_journal_is_error_exit_1(tmp_path, capsys):
     journal = tmp_path / "headerless.md"
     journal.write_text("# notes\n- gates: lint=PASS\n", encoding="utf-8")

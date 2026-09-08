@@ -48,6 +48,8 @@ def main(argv: list[str] | None = None) -> int:
                 if fmt == "jsonl"
                 else parse_loop_engine_journal(args.path)
             )
+            if not events:
+                raise TranscriptError("transcript contains no parseable events")
             print(f"OK: {len(events)} events")
             for e in events:
                 print(f"- {e.timestamp}: {list(e.fields.keys())}")

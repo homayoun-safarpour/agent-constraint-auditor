@@ -51,7 +51,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W20 Document `examples/empty` and `examples/headerless` in `docs/ADAPTER.md` (2026-09-06)
 - [x] W21 Named test locks `docs/ADAPTER.md` ERROR fixture rows (exit 1) (2026-09-07)
 - [x] W22 Parse `--format jsonl` transcripts (timestamp + text/fields; invalid/empty → exit 1) (2026-09-07)
-- [ ] W23 `parse-transcript` fail-closed empty / headerless (exit 1, not OK: 0 events)
+- [x] W23 `parse-transcript` fail-closed empty / headerless (exit 1, not OK: 0 events) (2026-09-08)
+- [ ] W24 `parse-transcript --format jsonl|journal|auto` matching `audit`
 
 ## Build log
 
@@ -72,6 +73,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-06 local run: Midday gates green (36 pytest); Sunday close landed on main; W20 ADAPTER ERROR fixtures documented.
 - 2026-09-07: week retarget Mon 2026-09-07; named test locks `docs/ADAPTER.md` ERROR rows (`examples/empty` / `examples/headerless`, exit 1).
 - 2026-09-07: `--format jsonl` parses one object per line (`timestamp` + `text`/`fields`); invalid or empty JSONL is ERROR.
+- 2026-09-08: `parse-transcript` fail-closes empty / headerless journals (exit 1, not `OK: 0 events`).
 
 ## SUNDAY CLOSE (2026-09-06)
 
@@ -104,15 +106,16 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-07 daily: week header 2026-09-07; W21 named test locks `docs/ADAPTER.md` ERROR fixture rows (exit 1). Next tick: W22 `parse-transcript` fail-closed on empty/headerless.
 - 2026-09-07 daily: W22 JSONL transcript parse (`--format jsonl` / `{` auto-detect). Next tick: W23 `parse-transcript` fail-closed on empty/headerless.
 - 2026-09-07 heartbeat: OK (W22 matches `7dbfb34`; named JSONL audit locks; CI green run 34096249251). ENRICH. Next tick: W23 `parse-transcript` fail-closed empty/headerless.
-
-## NEXT TICK (daily 2026-09-07)
-
-- W23: `parse-transcript` on empty or headerless journal exits 1 (ERROR), not `OK: 0 events`
-- Why next: `audit` already fail-closes those transcripts; the dry-run parser still prints OK on zero events
-- Verify: `python -m pytest -q tests/test_cli.py tests/test_examples.py` and `constraint-auditor parse-transcript examples/empty/journal.md` (expect exit 1)
+- 2026-09-08 daily: W23 shipped; `parse-transcript` on empty/headerless journals exits 1 (ERROR), not `OK: 0 events`. Next tick: W24 `parse-transcript --format`.
 
 ## NEXT TICK (heartbeat 2026-09-07)
 
-- W23: `parse-transcript` on empty or headerless journal exits 1 (ERROR), not `OK: 0 events`
-- Why: quality pass on `7dbfb34` (JSONL audit) is OK; `audit` fail-closes empty/headerless/invalid JSONL, but `parse-transcript` still prints `OK: 0 events` and exits 0
-- Verify: `python -m pytest -q` ; `ruff check .` ; `constraint-auditor parse-transcript examples/empty/journal.md` (expect exit 1) ; `constraint-auditor parse-transcript examples/headerless/journal.md` (expect exit 1)
+- W24: `parse-transcript --format jsonl|journal|auto` matching `audit`
+- Why: W23 fail-closes empty/headerless dry-runs; JSONL still depends on `{` sniffing with no explicit `--format`
+- Verify: `python -m pytest -q` ; `ruff check .` ; `constraint-auditor parse-transcript --format jsonl <jsonl-fixture>` (expect OK or ERROR per fixture)
+
+## NEXT TICK (daily 2026-09-08)
+
+- W24: `parse-transcript --format jsonl|journal|auto` matching `audit`
+- Why next: dry-run now fail-closes zero events; it still cannot force JSONL vs journal the way `audit --format` can
+- Verify: `python -m pytest -q tests/test_cli.py tests/test_journal.py` ; `ruff check .` ; `constraint-auditor parse-transcript --format jsonl` on a JSONL file (expect `OK: N events` or exit 1 on empty)

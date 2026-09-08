@@ -115,9 +115,16 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-08 daily: W24 shipped; `parse-transcript --format jsonl|journal|auto` matches `audit`. Next tick: W25 worked JSONL fixture under `examples/`.
 - 2026-09-08 daily: W25 shipped; `examples/jsonl_stable` CLEAN via `--format jsonl`. Next tick: W26 named test lock on that README row.
 - 2026-09-08 daily: W26 shipped; named test locks `examples/README.md` jsonl_stable row. Next tick: W27 JSONL DECAY fixture.
+- 2026-09-08 evening: CI green on `3d552ae` (Actions 34206488751); W25/W26 on main. SHIP. Next tick: W27 JSONL DECAY fixture.
 
 ## NEXT TICK (daily 2026-09-08)
 
 - W27: Worked JSONL DECAY fixture under `examples/` (`forbid: true` match → exit 2)
 - Why next: JSONL Quickstart has CLEAN only; mirror the markdown stable/decaying pair
 - Verify: `python -m pytest -q` ; `ruff check .` ; audit jsonl fixture exits 2 with DECAY
+
+## NEXT TICK (evening 2026-09-08)
+
+- W27: Worked JSONL DECAY fixture under `examples/` (`forbid: true` match → exit 2)
+- Why: evening gates green on `3d552ae` (CI run 34206488751); JSONL Quickstart has CLEAN (`jsonl_stable`) only — Daily already queued the decaying pair
+- Verify: `python -m pytest -q` ; `ruff check .` ; `constraint-auditor audit --constraints examples/jsonl_stable/constraints.yaml --transcript examples/jsonl_stable/events.jsonl --format jsonl` (expect 0 today); new JSONL DECAY fixture must exit 2

@@ -9,6 +9,7 @@
 | [empty/](empty/) | empty transcript; exits **1** (ERROR, not CLEAN) |
 | [headerless/](headerless/) | no dated `##` events; exits **1** (ERROR, not CLEAN) |
 | [jsonl_stable/](jsonl_stable/) | `--format jsonl`; `events.jsonl` + same forbid rules; exits **0** (CLEAN) |
+| [jsonl_decaying/](jsonl_decaying/) | `--format jsonl`; forbid match (`lint=FAIL` / force-push); exits **2** (DECAY) |
 
 ```bash
 pip install -e ".[dev]"
@@ -20,6 +21,8 @@ constraint-auditor audit --constraints examples/empty/constraints.yaml --transcr
 constraint-auditor audit --constraints examples/headerless/constraints.yaml --transcript examples/headerless/journal.md
 constraint-auditor parse-transcript --format jsonl examples/jsonl_stable/events.jsonl
 constraint-auditor audit --constraints examples/jsonl_stable/constraints.yaml --transcript examples/jsonl_stable/events.jsonl --format jsonl
+constraint-auditor parse-transcript --format jsonl examples/jsonl_decaying/events.jsonl
+constraint-auditor audit --constraints examples/jsonl_decaying/constraints.yaml --transcript examples/jsonl_decaying/events.jsonl --format jsonl
 ```
 
 `forbid: true` (default) treats a match as decay. `forbid: false` treats a missing required pattern as decay.

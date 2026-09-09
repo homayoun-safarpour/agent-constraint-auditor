@@ -12,8 +12,8 @@ Week: opened Mon 2026-09-07 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-07 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `7dbfb34` (2026-09-07, run 34096249251); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 50 passed; `ruff check .` clean (2026-09-08) |
-| 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable |
+| 2 | Named claim tests | PASS — `pytest` 53 passed; `ruff check .` clean (2026-09-09) |
+| 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
 | 6 | AI-tell README ban | PASS on publish commit |
@@ -55,7 +55,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W24 `parse-transcript --format jsonl|journal|auto` matching `audit` (2026-09-08)
 - [x] W25 Worked JSONL fixture under `examples/jsonl_stable` for `--format jsonl` (2026-09-08)
 - [x] W26 Named test locks `examples/README.md` jsonl_stable row (exit 0) (2026-09-08)
-- [ ] W27 Worked JSONL DECAY fixture under `examples/` (forbid match, exit 2)
+- [x] W27 Worked JSONL DECAY fixture under `examples/` (forbid match, exit 2) (2026-09-09)
+- [ ] W28 Named test locks `examples/README.md` jsonl_decaying row (exit 2)
 
 ## Build log
 
@@ -79,6 +80,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-08: `parse-transcript` fail-closes empty / headerless journals (exit 1, not `OK: 0 events`).
 - 2026-09-08: `parse-transcript --format jsonl|journal|auto` matches `audit`; `--format jsonl` forces JSONL parse when sniffing would not.
 - 2026-09-08: `examples/jsonl_stable` worked JSONL fixture (4 events, CLEAN exit 0) + Quickstart commands.
+- 2026-09-09: `examples/jsonl_decaying` worked JSONL fixture (forbid match, DECAY exit 2) + Quickstart commands.
 
 ## SUNDAY CLOSE (2026-09-06)
 
@@ -115,9 +117,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-08 daily: W24 shipped; `parse-transcript --format jsonl|journal|auto` matches `audit`. Next tick: W25 worked JSONL fixture under `examples/`.
 - 2026-09-08 daily: W25 shipped; `examples/jsonl_stable` CLEAN via `--format jsonl`. Next tick: W26 named test lock on that README row.
 - 2026-09-08 daily: W26 shipped; named test locks `examples/README.md` jsonl_stable row. Next tick: W27 JSONL DECAY fixture.
+- 2026-09-09 daily: W27 shipped; `examples/jsonl_decaying` DECAY via `--format jsonl` (exit 2). Next tick: W28 named test lock on that README row.
 
-## NEXT TICK (daily 2026-09-08)
+## NEXT TICK (daily 2026-09-09)
 
-- W27: Worked JSONL DECAY fixture under `examples/` (`forbid: true` match → exit 2)
-- Why next: JSONL Quickstart has CLEAN only; mirror the markdown stable/decaying pair
-- Verify: `python -m pytest -q` ; `ruff check .` ; audit jsonl fixture exits 2 with DECAY
+- W28: Named test locks `examples/README.md` jsonl_decaying row (exit 2 DECAY)
+- Why next: JSONL DECAY fixture is in the table; lock the row the same way W26 locked jsonl_stable
+- Verify: `python -m pytest -q` ; `ruff check .` ; row asserts exit 2 / DECAY / `--format jsonl`

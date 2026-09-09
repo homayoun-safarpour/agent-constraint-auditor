@@ -36,6 +36,7 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "examples/empty/journal.md" in README
     assert "examples/headerless/journal.md" in README
     assert "examples/jsonl_stable/events.jsonl" in README
+    assert "examples/jsonl_decaying/events.jsonl" in README
     assert "--format jsonl" in README
     assert "timestamp" in README
     assert "invalid or empty JSONL" in README
@@ -98,6 +99,35 @@ def test_jsonl_stable_fixture_parse_and_audit_exit_0(capsys):
         )
         == 0
     )
+
+
+def test_jsonl_decaying_fixture_parse_and_audit_exit_2(capsys):
+    events = ROOT / "examples" / "jsonl_decaying" / "events.jsonl"
+    constraints = ROOT / "examples" / "jsonl_decaying" / "constraints.yaml"
+    assert events.is_file() and constraints.is_file()
+    blob = events.read_text(encoding="utf-8")
+    assert "lint=FAIL" in blob
+    assert "git push --force to unblock" in blob
+    code = main(["parse-transcript", "--format", "jsonl", str(events)])
+    assert code == 0
+    assert "OK: 4 events" in capsys.readouterr().out
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            str(constraints),
+            "--transcript",
+            str(events),
+            "--format",
+            "jsonl",
+            "--json",
+        ]
+    )
+    assert code == 2
+    data = json.loads(capsys.readouterr().out)
+    assert data["verdict"] == "DECAY"
+    assert data["decay"]["first_violation_index"] == 2
+    assert {v["constraint_id"] for v in data["violations"]} == {"never_skip_lint", "no_force_push"}
 
 
 def test_adapter_locks_error_fixture_rows():

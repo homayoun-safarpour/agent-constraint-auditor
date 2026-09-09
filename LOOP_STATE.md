@@ -122,6 +122,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-09 daily: W27 shipped; `examples/jsonl_decaying` DECAY via `--format jsonl` (exit 2). Next tick: W28 named test lock on that README row.
 - 2026-09-09 daily: W28 shipped; named test locks `examples/README.md` jsonl_decaying row (exit 2 DECAY). Next tick: W29 named `--report` lock.
 - 2026-09-09 heartbeat: OK (W28 matches `d68e442`; named jsonl_decaying README lock; CI green run 34324487698). ENRICH. Next tick: W29 named `--report` lock for `examples/jsonl_decaying`.
+- 2026-09-09 evening: CI green on `1ab72b6` (Actions 34327274021); W28 on main. SHIP. Next tick: W29 named `--report` lock for `examples/jsonl_decaying`.
 
 ## NEXT TICK (daily 2026-09-09)
 
@@ -134,3 +135,9 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - W29: Named `--report` lock for `examples/jsonl_decaying` (Verdict: DECAY)
 - Why next: README Quickstart claim (exit 2 DECAY via `--format jsonl`) holds and is named-tested; `--report` still has no lock on this fixture. Match the markdown decaying report lock (3 violations, first event 2).
 - Verify: `python -m pytest -q` ; `ruff check .` ; `--report` on `examples/jsonl_decaying` starts with `Verdict: DECAY` and records 3 constraint violations, first at event 2.
+
+## NEXT TICK (evening 2026-09-09)
+
+- W29: Named `--report` lock for `examples/jsonl_decaying` (Verdict: DECAY)
+- Why: evening gates green on `1ab72b6` (CI run 34327274021); JSONL decaying audit exit 2 is named-tested; `--report` still has no lock on this fixture. Match the markdown decaying report lock (3 violations, first event 2).
+- Verify: `python -m pytest -q` ; `ruff check .` ; `constraint-auditor audit --constraints examples/jsonl_decaying/constraints.yaml --transcript examples/jsonl_decaying/events.jsonl --format jsonl --report /tmp/jsonl-decay.md` (expect exit 2; report starts `Verdict: DECAY` and records 3 constraint violations, first at event 2)

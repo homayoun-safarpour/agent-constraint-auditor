@@ -1,39 +1,26 @@
-# Daily learning  -  2026-09-02
+# Daily learning — 2026-09-09
 
-**Skill.** `forbid: false` is a required regex: every journal event must match. Miss = violation (`required pattern missing`). Default `forbid: true` is the inverse: a match is a violation (`forbid pattern matched`).
+**Skill.** `detect_format` is a first-line sniff, not a heading scan. `HEADER_RE` is `^## YYYY-MM-DD HH:MM$` *without* `re.MULTILINE`, so `HEADER_RE.search(sample[:2000])` only hits when the *whole sample* is a lone dated heading. Titled journals (`examples/stable/journal.md` starts `# Stable…`) miss that branch. JSONL wins only if the first non-empty line starts with `{`; otherwise default `journal`. `--format jsonl|journal` skips sniffing.
 
-**Why.** Named tests lock both polarities. Public fixtures: `examples/stable` / `examples/decaying` (`forbid: true`) and `examples/required_present` / `examples/required_missing` (`forbid: false`). Hire signal: deterministic decay gate over a declared spec  -  not an LLM judge.
+**Why.** Hire signal: fail-closed parser, explicit format, no silent empty CLEAN. W24 added matching `--format` on `audit` and `parse-transcript` because sniffing is not a classifier. W27 (JSONL DECAY fixture) should start with `{` or lock `--format jsonl`. Same YAML as `examples/decaying`; format only picks the parser.
 
-**Worked example** (this repo). Stable fixture is CLEAN: no event contains `lint=FAIL` or `git push --force`.
+**Worked example** (this repo).
 
 ```bash
-constraint-auditor audit \
-  --constraints examples/stable/constraints.yaml \
-  --transcript examples/stable/journal.md
-# verdict=CLEAN exit=0
+constraint-auditor parse-transcript examples/jsonl_stable/events.jsonl
+# auto → jsonl (line starts with {); OK: 4 events
+
+constraint-auditor parse-transcript --format journal examples/jsonl_stable/events.jsonl
+# markdown parser, no ## headers → ERROR exit 1 (not CLEAN)
+
+constraint-auditor parse-transcript examples/stable/journal.md
+# first line is # not { → journal; OK: 4 events
 ```
 
-Polarity lives in `check_event` (`src/constraintauditor/checkers.py`):
+`run_audit` / CLI: `auto` calls `detect_format`; `jsonl`/`journal` force `parse_jsonl_transcript` vs `parse_loop_engine_journal`. Zero events → `TranscriptError` → exit 1.
 
-```python
-if constraint.forbid and matched:            # banned string appeared
-if (not constraint.forbid) and not matched:  # required string absent
-```
+**Recall probe.** `audit --format journal --constraints examples/jsonl_stable/constraints.yaml --transcript examples/jsonl_stable/events.jsonl`. Exit 0, 2, or 1? Does `detect_format` classify `examples/stable/journal.md` via `HEADER_RE` matching `## 2026-08-11 09:00`?
 
-YAML may omit `forbid`; `Constraint` defaults it to `True` (`src/constraintauditor/spec.py`). Required-pattern lock:
+Answer: exit **1** (ERROR) — journal parser finds no headers, 0 events, fail-closed. And **no** — `HEADER_RE.search` does not see mid-file headings; the file is `journal` because the first line is not `{`.
 
-```python
-from constraintauditor.checkers import check_transcript
-from constraintauditor.journal import JournalEvent
-from constraintauditor.spec import Constraint, ConstraintSpec
-
-spec = ConstraintSpec("t", (Constraint("must_log_gates", "", r"gates:", forbid=False),))
-events = [JournalEvent("2026-09-02 07:00", "- decision: advance", {})]
-assert check_transcript(spec, events)[0].detail.startswith("required pattern missing")
-```
-
-**Recall probe.** Event text is `- gates: tests=PASS` (no lint line). Spec: `pattern: "lint="`, `forbid: false`. CLEAN or DECAY? Is the check over the whole transcript or per event?
-
-Answer: DECAY  -  required pattern missing on that event. `check_transcript` multiplies constraints × events; a required pattern must hit *every* event, not once somewhere.
-
-**Retrieve.** `src/constraintauditor/checkers.py` · `spec.py` · `tests/test_checkers.py` · `LOOP_STATE.md` NEXT TICK · `docs/INTERVIEW.md`
+**Retrieve.** `src/constraintauditor/journal.py` (`detect_format`, `HEADER_RE`) · `audit.py` · `cli.py` · `examples/jsonl_stable/` · `LOOP_STATE.md` NEXT TICK W27

@@ -11,7 +11,7 @@ Week: opened Mon 2026-09-07 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-07 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `7dbfb34` (2026-09-07, run 34096249251); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `d68e442` (2026-09-09, run 34324487698); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 54 passed; `ruff check .` clean (2026-09-09) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -121,9 +121,16 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-08 daily: W26 shipped; named test locks `examples/README.md` jsonl_stable row. Next tick: W27 JSONL DECAY fixture.
 - 2026-09-09 daily: W27 shipped; `examples/jsonl_decaying` DECAY via `--format jsonl` (exit 2). Next tick: W28 named test lock on that README row.
 - 2026-09-09 daily: W28 shipped; named test locks `examples/README.md` jsonl_decaying row (exit 2 DECAY). Next tick: W29 named `--report` lock.
+- 2026-09-09 heartbeat: OK (W28 matches `d68e442`; named jsonl_decaying README lock; CI green run 34324487698). ENRICH. Next tick: W29 named `--report` lock for `examples/jsonl_decaying`.
 
 ## NEXT TICK (daily 2026-09-09)
 
 - W29: Named `--report` lock for `examples/jsonl_decaying` (Verdict: DECAY)
 - Why next: JSONL decaying row is locked; lock the report text the same way markdown decaying is locked (3 violations, first event 2)
 - Verify: `python -m pytest -q` ; `ruff check .` ; `--report` on jsonl_decaying starts with `Verdict: DECAY` and records 3 violations, first at event 2
+
+## NEXT TICK (heartbeat 2026-09-09)
+
+- W29: Named `--report` lock for `examples/jsonl_decaying` (Verdict: DECAY)
+- Why next: README Quickstart claim (exit 2 DECAY via `--format jsonl`) holds and is named-tested; `--report` still has no lock on this fixture. Match the markdown decaying report lock (3 violations, first event 2).
+- Verify: `python -m pytest -q` ; `ruff check .` ; `--report` on `examples/jsonl_decaying` starts with `Verdict: DECAY` and records 3 constraint violations, first at event 2.

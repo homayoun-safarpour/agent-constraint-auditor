@@ -78,6 +78,15 @@ def test_examples_readme_locks_jsonl_stable_row():
     assert "examples/jsonl_stable/constraints.yaml" in EXAMPLES_README
 
 
+def test_examples_readme_locks_jsonl_decaying_row():
+    jsonl_line = next(line for line in EXAMPLES_README.splitlines() if "[jsonl_decaying/]" in line)
+    assert "**2**" in jsonl_line or "exit 2" in jsonl_line
+    assert "DECAY" in jsonl_line
+    assert "--format jsonl" in jsonl_line
+    assert "examples/jsonl_decaying/events.jsonl" in EXAMPLES_README
+    assert "examples/jsonl_decaying/constraints.yaml" in EXAMPLES_README
+
+
 def test_jsonl_stable_fixture_parse_and_audit_exit_0(capsys):
     events = ROOT / "examples" / "jsonl_stable" / "events.jsonl"
     constraints = ROOT / "examples" / "jsonl_stable" / "constraints.yaml"

@@ -18,6 +18,8 @@ EMPTY_JOURNAL = ROOT / "examples" / "empty" / "journal.md"
 EMPTY_CONSTRAINTS = ROOT / "examples" / "empty" / "constraints.yaml"
 HEADERLESS_JOURNAL = ROOT / "examples" / "headerless" / "journal.md"
 HEADERLESS_CONSTRAINTS = ROOT / "examples" / "headerless" / "constraints.yaml"
+JSONL_STABLE_EVENTS = ROOT / "examples" / "jsonl_stable" / "events.jsonl"
+JSONL_STABLE_CONSTRAINTS = ROOT / "examples" / "jsonl_stable" / "constraints.yaml"
 JSONL_DECAYING_EVENTS = ROOT / "examples" / "jsonl_decaying" / "events.jsonl"
 JSONL_DECAYING_CONSTRAINTS = ROOT / "examples" / "jsonl_decaying" / "constraints.yaml"
 EVENT_HEADER_RE = re.compile(r"^##\s+\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}\s*$", re.MULTILINE)
@@ -40,6 +42,7 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "examples/jsonl_stable/events.jsonl" in README
     assert "examples/jsonl_decaying/events.jsonl" in README
     assert "jsonl-decay.md" in README
+    assert "jsonl-clean.md" in README
     assert "--format jsonl" in README
     assert "timestamp" in README
     assert "invalid or empty JSONL" in README
@@ -77,8 +80,10 @@ def test_examples_readme_locks_jsonl_stable_row():
     assert "**0**" in jsonl_line or "exit 0" in jsonl_line
     assert "CLEAN" in jsonl_line
     assert "jsonl" in jsonl_line.lower()
+    assert "--report" in jsonl_line
     assert "examples/jsonl_stable/events.jsonl" in EXAMPLES_README
     assert "examples/jsonl_stable/constraints.yaml" in EXAMPLES_README
+    assert "jsonl-clean.md" in EXAMPLES_README
 
 
 def test_examples_readme_locks_jsonl_decaying_row():
@@ -91,9 +96,46 @@ def test_examples_readme_locks_jsonl_decaying_row():
     assert "jsonl-decay.md" in EXAMPLES_README
 
 
+def test_jsonl_stable_fixture_locks_report(tmp_path, capsys):
+    blob = JSONL_STABLE_EVENTS.read_text(encoding="utf-8")
+    spec = JSONL_STABLE_CONSTRAINTS.read_text(encoding="utf-8")
+    assert "lint=PASS" in blob
+    assert "lint=FAIL" not in blob
+    assert "git push --force" not in blob
+    assert "never_skip_lint" in spec
+    assert "no_force_push" in spec
+    report = tmp_path / "jsonl-clean.md"
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            str(JSONL_STABLE_CONSTRAINTS),
+            "--transcript",
+            str(JSONL_STABLE_EVENTS),
+            "--format",
+            "jsonl",
+            "--report",
+            str(report),
+            "--json",
+        ]
+    )
+    assert code == 0
+    data = json.loads(capsys.readouterr().out)
+    assert data["verdict"] == "CLEAN"
+    assert data["decay"]["n_events"] == 4
+    assert data["decay"]["n_violations"] == 0
+    assert data["decay"]["first_violation_index"] is None
+    assert data["violations"] == []
+    text = report.read_text(encoding="utf-8")
+    assert text.startswith("# Constraint decay report: jsonl-stable-agent")
+    assert "Verdict: CLEAN" in text.splitlines()[:5]
+    assert "The transcript holds all declared constraints across 4 events." in text
+    assert "None." in text
+
+
 def test_jsonl_stable_fixture_parse_and_audit_exit_0(capsys):
-    events = ROOT / "examples" / "jsonl_stable" / "events.jsonl"
-    constraints = ROOT / "examples" / "jsonl_stable" / "constraints.yaml"
+    events = JSONL_STABLE_EVENTS
+    constraints = JSONL_STABLE_CONSTRAINTS
     assert events.is_file() and constraints.is_file()
     code = main(["parse-transcript", "--format", "jsonl", str(events)])
     assert code == 0

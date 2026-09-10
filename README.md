@@ -61,8 +61,9 @@ constraint-auditor parse-transcript --format jsonl examples/jsonl_stable/events.
 constraint-auditor audit \
   --constraints examples/jsonl_stable/constraints.yaml \
   --transcript examples/jsonl_stable/events.jsonl \
-  --format jsonl
-# expect exit 0 (CLEAN)
+  --format jsonl \
+  --report /tmp/jsonl-clean.md
+# expect exit 0; report starts with Verdict: CLEAN
 
 constraint-auditor parse-transcript --format jsonl examples/jsonl_decaying/events.jsonl
 # expect OK: 4 events

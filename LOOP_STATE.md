@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-07 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-07 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `d68e442` (2026-09-09, run 34324487698); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 55 passed; `ruff check .` clean (2026-09-10) |
+| 2 | Named claim tests | PASS — `pytest` 56 passed; `ruff check .` clean (2026-09-10) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -58,7 +58,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W27 Worked JSONL DECAY fixture under `examples/` (forbid match, exit 2) (2026-09-09)
 - [x] W28 Named test locks `examples/README.md` jsonl_decaying row (exit 2) (2026-09-09)
 - [x] W29 Named `--report` lock for `examples/jsonl_decaying` (Verdict: DECAY) (2026-09-10)
-- [ ] W30 Named `--report` lock for `examples/jsonl_stable` (Verdict: CLEAN)
+- [x] W30 Named `--report` lock for `examples/jsonl_stable` (Verdict: CLEAN) (2026-09-10)
+- [ ] W31 Document `--format jsonl` fixtures in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -85,6 +86,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-09: `examples/jsonl_decaying` worked JSONL fixture (forbid match, DECAY exit 2) + Quickstart commands.
 - 2026-09-09: named test locks `examples/README.md` jsonl_decaying row (exit 2 DECAY, `--format jsonl`).
 - 2026-09-10: named `--report` lock for `examples/jsonl_decaying` (Verdict: DECAY, 3 violations, first event 2).
+- 2026-09-10: named `--report` lock for `examples/jsonl_stable` (Verdict: CLEAN, holds-all-constraints across 4 events).
 
 ## SUNDAY CLOSE (2026-09-06)
 
@@ -125,15 +127,16 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-09 daily: W28 shipped; named test locks `examples/README.md` jsonl_decaying row (exit 2 DECAY). Next tick: W29 named `--report` lock.
 - 2026-09-09 heartbeat: OK (W28 matches `d68e442`; named jsonl_decaying README lock; CI green run 34324487698). ENRICH. Next tick: W29 named `--report` lock for `examples/jsonl_decaying`.
 - 2026-09-10 daily: W29 shipped; named `--report` lock for `examples/jsonl_decaying` (Verdict: DECAY, 3 violations, first event 2). Next tick: W30 named `--report` lock for `examples/jsonl_stable`.
-
-## NEXT TICK (daily 2026-09-10)
-
-- W30: Named `--report` lock for `examples/jsonl_stable` (Verdict: CLEAN)
-- Why next: JSONL decaying report is locked; lock the CLEAN polarity the same way `required_present` followed `required_missing`.
-- Verify: `python -m pytest -q` ; `ruff check .` ; `--report` on `examples/jsonl_stable` starts with `Verdict: CLEAN` and holds all constraints across 4 events.
+- 2026-09-10 daily: W30 shipped; named `--report` lock for `examples/jsonl_stable` (Verdict: CLEAN, holds all constraints across 4 events). Next tick: W31 document JSONL fixtures in `docs/ADAPTER.md`.
 
 ## NEXT TICK (heartbeat 2026-09-09)
 
-- W30: Named `--report` lock for `examples/jsonl_stable` (Verdict: CLEAN)
-- Why next: jsonl_decaying `--report` now locks Verdict: DECAY (3 violations, first event 2); lock the CLEAN JSONL report the same way required_present followed required_missing.
-- Verify: `python -m pytest -q` ; `ruff check .` ; `--report` on `examples/jsonl_stable` starts with `Verdict: CLEAN` and records holds-all-constraints across 4 events.
+- W31: Document `--format jsonl` fixtures in `docs/ADAPTER.md` (`jsonl_stable` / `jsonl_decaying`)
+- Why next: both JSONL `--report` polarities are locked; ADAPTER still only documents journal fixtures.
+- Verify: `python -m pytest -q` ; `ruff check .` ; `docs/ADAPTER.md` lists `examples/jsonl_stable` (exit 0) and `examples/jsonl_decaying` (exit 2) with `--format jsonl` verify commands.
+
+## NEXT TICK (daily 2026-09-10)
+
+- W31: Document `--format jsonl` fixtures in `docs/ADAPTER.md` (`jsonl_stable` / `jsonl_decaying`)
+- Why next: JSONL CLEAN and DECAY `--report` locks are in place; ADAPTER should name the JSONL pair the same way it names the journal ERROR fixtures.
+- Verify: `python -m pytest -q` ; `ruff check .` ; `docs/ADAPTER.md` lists `examples/jsonl_stable` (exit 0 CLEAN) and `examples/jsonl_decaying` (exit 2 DECAY) with `--format jsonl`.

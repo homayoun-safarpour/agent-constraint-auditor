@@ -27,6 +27,11 @@ JSONL_DECAYING_CONSTRAINTS = ROOT / "examples" / "jsonl_decaying" / "constraints
 EVENT_HEADER_RE = re.compile(r"^##\s+\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}\s*$", re.MULTILINE)
 
 
+
+
+def test_readme_links_examples_matrix():
+    assert "examples/MATRIX.md" in README
+
 def test_readme_mentions_exit_codes_0_and_2():
     assert "exit `0`" in README or "exit 0" in README or "`0`" in README
     assert "`2`" in README or "exit 2" in README

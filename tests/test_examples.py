@@ -230,6 +230,20 @@ def test_adapter_locks_error_fixture_rows():
     assert "never a free CLEAN" in ADAPTER
 
 
+def test_adapter_locks_jsonl_fixture_rows():
+    stable_line = next(line for line in ADAPTER.splitlines() if "JSONL CLEAN" in line)
+    decay_line = next(line for line in ADAPTER.splitlines() if "JSONL DECAY" in line)
+    assert "`examples/jsonl_stable`" in stable_line
+    assert "exit 0" in stable_line
+    assert "`examples/jsonl_decaying`" in decay_line
+    assert "exit 2" in decay_line
+    assert "examples/jsonl_stable/events.jsonl" in ADAPTER
+    assert "examples/jsonl_decaying/events.jsonl" in ADAPTER
+    assert "--format jsonl" in ADAPTER
+    assert "Verdict: DECAY" in ADAPTER
+    assert "jsonl-decay.md" in ADAPTER
+
+
 def test_stable_agent_fixture_exit_0():
     assert (
         main(

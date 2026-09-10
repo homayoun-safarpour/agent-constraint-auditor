@@ -61,7 +61,11 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W30 Named `--report` lock for `examples/jsonl_stable` (Verdict: CLEAN) (2026-09-10)
 - [x] W31 Document `--format jsonl` fixtures in `docs/ADAPTER.md` (2026-09-10)
 - [x] W32 Named test locks `docs/ADAPTER.md` jsonl_stable / jsonl_decaying rows (2026-09-10)
-- [ ] W33 Heartbeat quality pass on JSONL Quickstart claims
+- [x] W33 Heartbeat quality pass on JSONL Quickstart claims (2026-09-10)
+- [x] W34 Interview + reliability card document JSONL demo/claim (2026-09-10)
+- [x] W35 Named tests lock INTERVIEW + RELIABILITY_CARD JSONL rows (2026-09-10)
+- [x] W36 Prep Sunday: example matrix checklist under `examples/MATRIX.md` (2026-09-10)
+- [ ] W37 Named CI note: confirm Actions green on tip after matrix merge
 
 ## Build log
 
@@ -90,6 +94,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-10: named `--report` lock for `examples/jsonl_decaying` (Verdict: DECAY, 3 violations, first event 2).
 - 2026-09-10: named `--report` lock for `examples/jsonl_stable` (Verdict: CLEAN, holds-all-constraints across 4 events).
 - 2026-09-10: `docs/ADAPTER.md` documents JSONL CLEAN/DECAY fixtures + verify commands; named test locks those rows.
+- 2026-09-10: heartbeat W33 green (57 pytest, JSONL matrix 0/2); INTERVIEW + RELIABILITY_CARD JSONL claims + named locks.
+- 2026-09-10: `examples/MATRIX.md` Sunday prep exit matrix for all eight fixtures.
 
 ## SUNDAY CLOSE (2026-09-06)
 
@@ -133,9 +139,12 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-10 daily: W30 shipped; named `--report` lock for `examples/jsonl_stable` (Verdict: CLEAN, holds all constraints across 4 events). Next tick: W31 document JSONL fixtures in `docs/ADAPTER.md`.
 - 2026-09-10 daily: W31 shipped via PR #23; ADAPTER documents jsonl_stable/decaying. Next tick: W32 named ADAPTER lock.
 - 2026-09-10 daily: W32 shipped; named test locks ADAPTER JSONL rows. Next tick: W33 heartbeat quality pass.
+- 2026-09-10 daily: W33 green (57 pytest, jsonl_stable 0 / jsonl_decaying 2, CI main green). Next: W34 interview JSONL.
+- 2026-09-10 daily: W34–W35 shipped; INTERVIEW + RELIABILITY_CARD JSONL + named locks. Next: W36 Sunday prep checklist.
+- 2026-09-10 daily: W36 shipped; `examples/MATRIX.md` lists all fixture exits for Sunday gate. Next: W37 CI tip green check.
 
 ## NEXT TICK (daily 2026-09-10)
 
-- W33: Heartbeat quality pass — re-run JSONL Quickstart matrix + CI green check
-- Why next: ADAPTER + named locks landed; confirm README/ADAPTER claims still match exits
-- Verify: `python -m pytest -q` ; `ruff check .` ; parse+audit jsonl_stable (0) and jsonl_decaying (2)
+- W37: Confirm GitHub Actions green on `main` tip after this merge; paste run URL into LOOP journal
+- Why next: local 59+ pytest is not CI until push
+- Verify: `gh run list -R homayoun-safarpour/agent-constraint-auditor --branch main --limit 1`

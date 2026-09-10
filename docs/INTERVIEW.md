@@ -18,8 +18,14 @@ constraint-auditor audit --constraints examples/stable/constraints.yaml --transc
 # exit 0
 constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md
 # exit 2
+
+# Same contract on JSONL transcripts
+constraint-auditor audit --constraints examples/jsonl_stable/constraints.yaml --transcript examples/jsonl_stable/events.jsonl --format jsonl
+# exit 0
+constraint-auditor audit --constraints examples/jsonl_decaying/constraints.yaml --transcript examples/jsonl_decaying/events.jsonl --format jsonl --report /tmp/jsonl-decay.md
+# exit 2; report opens with Verdict: DECAY
 ```
 
 ## One limitation
 
-v0.1 uses declared constraints and parsed events - it does not infer hidden policies from free-form chat without a spec.
+v0.1 uses declared constraints and parsed events - it does not infer hidden policies from free-form chat without a spec. Markdown journals and JSONL events share the same exit contract (`0` / `2` / `1`).

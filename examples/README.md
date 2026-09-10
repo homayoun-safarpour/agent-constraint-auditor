@@ -11,6 +11,8 @@
 | [jsonl_stable/](jsonl_stable/) | `--format jsonl`; `events.jsonl` + same forbid rules; exits **0** (CLEAN) + optional `--report` |
 | [jsonl_decaying/](jsonl_decaying/) | `--format jsonl`; forbid match (`lint=FAIL` / force-push); exits **2** (DECAY) |
 
+Sunday prep matrix (all exits): [MATRIX.md](MATRIX.md)
+
 ```bash
 pip install -e ".[dev]"
 constraint-auditor audit --constraints examples/stable/constraints.yaml --transcript examples/stable/journal.md

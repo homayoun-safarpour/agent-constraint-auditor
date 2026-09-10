@@ -8,6 +8,8 @@ ROOT = Path(__file__).parent.parent
 README = (ROOT / "README.md").read_text(encoding="utf-8")
 EXAMPLES_README = (ROOT / "examples" / "README.md").read_text(encoding="utf-8")
 ADAPTER = (ROOT / "docs" / "ADAPTER.md").read_text(encoding="utf-8")
+INTERVIEW = (ROOT / "docs" / "INTERVIEW.md").read_text(encoding="utf-8")
+RELIABILITY = (ROOT / "docs" / "RELIABILITY_CARD.md").read_text(encoding="utf-8")
 DECAYING_JOURNAL = ROOT / "examples" / "decaying" / "journal.md"
 DECAYING_CONSTRAINTS = ROOT / "examples" / "decaying" / "constraints.yaml"
 REQUIRED_MISSING_JOURNAL = ROOT / "examples" / "required_missing" / "journal.md"
@@ -242,6 +244,39 @@ def test_adapter_locks_jsonl_fixture_rows():
     assert "--format jsonl" in ADAPTER
     assert "Verdict: DECAY" in ADAPTER
     assert "jsonl-decay.md" in ADAPTER
+
+
+def test_interview_locks_jsonl_demo():
+    assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
+    assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW
+    assert "--format jsonl" in INTERVIEW
+    assert "jsonl-decay.md" in INTERVIEW
+    assert "Verdict: DECAY" in INTERVIEW
+    assert "Markdown journals and JSONL events share the same exit contract" in INTERVIEW
+
+
+def test_reliability_card_locks_jsonl_claim():
+    assert "--format jsonl" in RELIABILITY
+    assert "jsonl_stable" in RELIABILITY
+    assert "jsonl_decaying" in RELIABILITY
+    assert "JSONL transcript" in RELIABILITY or "jsonl" in RELIABILITY.lower()
+
+
+def test_examples_matrix_lists_all_fixtures():
+    matrix = (ROOT / "examples" / "MATRIX.md").read_text(encoding="utf-8")
+    for name in (
+        "stable/",
+        "decaying/",
+        "required_present/",
+        "required_missing/",
+        "empty/",
+        "headerless/",
+        "jsonl_stable/",
+        "jsonl_decaying/",
+    ):
+        assert name in matrix
+    assert "**0**" in matrix and "**2**" in matrix and "**1**" in matrix
+    assert "MATRIX.md" in EXAMPLES_README or "[MATRIX.md]" in EXAMPLES_README
 
 
 def test_stable_agent_fixture_exit_0():

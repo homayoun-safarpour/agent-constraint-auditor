@@ -65,7 +65,11 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W34 Interview + reliability card document JSONL demo/claim (2026-09-10)
 - [x] W35 Named tests lock INTERVIEW + RELIABILITY_CARD JSONL rows (2026-09-10)
 - [x] W36 Prep Sunday: example matrix checklist under `examples/MATRIX.md` (2026-09-10)
-- [ ] W37 Named CI note: confirm Actions green on tip after matrix merge
+- [x] W37 CI tip green on main after matrix merge (run 34492448163) (2026-09-10)
+- [x] W38 README Quickstart links `examples/MATRIX.md` (2026-09-10)
+- [x] W39 Sat: dry-run full MATRIX commands locally (2026-09-10 — early; all 8 exits match)
+- [x] W40 Fri: growth pulse + LinkedIn draft refresh in LOOP_STATE (2026-09-10)
+- [ ] W41 Close stranded cursor/* draft PRs
 
 ## Build log
 
@@ -142,10 +146,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-10 daily: W33 green (57 pytest, jsonl_stable 0 / jsonl_decaying 2, CI main green). Next: W34 interview JSONL.
 - 2026-09-10 daily: W34–W35 shipped; INTERVIEW + RELIABILITY_CARD JSONL + named locks. Next: W36 Sunday prep checklist.
 - 2026-09-10 daily: W36 shipped; `examples/MATRIX.md` lists all fixture exits for Sunday gate. Next: W37 CI tip green check.
+- 2026-09-10 daily: W37–W38 shipped; CI green run 34492448163; README links MATRIX. Next: W39 dry-run.
+- 2026-09-10 daily: W39 MATRIX dry-run ALL OK (stable0 decaying2 required 0/2 empty1 headerless1 jsonl 0/2). Next: W40 growth pulse + LinkedIn refresh.
 
 ## NEXT TICK (daily 2026-09-10)
 
-- W39: Sat prep — dry-run every command in examples/MATRIX.md; repair if any exit drifts
-- Why next: Sunday gate 2026-09-13; matrix must match reality
-- Verify: run MATRIX bash block; all exits match table
-
+- W41: Close any new cursor/* draft PRs; confirm open PR count 0 on auditor
+- Why next: Autos keep stranding branches; keep main-only
+- Verify: gh pr list -R homayoun-safarpour/agent-constraint-auditor --state open

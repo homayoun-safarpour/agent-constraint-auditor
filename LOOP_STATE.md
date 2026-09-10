@@ -69,7 +69,9 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W38 README Quickstart links `examples/MATRIX.md` (2026-09-10)
 - [x] W39 Sat: dry-run full MATRIX commands locally (2026-09-10 — early; all 8 exits match)
 - [x] W40 Fri: growth pulse + LinkedIn draft refresh in LOOP_STATE (2026-09-10)
-- [ ] W41 Close stranded cursor/* draft PRs
+- [x] W41 Close stranded cursor/* draft PRs (2026-09-10)
+- [x] W42 BENCHMARK GATE pytest count bumped to 61 (2026-09-10)
+- [ ] W43 Hold for Fri/Sat — or Sunday gate when Boss returns
 
 ## Build log
 
@@ -151,6 +153,6 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 
 ## NEXT TICK (daily 2026-09-10)
 
-- W41: Close any new cursor/* draft PRs; confirm open PR count 0 on auditor
-- Why next: Autos keep stranding branches; keep main-only
-- Verify: gh pr list -R homayoun-safarpour/agent-constraint-auditor --state open
+- W43: Hold line — Sun 2026-09-13 full usefulness gate (or Boss early close)
+- Why next: week graph; do not invent mid-week face repo
+- Verify: Sunday checklist in LOOP_STATE + WEEKLY_BUILD_BENCHMARK_RULE

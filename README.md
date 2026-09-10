@@ -19,6 +19,9 @@ Reliability limits: [docs/RELIABILITY_CARD.md](docs/RELIABILITY_CARD.md). Interv
 
 ## Quickstart
 
+Full fixture exit matrix (Sunday prep): [examples/MATRIX.md](examples/MATRIX.md).
+
+
 ```bash
 cd agent-constraint-auditor
 pip install -e ".[dev]"

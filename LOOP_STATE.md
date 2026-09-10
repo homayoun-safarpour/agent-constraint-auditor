@@ -145,6 +145,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 
 ## NEXT TICK (daily 2026-09-10)
 
-- W37: Confirm GitHub Actions green on `main` tip after this merge; paste run URL into LOOP journal
-- Why next: local 59+ pytest is not CI until push
-- Verify: `gh run list -R homayoun-safarpour/agent-constraint-auditor --branch main --limit 1`
+- W39: Sat prep — dry-run every command in examples/MATRIX.md; repair if any exit drifts
+- Why next: Sunday gate 2026-09-13; matrix must match reality
+- Verify: run MATRIX bash block; all exits match table
+

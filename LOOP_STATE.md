@@ -150,9 +150,16 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-10 daily: W36 shipped; `examples/MATRIX.md` lists all fixture exits for Sunday gate. Next: W37 CI tip green check.
 - 2026-09-10 daily: W37–W38 shipped; CI green run 34492448163; README links MATRIX. Next: W39 dry-run.
 - 2026-09-10 daily: W39 MATRIX dry-run ALL OK (stable0 decaying2 required 0/2 empty1 headerless1 jsonl 0/2). Next: W40 growth pulse + LinkedIn refresh.
+- 2026-09-10 evening: CI green on `63f6511` (Actions 34492794677); W42 on main. HOLD. Next tick: W43 Sun 2026-09-13 usefulness gate (or Boss early close).
 
 ## NEXT TICK (daily 2026-09-10)
 
 - W43: Hold line — Sun 2026-09-13 full usefulness gate (or Boss early close)
 - Why next: week graph; do not invent mid-week face repo
 - Verify: Sunday checklist in LOOP_STATE + WEEKLY_BUILD_BENCHMARK_RULE
+
+## NEXT TICK (evening 2026-09-10)
+
+- W43: Hold line — Sun 2026-09-13 full usefulness gate (or Boss early close)
+- Why: evening gates green on `63f6511` (CI run 34492794677); W29–W42 already on main; week graph says hold Fri/Sat — do not invent mid-week face-repo work. Daily ships the Sunday usefulness gate (or Boss early close), not new product scope.
+- Verify: `python -m pytest -q` ; `ruff check .` ; eight MATRIX exits in `examples/MATRIX.md` still 0/2/0/2/1/1/0/2 ; Sunday checklist in LOOP_STATE `## BENCHMARK GATE` + `examples/MATRIX.md`

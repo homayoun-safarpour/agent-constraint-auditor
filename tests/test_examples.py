@@ -18,6 +18,8 @@ EMPTY_JOURNAL = ROOT / "examples" / "empty" / "journal.md"
 EMPTY_CONSTRAINTS = ROOT / "examples" / "empty" / "constraints.yaml"
 HEADERLESS_JOURNAL = ROOT / "examples" / "headerless" / "journal.md"
 HEADERLESS_CONSTRAINTS = ROOT / "examples" / "headerless" / "constraints.yaml"
+JSONL_DECAYING_EVENTS = ROOT / "examples" / "jsonl_decaying" / "events.jsonl"
+JSONL_DECAYING_CONSTRAINTS = ROOT / "examples" / "jsonl_decaying" / "constraints.yaml"
 EVENT_HEADER_RE = re.compile(r"^##\s+\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}\s*$", re.MULTILINE)
 
 
@@ -37,6 +39,7 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "examples/headerless/journal.md" in README
     assert "examples/jsonl_stable/events.jsonl" in README
     assert "examples/jsonl_decaying/events.jsonl" in README
+    assert "jsonl-decay.md" in README
     assert "--format jsonl" in README
     assert "timestamp" in README
     assert "invalid or empty JSONL" in README
@@ -85,6 +88,7 @@ def test_examples_readme_locks_jsonl_decaying_row():
     assert "--format jsonl" in jsonl_line
     assert "examples/jsonl_decaying/events.jsonl" in EXAMPLES_README
     assert "examples/jsonl_decaying/constraints.yaml" in EXAMPLES_README
+    assert "jsonl-decay.md" in EXAMPLES_README
 
 
 def test_jsonl_stable_fixture_parse_and_audit_exit_0(capsys):
@@ -111,8 +115,8 @@ def test_jsonl_stable_fixture_parse_and_audit_exit_0(capsys):
 
 
 def test_jsonl_decaying_fixture_parse_and_audit_exit_2(capsys):
-    events = ROOT / "examples" / "jsonl_decaying" / "events.jsonl"
-    constraints = ROOT / "examples" / "jsonl_decaying" / "constraints.yaml"
+    events = JSONL_DECAYING_EVENTS
+    constraints = JSONL_DECAYING_CONSTRAINTS
     assert events.is_file() and constraints.is_file()
     blob = events.read_text(encoding="utf-8")
     assert "lint=FAIL" in blob
@@ -137,6 +141,39 @@ def test_jsonl_decaying_fixture_parse_and_audit_exit_2(capsys):
     assert data["verdict"] == "DECAY"
     assert data["decay"]["first_violation_index"] == 2
     assert {v["constraint_id"] for v in data["violations"]} == {"never_skip_lint", "no_force_push"}
+
+
+def test_jsonl_decaying_fixture_locks_report(tmp_path, capsys):
+    blob = JSONL_DECAYING_EVENTS.read_text(encoding="utf-8")
+    assert "git push --force to unblock" in blob
+    assert "lint=FAIL" in blob
+    report = tmp_path / "jsonl-decay.md"
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            str(JSONL_DECAYING_CONSTRAINTS),
+            "--transcript",
+            str(JSONL_DECAYING_EVENTS),
+            "--format",
+            "jsonl",
+            "--report",
+            str(report),
+            "--json",
+        ]
+    )
+    assert code == 2
+    data = json.loads(capsys.readouterr().out)
+    assert data["verdict"] == "DECAY"
+    assert data["decay"]["n_violations"] == 3
+    assert data["decay"]["first_violation_index"] == 2
+    assert {v["constraint_id"] for v in data["violations"]} == {"never_skip_lint", "no_force_push"}
+    text = report.read_text(encoding="utf-8")
+    assert text.startswith("# Constraint decay report: jsonl-decaying-agent")
+    assert "Verdict: DECAY" in text
+    assert "The transcript records 3 constraint violations, first at event 2." in text
+    assert "`never_skip_lint`" in text
+    assert "`no_force_push`" in text
 
 
 def test_adapter_locks_error_fixture_rows():

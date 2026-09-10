@@ -22,7 +22,7 @@ constraint-auditor audit --constraints examples/headerless/constraints.yaml --tr
 constraint-auditor parse-transcript --format jsonl examples/jsonl_stable/events.jsonl
 constraint-auditor audit --constraints examples/jsonl_stable/constraints.yaml --transcript examples/jsonl_stable/events.jsonl --format jsonl
 constraint-auditor parse-transcript --format jsonl examples/jsonl_decaying/events.jsonl
-constraint-auditor audit --constraints examples/jsonl_decaying/constraints.yaml --transcript examples/jsonl_decaying/events.jsonl --format jsonl
+constraint-auditor audit --constraints examples/jsonl_decaying/constraints.yaml --transcript examples/jsonl_decaying/events.jsonl --format jsonl --report /tmp/jsonl-decay.md
 ```
 
 `forbid: true` (default) treats a match as decay. `forbid: false` treats a missing required pattern as decay.

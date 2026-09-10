@@ -70,8 +70,9 @@ constraint-auditor parse-transcript --format jsonl examples/jsonl_decaying/event
 constraint-auditor audit \
   --constraints examples/jsonl_decaying/constraints.yaml \
   --transcript examples/jsonl_decaying/events.jsonl \
-  --format jsonl
-# expect exit 2 (DECAY)
+  --format jsonl \
+  --report /tmp/jsonl-decay.md
+# expect exit 2 (DECAY); report starts with Verdict: DECAY
 ```
 
 ## Constraint spec

@@ -59,7 +59,9 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W28 Named test locks `examples/README.md` jsonl_decaying row (exit 2) (2026-09-09)
 - [x] W29 Named `--report` lock for `examples/jsonl_decaying` (Verdict: DECAY) (2026-09-10)
 - [x] W30 Named `--report` lock for `examples/jsonl_stable` (Verdict: CLEAN) (2026-09-10)
-- [ ] W31 Document `--format jsonl` fixtures in `docs/ADAPTER.md`
+- [x] W31 Document `--format jsonl` fixtures in `docs/ADAPTER.md` (2026-09-10)
+- [x] W32 Named test locks `docs/ADAPTER.md` jsonl_stable / jsonl_decaying rows (2026-09-10)
+- [ ] W33 Heartbeat quality pass on JSONL Quickstart claims
 
 ## Build log
 
@@ -87,6 +89,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-09: named test locks `examples/README.md` jsonl_decaying row (exit 2 DECAY, `--format jsonl`).
 - 2026-09-10: named `--report` lock for `examples/jsonl_decaying` (Verdict: DECAY, 3 violations, first event 2).
 - 2026-09-10: named `--report` lock for `examples/jsonl_stable` (Verdict: CLEAN, holds-all-constraints across 4 events).
+- 2026-09-10: `docs/ADAPTER.md` documents JSONL CLEAN/DECAY fixtures + verify commands; named test locks those rows.
 
 ## SUNDAY CLOSE (2026-09-06)
 
@@ -128,15 +131,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-09 heartbeat: OK (W28 matches `d68e442`; named jsonl_decaying README lock; CI green run 34324487698). ENRICH. Next tick: W29 named `--report` lock for `examples/jsonl_decaying`.
 - 2026-09-10 daily: W29 shipped; named `--report` lock for `examples/jsonl_decaying` (Verdict: DECAY, 3 violations, first event 2). Next tick: W30 named `--report` lock for `examples/jsonl_stable`.
 - 2026-09-10 daily: W30 shipped; named `--report` lock for `examples/jsonl_stable` (Verdict: CLEAN, holds all constraints across 4 events). Next tick: W31 document JSONL fixtures in `docs/ADAPTER.md`.
-
-## NEXT TICK (heartbeat 2026-09-09)
-
-- W31: Document `--format jsonl` fixtures in `docs/ADAPTER.md` (`jsonl_stable` / `jsonl_decaying`)
-- Why next: both JSONL `--report` polarities are locked; ADAPTER still only documents journal fixtures.
-- Verify: `python -m pytest -q` ; `ruff check .` ; `docs/ADAPTER.md` lists `examples/jsonl_stable` (exit 0) and `examples/jsonl_decaying` (exit 2) with `--format jsonl` verify commands.
+- 2026-09-10 daily: W31 shipped via PR #23; ADAPTER documents jsonl_stable/decaying. Next tick: W32 named ADAPTER lock.
+- 2026-09-10 daily: W32 shipped; named test locks ADAPTER JSONL rows. Next tick: W33 heartbeat quality pass.
 
 ## NEXT TICK (daily 2026-09-10)
 
-- W31: Document `--format jsonl` fixtures in `docs/ADAPTER.md` (`jsonl_stable` / `jsonl_decaying`)
-- Why next: JSONL CLEAN and DECAY `--report` locks are in place; ADAPTER should name the JSONL pair the same way it names the journal ERROR fixtures.
-- Verify: `python -m pytest -q` ; `ruff check .` ; `docs/ADAPTER.md` lists `examples/jsonl_stable` (exit 0 CLEAN) and `examples/jsonl_decaying` (exit 2 DECAY) with `--format jsonl`.
+- W33: Heartbeat quality pass — re-run JSONL Quickstart matrix + CI green check
+- Why next: ADAPTER + named locks landed; confirm README/ADAPTER claims still match exits
+- Verify: `python -m pytest -q` ; `ruff check .` ; parse+audit jsonl_stable (0) and jsonl_decaying (2)

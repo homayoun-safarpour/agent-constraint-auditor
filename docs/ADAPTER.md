@@ -23,6 +23,8 @@ constraint-auditor audit \
 | Forbid (default) | `forbid: true` | Match = decay | `examples/stable` (exit 0) · `examples/decaying` (exit 2) |
 | Required | `forbid: false` | Missing match = decay | `examples/required_present` (exit 0) · `examples/required_missing` (exit 2) |
 | ERROR (fail-closed) | n/a | No parseable dated events | `examples/empty` (exit 1) · `examples/headerless` (exit 1) |
+| JSONL CLEAN | `--format jsonl` | One JSON object per line; no forbid match | `examples/jsonl_stable` (exit 0) |
+| JSONL DECAY | `--format jsonl` | Forbid-match decay on JSONL events | `examples/jsonl_decaying` (exit 2) |
 
 ```bash
 # Required pattern present → CLEAN
@@ -42,9 +44,24 @@ constraint-auditor audit \
 constraint-auditor audit \
   --constraints examples/headerless/constraints.yaml \
   --transcript examples/headerless/journal.md
+
+# JSONL transcripts (same exit contract as markdown journals)
+constraint-auditor parse-transcript --format jsonl examples/jsonl_stable/events.jsonl
+constraint-auditor audit \
+  --constraints examples/jsonl_stable/constraints.yaml \
+  --transcript examples/jsonl_stable/events.jsonl \
+  --format jsonl
+# expect exit 0 CLEAN
+
+constraint-auditor audit \
+  --constraints examples/jsonl_decaying/constraints.yaml \
+  --transcript examples/jsonl_decaying/events.jsonl \
+  --format jsonl \
+  --report /tmp/jsonl-decay.md
+# expect exit 2 DECAY; report opens with Verdict: DECAY
 ```
 
-Use forbid rules for "never do X". Use required rules for "every event must still show Y" (for example `lint=PASS`). Empty or headerless journals must fail closed as exit `1`, never a free CLEAN.
+Use forbid rules for "never do X". Use required rules for "every event must still show Y" (for example `lint=PASS`). Empty or headerless journals must fail closed as exit `1`, never a free CLEAN. JSONL fixtures under `examples/jsonl_stable` and `examples/jsonl_decaying` lock the same polarities for `--format jsonl`.
 
 ## What this does not do
 
@@ -61,4 +78,8 @@ constraint-auditor audit --constraints examples/stable/constraints.yaml --transc
 constraint-auditor audit --constraints examples/required_present/constraints.yaml --transcript examples/required_present/journal.md
 constraint-auditor audit --constraints examples/empty/constraints.yaml --transcript examples/empty/journal.md
 # expect exit 1
+constraint-auditor audit --constraints examples/jsonl_stable/constraints.yaml --transcript examples/jsonl_stable/events.jsonl --format jsonl
+# expect exit 0
+constraint-auditor audit --constraints examples/jsonl_decaying/constraints.yaml --transcript examples/jsonl_decaying/events.jsonl --format jsonl
+# expect exit 2
 ```

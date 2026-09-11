@@ -4,6 +4,7 @@
 
 ![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
+![CI](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/workflows/ci.yml/badge.svg)
 
 Public: https://github.com/homayoun-safarpour/agent-constraint-auditor  
 Reliability limits: [docs/RELIABILITY_CARD.md](docs/RELIABILITY_CARD.md). Interview pack: [docs/INTERVIEW.md](docs/INTERVIEW.md). Adapter notes: [docs/ADAPTER.md](docs/ADAPTER.md). Contributing: [CONTRIBUTING.md](CONTRIBUTING.md). Discussions: https://github.com/homayoun-safarpour/agent-constraint-auditor/discussions

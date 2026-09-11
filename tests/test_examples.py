@@ -62,6 +62,7 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "--version" in README
     assert "CONTRIBUTING.md" in README
     assert "agent-constraint-auditor/discussions" in README
+    assert "actions/workflows/ci.yml/badge.svg" in README
 
 
 def test_examples_readme_locks_required_pair_rows():

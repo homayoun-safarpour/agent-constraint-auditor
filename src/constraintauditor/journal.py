@@ -38,8 +38,8 @@ def _text_from_fields(fields: dict[str, str]) -> str:
 def parse_jsonl_transcript(path: str | Path) -> list[JournalEvent]:
     """Parse one JSON object per line into journal events.
 
-    Each object requires ``timestamp``. Matching text is ``text`` when set,
-    otherwise synthesized from ``fields``.
+    Each object requires ``timestamp`` plus non-empty ``text`` and/or ``fields``.
+    Matching text is ``text`` when set, otherwise synthesized from ``fields``.
     """
     events: list[JournalEvent] = []
     for line_no, raw_line in enumerate(Path(path).read_text(encoding="utf-8").splitlines(), 1):
@@ -57,10 +57,10 @@ def parse_jsonl_transcript(path: str | Path) -> list[JournalEvent]:
             raise TranscriptError(f"JSONL line {line_no} missing timestamp")
         fields = _fields_from_mapping(obj.get("fields"), line_no)
         text = obj.get("text")
-        if isinstance(text, str) and text.strip():
-            body = text
-        else:
-            body = _text_from_fields(fields)
+        has_text = isinstance(text, str) and bool(text.strip())
+        if not has_text and not fields:
+            raise TranscriptError(f"JSONL line {line_no} needs text and/or fields")
+        body = text if has_text else _text_from_fields(fields)
         events.append(JournalEvent(timestamp=timestamp.strip(), text=body, fields=fields))
     return events
 

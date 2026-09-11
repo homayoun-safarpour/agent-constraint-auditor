@@ -52,6 +52,9 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "jsonl-clean.md" in README
     assert "--format jsonl" in README
     assert "timestamp" in README
+    assert "plus `text` and/or `fields`" in README
+    assert "timestamp-only line is ERROR" in README
+    assert "JSONL object missing text and fields" in README
     assert "invalid or empty JSONL" in README
     assert "parse-transcript PATH [--format jsonl|journal|auto]" in README
     assert "OK: 0 events" in README
@@ -249,6 +252,7 @@ def test_adapter_locks_jsonl_fixture_rows():
     assert "--format jsonl" in ADAPTER
     assert "Verdict: DECAY" in ADAPTER
     assert "jsonl-decay.md" in ADAPTER
+    assert "neither `text` nor `fields` is ERROR" in ADAPTER
 
 
 def test_interview_locks_jsonl_demo():

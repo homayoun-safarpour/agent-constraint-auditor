@@ -24,3 +24,5 @@ Fixture matrix: [examples/MATRIX.md](examples/MATRIX.md).
 3. Open a PR against `main`. Do not leave work only on a long-lived branch.
 
 Issues: use the template. Close the issue from the PR when the claim is locked.
+
+Questions: [Discussions](https://github.com/homayoun-safarpour/agent-constraint-auditor/discussions).

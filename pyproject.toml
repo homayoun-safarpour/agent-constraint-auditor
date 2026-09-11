@@ -9,6 +9,7 @@ description = "Audit agent transcripts against declared constraints; report deca
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
+keywords = ["agent", "constraints", "eval", "reliability", "ci"]
 dependencies = ["PyYAML>=6.0"]
 
 [project.optional-dependencies]

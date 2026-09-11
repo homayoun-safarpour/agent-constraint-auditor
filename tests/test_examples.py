@@ -61,6 +61,7 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "`audit` and `parse-transcript` both accept `--format jsonl|journal|auto`" in README
     assert "--version" in README
     assert "CONTRIBUTING.md" in README
+    assert "SECURITY.md" in README
     assert "agent-constraint-auditor/discussions" in README
     assert "actions/workflows/ci.yml/badge.svg" in README
 

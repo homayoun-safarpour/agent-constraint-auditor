@@ -7,7 +7,7 @@
 ![CI](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/workflows/ci.yml/badge.svg)
 
 Public: https://github.com/homayoun-safarpour/agent-constraint-auditor  
-Reliability limits: [docs/RELIABILITY_CARD.md](docs/RELIABILITY_CARD.md). Interview pack: [docs/INTERVIEW.md](docs/INTERVIEW.md). Adapter notes: [docs/ADAPTER.md](docs/ADAPTER.md). Contributing: [CONTRIBUTING.md](CONTRIBUTING.md). Discussions: https://github.com/homayoun-safarpour/agent-constraint-auditor/discussions
+Reliability limits: [docs/RELIABILITY_CARD.md](docs/RELIABILITY_CARD.md). Interview pack: [docs/INTERVIEW.md](docs/INTERVIEW.md). Adapter notes: [docs/ADAPTER.md](docs/ADAPTER.md). Contributing: [CONTRIBUTING.md](CONTRIBUTING.md). Security: [SECURITY.md](SECURITY.md). Discussions: https://github.com/homayoun-safarpour/agent-constraint-auditor/discussions
 
 ## Use this when
 

@@ -75,8 +75,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [ ] W44 Sun 2026-09-13 usefulness gate (CI + eight MATRIX exits + claim check)
 - [x] W45 Fail-closed JSONL objects missing text and/or fields (exit 1) (2026-09-11)
 - [x] W46 CLI `--version` + CONTRIBUTING.md (2026-09-11)
-- [x] W47 Homayoun-authored PRs #32 #33 #35; topics + Discussions on; Quickdraw issue #34 (2026-09-11). Bronze Pull Shark still 10/16
-- [ ] W48 More Homayoun merges toward Pull Shark bronze (16). Refresh profile Achievements.
+- [x] W47 Homayoun-authored PRs #32 #33 #35; topics + Discussions on; Quickdraw issue #34 (2026-09-11).
+- [x] W48 Homayoun merged-PR count **17** (Pull Shark bronze threshold 16) (2026-09-11)
 
 ## Build log
 
@@ -165,9 +165,8 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 
 ## NEXT TICK (daily 2026-09-11)
 
-- W48: Keep Homayoun-authored merges on `main` until profile shows Pull Shark (default 2 should already qualify; bronze 16). Do not invent Ireland work.
-- Why next: hire-face git. Sunday usefulness gate remains W44 on 2026-09-13.
-- Verify: merged-PR count; https://github.com/homayoun-safarpour?tab=achievements
+- W48 done: Homayoun-authored merged PRs **17**. Refresh https://github.com/homayoun-safarpour?tab=achievements for Quickdraw + Pull Shark (bronze at 16).
+- W44 remains Sunday 2026-09-13 usefulness gate (not this session).
 
 ## NEXT TICK (heartbeat 2026-09-11)
 

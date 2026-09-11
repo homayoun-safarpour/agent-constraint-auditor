@@ -71,7 +71,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W40 Fri: growth pulse + LinkedIn draft refresh in LOOP_STATE (2026-09-10)
 - [x] W41 Close stranded cursor/* draft PRs (2026-09-10)
 - [x] W42 BENCHMARK GATE pytest count bumped to 61 (2026-09-10)
-- [ ] W43 Hold for Fri/Sat — or Sunday gate when Boss returns
+- [x] W43 CLI `--version` + CONTRIBUTING + issue template (2026-09-11)
+- [ ] W44 Confirm GitHub achievements on profile (Quickdraw + Pull Shark); more Homayoun PRs toward bronze (16)
 
 ## Build log
 
@@ -151,8 +152,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-10 daily: W37–W38 shipped; CI green run 34492448163; README links MATRIX. Next: W39 dry-run.
 - 2026-09-10 daily: W39 MATRIX dry-run ALL OK (stable0 decaying2 required 0/2 empty1 headerless1 jsonl 0/2). Next: W40 growth pulse + LinkedIn refresh.
 
-## NEXT TICK (daily 2026-09-10)
+- 2026-09-11 daily: W43 shipped `--version`, CONTRIBUTING.md, issue template. Next: W44 achievement confirm + more Homayoun-authored merges.
 
-- W43: Hold line — Sun 2026-09-13 full usefulness gate (or Boss early close)
-- Why next: week graph; do not invent mid-week face repo
-- Verify: Sunday checklist in LOOP_STATE + WEEKLY_BUILD_BENCHMARK_RULE
+## NEXT TICK (daily 2026-09-11)
+
+- W44: Confirm profile badges (Quickdraw + Pull Shark). If lag, keep Homayoun-authored PRs on `main` (bronze Pull Shark = 16).
+- Why next: hire-face git signal; not Ireland, not Sunday usefulness gate
+- Verify: `gh pr list --state merged --author @me`; profile Achievements refresh

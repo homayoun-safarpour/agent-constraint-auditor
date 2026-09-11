@@ -95,6 +95,8 @@ Each YAML rule is a regex over a journal event. `forbid: true` (default) treats 
 
 `parse-transcript PATH [--format jsonl|journal|auto]` dry-runs the parser. Empty or headerless input exits `1` (ERROR), not `OK: 0 events`.
 
+`constraint-auditor --version` prints the package version (`0.1.0`). See [CONTRIBUTING.md](CONTRIBUTING.md) for the local loop.
+
 Wire into [agent-loop-engine](https://github.com/homayoun-safarpour/agent-loop-engine):
 
 ```bash

@@ -56,6 +56,8 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "parse-transcript PATH [--format jsonl|journal|auto]" in README
     assert "OK: 0 events" in README
     assert "`audit` and `parse-transcript` both accept `--format jsonl|journal|auto`" in README
+    assert "--version" in README
+    assert "CONTRIBUTING.md" in README
 
 
 def test_examples_readme_locks_required_pair_rows():

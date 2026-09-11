@@ -7,6 +7,7 @@ import json
 import sys
 from pathlib import Path
 
+from . import __version__
 from .audit import run_audit, write_report
 from .journal import (
     TranscriptError,
@@ -19,6 +20,7 @@ from .spec import SpecError, load_constraint_spec
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="constraint-auditor")
+    parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     sub = parser.add_subparsers(dest="cmd", required=True)
 
     p_audit = sub.add_parser("audit", help="audit transcript against constraints")

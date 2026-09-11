@@ -162,6 +162,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-11 heartbeat: OK (W45 matches `f166fa2`; timestamp-only JSONL ERROR named locks; CI green run 34575165277). HOLD. Next tick: W44 Sunday usefulness gate.
 - 2026-09-11 daily: W46 shipped `--version` and CONTRIBUTING.md. Next: W47 more Homayoun-authored merges for Pull Shark.
 - 2026-09-11 daily: W47 PRs #32/#33/#35 merged (Homayoun count 10). Discussions on; issue #34 closed. Next: W48 toward Pull Shark bronze 16.
+- 2026-09-11 evening: CI green on `c960386` (Actions 34623205352); W48 on main (17 Homayoun merges). HOLD. Next tick: W44 Sun 2026-09-13 usefulness gate.
 
 ## NEXT TICK (daily 2026-09-11)
 
@@ -172,4 +173,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 
 - W44: Sunday 2026-09-13 usefulness gate stays on the calendar.
 - Verify: Actions 3.10/3.11/3.12 green on HEAD
+
+## NEXT TICK (evening 2026-09-11)
+
+- W44: Hold line — Sun 2026-09-13 full usefulness gate (CI + eight MATRIX exits + claim check)
+- Why: evening gates green on `c960386` (CI run 34623205352); W43–W48 already on main; week graph says hold Fri/Sat — do not invent mid-week face-repo work. Daily keeps the Sunday usefulness gate on the calendar, not new product scope.
+- Verify: `python -m pytest -q` ; `ruff check .` ; eight MATRIX exits in `examples/MATRIX.md` still 0/2/0/2/1/1/0/2 ; Sunday checklist in LOOP_STATE `## BENCHMARK GATE` + `examples/MATRIX.md`
 

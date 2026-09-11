@@ -6,7 +6,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 Public: https://github.com/homayoun-safarpour/agent-constraint-auditor  
-Reliability limits: [docs/RELIABILITY_CARD.md](docs/RELIABILITY_CARD.md). Interview pack: [docs/INTERVIEW.md](docs/INTERVIEW.md). Adapter notes: [docs/ADAPTER.md](docs/ADAPTER.md).
+Reliability limits: [docs/RELIABILITY_CARD.md](docs/RELIABILITY_CARD.md). Interview pack: [docs/INTERVIEW.md](docs/INTERVIEW.md). Adapter notes: [docs/ADAPTER.md](docs/ADAPTER.md). Contributing: [CONTRIBUTING.md](CONTRIBUTING.md). Discussions: https://github.com/homayoun-safarpour/agent-constraint-auditor/discussions
 
 ## Use this when
 

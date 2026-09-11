@@ -75,7 +75,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [ ] W44 Sun 2026-09-13 usefulness gate (CI + eight MATRIX exits + claim check)
 - [x] W45 Fail-closed JSONL objects missing text and/or fields (exit 1) (2026-09-11)
 - [x] W46 CLI `--version` + CONTRIBUTING.md (2026-09-11)
-- [ ] W47 Homayoun-authored PRs toward Pull Shark bronze (16); confirm Quickdraw + Pull Shark on profile
+- [x] W47 Homayoun-authored PRs #32 #33 #35; topics + Discussions on; Quickdraw issue #34 (2026-09-11). Bronze Pull Shark still 10/16
+- [ ] W48 More Homayoun merges toward Pull Shark bronze (16). Refresh profile Achievements.
 
 ## Build log
 
@@ -159,18 +160,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-11 daily: W43 Fri hold; named MATRIX exit-row lock (table + live 0/2/0/2/1/1/0/2). Next: W44 Sunday usefulness gate.
 - 2026-09-11 daily: W45 shipped; timestamp-only JSONL is ERROR exit 1 (`needs text and/or fields`). Next: W44 Sunday usefulness gate.
 - 2026-09-11 heartbeat: OK (W45 matches `f166fa2`; timestamp-only JSONL ERROR named locks; CI green run 34575165277). HOLD. Next tick: W44 Sunday usefulness gate.
-
-- 2026-09-11 heartbeat: OK (W45 matches `f166fa2`; timestamp-only JSONL ERROR named locks; CI green run 34575165277). HOLD. Next tick: W44 Sunday usefulness gate.
 - 2026-09-11 daily: W46 shipped `--version` and CONTRIBUTING.md. Next: W47 more Homayoun-authored merges for Pull Shark.
+- 2026-09-11 daily: W47 PRs #32/#33/#35 merged (Homayoun count 10). Discussions on; issue #34 closed. Next: W48 toward Pull Shark bronze 16.
 
 ## NEXT TICK (daily 2026-09-11)
 
-- W47: Homayoun-authored PRs on `main` until profile shows Quickdraw + Pull Shark (bronze = 16 merges). Issue template and topics.
-- Why next: hire-face git signal. Sunday gate stays W44; do not wait on it this session.
-- Verify: `gh api search/issues?q=is:pr+is:merged+author:homayoun-safarpour --jq .total_count`; profile Achievements
+- W48: Keep Homayoun-authored merges on `main` until profile shows Pull Shark (default 2 should already qualify; bronze 16). Do not invent Ireland work.
+- Why next: hire-face git. Sunday usefulness gate remains W44 on 2026-09-13.
+- Verify: merged-PR count; https://github.com/homayoun-safarpour?tab=achievements
 
 ## NEXT TICK (heartbeat 2026-09-11)
 
-- W44: Sunday 2026-09-13 usefulness gate stays on the calendar. This session is git/achievements (W46–W47).
+- W44: Sunday 2026-09-13 usefulness gate stays on the calendar.
 - Verify: Actions 3.10/3.11/3.12 green on HEAD
 

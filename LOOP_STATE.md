@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-07 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-07 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `d68e442` (2026-09-09, run 34324487698); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 56 passed; `ruff check .` clean (2026-09-10) |
+| 2 | Named claim tests | PASS — `pytest` 62 passed; `ruff check .` clean (2026-09-11) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -71,7 +71,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W40 Fri: growth pulse + LinkedIn draft refresh in LOOP_STATE (2026-09-10)
 - [x] W41 Close stranded cursor/* draft PRs (2026-09-10)
 - [x] W42 BENCHMARK GATE pytest count bumped to 61 (2026-09-10)
-- [ ] W43 Hold for Fri/Sat — or Sunday gate when Boss returns
+- [x] W43 Fri hold: named test locks `examples/MATRIX.md` exit rows (2026-09-11)
+- [ ] W44 Sun 2026-09-13 usefulness gate (CI + eight MATRIX exits + claim check)
 
 ## Build log
 
@@ -102,6 +103,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-10: `docs/ADAPTER.md` documents JSONL CLEAN/DECAY fixtures + verify commands; named test locks those rows.
 - 2026-09-10: heartbeat W33 green (57 pytest, JSONL matrix 0/2); INTERVIEW + RELIABILITY_CARD JSONL claims + named locks.
 - 2026-09-10: `examples/MATRIX.md` Sunday prep exit matrix for all eight fixtures.
+- 2026-09-11: named tests lock `examples/MATRIX.md` eight expected exits and re-run the live audits.
 
 ## SUNDAY CLOSE (2026-09-06)
 
@@ -150,9 +152,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-10 daily: W36 shipped; `examples/MATRIX.md` lists all fixture exits for Sunday gate. Next: W37 CI tip green check.
 - 2026-09-10 daily: W37–W38 shipped; CI green run 34492448163; README links MATRIX. Next: W39 dry-run.
 - 2026-09-10 daily: W39 MATRIX dry-run ALL OK (stable0 decaying2 required 0/2 empty1 headerless1 jsonl 0/2). Next: W40 growth pulse + LinkedIn refresh.
+- 2026-09-11 daily: W43 Fri hold; named MATRIX exit-row lock (table + live 0/2/0/2/1/1/0/2). Next: W44 Sunday usefulness gate.
 
-## NEXT TICK (daily 2026-09-10)
+## NEXT TICK (daily 2026-09-11)
 
-- W43: Hold line — Sun 2026-09-13 full usefulness gate (or Boss early close)
-- Why next: week graph; do not invent mid-week face repo
-- Verify: Sunday checklist in LOOP_STATE + WEEKLY_BUILD_BENCHMARK_RULE
+- W44: Sunday 2026-09-13 usefulness gate (CI 3.10/3.11/3.12 + pytest/ruff + eight MATRIX exits + claim still true). If this tick fires Sat 2026-09-12, hold — do not invent a new fixture or CLI surface.
+- Why next: week graph closes Sunday; Friday locked MATRIX expects so the gate cannot drift.
+- Verify: `python -m pytest -q`; `python -m ruff check .`; eight MATRIX audit exits 0/2/0/2/1/1/0/2; LOOP_STATE Sunday checklist

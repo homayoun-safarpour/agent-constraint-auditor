@@ -95,6 +95,16 @@ def test_check_constraints_ok():
     assert code == 0
 
 
+def test_cli_version_prints_package_version(capsys):
+    try:
+        main(["--version"])
+    except SystemExit as exc:
+        assert exc.code == 0
+    else:
+        raise AssertionError("expected SystemExit from --version")
+    assert "0.1.0" in capsys.readouterr().out
+
+
 def test_check_constraints_invalid_regex_exit_1(tmp_path, capsys):
     path = tmp_path / "bad.yaml"
     path.write_text(

@@ -74,6 +74,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W43 Fri hold: named test locks `examples/MATRIX.md` exit rows (2026-09-11)
 - [ ] W44 Sun 2026-09-13 usefulness gate (CI + eight MATRIX exits + claim check)
 - [x] W45 Fail-closed JSONL objects missing text and/or fields (exit 1) (2026-09-11)
+- [x] W46 CLI `--version` + CONTRIBUTING.md (2026-09-11)
+- [ ] W47 Homayoun-authored PRs toward Pull Shark bronze (16); confirm Quickdraw + Pull Shark on profile
 
 ## Build log
 
@@ -158,14 +160,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-11 daily: W45 shipped; timestamp-only JSONL is ERROR exit 1 (`needs text and/or fields`). Next: W44 Sunday usefulness gate.
 - 2026-09-11 heartbeat: OK (W45 matches `f166fa2`; timestamp-only JSONL ERROR named locks; CI green run 34575165277). HOLD. Next tick: W44 Sunday usefulness gate.
 
+- 2026-09-11 heartbeat: OK (W45 matches `f166fa2`; timestamp-only JSONL ERROR named locks; CI green run 34575165277). HOLD. Next tick: W44 Sunday usefulness gate.
+- 2026-09-11 daily: W46 shipped `--version` and CONTRIBUTING.md. Next: W47 more Homayoun-authored merges for Pull Shark.
+
 ## NEXT TICK (daily 2026-09-11)
 
-- W44: Sunday 2026-09-13 usefulness gate (CI 3.10/3.11/3.12 + pytest/ruff + eight MATRIX exits + claim still true). If this tick fires Sat 2026-09-12, hold — do not invent a new fixture or CLI surface.
-- Why next: week graph closes Sunday; JSONL body fail-closed is locked so the gate cannot treat timestamp-only lines as CLEAN.
-- Verify: `python -m pytest -q`; `python -m ruff check .`; eight MATRIX audit exits 0/2/0/2/1/1/0/2; timestamp-only JSONL audit exit 1; LOOP_STATE Sunday checklist
+- W47: Homayoun-authored PRs on `main` until profile shows Quickdraw + Pull Shark (bronze = 16 merges). Issue template and topics.
+- Why next: hire-face git signal. Sunday gate stays W44; do not wait on it this session.
+- Verify: `gh api search/issues?q=is:pr+is:merged+author:homayoun-safarpour --jq .total_count`; profile Achievements
 
 ## NEXT TICK (heartbeat 2026-09-11)
 
-- W44: Sunday 2026-09-13 usefulness gate (CI 3.10/3.11/3.12 + pytest/ruff + eight MATRIX exits 0/2/0/2/1/1/0/2 + timestamp-only JSONL exit 1 + claim still true). Do not invent a new fixture or CLI surface before Sunday.
-- Why: quality pass on `f166fa2` holds (README timestamp-only ERROR claim + named tests); remaining week graph is the close gate, not new product.
-- Verify: `python -m pytest -q`; `python -m ruff check .`; eight MATRIX audits 0/2/0/2/1/1/0/2; timestamp-only JSONL audit exit 1; Actions 3.10/3.11/3.12 green on the Sunday HEAD
+- W44: Sunday 2026-09-13 usefulness gate stays on the calendar. This session is git/achievements (W46–W47).
+- Verify: Actions 3.10/3.11/3.12 green on HEAD
+

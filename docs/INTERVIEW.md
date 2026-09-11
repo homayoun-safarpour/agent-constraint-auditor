@@ -14,6 +14,9 @@
 ## 2-min demo
 
 ```bash
+constraint-auditor --version
+# 0.1.0
+
 constraint-auditor audit --constraints examples/stable/constraints.yaml --transcript examples/stable/journal.md
 # exit 0
 constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md

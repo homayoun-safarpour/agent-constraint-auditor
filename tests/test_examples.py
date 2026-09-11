@@ -264,6 +264,8 @@ def test_interview_locks_jsonl_demo():
     assert "jsonl-decay.md" in INTERVIEW
     assert "Verdict: DECAY" in INTERVIEW
     assert "Markdown journals and JSONL events share the same exit contract" in INTERVIEW
+    assert "--version" in INTERVIEW
+    assert "0.1.0" in INTERVIEW
 
 
 def test_reliability_card_locks_jsonl_claim():

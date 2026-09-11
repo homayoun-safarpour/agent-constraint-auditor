@@ -11,7 +11,7 @@ Week: opened Mon 2026-09-07 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-07 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `d68e442` (2026-09-09, run 34324487698); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `f166fa2` (2026-09-11, run 34575165277); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 67 passed; `ruff check .` clean (2026-09-11) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -156,9 +156,16 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-10 daily: W39 MATRIX dry-run ALL OK (stable0 decaying2 required 0/2 empty1 headerless1 jsonl 0/2). Next: W40 growth pulse + LinkedIn refresh.
 - 2026-09-11 daily: W43 Fri hold; named MATRIX exit-row lock (table + live 0/2/0/2/1/1/0/2). Next: W44 Sunday usefulness gate.
 - 2026-09-11 daily: W45 shipped; timestamp-only JSONL is ERROR exit 1 (`needs text and/or fields`). Next: W44 Sunday usefulness gate.
+- 2026-09-11 heartbeat: OK (W45 matches `f166fa2`; timestamp-only JSONL ERROR named locks; CI green run 34575165277). HOLD. Next tick: W44 Sunday usefulness gate.
 
 ## NEXT TICK (daily 2026-09-11)
 
 - W44: Sunday 2026-09-13 usefulness gate (CI 3.10/3.11/3.12 + pytest/ruff + eight MATRIX exits + claim still true). If this tick fires Sat 2026-09-12, hold — do not invent a new fixture or CLI surface.
 - Why next: week graph closes Sunday; JSONL body fail-closed is locked so the gate cannot treat timestamp-only lines as CLEAN.
 - Verify: `python -m pytest -q`; `python -m ruff check .`; eight MATRIX audit exits 0/2/0/2/1/1/0/2; timestamp-only JSONL audit exit 1; LOOP_STATE Sunday checklist
+
+## NEXT TICK (heartbeat 2026-09-11)
+
+- W44: Sunday 2026-09-13 usefulness gate (CI 3.10/3.11/3.12 + pytest/ruff + eight MATRIX exits 0/2/0/2/1/1/0/2 + timestamp-only JSONL exit 1 + claim still true). Do not invent a new fixture or CLI surface before Sunday.
+- Why: quality pass on `f166fa2` holds (README timestamp-only ERROR claim + named tests); remaining week graph is the close gate, not new product.
+- Verify: `python -m pytest -q`; `python -m ruff check .`; eight MATRIX audits 0/2/0/2/1/1/0/2; timestamp-only JSONL audit exit 1; Actions 3.10/3.11/3.12 green on the Sunday HEAD

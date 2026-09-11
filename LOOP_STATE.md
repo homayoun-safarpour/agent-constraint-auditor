@@ -11,8 +11,8 @@ Week: opened Mon 2026-09-07 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-07 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `d68e442` (2026-09-09, run 34324487698); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 56 passed; `ruff check .` clean (2026-09-10) |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `f166fa2` (2026-09-11, run 34575165277); first public green `0a916b2` |
+| 2 | Named claim tests | PASS — `pytest` 67 passed; `ruff check .` clean (2026-09-11) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -71,8 +71,11 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W40 Fri: growth pulse + LinkedIn draft refresh in LOOP_STATE (2026-09-10)
 - [x] W41 Close stranded cursor/* draft PRs (2026-09-10)
 - [x] W42 BENCHMARK GATE pytest count bumped to 61 (2026-09-10)
-- [x] W43 CLI `--version` + CONTRIBUTING + issue template (2026-09-11)
-- [ ] W44 Confirm GitHub achievements on profile (Quickdraw + Pull Shark); more Homayoun PRs toward bronze (16)
+- [x] W43 Fri hold: named test locks `examples/MATRIX.md` exit rows (2026-09-11)
+- [ ] W44 Sun 2026-09-13 usefulness gate (CI + eight MATRIX exits + claim check)
+- [x] W45 Fail-closed JSONL objects missing text and/or fields (exit 1) (2026-09-11)
+- [x] W46 CLI `--version` + CONTRIBUTING.md (2026-09-11)
+- [ ] W47 Homayoun-authored PRs toward Pull Shark bronze (16); confirm Quickdraw + Pull Shark on profile
 
 ## Build log
 
@@ -103,6 +106,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-10: `docs/ADAPTER.md` documents JSONL CLEAN/DECAY fixtures + verify commands; named test locks those rows.
 - 2026-09-10: heartbeat W33 green (57 pytest, JSONL matrix 0/2); INTERVIEW + RELIABILITY_CARD JSONL claims + named locks.
 - 2026-09-10: `examples/MATRIX.md` Sunday prep exit matrix for all eight fixtures.
+- 2026-09-11: named tests lock `examples/MATRIX.md` eight expected exits and re-run the live audits.
+- 2026-09-11: JSONL objects with `timestamp` but neither `text` nor `fields` are ERROR (exit 1).
 
 ## SUNDAY CLOSE (2026-09-06)
 
@@ -151,11 +156,21 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-10 daily: W36 shipped; `examples/MATRIX.md` lists all fixture exits for Sunday gate. Next: W37 CI tip green check.
 - 2026-09-10 daily: W37–W38 shipped; CI green run 34492448163; README links MATRIX. Next: W39 dry-run.
 - 2026-09-10 daily: W39 MATRIX dry-run ALL OK (stable0 decaying2 required 0/2 empty1 headerless1 jsonl 0/2). Next: W40 growth pulse + LinkedIn refresh.
+- 2026-09-11 daily: W43 Fri hold; named MATRIX exit-row lock (table + live 0/2/0/2/1/1/0/2). Next: W44 Sunday usefulness gate.
+- 2026-09-11 daily: W45 shipped; timestamp-only JSONL is ERROR exit 1 (`needs text and/or fields`). Next: W44 Sunday usefulness gate.
+- 2026-09-11 heartbeat: OK (W45 matches `f166fa2`; timestamp-only JSONL ERROR named locks; CI green run 34575165277). HOLD. Next tick: W44 Sunday usefulness gate.
 
-- 2026-09-11 daily: W43 shipped `--version`, CONTRIBUTING.md, issue template. Next: W44 achievement confirm + more Homayoun-authored merges.
+- 2026-09-11 heartbeat: OK (W45 matches `f166fa2`; timestamp-only JSONL ERROR named locks; CI green run 34575165277). HOLD. Next tick: W44 Sunday usefulness gate.
+- 2026-09-11 daily: W46 shipped `--version` and CONTRIBUTING.md. Next: W47 more Homayoun-authored merges for Pull Shark.
 
 ## NEXT TICK (daily 2026-09-11)
 
-- W44: Confirm profile badges (Quickdraw + Pull Shark). If lag, keep Homayoun-authored PRs on `main` (bronze Pull Shark = 16).
-- Why next: hire-face git signal; not Ireland, not Sunday usefulness gate
-- Verify: `gh pr list --state merged --author @me`; profile Achievements refresh
+- W47: Homayoun-authored PRs on `main` until profile shows Quickdraw + Pull Shark (bronze = 16 merges). Issue template and topics.
+- Why next: hire-face git signal. Sunday gate stays W44; do not wait on it this session.
+- Verify: `gh api search/issues?q=is:pr+is:merged+author:homayoun-safarpour --jq .total_count`; profile Achievements
+
+## NEXT TICK (heartbeat 2026-09-11)
+
+- W44: Sunday 2026-09-13 usefulness gate stays on the calendar. This session is git/achievements (W46–W47).
+- Verify: Actions 3.10/3.11/3.12 green on HEAD
+

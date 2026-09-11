@@ -52,6 +52,9 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "jsonl-clean.md" in README
     assert "--format jsonl" in README
     assert "timestamp" in README
+    assert "plus `text` and/or `fields`" in README
+    assert "timestamp-only line is ERROR" in README
+    assert "JSONL object missing text and fields" in README
     assert "invalid or empty JSONL" in README
     assert "parse-transcript PATH [--format jsonl|journal|auto]" in README
     assert "OK: 0 events" in README
@@ -251,6 +254,7 @@ def test_adapter_locks_jsonl_fixture_rows():
     assert "--format jsonl" in ADAPTER
     assert "Verdict: DECAY" in ADAPTER
     assert "jsonl-decay.md" in ADAPTER
+    assert "neither `text` nor `fields` is ERROR" in ADAPTER
 
 
 def test_interview_locks_jsonl_demo():
@@ -269,21 +273,55 @@ def test_reliability_card_locks_jsonl_claim():
     assert "JSONL transcript" in RELIABILITY or "jsonl" in RELIABILITY.lower()
 
 
-def test_examples_matrix_lists_all_fixtures():
+MATRIX_EXIT_ROWS = (
+    ("stable/", 0, "CLEAN"),
+    ("decaying/", 2, "DECAY"),
+    ("required_present/", 0, "CLEAN"),
+    ("required_missing/", 2, "DECAY"),
+    ("empty/", 1, "ERROR"),
+    ("headerless/", 1, "ERROR"),
+    ("jsonl_stable/", 0, "CLEAN"),
+    ("jsonl_decaying/", 2, "DECAY"),
+)
+
+
+def test_examples_matrix_locks_exit_rows():
     matrix = (ROOT / "examples" / "MATRIX.md").read_text(encoding="utf-8")
-    for name in (
-        "stable/",
-        "decaying/",
-        "required_present/",
-        "required_missing/",
-        "empty/",
-        "headerless/",
-        "jsonl_stable/",
-        "jsonl_decaying/",
-    ):
-        assert name in matrix
-    assert "**0**" in matrix and "**2**" in matrix and "**1**" in matrix
+    for fixture, code, verdict in MATRIX_EXIT_ROWS:
+        line = next((row for row in matrix.splitlines() if f"`{fixture}`" in row), None)
+        assert line is not None, f"MATRIX.md missing row for {fixture}"
+        assert f"**{code}**" in line, line
+        assert verdict in line
+        stem = fixture.rstrip("/")
+        assert f"examples/{stem}/" in matrix
+    assert "python -m pytest -q" in matrix
+    assert "python -m ruff check ." in matrix
+    assert "--format jsonl" in matrix
     assert "MATRIX.md" in EXAMPLES_README or "[MATRIX.md]" in EXAMPLES_README
+
+
+def test_examples_matrix_live_exits_match_table():
+    cases = (
+        ("stable", "journal.md", None, 0),
+        ("decaying", "journal.md", None, 2),
+        ("required_present", "journal.md", None, 0),
+        ("required_missing", "journal.md", None, 2),
+        ("empty", "journal.md", None, 1),
+        ("headerless", "journal.md", None, 1),
+        ("jsonl_stable", "events.jsonl", "jsonl", 0),
+        ("jsonl_decaying", "events.jsonl", "jsonl", 2),
+    )
+    for name, transcript, fmt, expected in cases:
+        args = [
+            "audit",
+            "--constraints",
+            str(ROOT / "examples" / name / "constraints.yaml"),
+            "--transcript",
+            str(ROOT / "examples" / name / transcript),
+        ]
+        if fmt:
+            args.extend(["--format", fmt])
+        assert main(args) == expected, name
 
 
 def test_stable_agent_fixture_exit_0():

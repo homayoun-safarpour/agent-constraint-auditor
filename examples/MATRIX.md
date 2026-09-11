@@ -26,4 +26,4 @@ constraint-auditor audit --constraints examples/jsonl_stable/constraints.yaml --
 constraint-auditor audit --constraints examples/jsonl_decaying/constraints.yaml --transcript examples/jsonl_decaying/events.jsonl --format jsonl --report /tmp/jsonl-decay.md
 ```
 
-Named pytest locks keep README / ADAPTER / INTERVIEW claims honest. Full Sunday gate: `LOOP_STATE.md` → `## BENCHMARK GATE` + `WEEKLY_BUILD_BENCHMARK_RULE.md`.
+Named pytest `test_examples_matrix_locks_exit_rows` locks the eight table exits; `test_examples_matrix_live_exits_match_table` re-runs the audits (0/2/0/2/1/1/0/2). Full Sunday gate: `LOOP_STATE.md` → `## BENCHMARK GATE` + `WEEKLY_BUILD_BENCHMARK_RULE.md`.

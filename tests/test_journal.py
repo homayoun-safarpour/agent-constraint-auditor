@@ -41,8 +41,32 @@ def test_parse_jsonl_transcript_uses_text_or_fields(tmp_path):
 
 def test_parse_jsonl_invalid_line_is_transcript_error(tmp_path):
     path = tmp_path / "bad.jsonl"
-    path.write_text('{"timestamp": "2026-08-11 09:00"}\nnot-json\n', encoding="utf-8")
+    path.write_text(
+        '{"timestamp": "2026-08-11 09:00", "text": "- gates: lint=PASS"}\nnot-json\n',
+        encoding="utf-8",
+    )
     with pytest.raises(TranscriptError, match="invalid JSONL"):
+        parse_jsonl_transcript(path)
+
+
+def test_parse_jsonl_timestamp_only_is_transcript_error(tmp_path):
+    path = tmp_path / "events.jsonl"
+    path.write_text('{"timestamp": "2026-08-11 09:00"}\n', encoding="utf-8")
+    with pytest.raises(TranscriptError, match="needs text and/or fields"):
+        parse_jsonl_transcript(path)
+
+
+def test_parse_jsonl_empty_fields_without_text_is_transcript_error(tmp_path):
+    path = tmp_path / "events.jsonl"
+    path.write_text('{"timestamp": "2026-08-11 09:00", "fields": {}}\n', encoding="utf-8")
+    with pytest.raises(TranscriptError, match="needs text and/or fields"):
+        parse_jsonl_transcript(path)
+
+
+def test_parse_jsonl_whitespace_text_without_fields_is_transcript_error(tmp_path):
+    path = tmp_path / "events.jsonl"
+    path.write_text('{"timestamp": "2026-08-11 09:00", "text": "   "}\n', encoding="utf-8")
+    with pytest.raises(TranscriptError, match="needs text and/or fields"):
         parse_jsonl_transcript(path)
 
 

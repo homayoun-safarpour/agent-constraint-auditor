@@ -1,39 +1,28 @@
-# Daily learning  -  2026-09-02
+# Daily learning  -  2026-09-11
 
-**Skill.** `forbid: false` is a required regex: every journal event must match. Miss = violation (`required pattern missing`). Default `forbid: true` is the inverse: a match is a violation (`forbid pattern matched`).
+**Skill.** Three CLI verbs, three failure domains. `check-constraints` compiles YAML (regex at load). `parse-transcript` parses events only. `audit` does both, then scores decay. `SpecError`, `TranscriptError`, `OSError`, and a missing path all map to exit `1`. CLEAN (`0`) and DECAY (`2`) exist only after a successful parse.
 
-**Why.** Named tests lock both polarities. Public fixtures: `examples/stable` / `examples/decaying` (`forbid: true`) and `examples/required_present` / `examples/required_missing` (`forbid: false`). Hire signal: deterministic decay gate over a declared spec  -  not an LLM judge.
+**Why.** The hire signal is a fail-closed gate you can re-run, not a narrative. Sunday usefulness (2026-09-13) is `examples/MATRIX.md`: eight fixtures, three codes. Empty, headerless, or invalid regex never get a free CLEAN.
 
-**Worked example** (this repo). Stable fixture is CLEAN: no event contains `lint=FAIL` or `git push --force`.
+**Worked example** (this repo).
 
 ```bash
+constraint-auditor check-constraints examples/stable/constraints.yaml
+# OK: stable-agent (2 constraints)  exit 0
+
+constraint-auditor parse-transcript examples/empty/journal.md
+# ERROR: transcript contains no parseable events  exit 1
+
 constraint-auditor audit \
-  --constraints examples/stable/constraints.yaml \
-  --transcript examples/stable/journal.md
-# verdict=CLEAN exit=0
+  --constraints examples/decaying/constraints.yaml \
+  --transcript examples/decaying/journal.md
+# verdict=DECAY exit=2
 ```
 
-Polarity lives in `check_event` (`src/constraintauditor/checkers.py`):
+`cli.main` catches `SpecError` / `TranscriptError` / `OSError` → `1`. Missing files short-circuit before `run_audit`. `parse-transcript` never opens the spec; `check-constraints` never opens a journal.
 
-```python
-if constraint.forbid and matched:            # banned string appeared
-if (not constraint.forbid) and not matched:  # required string absent
-```
+**Recall probe.** Valid journal. YAML `pattern: "("`. You run `parse-transcript` on the journal, then `audit` with that spec. Exits?
 
-YAML may omit `forbid`; `Constraint` defaults it to `True` (`src/constraintauditor/spec.py`). Required-pattern lock:
+Answer: parse-transcript `0` (does not load YAML). audit `1` (`SpecError`: pattern is not a valid regex). Decay is unreachable.
 
-```python
-from constraintauditor.checkers import check_transcript
-from constraintauditor.journal import JournalEvent
-from constraintauditor.spec import Constraint, ConstraintSpec
-
-spec = ConstraintSpec("t", (Constraint("must_log_gates", "", r"gates:", forbid=False),))
-events = [JournalEvent("2026-09-02 07:00", "- decision: advance", {})]
-assert check_transcript(spec, events)[0].detail.startswith("required pattern missing")
-```
-
-**Recall probe.** Event text is `- gates: tests=PASS` (no lint line). Spec: `pattern: "lint="`, `forbid: false`. CLEAN or DECAY? Is the check over the whole transcript or per event?
-
-Answer: DECAY  -  required pattern missing on that event. `check_transcript` multiplies constraints × events; a required pattern must hit *every* event, not once somewhere.
-
-**Retrieve.** `src/constraintauditor/checkers.py` · `spec.py` · `tests/test_checkers.py` · `LOOP_STATE.md` NEXT TICK · `docs/INTERVIEW.md`
+**Retrieve.** `src/constraintauditor/cli.py` · `spec.py` · `audit.py` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK

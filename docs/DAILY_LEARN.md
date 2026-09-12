@@ -1,39 +1,34 @@
-# Daily learning  -  2026-09-02
+# Daily learning  -  2026-09-12
 
-**Skill.** `forbid: false` is a required regex: every journal event must match. Miss = violation (`required pattern missing`). Default `forbid: true` is the inverse: a match is a violation (`forbid pattern matched`).
+**Skill.** A JSONL object with only `timestamp` is not an empty CLEAN event. `parse_jsonl_transcript` requires `timestamp` plus non-empty `text` and/or `fields`. `fields: {}` and whitespace-only `text` fail the same way: `TranscriptError` → exit `1`.
 
-**Why.** Named tests lock both polarities. Public fixtures: `examples/stable` / `examples/decaying` (`forbid: true`) and `examples/required_present` / `examples/required_missing` (`forbid: false`). Hire signal: deterministic decay gate over a declared spec  -  not an LLM judge.
+**Why.** Fail-closed gate: a heartbeat that dropped its payload must not score CLEAN. Same contract as empty/headerless journals. Sunday usefulness (2026-09-13) is `examples/MATRIX.md` (eight fixtures, exits 0/2/0/2/1/1/0/2). This extra JSONL ERROR is locked in tests, not in that table.
 
-**Worked example** (this repo). Stable fixture is CLEAN: no event contains `lint=FAIL` or `git push --force`.
+**Worked example** (this repo). `examples/jsonl_stable` is fields-only (no `text` key) and is CLEAN:
 
 ```bash
+constraint-auditor parse-transcript --format jsonl examples/jsonl_stable/events.jsonl
+# OK: 4 events  exit 0
+
 constraint-auditor audit \
-  --constraints examples/stable/constraints.yaml \
-  --transcript examples/stable/journal.md
+  --constraints examples/jsonl_stable/constraints.yaml \
+  --transcript examples/jsonl_stable/events.jsonl \
+  --format jsonl
 # verdict=CLEAN exit=0
 ```
 
-Polarity lives in `check_event` (`src/constraintauditor/checkers.py`):
+Parser gate (`src/constraintauditor/journal.py`):
 
 ```python
-if constraint.forbid and matched:            # banned string appeared
-if (not constraint.forbid) and not matched:  # required string absent
+has_text = isinstance(text, str) and bool(text.strip())
+if not has_text and not fields:
+    raise TranscriptError(f"JSONL line {line_no} needs text and/or fields")
 ```
 
-YAML may omit `forbid`; `Constraint` defaults it to `True` (`src/constraintauditor/spec.py`). Required-pattern lock:
+Named locks: `test_parse_jsonl_timestamp_only_is_transcript_error`, `test_audit_jsonl_timestamp_only_exit_1`.
 
-```python
-from constraintauditor.checkers import check_transcript
-from constraintauditor.journal import JournalEvent
-from constraintauditor.spec import Constraint, ConstraintSpec
+**Recall probe.** Line is `{"timestamp": "2026-08-11 09:00", "fields": {}}`. You run `parse-transcript --format jsonl`, then `audit --format jsonl` with `examples/stable/constraints.yaml`. Exits?
 
-spec = ConstraintSpec("t", (Constraint("must_log_gates", "", r"gates:", forbid=False),))
-events = [JournalEvent("2026-09-02 07:00", "- decision: advance", {})]
-assert check_transcript(spec, events)[0].detail.startswith("required pattern missing")
-```
+Answer: both `1`. Empty `fields` is falsy; no body → `TranscriptError`. CLEAN/DECAY are unreachable.
 
-**Recall probe.** Event text is `- gates: tests=PASS` (no lint line). Spec: `pattern: "lint="`, `forbid: false`. CLEAN or DECAY? Is the check over the whole transcript or per event?
-
-Answer: DECAY  -  required pattern missing on that event. `check_transcript` multiplies constraints × events; a required pattern must hit *every* event, not once somewhere.
-
-**Retrieve.** `src/constraintauditor/checkers.py` · `spec.py` · `tests/test_checkers.py` · `LOOP_STATE.md` NEXT TICK · `docs/INTERVIEW.md`
+**Retrieve.** `src/constraintauditor/journal.py` · `cli.py` · `tests/test_journal.py` · `tests/test_cli.py` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK

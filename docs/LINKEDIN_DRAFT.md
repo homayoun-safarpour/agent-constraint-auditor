@@ -1,6 +1,6 @@
 # LinkedIn draft (public-safe) — agent-constraint-auditor
 
-Field pain first. No employer demand language. No unpublished SLR.
+Field pain first. No employer demand language. No unpublished research.
 
 1. Long-horizon agent loops can drop the rules you wrote down and still look busy - the transcript has no fail-closed check.
 2. I keep a narrow public CLI that audits *your* journal or JSONL events against *your* YAML constraint spec (regex/predicate, not an LLM judge).

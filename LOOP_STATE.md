@@ -79,6 +79,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W48 Homayoun merged-PR count **17** (Pull Shark bronze threshold 16) (2026-09-11)
 - [x] W49 Fail-closed JSONL objects missing timestamp (exit 1) (2026-09-12)
 - [x] W50 Fail-closed dated journal heading with no body (exit 1) (2026-09-12)
+- [x] W51 Spoken README H1 `constraint-auditor`; install+one command before the long Quickstart (2026-09-12)
 
 ## Build log
 
@@ -168,10 +169,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-11 daily: W47 PRs #32/#33/#35 merged (Homayoun count 10). Discussions on; issue #34 closed. Next: W48 toward Pull Shark bronze 16.
 - 2026-09-12 daily: W49 shipped; JSONL missing / blank / non-string `timestamp` is ERROR exit 1 (`missing timestamp`). Next: W44 Sunday usefulness gate.
 - 2026-09-12 daily: W50 shipped; dated `##` heading with no body is ERROR exit 1 (`needs text and/or fields`). Next: W44 Sunday usefulness gate.
+- 2026-09-12 daily: W51 shipped; README H1 is `constraint-auditor` (slug unchanged); pip + one CLEAN audit sit above the long Quickstart.
 
 ## NEXT TICK (daily 2026-09-12)
 
 - W44: Sunday 2026-09-13 usefulness gate (CI + eight MATRIX exits + claim check).
-- Why: W49 and W50 locked fail-closed ERROR paths; Sunday is the scheduled usefulness close.
+- Why: W51 named the spoken product; Sunday is the scheduled usefulness close.
 - Verify: Actions 3.10/3.11/3.12 green on HEAD; `python3 -m pytest -q && python3 -m ruff check .`; eight MATRIX audits 0/2/0/2/1/1/0/2; README claim check.
 

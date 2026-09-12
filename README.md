@@ -1,10 +1,19 @@
-# agent-constraint-auditor
+# constraint-auditor
 
-**Your agent stopped following its own rules and nobody noticed.** Long-horizon codegen and agent loops drop declared constraints while still looking productive; this CLI audits the transcript against your constraint spec and reports which rules decayed, when, and how fast.
+**Your agent stopped following its own rules and nobody noticed.**
 
 ![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![CI](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/workflows/ci.yml/badge.svg)
+
+Audit agent transcripts for declared-constraint decay. Exit 0 CLEAN, 2 DECAY, 1 ERROR.
+Repo slug `agent-constraint-auditor`. CLI `constraint-auditor`. Python 3.10+.
+
+```bash
+pip install -e ".[dev]"
+constraint-auditor audit --constraints examples/stable/constraints.yaml --transcript examples/stable/journal.md
+# expect exit 0
+```
 
 Public: https://github.com/homayoun-safarpour/agent-constraint-auditor  
 Reliability limits: [docs/RELIABILITY_CARD.md](docs/RELIABILITY_CARD.md). Interview pack: [docs/INTERVIEW.md](docs/INTERVIEW.md). Adapter notes: [docs/ADAPTER.md](docs/ADAPTER.md). Contributing: [CONTRIBUTING.md](CONTRIBUTING.md). Security: [SECURITY.md](SECURITY.md). Discussions: https://github.com/homayoun-safarpour/agent-constraint-auditor/discussions

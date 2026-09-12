@@ -30,6 +30,11 @@ EVENT_HEADER_RE = re.compile(r"^##\s+\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}\s*$", re.MU
 
 
 
+def test_readme_spoken_h1_is_constraint_auditor():
+    assert README.lstrip().startswith("# constraint-auditor\n")
+    assert "agent-constraint-auditor" in README
+
+
 def test_readme_links_examples_matrix():
     assert "examples/MATRIX.md" in README
 

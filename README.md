@@ -7,16 +7,15 @@
 ![CI](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/workflows/ci.yml/badge.svg)
 
 Audit agent transcripts for declared-constraint decay. Exit 0 CLEAN, 2 DECAY, 1 ERROR.
-Repo slug `agent-constraint-auditor`. CLI `constraint-auditor`. Python 3.10+.
 
 ```bash
 pip install -e ".[dev]"
 constraint-auditor audit --constraints examples/stable/constraints.yaml --transcript examples/stable/journal.md
-# expect exit 0
 ```
 
-Public: https://github.com/homayoun-safarpour/agent-constraint-auditor  
-Reliability limits: [docs/RELIABILITY_CARD.md](docs/RELIABILITY_CARD.md). Interview pack: [docs/INTERVIEW.md](docs/INTERVIEW.md). Adapter notes: [docs/ADAPTER.md](docs/ADAPTER.md). Contributing: [CONTRIBUTING.md](CONTRIBUTING.md). Security: [SECURITY.md](SECURITY.md). Discussions: https://github.com/homayoun-safarpour/agent-constraint-auditor/discussions
+```text
+verdict=CLEAN exit=0 violations=0 first_index=None slope=0.000
+```
 
 ## Use this when
 
@@ -119,6 +118,11 @@ loop-engine tick --state LOOP_STATE.md \
 - [agent-loop-engine](https://github.com/homayoun-safarpour/agent-loop-engine) - state, gates, decide, journal
 - [judge-drift-sentinel](https://github.com/homayoun-safarpour/judge-drift-sentinel) - judge vs system drift
 - [trace-gate](https://github.com/homayoun-safarpour/trace-gate) - trajectory deploy gate
+
+## Docs
+
+Public: https://github.com/homayoun-safarpour/agent-constraint-auditor  
+Reliability limits: [docs/RELIABILITY_CARD.md](docs/RELIABILITY_CARD.md). Interview pack: [docs/INTERVIEW.md](docs/INTERVIEW.md). Adapter notes: [docs/ADAPTER.md](docs/ADAPTER.md). Contributing: [CONTRIBUTING.md](CONTRIBUTING.md). Security: [SECURITY.md](SECURITY.md). Discussions: https://github.com/homayoun-safarpour/agent-constraint-auditor/discussions
 
 ## Author
 

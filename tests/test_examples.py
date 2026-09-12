@@ -8,6 +8,7 @@ ROOT = Path(__file__).parent.parent
 README = (ROOT / "README.md").read_text(encoding="utf-8")
 EXAMPLES_README = (ROOT / "examples" / "README.md").read_text(encoding="utf-8")
 ADAPTER = (ROOT / "docs" / "ADAPTER.md").read_text(encoding="utf-8")
+CONTRIBUTING = (ROOT / "CONTRIBUTING.md").read_text(encoding="utf-8")
 INTERVIEW = (ROOT / "docs" / "INTERVIEW.md").read_text(encoding="utf-8")
 RELIABILITY = (ROOT / "docs" / "RELIABILITY_CARD.md").read_text(encoding="utf-8")
 DECAYING_JOURNAL = ROOT / "examples" / "decaying" / "journal.md"
@@ -57,6 +58,9 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "line missing `timestamp`" in README
     assert "timestamp-only line is ERROR" in README
     assert "JSONL object missing timestamp" in README
+    assert "dated journal heading" in README
+    assert "no body text or fields" in README
+    assert "dated journal heading with no body" in README
     assert "JSONL object missing text and fields" in README
     assert "invalid or empty JSONL" in README
     assert "parse-transcript PATH [--format jsonl|journal|auto]" in README
@@ -66,6 +70,7 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "CONTRIBUTING.md" in README
     assert "SECURITY.md" in README
     assert "agent-constraint-auditor/discussions" in README
+    assert "empty-bodied dated events" in CONTRIBUTING
     assert "actions/workflows/ci.yml/badge.svg" in README
 
 
@@ -246,6 +251,8 @@ def test_adapter_locks_error_fixture_rows():
     assert "examples/headerless/constraints.yaml" in ADAPTER
     assert "examples/headerless/journal.md" in ADAPTER
     assert "never a free CLEAN" in ADAPTER
+    assert "dated `## YYYY-MM-DD HH:MM` heading with no body" in ADAPTER
+    assert "timestamp-only JSONL object" in ADAPTER
 
 
 def test_adapter_locks_jsonl_fixture_rows():

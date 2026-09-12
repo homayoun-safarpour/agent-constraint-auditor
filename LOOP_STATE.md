@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-07 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-07 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `f166fa2` (2026-09-11, run 34575165277); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 72 passed; `ruff check .` clean (2026-09-12) |
+| 2 | Named claim tests | PASS — `pytest` 76 passed; `ruff check .` clean (2026-09-12) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -78,6 +78,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W47 Homayoun-authored PRs #32 #33 #35; topics + Discussions on; Quickdraw issue #34 (2026-09-11).
 - [x] W48 Homayoun merged-PR count **17** (Pull Shark bronze threshold 16) (2026-09-11)
 - [x] W49 Fail-closed JSONL objects missing timestamp (exit 1) (2026-09-12)
+- [x] W50 Fail-closed dated journal heading with no body (exit 1) (2026-09-12)
 
 ## Build log
 
@@ -111,6 +112,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-11: named tests lock `examples/MATRIX.md` eight expected exits and re-run the live audits.
 - 2026-09-11: JSONL objects with `timestamp` but neither `text` nor `fields` are ERROR (exit 1).
 - 2026-09-12: JSONL objects missing a non-empty string `timestamp` are ERROR (exit 1).
+- 2026-09-12: dated journal heading with no body text or fields is ERROR (exit 1), same as timestamp-only JSONL.
 
 ## SUNDAY CLOSE (2026-09-06)
 
@@ -165,20 +167,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-11 daily: W46 shipped `--version` and CONTRIBUTING.md. Next: W47 more Homayoun-authored merges for Pull Shark.
 - 2026-09-11 daily: W47 PRs #32/#33/#35 merged (Homayoun count 10). Discussions on; issue #34 closed. Next: W48 toward Pull Shark bronze 16.
 - 2026-09-12 daily: W49 shipped; JSONL missing / blank / non-string `timestamp` is ERROR exit 1 (`missing timestamp`). Next: W44 Sunday usefulness gate.
-
-## NEXT TICK (daily 2026-09-11)
-
-- W48 done: Homayoun-authored merged PRs **17**. Refresh https://github.com/homayoun-safarpour?tab=achievements for Quickdraw + Pull Shark (bronze at 16).
-- W44 remains Sunday 2026-09-13 usefulness gate (not this session).
-
-## NEXT TICK (heartbeat 2026-09-11)
-
-- W44: Sunday 2026-09-13 usefulness gate stays on the calendar.
-- Verify: Actions 3.10/3.11/3.12 green on HEAD
+- 2026-09-12 daily: W50 shipped; dated `##` heading with no body is ERROR exit 1 (`needs text and/or fields`). Next: W44 Sunday usefulness gate.
 
 ## NEXT TICK (daily 2026-09-12)
 
-- W44: Sunday 2026-09-13 usefulness gate (CI 3.10/3.11/3.12 + eight MATRIX exits + claim check).
-- Why next: W49 locked missing-timestamp JSONL as ERROR; Sunday is the scheduled usefulness close.
-- Verify: Actions green on HEAD; `python3 -m pytest -q && python3 -m ruff check .`; eight MATRIX audits exit 0/2/0/2/1/1/0/2.
+- W44: Sunday 2026-09-13 usefulness gate (CI + eight MATRIX exits + claim check).
+- Why: W49 and W50 locked fail-closed ERROR paths; Sunday is the scheduled usefulness close.
+- Verify: Actions 3.10/3.11/3.12 green on HEAD; `python3 -m pytest -q && python3 -m ruff check .`; eight MATRIX audits 0/2/0/2/1/1/0/2; README claim check.
 

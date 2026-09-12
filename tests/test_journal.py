@@ -88,5 +88,28 @@ def test_parse_jsonl_whitespace_text_without_fields_is_transcript_error(tmp_path
         parse_jsonl_transcript(path)
 
 
+def test_parse_loop_engine_journal_empty_bodied_event_is_error(tmp_path):
+    path = tmp_path / "empty-body.md"
+    path.write_text("## 2026-08-11 09:00\n\n", encoding="utf-8")
+    with pytest.raises(TranscriptError, match="needs text and/or fields"):
+        parse_loop_engine_journal(path)
+
+
+def test_parse_loop_engine_journal_empty_bodied_event_among_valid_is_error(tmp_path):
+    path = tmp_path / "mixed.md"
+    path.write_text(
+        (
+            "## 2026-08-11 09:00\n"
+            "- gates: lint=PASS\n"
+            "\n"
+            "## 2026-08-11 10:00\n"
+            "\n"
+        ),
+        encoding="utf-8",
+    )
+    with pytest.raises(TranscriptError, match="2026-08-11 10:00"):
+        parse_loop_engine_journal(path)
+
+
 def test_detect_format_keeps_dated_journal():
     assert detect_format(ROOT / "examples" / "stable" / "journal.md") == "journal"

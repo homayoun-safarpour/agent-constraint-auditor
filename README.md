@@ -84,7 +84,7 @@ constraint-auditor audit \
 
 Each YAML rule is a regex over a journal event. `forbid: true` (default) treats a match as decay. `forbid: false` treats a missing required pattern as decay (exit `2`). Invalid regex is a spec error (exit `1`).
 
-`--format jsonl` (or auto-detect when the first non-empty line starts with `{`) reads one JSON object per line. Each object needs a non-empty string `timestamp` plus `text` and/or `fields`. A line missing `timestamp` (blank or non-string) is ERROR (exit `1`). A timestamp-only line is ERROR (exit `1`). Invalid or empty JSONL is ERROR (exit `1`). `audit` and `parse-transcript` both accept `--format jsonl|journal|auto`.
+`--format jsonl` (or auto-detect when the first non-empty line starts with `{`) reads one JSON object per line. Each object needs a non-empty string `timestamp` plus `text` and/or `fields`. A line missing `timestamp` (blank or non-string) is ERROR (exit `1`). A timestamp-only line is ERROR (exit `1`). Invalid or empty JSONL is ERROR (exit `1`). A dated journal heading (`## YYYY-MM-DD HH:MM`) with no body text or fields is ERROR (exit `1`), same as a timestamp-only JSONL object. `audit` and `parse-transcript` both accept `--format jsonl|journal|auto`.
 
 ## Exit codes
 
@@ -92,7 +92,7 @@ Each YAML rule is a regex over a journal event. `forbid: true` (default) treats 
 | --- | --- | --- |
 | `0` | CLEAN | No constraint decay |
 | `2` | DECAY | One or more constraints violated |
-| `1` | ERROR | Bad args / missing files / invalid spec / invalid regex / empty or headerless transcript / invalid or empty JSONL / JSONL object missing timestamp / JSONL object missing text and fields |
+| `1` | ERROR | Bad args / missing files / invalid spec / invalid regex / empty or headerless transcript / dated journal heading with no body / invalid or empty JSONL / JSONL object missing timestamp / JSONL object missing text and fields |
 
 `parse-transcript PATH [--format jsonl|journal|auto]` dry-runs the parser. Empty or headerless input exits `1` (ERROR), not `OK: 0 events`.
 

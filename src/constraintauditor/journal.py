@@ -77,6 +77,8 @@ def parse_loop_engine_journal(path: str | Path) -> list[JournalEvent]:
         if current_ts is None:
             return
         text = "\n".join(blob).strip()
+        if not text and not fields:
+            raise TranscriptError(f"journal event {current_ts} needs text and/or fields")
         events.append(JournalEvent(timestamp=current_ts, text=text, fields=dict(fields)))
         current_ts = None
         fields = {}

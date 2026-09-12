@@ -358,6 +358,35 @@ def test_parse_transcript_jsonl_missing_timestamp_exit_1(tmp_path, capsys):
     assert "OK:" not in captured.out
 
 
+def test_audit_empty_bodied_journal_event_exit_1(tmp_path, capsys):
+    journal = tmp_path / "empty-body.md"
+    journal.write_text("## 2026-08-11 09:00\n\n", encoding="utf-8")
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            str(ROOT / "examples" / "stable" / "constraints.yaml"),
+            "--transcript",
+            str(journal),
+        ]
+    )
+    assert code == 1
+    captured = capsys.readouterr()
+    assert "needs text and/or fields" in captured.err
+    assert "CLEAN" not in captured.err
+    assert "OK:" not in captured.out
+
+
+def test_parse_transcript_empty_bodied_journal_event_exit_1(tmp_path, capsys):
+    journal = tmp_path / "empty-body.md"
+    journal.write_text("## 2026-08-11 09:00\n\n", encoding="utf-8")
+    code = main(["parse-transcript", str(journal)])
+    assert code == 1
+    captured = capsys.readouterr()
+    assert "needs text and/or fields" in captured.err
+    assert "OK:" not in captured.out
+
+
 def test_audit_json_output_schema(capsys):
     code = main(
         [

@@ -174,10 +174,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-12 daily: W51 shipped; README H1 is `constraint-auditor` (slug unchanged); pip + one CLEAN audit sit above the long Quickstart.
 - 2026-09-12 daily: W52 Sunday-prep; MATRIX 0/2/0/2/1/1/0/2; pytest 77; ruff clean. GitHub profile badges are not week policy. Next: W44 Sunday usefulness gate.
 - 2026-09-12 daily: W54 README first screen matches the 100-repo craft (H1, one clause, pip, audit + CLEAN output). Interview/docs sit after that.
+- 2026-09-12 evening: CI green on `3021090` (Actions 34708833579); W52/W54 on main. HOLD. Next tick: W44 Sun 2026-09-13 usefulness gate.
 
 ## NEXT TICK (daily 2026-09-12)
 
 - W44: Sunday 2026-09-13 usefulness gate (CI + eight MATRIX exits + claim check).
 - Why: Saturday-prep already re-ran the eight exits. README first screen now matches the measured craft.
 - Verify: Actions 3.10/3.11/3.12 green on HEAD; `python -m pytest -q && python -m ruff check .`; eight MATRIX audits 0/2/0/2/1/1/0/2; README first screen still has pip + one CLEAN audit before Interview pack.
+
+## NEXT TICK (evening 2026-09-12)
+
+- W44: Sun 2026-09-13 usefulness gate (CI + eight MATRIX exits + claim check)
+- Why: evening gates green on `3021090` (CI run 34708833579); Saturday-prep (W52) and README craft (W54) already on main. Week graph holds product work through Saturday — Daily runs the calendar Sunday close, not new scope.
+- Verify: Actions 3.10/3.11/3.12 green on HEAD; `python -m pytest -q` ; `python -m ruff check .` ; eight MATRIX exits in `examples/MATRIX.md` still 0/2/0/2/1/1/0/2 ; Sunday checklist in LOOP_STATE `## BENCHMARK GATE` + `examples/MATRIX.md`
 

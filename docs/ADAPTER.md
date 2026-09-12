@@ -61,7 +61,7 @@ constraint-auditor audit \
 # expect exit 2 DECAY; report opens with Verdict: DECAY
 ```
 
-Use forbid rules for "never do X". Use required rules for "every event must still show Y" (for example `lint=PASS`). Empty or headerless journals must fail closed as exit `1`, never a free CLEAN. JSONL fixtures under `examples/jsonl_stable` and `examples/jsonl_decaying` lock the same polarities for `--format jsonl`. A JSONL object with `timestamp` but neither `text` nor `fields` is ERROR (exit `1`), not CLEAN.
+Use forbid rules for "never do X". Use required rules for "every event must still show Y" (for example `lint=PASS`). Empty or headerless journals must fail closed as exit `1`, never a free CLEAN. JSONL fixtures under `examples/jsonl_stable` and `examples/jsonl_decaying` lock the same polarities for `--format jsonl`. A JSONL object without a non-empty string `timestamp` is ERROR (exit `1`). A JSONL object with `timestamp` but neither `text` nor `fields` is ERROR (exit `1`), not CLEAN.
 
 ## What this does not do
 

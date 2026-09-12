@@ -326,6 +326,38 @@ def test_parse_transcript_jsonl_timestamp_only_exit_1(tmp_path, capsys):
     assert "OK:" not in captured.out
 
 
+def test_audit_jsonl_missing_timestamp_exit_1(tmp_path, capsys):
+    constraints = str(ROOT / "examples" / "stable" / "constraints.yaml")
+    path = tmp_path / "no-timestamp.jsonl"
+    path.write_text('{"text": "- gates: lint=PASS"}\n', encoding="utf-8")
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            constraints,
+            "--transcript",
+            str(path),
+            "--format",
+            "jsonl",
+        ]
+    )
+    assert code == 1
+    captured = capsys.readouterr()
+    assert "missing timestamp" in captured.err
+    assert "CLEAN" not in captured.err
+    assert "OK:" not in captured.out
+
+
+def test_parse_transcript_jsonl_missing_timestamp_exit_1(tmp_path, capsys):
+    path = tmp_path / "no-timestamp.jsonl"
+    path.write_text('{"text": "- gates: lint=PASS"}\n', encoding="utf-8")
+    code = main(["parse-transcript", str(path), "--format", "jsonl"])
+    assert code == 1
+    captured = capsys.readouterr()
+    assert "missing timestamp" in captured.err
+    assert "OK:" not in captured.out
+
+
 def test_audit_json_output_schema(capsys):
     code = main(
         [

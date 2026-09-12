@@ -56,6 +56,24 @@ def test_parse_jsonl_timestamp_only_is_transcript_error(tmp_path):
         parse_jsonl_transcript(path)
 
 
+def test_parse_jsonl_missing_timestamp_is_transcript_error(tmp_path):
+    path = tmp_path / "events.jsonl"
+    path.write_text('{"text": "- gates: lint=PASS"}\n', encoding="utf-8")
+    with pytest.raises(TranscriptError, match="missing timestamp"):
+        parse_jsonl_transcript(path)
+
+
+def test_parse_jsonl_blank_or_non_string_timestamp_is_transcript_error(tmp_path):
+    blank = tmp_path / "blank.jsonl"
+    blank.write_text('{"timestamp": "   ", "text": "- gates: lint=PASS"}\n', encoding="utf-8")
+    with pytest.raises(TranscriptError, match="missing timestamp"):
+        parse_jsonl_transcript(blank)
+    numeric = tmp_path / "numeric.jsonl"
+    numeric.write_text('{"timestamp": 1757664000, "text": "- gates: lint=PASS"}\n', encoding="utf-8")
+    with pytest.raises(TranscriptError, match="missing timestamp"):
+        parse_jsonl_transcript(numeric)
+
+
 def test_parse_jsonl_empty_fields_without_text_is_transcript_error(tmp_path):
     path = tmp_path / "events.jsonl"
     path.write_text('{"timestamp": "2026-08-11 09:00", "fields": {}}\n', encoding="utf-8")

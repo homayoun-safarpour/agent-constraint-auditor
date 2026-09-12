@@ -35,6 +35,20 @@ def test_readme_spoken_h1_is_constraint_auditor():
     assert "agent-constraint-auditor" in README
 
 
+def test_readme_first_screen_matches_top100_craft():
+    pip_at = README.find("pip install")
+    interview_at = README.find("Interview pack")
+    contracts_at = README.find("## Use this when")
+    assert 0 <= pip_at < interview_at
+    assert 0 <= pip_at < contracts_at
+    head = "\n".join(README.splitlines()[:22])
+    assert "# constraint-auditor" in head
+    assert "pip install -e" in head
+    assert "constraint-auditor audit" in head
+    assert "verdict=CLEAN exit=0" in head
+    assert "Interview pack" not in head
+
+
 def test_readme_links_examples_matrix():
     assert "examples/MATRIX.md" in README
 

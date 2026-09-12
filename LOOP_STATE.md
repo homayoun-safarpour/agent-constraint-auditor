@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-07 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-07 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `f166fa2` (2026-09-11, run 34575165277); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 77 passed; `ruff check .` clean (2026-09-12 Saturday-prep) |
+| 2 | Named claim tests | PASS — `pytest` 78 passed; `ruff check .` clean (2026-09-12 README craft) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -81,6 +81,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W50 Fail-closed dated journal heading with no body (exit 1) (2026-09-12)
 - [x] W51 Spoken README H1 `constraint-auditor`; install+one command before the long Quickstart (2026-09-12)
 - [x] W52 Sat 2026-09-12 Sunday-prep: MATRIX 0/2/0/2/1/1/0/2; pytest 77; ruff clean. GitHub profile badges are not week policy.
+- [x] W54 README first screen follows public-readme-craft (uv order: H1, one clause, pip, one command + output)
 
 ## Build log
 
@@ -172,10 +173,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-12 daily: W50 shipped; dated `##` heading with no body is ERROR exit 1 (`needs text and/or fields`). Next: W44 Sunday usefulness gate.
 - 2026-09-12 daily: W51 shipped; README H1 is `constraint-auditor` (slug unchanged); pip + one CLEAN audit sit above the long Quickstart.
 - 2026-09-12 daily: W52 Sunday-prep; MATRIX 0/2/0/2/1/1/0/2; pytest 77; ruff clean. GitHub profile badges are not week policy. Next: W44 Sunday usefulness gate.
+- 2026-09-12 daily: W54 README first screen matches the 100-repo craft (H1, one clause, pip, audit + CLEAN output). Interview/docs sit after that.
 
 ## NEXT TICK (daily 2026-09-12)
 
 - W44: Sunday 2026-09-13 usefulness gate (CI + eight MATRIX exits + claim check).
-- Why: Saturday-prep already re-ran the eight exits. The week closes on usefulness, not on profile badges.
-- Verify: Actions 3.10/3.11/3.12 green on HEAD; `python -m pytest -q && python -m ruff check .`; eight MATRIX audits 0/2/0/2/1/1/0/2; README claim check.
+- Why: Saturday-prep already re-ran the eight exits. README first screen now matches the measured craft.
+- Verify: Actions 3.10/3.11/3.12 green on HEAD; `python -m pytest -q && python -m ruff check .`; eight MATRIX audits 0/2/0/2/1/1/0/2; README first screen still has pip + one CLEAN audit before Interview pack.
 

@@ -135,11 +135,7 @@ Week opened Mon 2026-09-07. Usefulness gate re-run on `ef1a532` (HEAD = origin/m
 
 ### LinkedIn draft (field pain first; no employer demand)
 
-1. Long-horizon agent loops can drop the rules you wrote down and still look busy - the transcript has no fail-closed check.
-2. I keep a narrow public CLI that audits *your* journal or JSONL events against *your* YAML constraint spec (regex/predicate, not an LLM judge).
-3. Exit contract: `0` CLEAN, `2` DECAY, `1` ERROR. Empty, headerless, timestamp-only JSONL, missing JSONL timestamp, or a dated heading with no body is ERROR, not a free CLEAN.
-4. This week locked those fail-closed paths, named `--report` slope 2.000 on both decaying fixtures, and kept the eight-fixture MATRIX (markdown + JSONL polarities).
-5. Fork path: README first screen (pip + one CLEAN audit) + `examples/MATRIX.md` (eight worked exits), `pip install -e ".[dev]"`, under 30 minutes.
+Angle: **golden set → frozen floor → CI exit 0/2.** Ragas/DeepEval/Anthropic are the field front of that chain; this repo is the last arrow (eight golden fixtures, MATRIX 0/2/0/2/1/1/0/2). Full paste: `docs/LINKEDIN_DRAFT.md`. Not a Ragas wrapper. Not a new repo this week.
 
 ## SUNDAY CLOSE (2026-09-06)
 
@@ -200,10 +196,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-12 daily: W54 README first screen matches the 100-repo craft (H1, one clause, pip, audit + CLEAN output). Interview/docs sit after that.
 - 2026-09-13 sunday: W44 usefulness gate re-verified on tip `ef1a532` (CI run 34745810671, ruff + 78 pytest, MATRIX 0/2/0/2/1/1/0/2; decaying `--report` still 3 violations, first_index=2, slope=2.000). Claim holds. Next tick: W55 Monday week retarget 2026-09-14.
 - 2026-09-13 daily: W56 shipped; named tests lock decaying + jsonl_decaying slope 2.000 and 3 violations. Next tick: W55 Monday week retarget 2026-09-14.
+- 2026-09-13 sunday: LinkedIn/blog angle set to golden set → frozen floor → CI exit (Ragas/DeepEval/Anthropic as field front; this repo is the last arrow). Paste in `docs/LINKEDIN_DRAFT.md`. No new repo.
 
 ## NEXT TICK (sunday 2026-09-13)
 
 - W55: Mon 2026-09-14 week retarget (LOOP_STATE header + BENCHMARK GATE week date).
-- Why: Sunday usefulness gate closed week 2026-09-07 on `ef1a532`; the next calendar step is the Monday retarget before new production work.
+- Why: Sunday usefulness gate closed week 2026-09-07 on `ef1a532`; LinkedIn paste is the golden-set sentence. Monday retarget before new production work.
 - Verify: header and BENCHMARK GATE week line read 2026-09-14; `python -m pytest -q && python -m ruff check .` still green.
 

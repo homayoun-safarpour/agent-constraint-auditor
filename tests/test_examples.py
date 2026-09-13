@@ -251,11 +251,13 @@ def test_jsonl_decaying_fixture_locks_report(tmp_path, capsys):
     assert data["verdict"] == "DECAY"
     assert data["decay"]["n_violations"] == 3
     assert data["decay"]["first_violation_index"] == 2
+    assert data["decay"]["decay_slope"] == 2.0
     assert {v["constraint_id"] for v in data["violations"]} == {"never_skip_lint", "no_force_push"}
     text = report.read_text(encoding="utf-8")
     assert text.startswith("# Constraint decay report: jsonl-decaying-agent")
     assert "Verdict: DECAY" in text
     assert "The transcript records 3 constraint violations, first at event 2." in text
+    assert "Decay slope (Q4-Q1 rate): 2.000" in text
     assert "`never_skip_lint`" in text
     assert "`no_force_push`" in text
 
@@ -504,12 +506,15 @@ def test_decaying_fixture_locks_force_push_line(tmp_path, capsys):
     )
     assert code == 2
     data = json.loads(capsys.readouterr().out)
+    assert data["decay"]["n_violations"] == 3
     assert data["decay"]["first_violation_index"] == 2
+    assert data["decay"]["decay_slope"] == 2.0
     ids = {v["constraint_id"] for v in data["violations"]}
     assert ids == {"never_skip_lint", "no_force_push"}
     text = report.read_text(encoding="utf-8")
     assert "Verdict: DECAY" in text
     assert "The transcript records 3 constraint violations, first at event 2." in text
+    assert "Decay slope (Q4-Q1 rate): 2.000" in text
     assert "`never_skip_lint`" in text
     assert "`no_force_push`" in text
 

@@ -83,6 +83,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W52 Sat 2026-09-12 Sunday-prep: MATRIX 0/2/0/2/1/1/0/2; pytest 77; ruff clean. GitHub profile badges are not week policy.
 - [x] W54 README first screen follows public-readme-craft (uv order: H1, one clause, pip, one command + output)
 - [ ] W55 Mon 2026-09-14 week retarget (LOOP_STATE header + BENCHMARK GATE week date)
+- [x] W56 Named test locks decaying + jsonl_decaying slope 2.000 (2026-09-13)
 
 ## Build log
 
@@ -118,6 +119,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-12: JSONL objects missing a non-empty string `timestamp` are ERROR (exit 1).
 - 2026-09-12: dated journal heading with no body text or fields is ERROR (exit 1), same as timestamp-only JSONL.
 - 2026-09-13: Sunday usefulness gate green on `3021090` (CI run 34708833579, ruff + 78 pytest, MATRIX 0/2/0/2/1/1/0/2).
+- 2026-09-13: named tests lock decaying and jsonl_decaying `--report` slope 2.000 (`n_violations == 3`).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -197,6 +199,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-12 daily: W52 Sunday-prep; MATRIX 0/2/0/2/1/1/0/2; pytest 77; ruff clean. GitHub profile badges are not week policy. Next: W44 Sunday usefulness gate.
 - 2026-09-12 daily: W54 README first screen matches the 100-repo craft (H1, one clause, pip, audit + CLEAN output). Interview/docs sit after that.
 - 2026-09-13 sunday: W44 usefulness gate green (CI `3021090` run 34708833579, ruff + 78 pytest, MATRIX 0/2/0/2/1/1/0/2). Claim holds. Next tick: W55 Monday week retarget 2026-09-14.
+- 2026-09-13 daily: W56 shipped; named tests lock decaying + jsonl_decaying slope 2.000 and 3 violations. Next tick: W55 Monday week retarget 2026-09-14.
 
 ## NEXT TICK (daily 2026-09-13)
 

@@ -11,7 +11,7 @@ Week: opened Mon 2026-09-07 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-13 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `3021090` (2026-09-13, run 34708833579); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `ef1a532` (2026-09-13, run 34745810671); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 78 passed; `ruff check .` clean (2026-09-13 Sunday gate) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -118,16 +118,16 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-11: JSONL objects with `timestamp` but neither `text` nor `fields` are ERROR (exit 1).
 - 2026-09-12: JSONL objects missing a non-empty string `timestamp` are ERROR (exit 1).
 - 2026-09-12: dated journal heading with no body text or fields is ERROR (exit 1), same as timestamp-only JSONL.
-- 2026-09-13: Sunday usefulness gate green on `3021090` (CI run 34708833579, ruff + 78 pytest, MATRIX 0/2/0/2/1/1/0/2).
+- 2026-09-13: Sunday usefulness gate green on `ef1a532` (CI run 34745810671, ruff + 78 pytest, MATRIX 0/2/0/2/1/1/0/2).
 - 2026-09-13: named tests lock decaying and jsonl_decaying `--report` slope 2.000 (`n_violations == 3`).
 
 ## SUNDAY CLOSE (2026-09-13)
 
-Week opened Mon 2026-09-07. Usefulness gate re-run on `3021090` (HEAD = origin/main).
+Week opened Mon 2026-09-07. Usefulness gate re-run on `ef1a532` (HEAD = origin/main after W56 slope lock).
 
 | Signal | Result |
 | --- | --- |
-| CI status | PASS — Actions success 3.10 / 3.11 / 3.12 on `3021090` ([run 34708833579](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/34708833579)) |
+| CI status | PASS — Actions success 3.10 / 3.11 / 3.12 on `ef1a532` ([run 34745810671](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/34745810671)) |
 | Local gate | PASS — `ruff check .` clean; `pytest` 78 passed |
 | Claim still true? | YES — YAML spec + loop-engine journal or JSONL → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000 |
 | Example still runnable? | YES — MATRIX 0/2/0/2/1/1/0/2 (stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying); `--report` still opens `Verdict: CLEAN\|DECAY` |
@@ -138,7 +138,7 @@ Week opened Mon 2026-09-07. Usefulness gate re-run on `3021090` (HEAD = origin/m
 1. Long-horizon agent loops can drop the rules you wrote down and still look busy - the transcript has no fail-closed check.
 2. I keep a narrow public CLI that audits *your* journal or JSONL events against *your* YAML constraint spec (regex/predicate, not an LLM judge).
 3. Exit contract: `0` CLEAN, `2` DECAY, `1` ERROR. Empty, headerless, timestamp-only JSONL, missing JSONL timestamp, or a dated heading with no body is ERROR, not a free CLEAN.
-4. This week locked those fail-closed paths and kept the eight-fixture MATRIX (markdown + JSONL polarities) with named `--report` verdicts.
+4. This week locked those fail-closed paths, named `--report` slope 2.000 on both decaying fixtures, and kept the eight-fixture MATRIX (markdown + JSONL polarities).
 5. Fork path: README first screen (pip + one CLEAN audit) + `examples/MATRIX.md` (eight worked exits), `pip install -e ".[dev]"`, under 30 minutes.
 
 ## SUNDAY CLOSE (2026-09-06)
@@ -198,12 +198,12 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-12 daily: W51 shipped; README H1 is `constraint-auditor` (slug unchanged); pip + one CLEAN audit sit above the long Quickstart.
 - 2026-09-12 daily: W52 Sunday-prep; MATRIX 0/2/0/2/1/1/0/2; pytest 77; ruff clean. GitHub profile badges are not week policy. Next: W44 Sunday usefulness gate.
 - 2026-09-12 daily: W54 README first screen matches the 100-repo craft (H1, one clause, pip, audit + CLEAN output). Interview/docs sit after that.
-- 2026-09-13 sunday: W44 usefulness gate green (CI `3021090` run 34708833579, ruff + 78 pytest, MATRIX 0/2/0/2/1/1/0/2). Claim holds. Next tick: W55 Monday week retarget 2026-09-14.
+- 2026-09-13 sunday: W44 usefulness gate re-verified on tip `ef1a532` (CI run 34745810671, ruff + 78 pytest, MATRIX 0/2/0/2/1/1/0/2; decaying `--report` still 3 violations, first_index=2, slope=2.000). Claim holds. Next tick: W55 Monday week retarget 2026-09-14.
 - 2026-09-13 daily: W56 shipped; named tests lock decaying + jsonl_decaying slope 2.000 and 3 violations. Next tick: W55 Monday week retarget 2026-09-14.
 
-## NEXT TICK (daily 2026-09-13)
+## NEXT TICK (sunday 2026-09-13)
 
 - W55: Mon 2026-09-14 week retarget (LOOP_STATE header + BENCHMARK GATE week date).
-- Why: Sunday usefulness gate closed week 2026-09-07; the next calendar step is the Monday retarget before new production work.
+- Why: Sunday usefulness gate closed week 2026-09-07 on `ef1a532`; the next calendar step is the Monday retarget before new production work.
 - Verify: header and BENCHMARK GATE week line read 2026-09-14; `python -m pytest -q && python -m ruff check .` still green.
 

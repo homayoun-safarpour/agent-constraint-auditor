@@ -1,39 +1,24 @@
-# Daily learning  -  2026-09-02
+# Daily learning — 2026-09-13
 
-**Skill.** `forbid: false` is a required regex: every journal event must match. Miss = violation (`required pattern missing`). Default `forbid: true` is the inverse: a match is a violation (`forbid pattern matched`).
+**Skill.** Sunday usefulness gate is a replayable eight-exit claim: `0/2/0/2/1/1/0/2`. `run_audit` returns only CLEAN `0` or DECAY `2`. Exit `1` is never an `AuditResult` — the CLI maps `SpecError` / `TranscriptError` / `OSError` / missing path to ERROR.
 
-**Why.** Named tests lock both polarities. Public fixtures: `examples/stable` / `examples/decaying` (`forbid: true`) and `examples/required_present` / `examples/required_missing` (`forbid: false`). Hire signal: deterministic decay gate over a declared spec  -  not an LLM judge.
+**Why.** Hire signal: a reviewer forks, runs `examples/MATRIX.md`, and gets those exits. Named tests lock the table *and* the live audits. No employer-demand claim — a deterministic gate over this repo's fixtures.
 
-**Worked example** (this repo). Stable fixture is CLEAN: no event contains `lint=FAIL` or `git push --force`.
+**Worked example** (this repo).
 
 ```bash
-constraint-auditor audit \
-  --constraints examples/stable/constraints.yaml \
-  --transcript examples/stable/journal.md
+constraint-auditor audit --constraints examples/stable/constraints.yaml --transcript examples/stable/journal.md
 # verdict=CLEAN exit=0
+constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md
+# verdict=DECAY exit=2
+constraint-auditor audit --constraints examples/empty/constraints.yaml --transcript examples/empty/journal.md
+# ERROR: transcript contains no parseable events  →  process exit 1
 ```
 
-Polarity lives in `check_event` (`src/constraintauditor/checkers.py`):
+`run_audit` (`src/constraintauditor/audit.py`): successful parse, then `violations` → DECAY/2 else CLEAN/0. Empty `examples/empty/journal.md` raises `TranscriptError` before that dataclass is built. `test_examples_matrix_live_exits_match_table` re-runs all eight.
 
-```python
-if constraint.forbid and matched:            # banned string appeared
-if (not constraint.forbid) and not matched:  # required string absent
-```
+**Recall probe.** Does `run_audit("examples/empty/constraints.yaml", "examples/empty/journal.md")` return `AuditResult(verdict="ERROR", exit_code=1)`?
 
-YAML may omit `forbid`; `Constraint` defaults it to `True` (`src/constraintauditor/spec.py`). Required-pattern lock:
+Answer: No. It raises `TranscriptError`. Only `main(["audit", ...])` returns `1`. MATRIX `empty/` **1** ERROR is the CLI contract, not an AuditResult variant.
 
-```python
-from constraintauditor.checkers import check_transcript
-from constraintauditor.journal import JournalEvent
-from constraintauditor.spec import Constraint, ConstraintSpec
-
-spec = ConstraintSpec("t", (Constraint("must_log_gates", "", r"gates:", forbid=False),))
-events = [JournalEvent("2026-09-02 07:00", "- decision: advance", {})]
-assert check_transcript(spec, events)[0].detail.startswith("required pattern missing")
-```
-
-**Recall probe.** Event text is `- gates: tests=PASS` (no lint line). Spec: `pattern: "lint="`, `forbid: false`. CLEAN or DECAY? Is the check over the whole transcript or per event?
-
-Answer: DECAY  -  required pattern missing on that event. `check_transcript` multiplies constraints × events; a required pattern must hit *every* event, not once somewhere.
-
-**Retrieve.** `src/constraintauditor/checkers.py` · `spec.py` · `tests/test_checkers.py` · `LOOP_STATE.md` NEXT TICK · `docs/INTERVIEW.md`
+**Retrieve.** `examples/MATRIX.md` · `src/constraintauditor/audit.py` · `cli.py` · `tests/test_examples.py` (`MATRIX_EXIT_ROWS`) · `LOOP_STATE.md` W44

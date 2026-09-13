@@ -4,8 +4,8 @@ Field pain first. No employer demand language. No unpublished research.
 
 1. Long-horizon agent loops can drop the rules you wrote down and still look busy - the transcript has no fail-closed check.
 2. I keep a narrow public CLI that audits *your* journal or JSONL events against *your* YAML constraint spec (regex/predicate, not an LLM judge).
-3. Exit contract: `0` CLEAN, `2` DECAY, `1` ERROR. Empty, headerless, or empty JSONL is ERROR, not a free CLEAN.
-4. This week locked markdown and JSONL polarities in fixtures (stable/decaying + jsonl_stable/jsonl_decaying) with named `--report` verdicts.
-5. Fork path: README Quickstart + `examples/MATRIX.md` (eight worked exits), `pip install -e ".[dev]"`, under 30 minutes.
+3. Exit contract: `0` CLEAN, `2` DECAY, `1` ERROR. Empty, headerless, timestamp-only JSONL, missing JSONL timestamp, or a dated heading with no body is ERROR, not a free CLEAN.
+4. This week locked those fail-closed paths and kept the eight-fixture MATRIX (markdown + JSONL polarities) with named `--report` verdicts.
+5. Fork path: README first screen (pip + one CLEAN audit) + `examples/MATRIX.md` (eight worked exits), `pip install -e ".[dev]"`, under 30 minutes.
 
 Repo: https://github.com/homayoun-safarpour/agent-constraint-auditor

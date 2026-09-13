@@ -9,10 +9,10 @@ Week: opened Mon 2026-09-07 · repo: agent-constraint-auditor
 
 ### A. Our benchmarks (always)
 
-| # | Check | Status 2026-09-07 |
+| # | Check | Status 2026-09-13 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `f166fa2` (2026-09-11, run 34575165277); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 78 passed; `ruff check .` clean (2026-09-12 README craft) |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `3021090` (2026-09-13, run 34708833579); first public green `0a916b2` |
+| 2 | Named claim tests | PASS — `pytest` 78 passed; `ruff check .` clean (2026-09-13 Sunday gate) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -72,7 +72,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W41 Close stranded cursor/* draft PRs (2026-09-10)
 - [x] W42 BENCHMARK GATE pytest count bumped to 61 (2026-09-10)
 - [x] W43 Fri hold: named test locks `examples/MATRIX.md` exit rows (2026-09-11)
-- [ ] W44 Sun 2026-09-13 usefulness gate (CI + eight MATRIX exits + claim check)
+- [x] W44 Sun 2026-09-13 usefulness gate (CI + eight MATRIX exits + claim check) (2026-09-13)
 - [x] W45 Fail-closed JSONL objects missing text and/or fields (exit 1) (2026-09-11)
 - [x] W46 CLI `--version` + CONTRIBUTING.md (2026-09-11)
 - [x] W47 Homayoun-authored PRs #32 #33 #35; topics + Discussions on; Quickdraw issue #34 (2026-09-11).
@@ -82,6 +82,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W51 Spoken README H1 `constraint-auditor`; install+one command before the long Quickstart (2026-09-12)
 - [x] W52 Sat 2026-09-12 Sunday-prep: MATRIX 0/2/0/2/1/1/0/2; pytest 77; ruff clean. GitHub profile badges are not week policy.
 - [x] W54 README first screen follows public-readme-craft (uv order: H1, one clause, pip, one command + output)
+- [ ] W55 Mon 2026-09-14 week retarget (LOOP_STATE header + BENCHMARK GATE week date)
 
 ## Build log
 
@@ -116,6 +117,27 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-11: JSONL objects with `timestamp` but neither `text` nor `fields` are ERROR (exit 1).
 - 2026-09-12: JSONL objects missing a non-empty string `timestamp` are ERROR (exit 1).
 - 2026-09-12: dated journal heading with no body text or fields is ERROR (exit 1), same as timestamp-only JSONL.
+- 2026-09-13: Sunday usefulness gate green on `3021090` (CI run 34708833579, ruff + 78 pytest, MATRIX 0/2/0/2/1/1/0/2).
+
+## SUNDAY CLOSE (2026-09-13)
+
+Week opened Mon 2026-09-07. Usefulness gate re-run on `3021090` (HEAD = origin/main).
+
+| Signal | Result |
+| --- | --- |
+| CI status | PASS — Actions success 3.10 / 3.11 / 3.12 on `3021090` ([run 34708833579](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/34708833579)) |
+| Local gate | PASS — `ruff check .` clean; `pytest` 78 passed |
+| Claim still true? | YES — YAML spec + loop-engine journal or JSONL → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000 |
+| Example still runnable? | YES — MATRIX 0/2/0/2/1/1/0/2 (stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying); `--report` still opens `Verdict: CLEAN\|DECAY` |
+| README first screen | YES — H1 `constraint-auditor`, pip, one CLEAN audit + output before Interview pack |
+
+### LinkedIn draft (field pain first; no employer demand)
+
+1. Long-horizon agent loops can drop the rules you wrote down and still look busy - the transcript has no fail-closed check.
+2. I keep a narrow public CLI that audits *your* journal or JSONL events against *your* YAML constraint spec (regex/predicate, not an LLM judge).
+3. Exit contract: `0` CLEAN, `2` DECAY, `1` ERROR. Empty, headerless, timestamp-only JSONL, missing JSONL timestamp, or a dated heading with no body is ERROR, not a free CLEAN.
+4. This week locked those fail-closed paths and kept the eight-fixture MATRIX (markdown + JSONL polarities) with named `--report` verdicts.
+5. Fork path: README first screen (pip + one CLEAN audit) + `examples/MATRIX.md` (eight worked exits), `pip install -e ".[dev]"`, under 30 minutes.
 
 ## SUNDAY CLOSE (2026-09-06)
 
@@ -174,10 +196,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-12 daily: W51 shipped; README H1 is `constraint-auditor` (slug unchanged); pip + one CLEAN audit sit above the long Quickstart.
 - 2026-09-12 daily: W52 Sunday-prep; MATRIX 0/2/0/2/1/1/0/2; pytest 77; ruff clean. GitHub profile badges are not week policy. Next: W44 Sunday usefulness gate.
 - 2026-09-12 daily: W54 README first screen matches the 100-repo craft (H1, one clause, pip, audit + CLEAN output). Interview/docs sit after that.
+- 2026-09-13 sunday: W44 usefulness gate green (CI `3021090` run 34708833579, ruff + 78 pytest, MATRIX 0/2/0/2/1/1/0/2). Claim holds. Next tick: W55 Monday week retarget 2026-09-14.
 
-## NEXT TICK (daily 2026-09-12)
+## NEXT TICK (daily 2026-09-13)
 
-- W44: Sunday 2026-09-13 usefulness gate (CI + eight MATRIX exits + claim check).
-- Why: Saturday-prep already re-ran the eight exits. README first screen now matches the measured craft.
-- Verify: Actions 3.10/3.11/3.12 green on HEAD; `python -m pytest -q && python -m ruff check .`; eight MATRIX audits 0/2/0/2/1/1/0/2; README first screen still has pip + one CLEAN audit before Interview pack.
+- W55: Mon 2026-09-14 week retarget (LOOP_STATE header + BENCHMARK GATE week date).
+- Why: Sunday usefulness gate closed week 2026-09-07; the next calendar step is the Monday retarget before new production work.
+- Verify: header and BENCHMARK GATE week line read 2026-09-14; `python -m pytest -q && python -m ruff check .` still green.
 

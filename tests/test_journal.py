@@ -74,6 +74,30 @@ def test_parse_jsonl_blank_or_non_string_timestamp_is_transcript_error(tmp_path)
         parse_jsonl_transcript(numeric)
 
 
+def test_parse_jsonl_non_shaped_timestamp_is_transcript_error(tmp_path):
+    yesterday = tmp_path / "yesterday.jsonl"
+    yesterday.write_text(
+        '{"timestamp": "yesterday", "text": "- gates: lint=PASS"}\n',
+        encoding="utf-8",
+    )
+    with pytest.raises(TranscriptError, match="timestamp must be YYYY-MM-DD HH:MM"):
+        parse_jsonl_transcript(yesterday)
+    iso_t = tmp_path / "iso.jsonl"
+    iso_t.write_text(
+        '{"timestamp": "2026-08-11T09:00", "text": "- gates: lint=PASS"}\n',
+        encoding="utf-8",
+    )
+    with pytest.raises(TranscriptError, match="timestamp must be YYYY-MM-DD HH:MM"):
+        parse_jsonl_transcript(iso_t)
+    date_only = tmp_path / "date.jsonl"
+    date_only.write_text(
+        '{"timestamp": "2026-08-11", "text": "- gates: lint=PASS"}\n',
+        encoding="utf-8",
+    )
+    with pytest.raises(TranscriptError, match="timestamp must be YYYY-MM-DD HH:MM"):
+        parse_jsonl_transcript(date_only)
+
+
 def test_parse_jsonl_empty_fields_without_text_is_transcript_error(tmp_path):
     path = tmp_path / "events.jsonl"
     path.write_text('{"timestamp": "2026-08-11 09:00", "fields": {}}\n', encoding="utf-8")

@@ -74,6 +74,9 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "timestamp" in README
     assert "plus `text` and/or `fields`" in README
     assert "non-empty string `timestamp`" in README
+    assert "of shape `YYYY-MM-DD HH:MM`" in README
+    assert "timestamp that is not `YYYY-MM-DD HH:MM`" in README
+    assert "JSONL timestamp not `YYYY-MM-DD HH:MM`" in README
     assert "line missing `timestamp`" in README
     assert "timestamp-only line is ERROR" in README
     assert "JSONL object missing timestamp" in README
@@ -290,6 +293,7 @@ def test_adapter_locks_jsonl_fixture_rows():
     assert "jsonl-decay.md" in ADAPTER
     assert "neither `text` nor `fields` is ERROR" in ADAPTER
     assert "without a non-empty string `timestamp` is ERROR" in ADAPTER
+    assert "that is not `YYYY-MM-DD HH:MM` is ERROR" in ADAPTER
 
 
 def test_interview_locks_jsonl_demo():

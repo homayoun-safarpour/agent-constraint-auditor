@@ -11,8 +11,8 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `cf5e077` (2026-09-13, run 34759577402); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 78 passed; `ruff check .` clean (2026-09-14 Monday retarget) |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `ace7f0a` (2026-09-14, run 34818339165); first public green `0a916b2` |
+| 2 | Named claim tests | PASS — `pytest` 81 passed; `ruff check .` clean (2026-09-14 W57) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -84,7 +84,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W54 README first screen follows public-readme-craft (uv order: H1, one clause, pip, one command + output)
 - [x] W55 Mon 2026-09-14 week retarget (LOOP_STATE header + BENCHMARK GATE week date) (2026-09-14)
 - [x] W56 Named test locks decaying + jsonl_decaying slope 2.000 (2026-09-13)
-- [ ] W57 Fail-closed JSONL timestamps that are not `YYYY-MM-DD HH:MM` (exit 1)
+- [x] W57 Fail-closed JSONL timestamps that are not `YYYY-MM-DD HH:MM` (exit 1) (2026-09-14)
+- [ ] W58 Worked ERROR fixture under `examples/jsonl_bad_timestamp` (exit 1)
 
 ## Build log
 
@@ -122,6 +123,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-13: Sunday usefulness gate green on `ef1a532` (CI run 34745810671, ruff + 78 pytest, MATRIX 0/2/0/2/1/1/0/2).
 - 2026-09-13: named tests lock decaying and jsonl_decaying `--report` slope 2.000 (`n_violations == 3`).
 - 2026-09-14: week retarget Mon 2026-09-14; local gate still 78 pytest + ruff clean on `cf5e077`.
+- 2026-09-14: JSONL timestamps that are not `YYYY-MM-DD HH:MM` are ERROR (exit 1), same shape as journal headings.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -200,10 +202,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-13 daily: W56 shipped; named tests lock decaying + jsonl_decaying slope 2.000 and 3 violations. Next tick: W55 Monday week retarget 2026-09-14.
 - 2026-09-13 sunday: LinkedIn/blog angle set to golden set → frozen floor → CI exit (Ragas/DeepEval/Anthropic as field front; this repo is the last arrow). Paste in `docs/LINKEDIN_DRAFT.md`. No new repo.
 - 2026-09-14 daily: W55 week header and BENCHMARK GATE opened Mon 2026-09-14. Next tick: W57 fail-closed JSONL timestamps that are not `YYYY-MM-DD HH:MM`.
+- 2026-09-14 daily: W57 shipped; JSONL timestamp not `YYYY-MM-DD HH:MM` is ERROR exit 1 (`timestamp must be YYYY-MM-DD HH:MM`). Next tick: W58 worked ERROR fixture.
 
 ## NEXT TICK (daily 2026-09-14)
 
-- W57: Fail-closed JSONL timestamps that are not `YYYY-MM-DD HH:MM` (exit 1).
-- Why: Journal headings already require that shape; JSONL still accepts any non-empty string, so a garbage timestamp can audit CLEAN.
-- Verify: named test that `"timestamp": "yesterday"` is TranscriptError / `audit` + `parse-transcript` exit 1; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W58: Worked ERROR fixture under `examples/jsonl_bad_timestamp` (exit 1).
+- Why: Parser now fail-closes a garbage JSONL timestamp; a public fixture should lock that polarity beside `jsonl_stable` / `jsonl_decaying`.
+- Verify: `constraint-auditor audit --constraints examples/jsonl_bad_timestamp/constraints.yaml --transcript examples/jsonl_bad_timestamp/events.jsonl --format jsonl` and `constraint-auditor parse-transcript --format jsonl examples/jsonl_bad_timestamp/events.jsonl` both exit 1; `python3 -m pytest -q && python3 -m ruff check .` green.
 

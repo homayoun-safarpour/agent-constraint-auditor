@@ -203,10 +203,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-13 sunday: LinkedIn/blog angle set to golden set → frozen floor → CI exit (Ragas/DeepEval/Anthropic as field front; this repo is the last arrow). Paste in `docs/LINKEDIN_DRAFT.md`. No new repo.
 - 2026-09-14 daily: W55 week header and BENCHMARK GATE opened Mon 2026-09-14. Next tick: W57 fail-closed JSONL timestamps that are not `YYYY-MM-DD HH:MM`.
 - 2026-09-14 daily: W57 shipped; JSONL timestamp not `YYYY-MM-DD HH:MM` is ERROR exit 1 (`timestamp must be YYYY-MM-DD HH:MM`). Next tick: W58 worked ERROR fixture.
+- 2026-09-14 heartbeat: OK (W57 matches `3d62f78`; named JSONL timestamp-shape locks; CI green run 34818749033; 81 pytest). ENRICH. Next tick: W58 `examples/jsonl_bad_timestamp` ERROR fixture.
 
 ## NEXT TICK (daily 2026-09-14)
 
 - W58: Worked ERROR fixture under `examples/jsonl_bad_timestamp` (exit 1).
 - Why: Parser now fail-closes a garbage JSONL timestamp; a public fixture should lock that polarity beside `jsonl_stable` / `jsonl_decaying`.
+- Verify: `constraint-auditor audit --constraints examples/jsonl_bad_timestamp/constraints.yaml --transcript examples/jsonl_bad_timestamp/events.jsonl --format jsonl` and `constraint-auditor parse-transcript --format jsonl examples/jsonl_bad_timestamp/events.jsonl` both exit 1; `python3 -m pytest -q && python3 -m ruff check .` green.
+
+## NEXT TICK (heartbeat 2026-09-14)
+
+- W58: Worked ERROR fixture under `examples/jsonl_bad_timestamp` (exit 1).
+- Why: Hostile review of `3d62f78` holds (README shape claim, ADAPTER row, named audit/parse/parser tests). Remaining backlog is still fail-closed JSONL, not a new CLI. Public fixture is the missing lock beside `jsonl_stable` / `jsonl_decaying`.
 - Verify: `constraint-auditor audit --constraints examples/jsonl_bad_timestamp/constraints.yaml --transcript examples/jsonl_bad_timestamp/events.jsonl --format jsonl` and `constraint-auditor parse-transcript --format jsonl examples/jsonl_bad_timestamp/events.jsonl` both exit 1; `python3 -m pytest -q && python3 -m ruff check .` green.
 

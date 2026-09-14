@@ -204,6 +204,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-14 daily: W55 week header and BENCHMARK GATE opened Mon 2026-09-14. Next tick: W57 fail-closed JSONL timestamps that are not `YYYY-MM-DD HH:MM`.
 - 2026-09-14 daily: W57 shipped; JSONL timestamp not `YYYY-MM-DD HH:MM` is ERROR exit 1 (`timestamp must be YYYY-MM-DD HH:MM`). Next tick: W58 worked ERROR fixture.
 - 2026-09-14 heartbeat: OK (W57 matches `3d62f78`; named JSONL timestamp-shape locks; CI green run 34818749033; 81 pytest). ENRICH. Next tick: W58 `examples/jsonl_bad_timestamp` ERROR fixture.
+- 2026-09-14 evening: CI green on `8fb641d` (Actions 34820837699); W55/W57 on main. SHIP. Next tick: W58 `examples/jsonl_bad_timestamp` ERROR fixture.
 
 ## NEXT TICK (daily 2026-09-14)
 
@@ -215,5 +216,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 
 - W58: Worked ERROR fixture under `examples/jsonl_bad_timestamp` (exit 1).
 - Why: Hostile review of `3d62f78` holds (README shape claim, ADAPTER row, named audit/parse/parser tests). Remaining backlog is still fail-closed JSONL, not a new CLI. Public fixture is the missing lock beside `jsonl_stable` / `jsonl_decaying`.
+- Verify: `constraint-auditor audit --constraints examples/jsonl_bad_timestamp/constraints.yaml --transcript examples/jsonl_bad_timestamp/events.jsonl --format jsonl` and `constraint-auditor parse-transcript --format jsonl examples/jsonl_bad_timestamp/events.jsonl` both exit 1; `python3 -m pytest -q && python3 -m ruff check .` green.
+
+## NEXT TICK (evening 2026-09-14)
+
+- W58: Worked ERROR fixture under `examples/jsonl_bad_timestamp` (exit 1).
+- Why: evening gates green on `8fb641d` (CI run 34820837699); W55 week retarget and W57 JSONL timestamp fail-closed already on main. Daily's remaining backlog is the public ERROR fixture beside `jsonl_stable` / `jsonl_decaying` — no new product scope.
 - Verify: `constraint-auditor audit --constraints examples/jsonl_bad_timestamp/constraints.yaml --transcript examples/jsonl_bad_timestamp/events.jsonl --format jsonl` and `constraint-auditor parse-transcript --format jsonl examples/jsonl_bad_timestamp/events.jsonl` both exit 1; `python3 -m pytest -q && python3 -m ruff check .` green.
 

@@ -1,18 +1,18 @@
-﻿# LOOP_STATE - agent-constraint-auditor (LIVE Week focus 2026-09-07)
+﻿# LOOP_STATE - agent-constraint-auditor (LIVE Week focus 2026-09-14)
 
 > Public: https://github.com/homayoun-safarpour/agent-constraint-auditor  
 > Local: `D:\ship\agent-constraint-auditor`
 
 ## BENCHMARK GATE
 
-Week: opened Mon 2026-09-07 · repo: agent-constraint-auditor
+Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 
 ### A. Our benchmarks (always)
 
-| # | Check | Status 2026-09-13 |
+| # | Check | Status 2026-09-14 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `ef1a532` (2026-09-13, run 34745810671); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 78 passed; `ruff check .` clean (2026-09-13 Sunday gate) |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `cf5e077` (2026-09-13, run 34759577402); first public green `0a916b2` |
+| 2 | Named claim tests | PASS — `pytest` 78 passed; `ruff check .` clean (2026-09-14 Monday retarget) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -82,8 +82,9 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W51 Spoken README H1 `constraint-auditor`; install+one command before the long Quickstart (2026-09-12)
 - [x] W52 Sat 2026-09-12 Sunday-prep: MATRIX 0/2/0/2/1/1/0/2; pytest 77; ruff clean. GitHub profile badges are not week policy.
 - [x] W54 README first screen follows public-readme-craft (uv order: H1, one clause, pip, one command + output)
-- [ ] W55 Mon 2026-09-14 week retarget (LOOP_STATE header + BENCHMARK GATE week date)
+- [x] W55 Mon 2026-09-14 week retarget (LOOP_STATE header + BENCHMARK GATE week date) (2026-09-14)
 - [x] W56 Named test locks decaying + jsonl_decaying slope 2.000 (2026-09-13)
+- [ ] W57 Fail-closed JSONL timestamps that are not `YYYY-MM-DD HH:MM` (exit 1)
 
 ## Build log
 
@@ -120,6 +121,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-12: dated journal heading with no body text or fields is ERROR (exit 1), same as timestamp-only JSONL.
 - 2026-09-13: Sunday usefulness gate green on `ef1a532` (CI run 34745810671, ruff + 78 pytest, MATRIX 0/2/0/2/1/1/0/2).
 - 2026-09-13: named tests lock decaying and jsonl_decaying `--report` slope 2.000 (`n_violations == 3`).
+- 2026-09-14: week retarget Mon 2026-09-14; local gate still 78 pytest + ruff clean on `cf5e077`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -197,10 +199,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-13 sunday: W44 usefulness gate re-verified on tip `ef1a532` (CI run 34745810671, ruff + 78 pytest, MATRIX 0/2/0/2/1/1/0/2; decaying `--report` still 3 violations, first_index=2, slope=2.000). Claim holds. Next tick: W55 Monday week retarget 2026-09-14.
 - 2026-09-13 daily: W56 shipped; named tests lock decaying + jsonl_decaying slope 2.000 and 3 violations. Next tick: W55 Monday week retarget 2026-09-14.
 - 2026-09-13 sunday: LinkedIn/blog angle set to golden set → frozen floor → CI exit (Ragas/DeepEval/Anthropic as field front; this repo is the last arrow). Paste in `docs/LINKEDIN_DRAFT.md`. No new repo.
+- 2026-09-14 daily: W55 week header and BENCHMARK GATE opened Mon 2026-09-14. Next tick: W57 fail-closed JSONL timestamps that are not `YYYY-MM-DD HH:MM`.
 
-## NEXT TICK (sunday 2026-09-13)
+## NEXT TICK (daily 2026-09-14)
 
-- W55: Mon 2026-09-14 week retarget (LOOP_STATE header + BENCHMARK GATE week date).
-- Why: Sunday usefulness gate closed week 2026-09-07 on `ef1a532`; LinkedIn paste is the golden-set sentence. Monday retarget before new production work.
-- Verify: header and BENCHMARK GATE week line read 2026-09-14; `python -m pytest -q && python -m ruff check .` still green.
+- W57: Fail-closed JSONL timestamps that are not `YYYY-MM-DD HH:MM` (exit 1).
+- Why: Journal headings already require that shape; JSONL still accepts any non-empty string, so a garbage timestamp can audit CLEAN.
+- Verify: named test that `"timestamp": "yesterday"` is TranscriptError / `audit` + `parse-transcript` exit 1; `python3 -m pytest -q && python3 -m ruff check .` green.
 

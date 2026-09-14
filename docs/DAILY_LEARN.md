@@ -1,39 +1,34 @@
-# Daily learning  -  2026-09-02
+# Daily learning — 2026-09-14
 
-**Skill.** `forbid: false` is a required regex: every journal event must match. Miss = violation (`required pattern missing`). Default `forbid: true` is the inverse: a match is a violation (`forbid pattern matched`).
+**Skill.** A successful `audit` is one `AuditResult` with three views. Default stdout is the one-liner. `--json` is `to_jsonable()` (machine). `--report PATH` is `markdown_timeline` (human freeze). Both flags together still write the file; stdout becomes JSON, not the one-liner. ERROR never uses these views — stderr + exit `1`.
 
-**Why.** Named tests lock both polarities. Public fixtures: `examples/stable` / `examples/decaying` (`forbid: true`) and `examples/required_present` / `examples/required_missing` (`forbid: false`). Hire signal: deterministic decay gate over a declared spec  -  not an LLM judge.
+**Why.** Monday week-open stays on this repo. The hire-facing floor is the golden set (`examples/MATRIX.md` exits `0/2/0/2/1/1/0/2`), not a new instrument. CI takes exit + JSON; a reviewer reads `Verdict: DECAY`. Regex over a declared spec — not an LLM judge.
 
-**Worked example** (this repo). Stable fixture is CLEAN: no event contains `lint=FAIL` or `git push --force`.
+**Worked example** (this repo).
 
 ```bash
 constraint-auditor audit \
-  --constraints examples/stable/constraints.yaml \
-  --transcript examples/stable/journal.md
-# verdict=CLEAN exit=0
+  --constraints examples/decaying/constraints.yaml \
+  --transcript examples/decaying/journal.md
+# verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000
+
+constraint-auditor audit \
+  --constraints examples/decaying/constraints.yaml \
+  --transcript examples/decaying/journal.md \
+  --json
+# {"verdict":"DECAY","exit_code":2,"decay":{"n_violations":3,"first_violation_index":2,"decay_slope":2.0}}
+
+constraint-auditor audit \
+  --constraints examples/jsonl_decaying/constraints.yaml \
+  --transcript examples/jsonl_decaying/events.jsonl \
+  --format jsonl --report /tmp/jsonl-decay.md --json
+# stdout JSON; file opens Verdict: DECAY; process exit 2
 ```
 
-Polarity lives in `check_event` (`src/constraintauditor/checkers.py`):
+`cli.py` writes the report, then branches on `args.json`. `run_audit` still only returns CLEAN / DECAY.
 
-```python
-if constraint.forbid and matched:            # banned string appeared
-if (not constraint.forbid) and not matched:  # required string absent
-```
+**Recall probe.** `audit` on `examples/empty` with `--json`. Does stdout contain `"verdict": "ERROR"`?
 
-YAML may omit `forbid`; `Constraint` defaults it to `True` (`src/constraintauditor/spec.py`). Required-pattern lock:
+Answer: No. `run_audit` raises `TranscriptError`. CLI prints `ERROR:` on stderr and returns `1`. No JSON object.
 
-```python
-from constraintauditor.checkers import check_transcript
-from constraintauditor.journal import JournalEvent
-from constraintauditor.spec import Constraint, ConstraintSpec
-
-spec = ConstraintSpec("t", (Constraint("must_log_gates", "", r"gates:", forbid=False),))
-events = [JournalEvent("2026-09-02 07:00", "- decision: advance", {})]
-assert check_transcript(spec, events)[0].detail.startswith("required pattern missing")
-```
-
-**Recall probe.** Event text is `- gates: tests=PASS` (no lint line). Spec: `pattern: "lint="`, `forbid: false`. CLEAN or DECAY? Is the check over the whole transcript or per event?
-
-Answer: DECAY  -  required pattern missing on that event. `check_transcript` multiplies constraints × events; a required pattern must hit *every* event, not once somewhere.
-
-**Retrieve.** `src/constraintauditor/checkers.py` · `spec.py` · `tests/test_checkers.py` · `LOOP_STATE.md` NEXT TICK · `docs/INTERVIEW.md`
+**Retrieve.** `src/constraintauditor/cli.py` · `audit.py` · `decay.py` (`markdown_timeline`) · `tests/test_examples.py` (`test_jsonl_decaying_fixture_locks_report`) · `examples/MATRIX.md`

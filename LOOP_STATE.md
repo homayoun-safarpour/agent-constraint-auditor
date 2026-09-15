@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `ace7f0a` (2026-09-14, run 34818339165); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 82 passed; `ruff check .` clean (2026-09-15 W58) |
+| 2 | Named claim tests | PASS — `pytest` 83 passed; `ruff check .` clean (2026-09-15 W59) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -86,7 +86,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W56 Named test locks decaying + jsonl_decaying slope 2.000 (2026-09-13)
 - [x] W57 Fail-closed JSONL timestamps that are not `YYYY-MM-DD HH:MM` (exit 1) (2026-09-14)
 - [x] W58 Worked ERROR fixture under `examples/jsonl_bad_timestamp` (exit 1) (2026-09-15)
-- [ ] W59 Named test locks `examples/README.md` jsonl_bad_timestamp row (exit 1)
+- [x] W59 Named test locks `examples/README.md` jsonl_bad_timestamp row (exit 1) (2026-09-15)
+- [ ] W60 Document `examples/jsonl_bad_timestamp` in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -126,6 +127,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-14: week retarget Mon 2026-09-14; local gate still 78 pytest + ruff clean on `cf5e077`.
 - 2026-09-14: JSONL timestamps that are not `YYYY-MM-DD HH:MM` are ERROR (exit 1), same shape as journal headings.
 - 2026-09-15: `examples/jsonl_bad_timestamp` worked ERROR fixture (ISO `T` timestamp, exit 1) + Quickstart commands.
+- 2026-09-15: named test locks `examples/README.md` jsonl_bad_timestamp row (exit 1 ERROR, `--format jsonl`).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -207,16 +209,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-14 daily: W57 shipped; JSONL timestamp not `YYYY-MM-DD HH:MM` is ERROR exit 1 (`timestamp must be YYYY-MM-DD HH:MM`). Next tick: W58 worked ERROR fixture.
 - 2026-09-14 heartbeat: OK (W57 matches `3d62f78`; named JSONL timestamp-shape locks; CI green run 34818749033; 81 pytest). ENRICH. Next tick: W58 `examples/jsonl_bad_timestamp` ERROR fixture.
 - 2026-09-15 daily: W58 shipped; `examples/jsonl_bad_timestamp` is ERROR exit 1 (timestamp not `YYYY-MM-DD HH:MM`). Next tick: W59 named test lock on that `examples/README.md` row.
+- 2026-09-15 daily: W59 shipped; named test locks `examples/README.md` jsonl_bad_timestamp row (exit 1 ERROR). Next tick: W60 document that fixture in `docs/ADAPTER.md`.
 
 ## NEXT TICK (heartbeat 2026-09-14)
 
-- W59: Named test locks `examples/README.md` jsonl_bad_timestamp row (exit 1).
-- Why: W58 landed the public fixture; the README row is still an unlocked claim.
-- Verify: named pytest asserts the `jsonl_bad_timestamp/` row is ERROR exit 1 and `--format jsonl`; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W60: Document `examples/jsonl_bad_timestamp` in `docs/ADAPTER.md`.
+- Why: W59 froze the examples table row; the adapter table still only lists jsonl_stable / jsonl_decaying, so the fail-closed timestamp polarity is missing beside those fixtures.
+- Verify: `docs/ADAPTER.md` names `examples/jsonl_bad_timestamp` as exit 1; `python3 -m pytest -q && python3 -m ruff check .` green.
 
 ## NEXT TICK (daily 2026-09-15)
 
-- W59: Named test locks `examples/README.md` jsonl_bad_timestamp row (exit 1).
-- Why: The worked ERROR fixture is on disk and in Quickstart; freeze the examples table row the same way empty/headerless and jsonl_stable/jsonl_decaying rows are frozen.
-- Verify: named pytest asserts the `[jsonl_bad_timestamp/]` row is ERROR exit **1** and `--format jsonl`; `constraint-auditor audit --constraints examples/jsonl_bad_timestamp/constraints.yaml --transcript examples/jsonl_bad_timestamp/events.jsonl --format jsonl` still exits 1; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W60: Document `examples/jsonl_bad_timestamp` in `docs/ADAPTER.md`.
+- Why: Named README lock is in; ADAPTER still omits the ERROR JSONL timestamp fixture that empty/headerless already have as adapter rows.
+- Verify: ADAPTER table or verify block names `examples/jsonl_bad_timestamp` exit 1; `python3 -m pytest -q && python3 -m ruff check .` green.
 

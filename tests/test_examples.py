@@ -144,6 +144,30 @@ def test_examples_readme_locks_jsonl_decaying_row():
     assert "jsonl-decay.md" in EXAMPLES_README
 
 
+def test_examples_readme_locks_jsonl_bad_timestamp_row():
+    jsonl_line = next(line for line in EXAMPLES_README.splitlines() if "[jsonl_bad_timestamp/]" in line)
+    assert "**1**" in jsonl_line or "exit 1" in jsonl_line
+    assert "ERROR" in jsonl_line
+    assert "--format jsonl" in jsonl_line
+    assert "YYYY-MM-DD HH:MM" in jsonl_line
+    assert "examples/jsonl_bad_timestamp/events.jsonl" in EXAMPLES_README
+    assert "examples/jsonl_bad_timestamp/constraints.yaml" in EXAMPLES_README
+    assert (
+        main(
+            [
+                "audit",
+                "--constraints",
+                str(JSONL_BAD_TIMESTAMP_CONSTRAINTS),
+                "--transcript",
+                str(JSONL_BAD_TIMESTAMP_EVENTS),
+                "--format",
+                "jsonl",
+            ]
+        )
+        == 1
+    )
+
+
 def test_jsonl_stable_fixture_locks_report(tmp_path, capsys):
     blob = JSONL_STABLE_EVENTS.read_text(encoding="utf-8")
     spec = JSONL_STABLE_CONSTRAINTS.read_text(encoding="utf-8")

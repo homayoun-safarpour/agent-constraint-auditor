@@ -25,6 +25,8 @@ JSONL_STABLE_EVENTS = ROOT / "examples" / "jsonl_stable" / "events.jsonl"
 JSONL_STABLE_CONSTRAINTS = ROOT / "examples" / "jsonl_stable" / "constraints.yaml"
 JSONL_DECAYING_EVENTS = ROOT / "examples" / "jsonl_decaying" / "events.jsonl"
 JSONL_DECAYING_CONSTRAINTS = ROOT / "examples" / "jsonl_decaying" / "constraints.yaml"
+JSONL_BAD_TIMESTAMP_EVENTS = ROOT / "examples" / "jsonl_bad_timestamp" / "events.jsonl"
+JSONL_BAD_TIMESTAMP_CONSTRAINTS = ROOT / "examples" / "jsonl_bad_timestamp" / "constraints.yaml"
 EVENT_HEADER_RE = re.compile(r"^##\s+\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}\s*$", re.MULTILINE)
 
 
@@ -68,6 +70,7 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "examples/headerless/journal.md" in README
     assert "examples/jsonl_stable/events.jsonl" in README
     assert "examples/jsonl_decaying/events.jsonl" in README
+    assert "examples/jsonl_bad_timestamp/events.jsonl" in README
     assert "jsonl-decay.md" in README
     assert "jsonl-clean.md" in README
     assert "--format jsonl" in README
@@ -228,6 +231,36 @@ def test_jsonl_decaying_fixture_parse_and_audit_exit_2(capsys):
     assert data["verdict"] == "DECAY"
     assert data["decay"]["first_violation_index"] == 2
     assert {v["constraint_id"] for v in data["violations"]} == {"never_skip_lint", "no_force_push"}
+
+
+def test_jsonl_bad_timestamp_fixture_parse_and_audit_exit_1(capsys):
+    events = JSONL_BAD_TIMESTAMP_EVENTS
+    constraints = JSONL_BAD_TIMESTAMP_CONSTRAINTS
+    assert events.is_file() and constraints.is_file()
+    blob = events.read_text(encoding="utf-8")
+    assert "2026-08-11T09:00" in blob
+    assert re.search(r'"timestamp":\s*"\d{4}-\d{2}-\d{2} \d{2}:\d{2}"', blob) is None
+    code = main(["parse-transcript", "--format", "jsonl", str(events)])
+    assert code == 1
+    captured = capsys.readouterr()
+    assert "timestamp must be YYYY-MM-DD HH:MM" in captured.err
+    assert "OK:" not in captured.out
+    assert "CLEAN" not in captured.err
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            str(constraints),
+            "--transcript",
+            str(events),
+            "--format",
+            "jsonl",
+        ]
+    )
+    assert code == 1
+    captured = capsys.readouterr()
+    assert "timestamp must be YYYY-MM-DD HH:MM" in captured.err
+    assert "CLEAN" not in captured.err
 
 
 def test_jsonl_decaying_fixture_locks_report(tmp_path, capsys):

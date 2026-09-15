@@ -86,6 +86,13 @@ constraint-auditor audit \
   --format jsonl \
   --report /tmp/jsonl-decay.md
 # expect exit 2 (DECAY); report starts with Verdict: DECAY
+
+constraint-auditor parse-transcript --format jsonl examples/jsonl_bad_timestamp/events.jsonl
+constraint-auditor audit \
+  --constraints examples/jsonl_bad_timestamp/constraints.yaml \
+  --transcript examples/jsonl_bad_timestamp/events.jsonl \
+  --format jsonl
+# expect exit 1; JSONL timestamp not YYYY-MM-DD HH:MM is ERROR, not CLEAN
 ```
 
 ## Constraint spec

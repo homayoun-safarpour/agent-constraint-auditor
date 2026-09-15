@@ -10,6 +10,7 @@
 | [headerless/](headerless/) | no dated `##` events; exits **1** (ERROR, not CLEAN) |
 | [jsonl_stable/](jsonl_stable/) | `--format jsonl`; `events.jsonl` + same forbid rules; exits **0** (CLEAN) + optional `--report` |
 | [jsonl_decaying/](jsonl_decaying/) | `--format jsonl`; forbid match (`lint=FAIL` / force-push); exits **2** (DECAY) |
+| [jsonl_bad_timestamp/](jsonl_bad_timestamp/) | `--format jsonl`; timestamp not `YYYY-MM-DD HH:MM`; exits **1** (ERROR) |
 
 Sunday prep matrix (all exits): [MATRIX.md](MATRIX.md)
 
@@ -25,6 +26,8 @@ constraint-auditor parse-transcript --format jsonl examples/jsonl_stable/events.
 constraint-auditor audit --constraints examples/jsonl_stable/constraints.yaml --transcript examples/jsonl_stable/events.jsonl --format jsonl --report /tmp/jsonl-clean.md
 constraint-auditor parse-transcript --format jsonl examples/jsonl_decaying/events.jsonl
 constraint-auditor audit --constraints examples/jsonl_decaying/constraints.yaml --transcript examples/jsonl_decaying/events.jsonl --format jsonl --report /tmp/jsonl-decay.md
+constraint-auditor parse-transcript --format jsonl examples/jsonl_bad_timestamp/events.jsonl
+constraint-auditor audit --constraints examples/jsonl_bad_timestamp/constraints.yaml --transcript examples/jsonl_bad_timestamp/events.jsonl --format jsonl
 ```
 
 `forbid: true` (default) treats a match as decay. `forbid: false` treats a missing required pattern as decay.

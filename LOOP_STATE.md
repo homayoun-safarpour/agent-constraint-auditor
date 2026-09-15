@@ -210,6 +210,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-14 heartbeat: OK (W57 matches `3d62f78`; named JSONL timestamp-shape locks; CI green run 34818749033; 81 pytest). ENRICH. Next tick: W58 `examples/jsonl_bad_timestamp` ERROR fixture.
 - 2026-09-15 daily: W58 shipped; `examples/jsonl_bad_timestamp` is ERROR exit 1 (timestamp not `YYYY-MM-DD HH:MM`). Next tick: W59 named test lock on that `examples/README.md` row.
 - 2026-09-15 daily: W59 shipped; named test locks `examples/README.md` jsonl_bad_timestamp row (exit 1 ERROR). Next tick: W60 document that fixture in `docs/ADAPTER.md`.
+- 2026-09-15 evening: CI green on `3846101` (Actions 34944608614); W58/W59 on main. SHIP. Next tick: W60 document `examples/jsonl_bad_timestamp` in `docs/ADAPTER.md`.
 
 ## NEXT TICK (heartbeat 2026-09-14)
 
@@ -222,4 +223,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - W60: Document `examples/jsonl_bad_timestamp` in `docs/ADAPTER.md`.
 - Why: Named README lock is in; ADAPTER still omits the ERROR JSONL timestamp fixture that empty/headerless already have as adapter rows.
 - Verify: ADAPTER table or verify block names `examples/jsonl_bad_timestamp` exit 1; `python3 -m pytest -q && python3 -m ruff check .` green.
+
+## NEXT TICK (evening 2026-09-15)
+
+- W60: Document `examples/jsonl_bad_timestamp` in `docs/ADAPTER.md`.
+- Why: evening gates green on `3846101` (CI run 34944608614); W58 fixture and W59 README lock already on main. Daily's remaining backlog is the adapter row beside `jsonl_stable` / `jsonl_decaying` — no new product scope.
+- Verify: `docs/ADAPTER.md` names `examples/jsonl_bad_timestamp` as exit 1; `python3 -m pytest -q && python3 -m ruff check .` green.
 

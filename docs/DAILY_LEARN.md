@@ -1,39 +1,30 @@
-# Daily learning  -  2026-09-02
+# Daily learning  -  2026-09-15
 
-**Skill.** `forbid: false` is a required regex: every journal event must match. Miss = violation (`required pattern missing`). Default `forbid: true` is the inverse: a match is a violation (`forbid pattern matched`).
+**Skill.** JSONL `timestamp` is a closed grammar, not a date parser. After a non-empty string exists, it must `TIMESTAMP_RE.fullmatch`: `YYYY-MM-DD HH:MM` (space, no `T`, no seconds). Fail → `TranscriptError` → CLI exit 1. Same digits as journal `HEADER_RE`.
 
-**Why.** Named tests lock both polarities. Public fixtures: `examples/stable` / `examples/decaying` (`forbid: true`) and `examples/required_present` / `examples/required_missing` (`forbid: false`). Hire signal: deterministic decay gate over a declared spec  -  not an LLM judge.
+**Why.** Missing/blank/non-string is a different error (`missing timestamp`). A present but shapeless value (`yesterday`, `2026-08-11T09:00`, `2026-08-11`) is `timestamp must be YYYY-MM-DD HH:MM`. Both `parse-transcript` and `audit` die in parse; `run_audit` never returns CLEAN. Hire signal: fail-closed transcript gate, not dateutil.
 
-**Worked example** (this repo). Stable fixture is CLEAN: no event contains `lint=FAIL` or `git push --force`.
+**Worked example** (this repo). Legal shape is what `examples/jsonl_stable` already ships:
 
 ```bash
-constraint-auditor audit \
-  --constraints examples/stable/constraints.yaml \
-  --transcript examples/stable/journal.md
-# verdict=CLEAN exit=0
+constraint-auditor parse-transcript --format jsonl examples/jsonl_stable/events.jsonl
+# OK: 4 events   # "2026-08-11 09:00"
+python -m pytest tests/test_journal.py::test_parse_jsonl_non_shaped_timestamp_is_transcript_error \
+  tests/test_cli.py::test_audit_jsonl_non_shaped_timestamp_exit_1 \
+  tests/test_cli.py::test_parse_transcript_jsonl_non_shaped_timestamp_exit_1 -q
 ```
 
-Polarity lives in `check_event` (`src/constraintauditor/checkers.py`):
+Lock in `src/constraintauditor/journal.py`:
 
 ```python
-if constraint.forbid and matched:            # banned string appeared
-if (not constraint.forbid) and not matched:  # required string absent
+TIMESTAMP_RE = re.compile(r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$")
+# ...
+if TIMESTAMP_RE.fullmatch(timestamp) is None:
+    raise TranscriptError(f"JSONL line {line_no} timestamp must be YYYY-MM-DD HH:MM")
 ```
 
-YAML may omit `forbid`; `Constraint` defaults it to `True` (`src/constraintauditor/spec.py`). Required-pattern lock:
+**Recall probe.** Line: `{"timestamp": "2026-08-11T09:00", "text": "- gates: lint=PASS"}`. `parse-transcript --format jsonl` and `audit --format jsonl` — exit codes? CLEAN?
 
-```python
-from constraintauditor.checkers import check_transcript
-from constraintauditor.journal import JournalEvent
-from constraintauditor.spec import Constraint, ConstraintSpec
+Answer: both exit 1. `T` is not a space; `fullmatch` fails. stderr carries `timestamp must be YYYY-MM-DD HH:MM`. Not CLEAN. (Date-only `2026-08-11` is the same ERROR. Missing key is `missing timestamp`, still exit 1.)
 
-spec = ConstraintSpec("t", (Constraint("must_log_gates", "", r"gates:", forbid=False),))
-events = [JournalEvent("2026-09-02 07:00", "- decision: advance", {})]
-assert check_transcript(spec, events)[0].detail.startswith("required pattern missing")
-```
-
-**Recall probe.** Event text is `- gates: tests=PASS` (no lint line). Spec: `pattern: "lint="`, `forbid: false`. CLEAN or DECAY? Is the check over the whole transcript or per event?
-
-Answer: DECAY  -  required pattern missing on that event. `check_transcript` multiplies constraints × events; a required pattern must hit *every* event, not once somewhere.
-
-**Retrieve.** `src/constraintauditor/checkers.py` · `spec.py` · `tests/test_checkers.py` · `LOOP_STATE.md` NEXT TICK · `docs/INTERVIEW.md`
+**Retrieve.** `src/constraintauditor/journal.py` (`TIMESTAMP_RE`) · `tests/test_journal.py` · `tests/test_cli.py` · `docs/ADAPTER.md` JSONL ERROR row · `LOOP_STATE.md` W57

@@ -11,7 +11,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `015d068` (2026-09-16, run 35124251252); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `a0a5444` (2026-09-16, run 35124816499); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 105 passed; `ruff check .` clean (2026-09-16 W177) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -206,7 +206,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W176 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W177 Named CLI case: non-string JSONL `text` without fields is ERROR (2026-09-16)
 - [x] W178 Refresh BENCHMARK GATE pytest count to 105 (2026-09-16)
-- [ ] W179 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W179 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
+- [ ] W180 Local MATRIX nine-exit heartbeat on current main
 
 ## Build log
 
@@ -356,6 +357,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `7c885e3`.
 - 2026-09-16: non-string JSONL `text` without fields is CLI ERROR.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 105.
+- 2026-09-16: BENCHMARK GATE CI tip refreshed to `a0a5444` (run 35124816499).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -548,10 +550,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W176 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W177 CLI non-string text.
 - 2026-09-16 daily: W177 shipped; non-string JSONL text without fields is CLI ERROR. Next tick: W178 pytest count.
 - 2026-09-16 daily: W178 shipped; BENCHMARK GATE named-claim pytest count is 105. Next tick: W179 CI tip refresh.
+- 2026-09-16 daily: W179 shipped; BENCHMARK GATE CI tip is `a0a5444` (run 35124816499). Next tick: W180 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W179: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main after W177/W178.
-- Why: named-claim pytest is 105 on main; the gate still cites `015d068`.
-- Verify: paste a real success run for current `origin/main`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W180: Local MATRIX nine-exit heartbeat on current main.
+- Why: CI tip is current; re-confirm MATRIX `0/2/0/2/1/1/0/2/1` after the CLI lock.
+- Verify: run the nine MATRIX commands; paste exits into LOOP_STATE; `python -m pytest -q && python -m ruff check .` green.
 

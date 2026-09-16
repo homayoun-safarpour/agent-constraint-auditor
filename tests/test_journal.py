@@ -277,6 +277,27 @@ def test_parse_jsonl_non_string_text_is_treated_as_missing(tmp_path):
     assert events[0].fields == {"gates": "lint=PASS"}
 
 
+def test_parse_jsonl_empty_fields_mapping_is_treated_as_missing(tmp_path):
+    missing = tmp_path / "empty-fields.jsonl"
+    missing.write_text(
+        '{"timestamp": "2026-08-11 09:00", "fields": {}}\n',
+        encoding="utf-8",
+    )
+    with pytest.raises(TranscriptError, match="needs text and/or fields"):
+        parse_jsonl_transcript(missing)
+
+    with_text = tmp_path / "empty-fields-text.jsonl"
+    with_text.write_text(
+        '{"timestamp": "2026-08-11 09:00", "text": "- gates: lint=PASS",'
+        ' "fields": {}}\n',
+        encoding="utf-8",
+    )
+    events = parse_jsonl_transcript(with_text)
+    assert len(events) == 1
+    assert events[0].text == "- gates: lint=PASS"
+    assert events[0].fields == {}
+
+
 def test_parse_jsonl_whitespace_text_without_fields_is_transcript_error(tmp_path):
     path = tmp_path / "events.jsonl"
     path.write_text('{"timestamp": "2026-08-11 09:00", "text": "   "}\n', encoding="utf-8")

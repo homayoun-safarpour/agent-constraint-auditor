@@ -172,7 +172,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W142 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W143 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W144 Refresh `docs/DAILY_LEARN.md` for UTF-8 BOM JSONL ERROR (2026-09-16)
-- [ ] W145 Named CLI case: UTF-8 BOM JSONL is ERROR (`invalid JSONL`)
+- [x] W145 Named CLI case: UTF-8 BOM JSONL is ERROR (`invalid JSONL`) (2026-09-16)
+- [ ] W146 Refresh BENCHMARK GATE pytest count to 96
 
 ## Build log
 
@@ -288,6 +289,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `a7f0f0c` (run 35113986217).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `257eac9`.
 - 2026-09-16: DAILY_LEARN names UTF-8 BOM JSONL as invalid JSONL ERROR and pytest 95.
+- 2026-09-16: UTF-8 BOM JSONL CLI ERROR via invalid JSONL is named.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -446,10 +448,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W142 shipped; BENCHMARK GATE CI tip is `a7f0f0c` (run 35113986217). Next tick: W143 MATRIX heartbeat.
 - 2026-09-16 daily: W143 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W144 DAILY_LEARN refresh.
 - 2026-09-16 daily: W144 shipped; DAILY_LEARN names UTF-8 BOM JSONL as invalid JSONL ERROR and pytest 95. Next tick: W145 BOM CLI ERROR.
+- 2026-09-16 daily: W145 shipped; UTF-8 BOM JSONL CLI ERROR via invalid JSONL is named. Next tick: W146 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W145: Named CLI case that a UTF-8 BOM JSONL file is ERROR via `invalid JSONL`.
-- Why: Parser and adapter are locked; `parse-transcript` has empty and whitespace-only cases but no BOM case.
-- Verify: named test in `tests/test_cli.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W146: Refresh BENCHMARK GATE named-claim pytest count from 95 to 96.
+- Why: W145 CLI case added one test; the gate table is stale.
+- Verify: LOOP_STATE table shows 96; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

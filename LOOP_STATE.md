@@ -134,7 +134,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W104 Document JSONL non-object lines and non-mapping `fields` in README (2026-09-16)
 - [x] W105 Named test locks README JSONL object/fields ERROR sentence (2026-09-16)
 - [x] W106 Document JSONL non-object lines and non-mapping `fields` in CONTRIBUTING.md (2026-09-16)
-- [ ] W107 Named test locks CONTRIBUTING JSONL object/fields ERROR sentence
+- [x] W107 Named test locks CONTRIBUTING JSONL object/fields ERROR sentence (2026-09-16)
+- [ ] W108 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -212,6 +213,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: README names JSONL non-object lines and non-mapping fields as ERROR.
 - 2026-09-16: named test locks that README JSONL object/fields ERROR sentence.
 - 2026-09-16: CONTRIBUTING names JSONL non-object lines and non-mapping fields as ERROR.
+- 2026-09-16: named test locks that CONTRIBUTING JSONL object/fields ERROR sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -332,10 +334,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W104 shipped; README names JSONL non-object lines and non-mapping fields as ERROR. Next tick: W105 named README lock.
 - 2026-09-16 daily: W105 shipped; named test locks README JSONL object/fields ERROR sentence. Next tick: W106 CONTRIBUTING sentence.
 - 2026-09-16 daily: W106 shipped; CONTRIBUTING names JSONL non-object lines and non-mapping fields as ERROR. Next tick: W107 named CONTRIBUTING lock.
+- 2026-09-16 daily: W107 shipped; named test locks CONTRIBUTING JSONL object/fields ERROR sentence. Next tick: W108 CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W107: Named test locks the CONTRIBUTING sentence that a JSONL non-object line or non-mapping `fields` must stay ERROR.
-- Why: W106 wrote the hire-doc sentence; the lock belongs in `tests/test_examples.py`.
-- Verify: pytest asserts the sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W108: Refresh BENCHMARK GATE CI tip to the latest green Actions run on `main`.
+- Why: Hire-doc object/fields ladder is locked; gate row 1 still cites `6be2b5b`.
+- Verify: paste the live run URL; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

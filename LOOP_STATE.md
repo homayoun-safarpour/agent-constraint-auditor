@@ -143,7 +143,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W113 Named test locks RELIABILITY_CARD JSONL object/fields ERROR sentence (2026-09-16)
 - [x] W114 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W115 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
-- [ ] W116 Document JSONL non-object lines and non-mapping `fields` in `examples/README.md`
+- [x] W116 Document JSONL non-object lines and non-mapping `fields` in `examples/README.md` (2026-09-16)
+- [ ] W117 Named test locks examples README JSONL object/fields ERROR sentence
 
 ## Build log
 
@@ -230,6 +231,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: named test locks that RELIABILITY_CARD JSONL object/fields ERROR sentence.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `979b04d` (run 35103522147).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `17a21c0`.
+- 2026-09-16: examples README names JSONL non-object lines and non-mapping fields as ERROR.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -359,10 +361,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W113 shipped; named test locks RELIABILITY_CARD JSONL object/fields ERROR sentence. Next tick: W114 CI tip refresh.
 - 2026-09-16 daily: W114 shipped; BENCHMARK GATE CI tip is `979b04d` (run 35103522147). Next tick: W115 MATRIX heartbeat.
 - 2026-09-16 daily: W115 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W116 examples README object/fields sentence.
+- 2026-09-16 daily: W116 shipped; examples README names JSONL non-object lines and non-mapping fields as ERROR. Next tick: W117 named examples README lock.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W116: Document JSONL non-object lines and non-mapping `fields` as ERROR in `examples/README.md`.
-- Why: Examples table still only names `jsonl_bad_timestamp`; other hire surfaces already name object/fields.
-- Verify: one examples README sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W117: Named test locks the examples README sentence that a JSONL non-object line or non-mapping `fields` is ERROR.
+- Why: W116 wrote the hire-doc sentence; the lock belongs in `tests/test_examples.py`.
+- Verify: pytest asserts the sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

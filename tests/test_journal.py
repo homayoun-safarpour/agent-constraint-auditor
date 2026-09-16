@@ -1,3 +1,4 @@
+from dataclasses import asdict
 from pathlib import Path
 
 import pytest
@@ -237,6 +238,22 @@ def test_parse_jsonl_null_field_values_become_empty_strings(tmp_path):
     events = parse_jsonl_transcript(path)
     assert len(events) == 1
     assert events[0].fields["gates"] == ""
+
+
+def test_parse_jsonl_extra_object_keys_are_ignored(tmp_path):
+    path = tmp_path / "events.jsonl"
+    path.write_text(
+        '{"timestamp": "2026-08-11 09:00", "text": "- gates: lint=PASS",'
+        ' "id": "evt-1", "role": "agent"}\n',
+        encoding="utf-8",
+    )
+    events = parse_jsonl_transcript(path)
+    assert len(events) == 1
+    data = asdict(events[0])
+    assert data["timestamp"] == "2026-08-11 09:00"
+    assert data["text"] == "- gates: lint=PASS"
+    assert "id" not in data
+    assert "role" not in data
 
 
 def test_parse_jsonl_whitespace_text_without_fields_is_transcript_error(tmp_path):

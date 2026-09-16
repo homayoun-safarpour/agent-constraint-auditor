@@ -514,6 +514,11 @@ def test_adapter_locks_jsonl_blank_lines_between_objects_are_skipped():
     assert "the blank line is not invalid JSONL" in ADAPTER
 
 
+def test_adapter_locks_jsonl_hash_comment_lines_are_invalid_jsonl():
+    assert "A JSONL `#` comment line is ERROR (invalid JSONL)" in ADAPTER
+    assert "it is not skipped" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

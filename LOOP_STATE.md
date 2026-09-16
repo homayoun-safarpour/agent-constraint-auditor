@@ -248,7 +248,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W218 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W219 Named parser case: JSONL `fields` keys are stringified (2026-09-16)
 - [x] W220 Document JSONL `fields` keys as stringified in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W221 Named test locks adapter JSONL `fields` keys sentence
+- [x] W221 Named test locks adapter JSONL `fields` keys sentence (2026-09-16)
+- [ ] W222 Refresh BENCHMARK GATE pytest count to 117
 
 ## Build log
 
@@ -440,6 +441,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `2c16b94`.
 - 2026-09-16: JSONL fields keys remaining strings (including `"1"`) is named.
 - 2026-09-16: adapter names JSONL fields keys as strings.
+- 2026-09-16: named test locks that adapter JSONL fields-keys sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -674,10 +676,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W218 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W219 fields keys stringify.
 - 2026-09-16 daily: W219 shipped; JSONL fields keys are stringified (`"1"` stays `"1"`). Next tick: W220 adapter fields-keys sentence.
 - 2026-09-16 daily: W220 shipped; adapter names JSONL fields keys as strings. Next tick: W221 named adapter lock.
+- 2026-09-16 daily: W221 shipped; named test locks adapter JSONL fields-keys sentence. Next tick: W222 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W221: Named test locks adapter JSONL `fields` keys sentence.
-- Why: hire-doc ladder; one adapter sentence is written. Do not spray boolean field types.
-- Verify: named lock in `tests/test_examples.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W222: Refresh BENCHMARK GATE pytest count to 117.
+- Why: named-claim count after the fields-keys parser + adapter lock. Do not spray boolean field types.
+- Verify: LOOP_STATE gate row matches `pytest -q`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

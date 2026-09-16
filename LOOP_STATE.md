@@ -345,7 +345,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W315 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W316 Refresh `docs/DAILY_LEARN.md` for JSONL CRLF object lines (2026-09-16)
 - [x] W317 Named parser case: JSONL blank lines between objects are skipped (2026-09-16)
-- [ ] W318 Document JSONL blank lines between objects in `docs/ADAPTER.md`
+- [x] W318 Document JSONL blank lines between objects in `docs/ADAPTER.md` (2026-09-16)
+- [ ] W319 Named test locks adapter JSONL blank-lines-between-objects sentence
 
 ## Build log
 
@@ -634,6 +635,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `6136ebf`.
 - 2026-09-16: DAILY_LEARN names JSONL CRLF object lines and pytest 143.
 - 2026-09-16: JSONL blank lines between objects are skipped is named.
+- 2026-09-16: adapter names JSONL blank lines between objects as skipped.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -965,10 +967,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W315 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W316 DAILY_LEARN refresh.
 - 2026-09-16 daily: W316 shipped; DAILY_LEARN names JSONL CRLF object lines and pytest 143. Next tick: W317 blank lines between JSONL objects.
 - 2026-09-16 daily: W317 shipped; JSONL blank lines between objects are skipped. Next tick: W318 adapter blank-line sentence.
+- 2026-09-16 daily: W318 shipped; adapter names JSONL blank lines between objects as skipped. Next tick: W319 named adapter lock.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W318: Document JSONL blank lines between objects in `docs/ADAPTER.md`.
-- Why: named parser locks two objects with a blank line between them; hire-doc ladder next is one adapter sentence. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green.
+- W319: Named test locks adapter JSONL blank-lines-between-objects sentence.
+- Why: one adapter sentence names skipped blank lines; hire-doc ladder next is the named lock. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: named `tests/test_examples.py` lock; `python -m pytest -q && python -m ruff check .` green.
 

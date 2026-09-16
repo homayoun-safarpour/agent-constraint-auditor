@@ -318,6 +318,27 @@ def test_parse_jsonl_whitespace_text_with_fields_uses_fields(tmp_path):
     assert events[0].fields == {"gates": "lint=PASS"}
 
 
+def test_parse_jsonl_empty_string_text_with_fields_uses_fields(tmp_path):
+    missing = tmp_path / "empty-text.jsonl"
+    missing.write_text(
+        '{"timestamp": "2026-08-11 09:00", "text": ""}\n',
+        encoding="utf-8",
+    )
+    with pytest.raises(TranscriptError, match="needs text and/or fields"):
+        parse_jsonl_transcript(missing)
+
+    with_fields = tmp_path / "empty-text-fields.jsonl"
+    with_fields.write_text(
+        '{"timestamp": "2026-08-11 09:00", "text": "",'
+        ' "fields": {"gates": "lint=PASS"}}\n',
+        encoding="utf-8",
+    )
+    events = parse_jsonl_transcript(with_fields)
+    assert len(events) == 1
+    assert events[0].text == "- gates: lint=PASS"
+    assert events[0].fields == {"gates": "lint=PASS"}
+
+
 def test_parse_loop_engine_journal_empty_bodied_event_is_error(tmp_path):
     path = tmp_path / "empty-body.md"
     path.write_text("## 2026-08-11 09:00\n\n", encoding="utf-8")

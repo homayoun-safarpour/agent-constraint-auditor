@@ -186,7 +186,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W156 Named parser case: JSONL `fields` null values become empty strings (2026-09-16)
 - [x] W157 Refresh BENCHMARK GATE pytest count to 99 (2026-09-16)
 - [x] W158 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
-- [ ] W159 Local MATRIX nine-exit heartbeat on current main
+- [x] W159 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
+- [ ] W160 Named parser case: extra JSONL object keys are ignored
 
 ## Build log
 
@@ -316,6 +317,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: JSONL null fields values becoming empty strings is named.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 99.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `ae2af17` (run 35119944211).
+- 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `dd25c5f`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -488,10 +490,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W156 shipped; JSONL null fields values become empty strings. Next tick: W157 pytest count.
 - 2026-09-16 daily: W157 shipped; BENCHMARK GATE named-claim pytest count is 99. Next tick: W158 CI tip refresh.
 - 2026-09-16 daily: W158 shipped; BENCHMARK GATE CI tip is `ae2af17` (run 35119944211). Next tick: W159 MATRIX heartbeat.
+- 2026-09-16 daily: W159 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W160 extra JSONL keys ignored.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W159: Local MATRIX nine-exit heartbeat on current main.
-- Why: Gate CI tip moved; prove the nine-exit contract still holds after the null-fields parser lock.
-- Verify: MATRIX exits `0/2/0/2/1/1/0/2/1`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN. Do not spray adapter/boolean field types.
+- W160: Named parser case that extra JSONL object keys (beyond timestamp/text/fields) are ignored.
+- Why: Parser only reads those three; extra keys currently do not ERROR and have no named test. Do not spray boolean field types.
+- Verify: named test in `tests/test_journal.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

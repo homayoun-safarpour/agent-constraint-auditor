@@ -316,7 +316,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W286 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W287 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W288 Refresh `docs/DAILY_LEARN.md` for JSONL `fields` values containing a colon (2026-09-16)
-- [ ] W289 Named parser case: JSONL two-key `fields` mappings keep insertion order
+- [x] W289 Named parser case: JSONL two-key `fields` mappings keep insertion order (2026-09-16)
+- [ ] W290 Document JSONL two-key `fields` insertion order in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -576,6 +577,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `859f867` (run 35140143627).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `2bd271b`.
 - 2026-09-16: DAILY_LEARN names JSONL fields values containing a colon and pytest 135.
+- 2026-09-16: JSONL two-key fields mappings keep insertion order is named.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -878,10 +880,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W286 shipped; BENCHMARK GATE CI tip is `859f867` (run 35140143627). Next tick: W287 MATRIX heartbeat.
 - 2026-09-16 daily: W287 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W288 DAILY_LEARN refresh.
 - 2026-09-16 daily: W288 shipped; DAILY_LEARN names JSONL fields values containing a colon and pytest 135. Next tick: W289 two-key fields insertion order.
+- 2026-09-16 daily: W289 shipped; JSONL two-key fields mappings keep insertion order. Next tick: W290 adapter two-key sentence.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W289: Named parser case: JSONL two-key `fields` mappings keep insertion order.
-- Why: `_text_from_fields` joins `"- {key}: {value}"` lines in mapping order. A two-key object is a real body contract, not more colon spray. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: named `tests/test_journal.py` case; `python -m pytest -q && python -m ruff check .` green.
+- W290: Document JSONL two-key `fields` insertion order in `docs/ADAPTER.md`.
+- Why: named parser locks `gates` then `lint` body lines; hire-doc ladder next is one adapter sentence. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green.
 

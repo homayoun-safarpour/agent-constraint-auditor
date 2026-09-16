@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `66e3d73` (2026-09-16, run 35106620623); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 88 passed; `ruff check .` clean (2026-09-16 W100) |
+| 2 | Named claim tests | PASS — `pytest` 90 passed; `ruff check .` clean (2026-09-16 W122) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -150,7 +150,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W120 Named parser case: empty JSONL file returns no events (2026-09-16)
 - [x] W121 Document empty JSONL as no events / CLI ERROR in `docs/ADAPTER.md` (2026-09-16)
 - [x] W122 Named test locks adapter empty-JSONL no-events / CLI ERROR sentence (2026-09-16)
-- [ ] W123 Refresh BENCHMARK GATE pytest count to 90
+- [x] W123 Refresh BENCHMARK GATE pytest count to 90 (2026-09-16)
+- [ ] W124 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -244,6 +245,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: empty JSONL file returning no events is named (CLI still ERROR).
 - 2026-09-16: adapter names empty JSONL as no events then CLI ERROR.
 - 2026-09-16: named test locks that adapter empty-JSONL sentence.
+- 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 90.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -380,10 +382,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W120 shipped; empty JSONL file returns no events (CLI still ERROR). Next tick: W121 adapter empty JSONL sentence.
 - 2026-09-16 daily: W121 shipped; adapter names empty JSONL as no events then CLI ERROR. Next tick: W122 named adapter lock.
 - 2026-09-16 daily: W122 shipped; named test locks adapter empty-JSONL sentence. Next tick: W123 pytest count.
+- 2026-09-16 daily: W123 shipped; BENCHMARK GATE named-claim pytest count is 90. Next tick: W124 CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W123: Refresh BENCHMARK GATE named-claim pytest count from 88 to 90.
-- Why: W120 parser case and W122 adapter lock added two tests; the gate table is stale.
-- Verify: LOOP_STATE table shows 90; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W124: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
+- Why: Tip still names `66e3d73`; W120–W122 landed after that.
+- Verify: latest successful `ci.yml` SHA + run id in the gate table; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

@@ -99,7 +99,9 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W69 Named test locks `CONTRIBUTING.md` jsonl_bad_timestamp ERROR sentence (2026-09-16)
 - [x] W70 Refresh `docs/DAILY_LEARN.md` for the ninth MATRIX row (2026-09-16)
 - [x] W71 Named test: JSONL timestamp with seconds is ERROR (not `YYYY-MM-DD HH:MM`) (2026-09-16)
-- [ ] W72 Document seconds-shaped JSONL timestamps as ERROR in `docs/ADAPTER.md`
+- [x] W72 Document seconds-shaped JSONL timestamps as ERROR in `docs/ADAPTER.md` (2026-09-16)
+- [x] W73 Named test locks adapter seconds-timestamp ERROR sentence (2026-09-16)
+- [ ] W74 Named parser case: JSONL timestamp with timezone suffix is ERROR
 
 ## Build log
 
@@ -146,6 +148,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: reliability card + interview pack name `jsonl_bad_timestamp` ERROR exit 1; named tests lock both.
 - 2026-09-16: CONTRIBUTING names `jsonl_bad_timestamp` as fail-closed ERROR; named test locks that sentence.
 - 2026-09-16: DAILY_LEARN refreshed for nine-row MATRIX; JSONL timestamps with seconds are named ERROR.
+- 2026-09-16: adapter names `YYYY-MM-DD HH:MM:SS` as the same JSONL ERROR.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -235,10 +238,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W64–W67 shipped; reliability card and interview pack name `jsonl_bad_timestamp` as ERROR exit 1 (timestamp not `YYYY-MM-DD HH:MM`). Next tick: W68 CONTRIBUTING.md row.
 - 2026-09-16 daily: W68–W69 shipped; CONTRIBUTING names `jsonl_bad_timestamp` as ERROR. Next tick: W70 DAILY_LEARN refresh.
 - 2026-09-16 daily: W70–W71 shipped; DAILY_LEARN matches hire-doc ladder; JSONL `HH:MM:SS` timestamps are named ERROR. Next tick: W72 adapter seconds sentence.
+- 2026-09-16 daily: W72–W73 shipped; adapter names seconds timestamps as ERROR. Next tick: W74 timezone-suffix JSONL ERROR.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W72: Document seconds-shaped JSONL timestamps (`YYYY-MM-DD HH:MM:SS`) as ERROR in `docs/ADAPTER.md`.
-- Why: Parser already rejects them; the adapter only names the ISO-`T` worked fixture. Do not pytest-lock `DAILY_LEARN.md` (morning card rewrites it).
-- Verify: adapter names seconds timestamps as exit 1; `python -m pytest -q && python -m ruff check .` green.
+- W74: Named parser case for JSONL timestamps with a timezone suffix (`2026-08-11 09:00Z`) as ERROR.
+- Why: Seconds are locked; timezone suffixes are the next nearby fail-closed shape.
+- Verify: pytest raises `timestamp must be YYYY-MM-DD HH:MM` on `09:00Z`; `python -m pytest -q && python -m ruff check .` green.
 

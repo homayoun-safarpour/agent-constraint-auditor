@@ -364,7 +364,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W334 Refresh BENCHMARK GATE pytest count to 149 (2026-09-16)
 - [x] W335 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W336 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
-- [ ] W337 Refresh `docs/DAILY_LEARN.md` for JSONL `#` comment lines
+- [x] W337 Refresh `docs/DAILY_LEARN.md` for JSONL `#` comment lines (2026-09-16)
+- [ ] W338 Named parser case: JSONL object lines with trailing non-whitespace after `}` are invalid JSONL
 
 ## Build log
 
@@ -672,6 +673,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 149.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `58fb1e0` (run 35146620089).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `9f1c674`.
+- 2026-09-16: DAILY_LEARN names JSONL hash-comment lines and pytest 149.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1022,10 +1024,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W334 shipped; BENCHMARK GATE named-claim pytest count is 149. Next tick: W335 CI tip refresh.
 - 2026-09-16 daily: W335 shipped; BENCHMARK GATE CI tip is `58fb1e0` (run 35146620089). Next tick: W336 MATRIX heartbeat.
 - 2026-09-16 daily: W336 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W337 DAILY_LEARN refresh.
+- 2026-09-16 daily: W337 shipped; DAILY_LEARN names JSONL hash-comment lines and pytest 149. Next tick: W338 trailing-junk JSONL object line.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W337: Refresh `docs/DAILY_LEARN.md` for JSONL `#` comment lines.
-- Why: MATRIX still 0/2/0/2/1/1/0/2/1; hire-doc ladder next is DAILY_LEARN for hash-comment ERROR. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: DAILY_LEARN names hash-comment JSONL ERROR and pytest 149; `python -m pytest -q && python -m ruff check .` green.
+- W338: Named parser case: JSONL object lines with trailing non-whitespace after `}` are invalid JSONL.
+- Why: spaces after `}` still parse; `} extra` is Extra data for `json.loads`. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: named `tests/test_journal.py` case; `python -m pytest -q && python -m ruff check .` green.
 

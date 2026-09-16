@@ -242,6 +242,17 @@ def test_parse_jsonl_boolean_field_values_are_stringified(tmp_path):
     assert events[0].fields["blocked"] == "False"
 
 
+def test_parse_jsonl_list_field_values_are_stringified(tmp_path):
+    path = tmp_path / "events.jsonl"
+    path.write_text(
+        '{"timestamp": "2026-08-11 09:00", "fields": {"gates": [1]}}\n',
+        encoding="utf-8",
+    )
+    events = parse_jsonl_transcript(path)
+    assert len(events) == 1
+    assert events[0].fields["gates"] == "[1]"
+
+
 def test_parse_jsonl_field_keys_are_stringified(tmp_path):
     path = tmp_path / "events.jsonl"
     path.write_text(

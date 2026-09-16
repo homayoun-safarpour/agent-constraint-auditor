@@ -479,6 +479,11 @@ def test_adapter_locks_fields_keys_containing_a_colon_still_parse():
     assert "the key is not split" in ADAPTER
 
 
+def test_adapter_locks_fields_values_containing_a_colon_still_parse():
+    assert "A JSONL `fields` mapping with a value containing a colon still parses" in ADAPTER
+    assert "the value is not split" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

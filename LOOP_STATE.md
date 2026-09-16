@@ -323,7 +323,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W293 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W294 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W295 Refresh `docs/DAILY_LEARN.md` for JSONL two-key `fields` insertion order (2026-09-16)
-- [ ] W296 Named parser case: JSONL non-empty `text` with `fields` uses the text body
+- [x] W296 Named parser case: JSONL non-empty `text` with `fields` uses the text body (2026-09-16)
+- [ ] W297 Document JSONL non-empty `text` with `fields` in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -590,6 +591,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `7516ce6` (run 35140914834).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `a5ed9e6`.
 - 2026-09-16: DAILY_LEARN names JSONL two-key fields insertion order and pytest 137.
+- 2026-09-16: JSONL non-empty text with fields uses the text body is named.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -899,10 +901,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W293 shipped; BENCHMARK GATE CI tip is `7516ce6` (run 35140914834). Next tick: W294 MATRIX heartbeat.
 - 2026-09-16 daily: W294 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W295 DAILY_LEARN refresh.
 - 2026-09-16 daily: W295 shipped; DAILY_LEARN names JSONL two-key fields insertion order and pytest 137. Next tick: W296 non-empty text with fields uses text.
+- 2026-09-16 daily: W296 shipped; JSONL non-empty text with fields uses the text body. Next tick: W297 adapter text-with-fields sentence.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W296: Named parser case: JSONL non-empty `text` with `fields` uses the text body.
-- Why: `body = text if has_text else _text_from_fields(fields)`. Whitespace/empty text with fields already uses fields; the complementary case is unnamed. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: named `tests/test_journal.py` case; `python -m pytest -q && python -m ruff check .` green.
+- W297: Document JSONL non-empty `text` with `fields` in `docs/ADAPTER.md`.
+- Why: named parser locks body from text while fields still parse; hire-doc ladder next is one adapter sentence. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green.
 

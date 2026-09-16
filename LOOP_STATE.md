@@ -11,7 +11,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `483a178` (2026-09-16, run 35137506982); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `d729fb0` (2026-09-16, run 35138439638); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 131 passed; `ruff check .` clean (2026-09-16 W270) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -299,7 +299,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W269 Document JSONL empty-string `fields` values in `docs/ADAPTER.md` (2026-09-16)
 - [x] W270 Named test locks adapter JSONL empty-string `fields` values sentence (2026-09-16)
 - [x] W271 Refresh BENCHMARK GATE pytest count to 131 (2026-09-16)
-- [ ] W272 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W272 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
+- [ ] W273 Local MATRIX nine-exit heartbeat on current main
 
 ## Build log
 
@@ -542,6 +543,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: adapter names JSONL empty-string fields values as still parsing.
 - 2026-09-16: named test locks that adapter JSONL empty-string-value sentence.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 131.
+- 2026-09-16: BENCHMARK GATE CI tip refreshed to `d729fb0` (run 35138439638).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -827,10 +829,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W269 shipped; adapter names JSONL empty-string fields values as still parsing. Next tick: W270 named adapter lock.
 - 2026-09-16 daily: W270 shipped; named test locks adapter JSONL empty-string-value sentence. Next tick: W271 pytest count.
 - 2026-09-16 daily: W271 shipped; BENCHMARK GATE named-claim pytest count is 131. Next tick: W272 CI tip refresh.
+- 2026-09-16 daily: W272 shipped; BENCHMARK GATE CI tip is `d729fb0` (run 35138439638). Next tick: W273 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W272: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
-- Why: gate row still names `483a178` / run 35137506982 from before the empty-string-value PRs. Do not spray boolean field types.
-- Verify: latest successful Actions run SHA on main; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W273: Local MATRIX nine-exit heartbeat on current main.
+- Why: CI tip now names `d729fb0`; confirm nine exits still 0/2/0/2/1/1/0/2/1. Do not spray boolean field types.
+- Verify: nine MATRIX audits; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

@@ -192,7 +192,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W162 Named test locks adapter extra-JSONL-keys sentence (2026-09-16)
 - [x] W163 Refresh BENCHMARK GATE pytest count to 101 (2026-09-16)
 - [x] W164 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
-- [ ] W165 Local MATRIX nine-exit heartbeat on current main
+- [x] W165 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
+- [ ] W166 Refresh `docs/DAILY_LEARN.md` for extra JSONL object keys ignored
 
 ## Build log
 
@@ -328,6 +329,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: named test locks that adapter extra-JSONL-keys sentence.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 101.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `583aafa` (run 35122002858).
+- 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `246d9c7`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -506,10 +508,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W162 shipped; named test locks adapter extra-JSONL-keys sentence. Next tick: W163 pytest count.
 - 2026-09-16 daily: W163 shipped; BENCHMARK GATE named-claim pytest count is 101. Next tick: W164 CI tip refresh.
 - 2026-09-16 daily: W164 shipped; BENCHMARK GATE CI tip is `583aafa` (run 35122002858). Next tick: W165 MATRIX heartbeat.
+- 2026-09-16 daily: W165 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W166 DAILY_LEARN refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W165: Local MATRIX nine-exit heartbeat on current main.
-- Why: Gate CI tip moved; prove the nine-exit contract still holds after extra-JSONL-keys hire-doc.
-- Verify: MATRIX exits `0/2/0/2/1/1/0/2/1`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN. Do not spray boolean field types.
+- W166: Refresh `docs/DAILY_LEARN.md` for extra JSONL object keys ignored and pytest 101.
+- Why: Card still names numeric fields stringify and pytest 98; extra keys is the live gap that just closed.
+- Verify: DAILY_LEARN names extra JSONL keys as ignored and pytest 101; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN. Do not spray boolean field types.
 

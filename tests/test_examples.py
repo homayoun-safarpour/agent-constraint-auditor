@@ -499,6 +499,11 @@ def test_adapter_locks_jsonl_object_line_trailing_whitespace_still_parses():
     assert "spaces after the closing brace are stripped" in ADAPTER
 
 
+def test_adapter_locks_jsonl_object_line_leading_whitespace_still_parses():
+    assert "A JSONL object line with leading whitespace still parses" in ADAPTER
+    assert "spaces before the opening brace are stripped" in ADAPTER
+
+
 def test_adapter_locks_jsonl_crlf_object_lines_still_parse():
     assert "A JSONL object line ending in CRLF still parses" in ADAPTER
     assert "carriage returns are not invalid JSONL" in ADAPTER

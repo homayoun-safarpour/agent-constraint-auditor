@@ -109,7 +109,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W79 Named test locks adapter `+00:00` ERROR sentence (2026-09-16)
 - [x] W80 Named parser case: JSONL timestamp with surrounding whitespace still parses (2026-09-16)
 - [x] W81 Named parser case: JSONL timestamp with an internal double space is ERROR (2026-09-16)
-- [ ] W82 Named parser case: markdown `##` heading with an internal double space still parses
+- [x] W82 Named parser case: markdown `##` heading with an internal double space still parses (2026-09-16)
+- [ ] W83 Document JSONL vs markdown double-space timestamp difference in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -163,6 +164,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: adapter names `+00:00` as the same JSONL ERROR.
 - 2026-09-16: JSONL timestamps with surrounding whitespace still parse after strip.
 - 2026-09-16: JSONL timestamps with an internal double space are named ERROR.
+- 2026-09-16: markdown `##` headings with an internal double space still parse; JSONL of that stamp does not.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -259,10 +261,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W78–W79 shipped; adapter names `+00:00` as ERROR. Next tick: W80 whitespace-padded valid timestamp still parses.
 - 2026-09-16 daily: W80 shipped; padded `" 2026-08-11 09:00 "` still parses. Next tick: W81 internal double-space timestamp is ERROR.
 - 2026-09-16 daily: W81 shipped; JSONL `2026-08-11  09:00` (inner double space) is ERROR. Next tick: W82 markdown heading double space still parses.
+- 2026-09-16 daily: W82 shipped; markdown `##` heading with inner double space still parses; JSONL of the same stamp is ERROR. Next tick: W83 adapter documents that difference.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W82: Named parser case that a markdown `## 2026-08-11  09:00` heading still parses as an event.
-- Why: JSONL `TIMESTAMP_RE` is one space; journal `HEADER_RE` uses `\\s+`. That difference is now a measured fact, not an accident.
-- Verify: `parse_loop_engine_journal` returns one event; `python -m pytest -q && python -m ruff check .` green.
+- W83: Document the JSONL vs markdown inner-double-space timestamp difference in `docs/ADAPTER.md`.
+- Why: Measured in W81/W82; adapter currently talks as if one space rule is universal.
+- Verify: adapter names the difference; `python -m pytest -q && python -m ruff check .` green.
 

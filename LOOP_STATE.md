@@ -255,7 +255,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W225 Refresh `docs/DAILY_LEARN.md` for JSONL `fields` keys stringify (2026-09-16)
 - [x] W226 Named parser case: JSONL boolean `fields` values are stringified (2026-09-16)
 - [x] W227 Document JSONL boolean `fields` values as stringified in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W228 Named test locks adapter JSONL boolean `fields` values sentence
+- [x] W228 Named test locks adapter JSONL boolean `fields` values sentence (2026-09-16)
+- [ ] W229 Refresh BENCHMARK GATE pytest count to 119
 
 ## Build log
 
@@ -454,6 +455,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: DAILY_LEARN names JSONL fields keys as strings and pytest 117.
 - 2026-09-16: JSONL boolean fields values still parse (stringified) is named.
 - 2026-09-16: adapter names JSONL boolean fields values as stringified.
+- 2026-09-16: named test locks that adapter JSONL boolean-fields sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -695,10 +697,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W225 shipped; DAILY_LEARN names JSONL fields keys as strings and pytest 117. Next tick: W226 boolean field values stringify.
 - 2026-09-16 daily: W226 shipped; JSONL boolean fields values still parse (stringified). Next tick: W227 adapter boolean-fields sentence.
 - 2026-09-16 daily: W227 shipped; adapter names JSONL boolean fields values as stringified. Next tick: W228 named adapter lock.
+- 2026-09-16 daily: W228 shipped; named test locks adapter JSONL boolean-fields sentence. Next tick: W229 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W228: Named test locks adapter JSONL boolean `fields` values sentence.
-- Why: hire-doc ladder; one adapter sentence is written. Values only; do not spray boolean field types.
-- Verify: named lock in `tests/test_examples.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W229: Refresh BENCHMARK GATE pytest count to 119.
+- Why: named-claim count after boolean fields-values parser + adapter lock. Values only; do not spray boolean field types.
+- Verify: LOOP_STATE gate row matches `pytest -q`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

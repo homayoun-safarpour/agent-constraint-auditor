@@ -439,6 +439,11 @@ def test_adapter_locks_jsonl_fields_keys_stay_strings():
     assert "a digit key remains `1` as a string" in ADAPTER
 
 
+def test_adapter_locks_boolean_fields_values_are_stringified():
+    assert "A JSONL `fields` mapping with boolean values still parses" in ADAPTER
+    assert "`true` becomes `True` and `false` becomes `False`" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

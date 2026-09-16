@@ -146,7 +146,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W116 Document JSONL non-object lines and non-mapping `fields` in `examples/README.md` (2026-09-16)
 - [x] W117 Named test locks examples README JSONL object/fields ERROR sentence (2026-09-16)
 - [x] W118 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
-- [ ] W119 Local MATRIX nine-exit heartbeat on current main
+- [x] W119 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
+- [ ] W120 Named parser case: empty JSONL file returns no events
 
 ## Build log
 
@@ -236,6 +237,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: examples README names JSONL non-object lines and non-mapping fields as ERROR.
 - 2026-09-16: named test locks that examples README JSONL object/fields ERROR sentence.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `66e3d73` (run 35106620623).
+- 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `2c8c60a`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -368,10 +370,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W116 shipped; examples README names JSONL non-object lines and non-mapping fields as ERROR. Next tick: W117 named examples README lock.
 - 2026-09-16 daily: W117 shipped; named test locks examples README JSONL object/fields ERROR sentence. Next tick: W118 CI tip refresh.
 - 2026-09-16 daily: W118 shipped; BENCHMARK GATE CI tip is `66e3d73` (run 35106620623). Next tick: W119 MATRIX heartbeat.
+- 2026-09-16 daily: W119 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W120 empty JSONL parser case.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W119: Local MATRIX nine-exit heartbeat (`0/2/0/2/1/1/0/2/1`) on current `main`.
-- Why: CI SHA refresh does not re-prove the worked fixtures still match the hire matrix.
-- Verify: nine audits match MATRIX; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W120: Named parser case that an empty JSONL file returns no events (CLI still ERROR via `no parseable events`).
+- Why: Parser currently returns `[]`; that contract is only locked at CLI, so a parser change could silently become CLEAN.
+- Verify: pytest on empty JSONL; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

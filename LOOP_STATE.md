@@ -11,7 +11,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `b8cd098` (2026-09-16, run 35099078475); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `979b04d` (2026-09-16, run 35103522147); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 88 passed; `ruff check .` clean (2026-09-16 W100) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -141,7 +141,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W111 Named test locks INTERVIEW JSONL object/fields ERROR sentence (2026-09-16)
 - [x] W112 Document JSONL non-object lines and non-mapping `fields` in `docs/RELIABILITY_CARD.md` (2026-09-16)
 - [x] W113 Named test locks RELIABILITY_CARD JSONL object/fields ERROR sentence (2026-09-16)
-- [ ] W114 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W114 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
+- [ ] W115 Local MATRIX nine-exit heartbeat on current main
 
 ## Build log
 
@@ -226,6 +227,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: named test locks that INTERVIEW JSONL object/fields ERROR sentence.
 - 2026-09-16: RELIABILITY_CARD names JSONL non-object lines and non-mapping fields as ERROR.
 - 2026-09-16: named test locks that RELIABILITY_CARD JSONL object/fields ERROR sentence.
+- 2026-09-16: BENCHMARK GATE CI tip refreshed to `979b04d` (run 35103522147).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -353,10 +355,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W111 shipped; named test locks INTERVIEW JSONL object/fields ERROR sentence. Next tick: W112 RELIABILITY_CARD sentence.
 - 2026-09-16 daily: W112 shipped; RELIABILITY_CARD names JSONL non-object lines and non-mapping fields as ERROR. Next tick: W113 named RELIABILITY_CARD lock.
 - 2026-09-16 daily: W113 shipped; named test locks RELIABILITY_CARD JSONL object/fields ERROR sentence. Next tick: W114 CI tip refresh.
+- 2026-09-16 daily: W114 shipped; BENCHMARK GATE CI tip is `979b04d` (run 35103522147). Next tick: W115 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W114: Refresh BENCHMARK GATE CI tip to the latest green Actions run on `main`.
-- Why: Object/fields hire-doc ladder is locked; gate row 1 still cites `b8cd098`.
-- Verify: paste the live run URL; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W115: Local MATRIX nine-exit heartbeat (`0/2/0/2/1/1/0/2/1`) on current `main`.
+- Why: CI SHA refresh does not re-prove the worked fixtures still match the hire matrix.
+- Verify: nine audits match MATRIX; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

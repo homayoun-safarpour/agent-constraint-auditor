@@ -352,6 +352,20 @@ def test_parse_jsonl_field_values_containing_a_colon_still_parse(tmp_path):
     assert events[0].text == "- gates: lint:PASS"
 
 
+def test_parse_jsonl_two_key_fields_keep_insertion_order(tmp_path):
+    path = tmp_path / "events.jsonl"
+    path.write_text(
+        '{"timestamp": "2026-08-11 09:00",'
+        ' "fields": {"gates": "PASS", "lint": "ok"}}\n',
+        encoding="utf-8",
+    )
+    events = parse_jsonl_transcript(path)
+    assert len(events) == 1
+    assert list(events[0].fields) == ["gates", "lint"]
+    assert events[0].fields == {"gates": "PASS", "lint": "ok"}
+    assert events[0].text == "- gates: PASS\n- lint: ok"
+
+
 def test_parse_jsonl_null_field_values_become_empty_strings(tmp_path):
     path = tmp_path / "events.jsonl"
     path.write_text(

@@ -198,7 +198,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W168 Refresh BENCHMARK GATE pytest count to 102 (2026-09-16)
 - [x] W169 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W170 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
-- [ ] W171 Refresh `docs/DAILY_LEARN.md` for non-string JSONL `text` treated as missing
+- [x] W171 Refresh `docs/DAILY_LEARN.md` for non-string JSONL `text` treated as missing (2026-09-16)
+- [ ] W172 Document non-string JSONL `text` as missing text in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -340,6 +341,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 102.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `499aa28` (run 35123418703).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `c677844`.
+- 2026-09-16: DAILY_LEARN names non-string JSONL `text` as missing text and pytest 102.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -524,10 +526,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W168 shipped; BENCHMARK GATE named-claim pytest count is 102. Next tick: W169 CI tip refresh.
 - 2026-09-16 daily: W169 shipped; BENCHMARK GATE CI tip is `499aa28` (run 35123418703). Next tick: W170 MATRIX heartbeat.
 - 2026-09-16 daily: W170 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W171 DAILY_LEARN refresh.
+- 2026-09-16 daily: W171 shipped; DAILY_LEARN names non-string JSONL text as missing and pytest 102. Next tick: W172 adapter sentence.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W171: Refresh `docs/DAILY_LEARN.md` for non-string JSONL `text` treated as missing text.
-- Why: W167 named the parser case; the daily skill card still describes extra JSONL keys.
-- Verify: DAILY_LEARN names the W167 behavior and pytest 102; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W172: Document in `docs/ADAPTER.md` that a JSONL `text` value that is not a string is treated as missing text.
+- Why: parser lock exists; hire-doc should name the same rule. One sentence. Do not spray boolean field types.
+- Verify: adapter paragraph includes that sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

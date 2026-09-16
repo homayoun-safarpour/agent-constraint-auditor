@@ -1,20 +1,20 @@
 # Daily learning — 2026-09-16
 
-**Skill.** Extra JSONL object keys beyond `timestamp`, `text`, and `fields` are ignored. `id` and `role` do not ERROR and do not become event attributes. The parsed event still has only those three slots.
+**Skill.** A JSONL `text` value that is not a string is treated as missing text. Numeric `text` with no `fields` is ERROR (`needs text and/or fields`). Numeric `text` with `fields` still parses; the body is synthesized from `fields`.
 
-**Why.** Loop-engine dumps often carry extra keys. Without a named test, a later “unknown key is ERROR” change would look like a bug in the fixtures. The adapter sentence matches the parser lock.
+**Why.** `has_text` requires a non-empty string. Without a named test, a later change that stringified `text` the way `fields` values are stringified would look like a parser bug. This is not a timestamp fail-closed case and not a boolean-field enum.
 
-**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 101. An object with `id` and `role` beside a valid timestamp and text still parses.
+**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 102. `"text": 1` without fields raises; with fields, body is `- gates: lint=PASS`.
 
 ```bash
 python -m pytest -q
-# 101 passed
-python -m pytest -q tests/test_journal.py::test_parse_jsonl_extra_object_keys_are_ignored
+# 102 passed
+python -m pytest -q tests/test_journal.py::test_parse_jsonl_non_string_text_is_treated_as_missing
 # 1 passed
 ```
 
-**Recall probe.** Does `docs/ADAPTER.md` say extra JSONL object keys beyond `timestamp`, `text`, and `fields` are ignored?
+**Recall probe.** Does `docs/ADAPTER.md` say a JSONL `text` value that is not a string is treated as missing text?
 
-Answer: Yes. Named test `test_adapter_locks_extra_jsonl_object_keys_are_ignored` locks that sentence. Do not pytest-lock this card; it is rewritten each morning.
+Answer: Not yet. The parser lock is `test_parse_jsonl_non_string_text_is_treated_as_missing`. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W167
+**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W172

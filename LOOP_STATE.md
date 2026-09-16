@@ -276,7 +276,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W246 Refresh `docs/DAILY_LEARN.md` for JSONL object `fields` values stringify (2026-09-16)
 - [x] W247 Named parser case: JSONL empty-string `fields` keys still parse (2026-09-16)
 - [x] W248 Document JSONL empty-string `fields` keys in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W249 Named test locks adapter JSONL empty-string `fields` keys sentence
+- [x] W249 Named test locks adapter JSONL empty-string `fields` keys sentence (2026-09-16)
+- [ ] W250 Refresh BENCHMARK GATE pytest count to 125
 
 ## Build log
 
@@ -496,6 +497,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: DAILY_LEARN names JSONL object fields values stringify and pytest 123.
 - 2026-09-16: JSONL empty-string fields keys still parse is named.
 - 2026-09-16: adapter names JSONL empty-string fields keys as still parsing.
+- 2026-09-16: named test locks that adapter JSONL empty-string-key sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -758,10 +760,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W246 shipped; DAILY_LEARN names JSONL object fields values stringify and pytest 123. Next tick: W247 empty-string fields keys.
 - 2026-09-16 daily: W247 shipped; JSONL empty-string fields keys still parse. Next tick: W248 adapter empty-string-key sentence.
 - 2026-09-16 daily: W248 shipped; adapter names JSONL empty-string fields keys as still parsing. Next tick: W249 named adapter lock.
+- 2026-09-16 daily: W249 shipped; named test locks adapter JSONL empty-string-key sentence. Next tick: W250 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W249: Named test locks adapter JSONL empty-string `fields` keys sentence.
-- Why: hire-doc ladder; one adapter sentence is written. Do not spray boolean field types.
-- Verify: named lock in `tests/test_examples.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W250: Refresh BENCHMARK GATE pytest count to 125.
+- Why: named-claim count after empty-string fields-keys parser + adapter lock. Do not spray boolean field types.
+- Verify: LOOP_STATE gate row matches `pytest -q`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

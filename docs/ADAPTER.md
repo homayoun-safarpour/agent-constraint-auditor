@@ -25,6 +25,7 @@ constraint-auditor audit \
 | ERROR (fail-closed) | n/a | No parseable dated events | `examples/empty` (exit 1) · `examples/headerless` (exit 1) |
 | JSONL CLEAN | `--format jsonl` | One JSON object per line; no forbid match | `examples/jsonl_stable` (exit 0) |
 | JSONL DECAY | `--format jsonl` | Forbid-match decay on JSONL events | `examples/jsonl_decaying` (exit 2) |
+| JSONL ERROR | `--format jsonl` | Timestamp not `YYYY-MM-DD HH:MM` | `examples/jsonl_bad_timestamp` (exit 1) |
 
 ```bash
 # Required pattern present → CLEAN
@@ -59,9 +60,16 @@ constraint-auditor audit \
   --format jsonl \
   --report /tmp/jsonl-decay.md
 # expect exit 2 DECAY; report opens with Verdict: DECAY
+
+constraint-auditor parse-transcript --format jsonl examples/jsonl_bad_timestamp/events.jsonl
+constraint-auditor audit \
+  --constraints examples/jsonl_bad_timestamp/constraints.yaml \
+  --transcript examples/jsonl_bad_timestamp/events.jsonl \
+  --format jsonl
+# expect exit 1; timestamp not YYYY-MM-DD HH:MM is ERROR, not CLEAN
 ```
 
-Use forbid rules for "never do X". Use required rules for "every event must still show Y" (for example `lint=PASS`). Empty or headerless journals must fail closed as exit `1`, never a free CLEAN. A dated `## YYYY-MM-DD HH:MM` heading with no body text or fields is ERROR (exit `1`), same as a timestamp-only JSONL object. JSONL fixtures under `examples/jsonl_stable` and `examples/jsonl_decaying` lock the same polarities for `--format jsonl`. A JSONL object without a non-empty string `timestamp` is ERROR (exit `1`). A JSONL `timestamp` that is not `YYYY-MM-DD HH:MM` is ERROR (exit `1`). A JSONL object with `timestamp` but neither `text` nor `fields` is ERROR (exit `1`), not CLEAN.
+Use forbid rules for "never do X". Use required rules for "every event must still show Y" (for example `lint=PASS`). Empty or headerless journals must fail closed as exit `1`, never a free CLEAN. A dated `## YYYY-MM-DD HH:MM` heading with no body text or fields is ERROR (exit `1`), same as a timestamp-only JSONL object. JSONL fixtures under `examples/jsonl_stable` and `examples/jsonl_decaying` lock the same polarities for `--format jsonl`. A JSONL object without a non-empty string `timestamp` is ERROR (exit `1`). A JSONL `timestamp` that is not `YYYY-MM-DD HH:MM` is ERROR (exit `1`); `examples/jsonl_bad_timestamp` is the worked fixture (exit `1`). A JSONL object with `timestamp` but neither `text` nor `fields` is ERROR (exit `1`), not CLEAN.
 
 ## What this does not do
 
@@ -82,4 +90,6 @@ constraint-auditor audit --constraints examples/jsonl_stable/constraints.yaml --
 # expect exit 0
 constraint-auditor audit --constraints examples/jsonl_decaying/constraints.yaml --transcript examples/jsonl_decaying/events.jsonl --format jsonl
 # expect exit 2
+constraint-auditor audit --constraints examples/jsonl_bad_timestamp/constraints.yaml --transcript examples/jsonl_bad_timestamp/events.jsonl --format jsonl
+# expect exit 1
 ```

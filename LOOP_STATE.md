@@ -207,7 +207,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W177 Named CLI case: non-string JSONL `text` without fields is ERROR (2026-09-16)
 - [x] W178 Refresh BENCHMARK GATE pytest count to 105 (2026-09-16)
 - [x] W179 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
-- [ ] W180 Local MATRIX nine-exit heartbeat on current main
+- [x] W180 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
+- [ ] W181 Named parser case: empty JSONL `fields` mapping is treated as missing fields
 
 ## Build log
 
@@ -358,6 +359,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: non-string JSONL `text` without fields is CLI ERROR.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 105.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `a0a5444` (run 35124816499).
+- 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `ffdf554`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -551,10 +553,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W177 shipped; non-string JSONL text without fields is CLI ERROR. Next tick: W178 pytest count.
 - 2026-09-16 daily: W178 shipped; BENCHMARK GATE named-claim pytest count is 105. Next tick: W179 CI tip refresh.
 - 2026-09-16 daily: W179 shipped; BENCHMARK GATE CI tip is `a0a5444` (run 35124816499). Next tick: W180 MATRIX heartbeat.
+- 2026-09-16 daily: W180 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W181 empty fields mapping.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W180: Local MATRIX nine-exit heartbeat on current main.
-- Why: CI tip is current; re-confirm MATRIX `0/2/0/2/1/1/0/2/1` after the CLI lock.
-- Verify: run the nine MATRIX commands; paste exits into LOOP_STATE; `python -m pytest -q && python -m ruff check .` green.
+- W181: Named parser case that an empty JSONL `fields` mapping (`{}`) is treated as missing fields.
+- Why: `if not has_text and not fields` treats `{}` as absent; timestamp plus empty fields currently ERROR like timestamp-only, with no named test. Do not spray boolean field types.
+- Verify: named test in `tests/test_journal.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

@@ -449,6 +449,11 @@ def test_adapter_locks_list_fields_values_are_stringified():
     assert "a JSON array is stringified" in ADAPTER
 
 
+def test_adapter_locks_object_fields_values_are_stringified():
+    assert "A JSONL `fields` mapping with nested object values still parses" in ADAPTER
+    assert "a nested JSON object is stringified" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

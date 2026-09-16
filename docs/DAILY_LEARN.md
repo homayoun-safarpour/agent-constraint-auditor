@@ -1,39 +1,27 @@
-# Daily learning  -  2026-09-02
+# Daily learning — 2026-09-16
 
-**Skill.** `forbid: false` is a required regex: every journal event must match. Miss = violation (`required pattern missing`). Default `forbid: true` is the inverse: a match is a violation (`forbid pattern matched`).
+**Skill.** A public ERROR fixture is not done at `examples/`. The lock ladder is parser → worked fixture → `examples/README.md` row → adapter table/verify. W59 froze the examples row; `docs/ADAPTER.md` still names JSONL CLEAN/DECAY only (`jsonl_stable` / `jsonl_decaying`). Markdown ERROR is `empty` / `headerless`.
 
-**Why.** Named tests lock both polarities. Public fixtures: `examples/stable` / `examples/decaying` (`forbid: true`) and `examples/required_present` / `examples/required_missing` (`forbid: false`). Hire signal: deterministic decay gate over a declared spec  -  not an LLM judge.
+**Why.** Hire signal: a reviewer who wires loop-engine reads the adapter, not the examples table. Fail-closed JSONL timestamps are a parser fact (W57) and a worked fixture (W58); they are not yet an adapter named row (W60). Same repo this week; regex gate, not an LLM judge.
 
-**Worked example** (this repo). Stable fixture is CLEAN: no event contains `lint=FAIL` or `git push --force`.
+**Worked example** (this repo). One ISO-`T` line, valid `fields`:
 
 ```bash
+constraint-auditor parse-transcript --format jsonl examples/jsonl_bad_timestamp/events.jsonl
+# ERROR: JSONL line 1 timestamp must be YYYY-MM-DD HH:MM
+# exit 1
+
 constraint-auditor audit \
-  --constraints examples/stable/constraints.yaml \
-  --transcript examples/stable/journal.md
-# verdict=CLEAN exit=0
+  --constraints examples/jsonl_bad_timestamp/constraints.yaml \
+  --transcript examples/jsonl_bad_timestamp/events.jsonl \
+  --format jsonl
+# same ERROR, exit 1 — never CLEAN
 ```
 
-Polarity lives in `check_event` (`src/constraintauditor/checkers.py`):
+`events.jsonl` uses `"timestamp": "2026-08-11T09:00"`. Parse dies before `check_event`. Adapter verify still only audits jsonl_stable (0) and jsonl_decaying (2).
 
-```python
-if constraint.forbid and matched:            # banned string appeared
-if (not constraint.forbid) and not matched:  # required string absent
-```
+**Recall probe.** Does the `docs/ADAPTER.md` ERROR (fail-closed) row name `examples/jsonl_bad_timestamp`?
 
-YAML may omit `forbid`; `Constraint` defaults it to `True` (`src/constraintauditor/spec.py`). Required-pattern lock:
+Answer: No. That row is `examples/empty` and `examples/headerless`. Shapeless JSONL timestamps are adapter prose (`that is not YYYY-MM-DD HH:MM is ERROR`) without the fixture path. W60 is naming it beside the JSONL pair.
 
-```python
-from constraintauditor.checkers import check_transcript
-from constraintauditor.journal import JournalEvent
-from constraintauditor.spec import Constraint, ConstraintSpec
-
-spec = ConstraintSpec("t", (Constraint("must_log_gates", "", r"gates:", forbid=False),))
-events = [JournalEvent("2026-09-02 07:00", "- decision: advance", {})]
-assert check_transcript(spec, events)[0].detail.startswith("required pattern missing")
-```
-
-**Recall probe.** Event text is `- gates: tests=PASS` (no lint line). Spec: `pattern: "lint="`, `forbid: false`. CLEAN or DECAY? Is the check over the whole transcript or per event?
-
-Answer: DECAY  -  required pattern missing on that event. `check_transcript` multiplies constraints × events; a required pattern must hit *every* event, not once somewhere.
-
-**Retrieve.** `src/constraintauditor/checkers.py` · `spec.py` · `tests/test_checkers.py` · `LOOP_STATE.md` NEXT TICK · `docs/INTERVIEW.md`
+**Retrieve.** `examples/jsonl_bad_timestamp/` · `examples/README.md` · `docs/ADAPTER.md` · `tests/test_examples.py` (`test_adapter_locks_jsonl_fixture_rows`) · `LOOP_STATE.md` NEXT TICK W60

@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `f5fc2ca` (2026-09-16, run 35136512223); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 127 passed; `ruff check .` clean (2026-09-16 W256) |
+| 2 | Named claim tests | PASS — `pytest` 129 passed; `ruff check .` clean (2026-09-16 W263) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -291,7 +291,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W261 Named parser case: JSONL whitespace-only `fields` values still parse (2026-09-16)
 - [x] W262 Document JSONL whitespace-only `fields` values in `docs/ADAPTER.md` (2026-09-16)
 - [x] W263 Named test locks adapter JSONL whitespace-only `fields` values sentence (2026-09-16)
-- [ ] W264 Refresh BENCHMARK GATE pytest count to 129
+- [x] W264 Refresh BENCHMARK GATE pytest count to 129 (2026-09-16)
+- [ ] W265 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -526,6 +527,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: JSONL whitespace-only fields values still parse is named.
 - 2026-09-16: adapter names JSONL whitespace-only fields values as still parsing.
 - 2026-09-16: named test locks that adapter JSONL whitespace-value sentence.
+- 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 129.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -803,10 +805,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W261 shipped; JSONL whitespace-only fields values still parse. Next tick: W262 adapter whitespace-value sentence.
 - 2026-09-16 daily: W262 shipped; adapter names JSONL whitespace-only fields values as still parsing. Next tick: W263 named adapter lock.
 - 2026-09-16 daily: W263 shipped; named test locks adapter JSONL whitespace-value sentence. Next tick: W264 pytest count.
+- 2026-09-16 daily: W264 shipped; BENCHMARK GATE named-claim pytest count is 129. Next tick: W265 CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W264: Refresh BENCHMARK GATE pytest count to 129.
-- Why: named-claim count after whitespace-only fields-values parser + adapter lock. Do not spray boolean field types.
-- Verify: LOOP_STATE gate row matches `pytest -q`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W265: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
+- Why: gate row still names `f5fc2ca` / run 35136512223 from before the whitespace-value PRs. Do not spray boolean field types.
+- Verify: latest successful Actions run SHA on main; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

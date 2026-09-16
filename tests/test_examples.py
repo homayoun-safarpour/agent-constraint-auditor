@@ -405,6 +405,10 @@ def test_adapter_locks_whitespace_only_jsonl_parses_to_no_events():
     assert "blank lines are skipped, so parse returns no events and CLI still ERROR" in ADAPTER
 
 
+def test_adapter_locks_utf8_bom_jsonl_is_invalid_jsonl_error():
+    assert "A JSONL file with a UTF-8 BOM is ERROR (invalid JSONL)" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

@@ -167,7 +167,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W137 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W138 Named parser case: UTF-8 BOM JSONL line is ERROR (2026-09-16)
 - [x] W139 Document UTF-8 BOM JSONL as ERROR in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W140 Named test locks adapter UTF-8 BOM JSONL ERROR sentence
+- [x] W140 Named test locks adapter UTF-8 BOM JSONL ERROR sentence (2026-09-16)
+- [ ] W141 Refresh BENCHMARK GATE pytest count to 95
 
 ## Build log
 
@@ -278,6 +279,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `4aa2b79`.
 - 2026-09-16: UTF-8 BOM JSONL line as invalid JSONL ERROR is named.
 - 2026-09-16: adapter names UTF-8 BOM JSONL as invalid JSONL ERROR.
+- 2026-09-16: named test locks that adapter UTF-8 BOM JSONL sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -431,10 +433,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W137 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W138 UTF-8 BOM JSONL ERROR.
 - 2026-09-16 daily: W138 shipped; UTF-8 BOM JSONL is named invalid JSONL ERROR. Next tick: W139 adapter BOM sentence.
 - 2026-09-16 daily: W139 shipped; adapter names UTF-8 BOM JSONL as invalid JSONL ERROR. Next tick: W140 named adapter lock.
+- 2026-09-16 daily: W140 shipped; named test locks adapter UTF-8 BOM JSONL sentence. Next tick: W141 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W140: Named test locks the adapter UTF-8 BOM JSONL ERROR sentence.
-- Why: Hire-doc sentence exists without a lock; next wake must not rewrite it.
-- Verify: named test in `tests/test_examples.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W141: Refresh BENCHMARK GATE named-claim pytest count from 93 to 95.
+- Why: W138 parser case and W140 adapter lock added two tests; the gate table is stale.
+- Verify: LOOP_STATE table shows 95; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

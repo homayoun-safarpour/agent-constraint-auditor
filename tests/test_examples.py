@@ -430,6 +430,10 @@ def test_adapter_locks_whitespace_jsonl_text_with_fields_uses_fields():
     assert "Whitespace-only JSONL `text` with `fields` uses the fields body" in ADAPTER
 
 
+def test_adapter_locks_empty_string_jsonl_text_with_fields_uses_fields():
+    assert "Empty-string JSONL `text` with `fields` uses the fields body" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

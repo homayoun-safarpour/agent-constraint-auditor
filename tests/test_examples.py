@@ -401,6 +401,8 @@ def test_interview_locks_jsonl_demo():
     assert "Verdict: DECAY" in INTERVIEW
     assert "YYYY-MM-DD HH:MM" in INTERVIEW
     assert "Markdown journals and JSONL events share the same exit contract" in INTERVIEW
+    assert "valid JSON but not an object" in INTERVIEW
+    assert "`fields` value that is not a mapping" in INTERVIEW
     assert "--version" in INTERVIEW
     assert "0.1.0" in INTERVIEW
 

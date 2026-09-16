@@ -158,6 +158,9 @@ def test_examples_readme_locks_jsonl_bad_timestamp_row():
     assert "YYYY-MM-DD HH:MM" in jsonl_line
     assert "examples/jsonl_bad_timestamp/events.jsonl" in EXAMPLES_README
     assert "examples/jsonl_bad_timestamp/constraints.yaml" in EXAMPLES_README
+    assert "valid JSON but not an object" in EXAMPLES_README
+    assert "`fields` value that is not a mapping" in EXAMPLES_README
+    assert "parser-locked, not extra fixtures" in EXAMPLES_README
     assert (
         main(
             [

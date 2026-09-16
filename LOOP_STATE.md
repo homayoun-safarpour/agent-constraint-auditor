@@ -152,7 +152,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W122 Named test locks adapter empty-JSONL no-events / CLI ERROR sentence (2026-09-16)
 - [x] W123 Refresh BENCHMARK GATE pytest count to 90 (2026-09-16)
 - [x] W124 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
-- [ ] W125 Local MATRIX nine-exit heartbeat on current main
+- [x] W125 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
+- [ ] W126 Refresh `docs/DAILY_LEARN.md` for empty JSONL parse-then-CLI split
 
 ## Build log
 
@@ -248,6 +249,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: named test locks that adapter empty-JSONL sentence.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 90.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `84c2866` (run 35109709041).
+- 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `9fb7a11`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -386,10 +388,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W122 shipped; named test locks adapter empty-JSONL sentence. Next tick: W123 pytest count.
 - 2026-09-16 daily: W123 shipped; BENCHMARK GATE named-claim pytest count is 90. Next tick: W124 CI tip refresh.
 - 2026-09-16 daily: W124 shipped; BENCHMARK GATE CI tip is `84c2866` (run 35109709041). Next tick: W125 MATRIX heartbeat.
+- 2026-09-16 daily: W125 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W126 DAILY_LEARN refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W125: Local MATRIX nine-exit heartbeat on current main.
-- Why: Gate CI tip moved; prove the nine-exit contract still holds after empty-JSONL hire-doc.
-- Verify: MATRIX exits `0/2/0/2/1/1/0/2/1`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W126: Refresh `docs/DAILY_LEARN.md` for the empty JSONL parse-then-CLI split and pytest 90.
+- Why: Card still names pytest 88 and the object/fields family; empty JSONL is the live gap that just closed.
+- Verify: DAILY_LEARN names empty JSONL no-events then CLI ERROR and pytest 90; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

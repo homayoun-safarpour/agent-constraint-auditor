@@ -395,6 +395,11 @@ def test_adapter_locks_jsonl_bad_timestamp_row():
     )
 
 
+def test_adapter_locks_empty_jsonl_parses_to_no_events():
+    assert "An empty JSONL file parses to no events" in ADAPTER
+    assert "`audit` and `parse-transcript` still ERROR (exit `1`) via `no parseable events`" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

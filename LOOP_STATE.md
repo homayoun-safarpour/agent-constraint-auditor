@@ -303,7 +303,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W273 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W274 Refresh `docs/DAILY_LEARN.md` for JSONL empty-string `fields` values (2026-09-16)
 - [x] W275 Named parser case: JSONL `fields` keys containing a colon still parse (2026-09-16)
-- [ ] W276 Document JSONL `fields` keys containing a colon in `docs/ADAPTER.md`
+- [x] W276 Document JSONL `fields` keys containing a colon in `docs/ADAPTER.md` (2026-09-16)
+- [ ] W277 Named test locks adapter JSONL `fields` keys containing a colon sentence
 
 ## Build log
 
@@ -550,6 +551,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `fae41e3`.
 - 2026-09-16: DAILY_LEARN names JSONL empty-string fields values and pytest 131.
 - 2026-09-16: JSONL fields keys containing a colon still parse is named.
+- 2026-09-16: adapter names JSONL fields keys containing a colon as still parsing.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -839,10 +841,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W273 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W274 DAILY_LEARN refresh.
 - 2026-09-16 daily: W274 shipped; DAILY_LEARN names JSONL empty-string fields values and pytest 131. Next tick: W275 colon-in-field-key parser.
 - 2026-09-16 daily: W275 shipped; JSONL fields keys containing a colon still parse. Next tick: W276 adapter colon-key sentence.
+- 2026-09-16 daily: W276 shipped; adapter names JSONL fields keys containing a colon as still parsing. Next tick: W277 named adapter lock.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W276: Document JSONL `fields` keys containing a colon in `docs/ADAPTER.md`.
-- Why: named parser locks `"gates:lint"` → `- gates:lint: PASS`; hire-doc ladder next is one adapter sentence. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green.
+- W277: Named test locks adapter JSONL `fields` keys containing a colon sentence.
+- Why: one adapter sentence names colon-in-field-key; hire-doc ladder next is the named lock. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: named `tests/test_examples.py` lock; `python -m pytest -q && python -m ruff check .` green.
 

@@ -88,6 +88,8 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "dated journal heading with no body" in README
     assert "JSONL object missing text and fields" in README
     assert "invalid or empty JSONL" in README
+    assert "valid JSON but not an object" in README
+    assert "`fields` value that is not a mapping" in README
     assert "parse-transcript PATH [--format jsonl|journal|auto]" in README
     assert "OK: 0 events" in README
     assert "`audit` and `parse-transcript` both accept `--format jsonl|journal|auto`" in README

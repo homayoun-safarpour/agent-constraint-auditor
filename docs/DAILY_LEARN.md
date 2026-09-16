@@ -1,20 +1,20 @@
 # Daily learning — 2026-09-16
 
-**Skill.** JSONL `fields` keys stay strings. A digit key such as `"1"` is the string `1`, not an integer. `_fields_from_mapping` uses `str(key)`; `json.loads` already yields string keys, and the named parser keeps that contract.
+**Skill.** JSONL boolean `fields` values still parse and are stringified. JSON `true` becomes `"True"` and JSON `false` becomes `"False"` (`str(True)` / `str(False)`). This is values only, not a boolean-field type enum.
 
-**Why.** Numeric field *values* already stringify. Without a named key lock, a later change that stored digit keys as ints would break field lookup. This is not a boolean-field enum.
+**Why.** Numeric field values already stringify. Without a named boolean-value lock, a later change that rejected `true`/`false` in `fields` would look like a parser bug. Do not spray boolean field types.
 
-**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 117. `"fields": {"1": "lint=PASS"}` yields key `"1"` and text `- 1: lint=PASS`.
+**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 119. `"fields": {"ok": true, "blocked": false}` yields `ok="True"` and `blocked="False"`.
 
 ```bash
 python -m pytest -q
-# 117 passed
-python -m pytest -q tests/test_journal.py::test_parse_jsonl_field_keys_are_stringified
+# 119 passed
+python -m pytest -q tests/test_journal.py::test_parse_jsonl_boolean_field_values_are_stringified
 # 1 passed
 ```
 
-**Recall probe.** Does `docs/ADAPTER.md` say JSONL `fields` keys stay strings?
+**Recall probe.** Does `docs/ADAPTER.md` say a JSONL `fields` mapping with boolean values still parses?
 
-Answer: Yes. Named test `test_adapter_locks_jsonl_fields_keys_stay_strings` locks that sentence. Do not pytest-lock this card; it is rewritten each morning.
+Answer: Yes. Named test `test_adapter_locks_boolean_fields_values_are_stringified` locks that sentence. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W226
+**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W233

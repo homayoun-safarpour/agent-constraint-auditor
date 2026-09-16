@@ -114,7 +114,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W84 Named test locks adapter JSONL vs markdown double-space sentence (2026-09-16)
 - [x] W85 Named parser case: JSONL `timestamp` JSON `null` is ERROR (2026-09-16)
 - [x] W86 Named parser case: JSONL `timestamp` JSON `false` is ERROR (2026-09-16)
-- [ ] W87 Named parser case: JSONL `timestamp` JSON `true` is ERROR
+- [x] W87 Named parser case: JSONL `timestamp` JSON `true` is ERROR (2026-09-16)
+- [ ] W88 Document JSONL non-string timestamps as missing-timestamp ERROR in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -172,6 +173,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: adapter names that JSONL vs markdown inner-double-space difference.
 - 2026-09-16: JSONL timestamp JSON null is named ERROR (missing timestamp).
 - 2026-09-16: JSONL timestamp JSON false is named ERROR (missing timestamp).
+- 2026-09-16: JSONL timestamp JSON true is named ERROR (missing timestamp).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -272,10 +274,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W83–W84 shipped; adapter names JSONL vs markdown inner-double-space difference. Next tick: W85 JSONL null timestamp is ERROR.
 - 2026-09-16 daily: W85 shipped; JSONL timestamp JSON null is ERROR (missing timestamp). Next tick: W86 JSONL timestamp false is ERROR.
 - 2026-09-16 daily: W86 shipped; JSONL timestamp JSON false is ERROR (missing timestamp). Next tick: W87 JSONL timestamp true is ERROR.
+- 2026-09-16 daily: W87 shipped; JSONL timestamp JSON true is ERROR (missing timestamp). Next tick: W88 adapter non-string timestamp sentence.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W87: Named parser case that a JSONL `timestamp` of JSON `true` is ERROR (`missing timestamp`).
-- Why: False is locked; true is the remaining boolean.
-- Verify: pytest raises `missing timestamp`; `python -m pytest -q && python -m ruff check .` green.
+- W88: Document JSONL non-string timestamps (null, false, true, numbers) as ERROR (`missing timestamp`) in `docs/ADAPTER.md`.
+- Why: Booleans and null are locked in tests; the adapter still only names blank or non-string without the type cases.
+- Verify: named sentence in ADAPTER; `python -m pytest -q && python -m ruff check .` green.
 

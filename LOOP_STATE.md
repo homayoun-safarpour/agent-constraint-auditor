@@ -149,7 +149,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W119 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W120 Named parser case: empty JSONL file returns no events (2026-09-16)
 - [x] W121 Document empty JSONL as no events / CLI ERROR in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W122 Named test locks adapter empty-JSONL no-events / CLI ERROR sentence
+- [x] W122 Named test locks adapter empty-JSONL no-events / CLI ERROR sentence (2026-09-16)
+- [ ] W123 Refresh BENCHMARK GATE pytest count to 90
 
 ## Build log
 
@@ -242,6 +243,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `2c8c60a`.
 - 2026-09-16: empty JSONL file returning no events is named (CLI still ERROR).
 - 2026-09-16: adapter names empty JSONL as no events then CLI ERROR.
+- 2026-09-16: named test locks that adapter empty-JSONL sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -377,10 +379,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W119 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W120 empty JSONL parser case.
 - 2026-09-16 daily: W120 shipped; empty JSONL file returns no events (CLI still ERROR). Next tick: W121 adapter empty JSONL sentence.
 - 2026-09-16 daily: W121 shipped; adapter names empty JSONL as no events then CLI ERROR. Next tick: W122 named adapter lock.
+- 2026-09-16 daily: W122 shipped; named test locks adapter empty-JSONL sentence. Next tick: W123 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W122: Named test locks the adapter empty-JSONL no-events / CLI ERROR sentence.
-- Why: Hire-doc sentence exists without a lock; next wake must not rewrite it.
-- Verify: named test in `tests/test_examples.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W123: Refresh BENCHMARK GATE named-claim pytest count from 88 to 90.
+- Why: W120 parser case and W122 adapter lock added two tests; the gate table is stale.
+- Verify: LOOP_STATE table shows 90; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

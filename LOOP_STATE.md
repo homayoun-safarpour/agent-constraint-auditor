@@ -295,7 +295,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W265 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W266 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W267 Refresh `docs/DAILY_LEARN.md` for JSONL whitespace-only `fields` values (2026-09-16)
-- [ ] W268 Named parser case: JSONL empty-string `fields` values still parse
+- [x] W268 Named parser case: JSONL empty-string `fields` values still parse (2026-09-16)
+- [ ] W269 Document JSONL empty-string `fields` values in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -534,6 +535,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `483a178` (run 35137506982).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `f5eab56`.
 - 2026-09-16: DAILY_LEARN names JSONL whitespace-only fields values and pytest 129.
+- 2026-09-16: JSONL empty-string fields values still parse is named.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -815,10 +817,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W265 shipped; BENCHMARK GATE CI tip is `483a178` (run 35137506982). Next tick: W266 MATRIX heartbeat.
 - 2026-09-16 daily: W266 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W267 DAILY_LEARN refresh.
 - 2026-09-16 daily: W267 shipped; DAILY_LEARN names JSONL whitespace-only fields values and pytest 129. Next tick: W268 empty-string fields values.
+- 2026-09-16 daily: W268 shipped; JSONL empty-string fields values still parse. Next tick: W269 adapter empty-string-value sentence.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W268: Named parser case that JSONL empty-string `fields` values still parse.
-- Why: null values become empty strings; an explicit `""` value is a mapping entry, not missing fields. Do not spray boolean field types.
-- Verify: named test in `tests/test_journal.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W269: Document JSONL empty-string `fields` values in `docs/ADAPTER.md`.
+- Why: parser lock is named; hire-doc ladder next is one adapter sentence. Do not spray boolean field types.
+- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

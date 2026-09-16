@@ -182,7 +182,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W152 Refresh BENCHMARK GATE pytest count to 98 (2026-09-16)
 - [x] W153 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W154 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
-- [ ] W155 Refresh `docs/DAILY_LEARN.md` for numeric JSONL `fields` stringify
+- [x] W155 Refresh `docs/DAILY_LEARN.md` for numeric JSONL `fields` stringify (2026-09-16)
+- [ ] W156 Named parser case: JSONL `fields` null values become empty strings
 
 ## Build log
 
@@ -308,6 +309,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 98.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `bc4bc49` (run 35117842162).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `bbd4b9b`.
+- 2026-09-16: DAILY_LEARN names numeric JSONL fields stringify and pytest 98.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -476,10 +478,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W152 shipped; BENCHMARK GATE named-claim pytest count is 98. Next tick: W153 CI tip refresh.
 - 2026-09-16 daily: W153 shipped; BENCHMARK GATE CI tip is `bc4bc49` (run 35117842162). Next tick: W154 MATRIX heartbeat.
 - 2026-09-16 daily: W154 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W155 DAILY_LEARN refresh.
+- 2026-09-16 daily: W155 shipped; DAILY_LEARN names numeric JSONL fields stringify and pytest 98. Next tick: W156 null fields stringify.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W155: Refresh `docs/DAILY_LEARN.md` for numeric JSONL `fields` stringify and pytest 98.
-- Why: Card still names UTF-8 BOM and pytest 95; numeric fields stringify is the live gap that just closed.
-- Verify: DAILY_LEARN names numeric fields as stringified (not ERROR) and pytest 98; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W156: Named parser case that JSONL `fields` values that are JSON `null` become empty strings.
+- Why: Same `str()` helper; `None` is the other branch (`"" if value is None`) and still has no named test. Do not spray boolean field types.
+- Verify: named test in `tests/test_journal.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

@@ -155,7 +155,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W125 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W126 Refresh `docs/DAILY_LEARN.md` for empty JSONL parse-then-CLI split (2026-09-16)
 - [x] W127 Named parser case: whitespace-only JSONL file returns no events (2026-09-16)
-- [ ] W128 Document whitespace-only JSONL as no events / CLI ERROR in `docs/ADAPTER.md`
+- [x] W128 Document whitespace-only JSONL as no events / CLI ERROR in `docs/ADAPTER.md` (2026-09-16)
+- [ ] W129 Named test locks adapter whitespace-only JSONL sentence
 
 ## Build log
 
@@ -254,6 +255,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `9fb7a11`.
 - 2026-09-16: DAILY_LEARN names empty JSONL parse-then-CLI split and pytest 90.
 - 2026-09-16: whitespace-only JSONL file returning no events is named (CLI still ERROR).
+- 2026-09-16: adapter names whitespace-only JSONL as no events then CLI ERROR.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -395,10 +397,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W125 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W126 DAILY_LEARN refresh.
 - 2026-09-16 daily: W126 shipped; DAILY_LEARN names empty JSONL parse-then-CLI split and pytest 90. Next tick: W127 whitespace-only JSONL parser case.
 - 2026-09-16 daily: W127 shipped; whitespace-only JSONL file returns no events (CLI still ERROR). Next tick: W128 adapter whitespace-only sentence.
+- 2026-09-16 daily: W128 shipped; adapter names whitespace-only JSONL as no events then CLI ERROR. Next tick: W129 named adapter lock.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W128: Document that a whitespace-only JSONL file parses to no events and is CLI ERROR in `docs/ADAPTER.md`.
-- Why: Parser lock exists; adapter currently names only an empty file, not skipped blank lines.
-- Verify: named sentence in ADAPTER; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W129: Named test locks the adapter whitespace-only JSONL no-events / CLI ERROR sentence.
+- Why: Hire-doc sentence exists without a lock; next wake must not rewrite it.
+- Verify: named test in `tests/test_examples.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

@@ -11,7 +11,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `445a758` (2026-09-16, run 35143295664); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `55a5c95` (2026-09-16, run 35144150088); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 145 passed; `ruff check .` clean (2026-09-16 W319) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -348,7 +348,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W318 Document JSONL blank lines between objects in `docs/ADAPTER.md` (2026-09-16)
 - [x] W319 Named test locks adapter JSONL blank-lines-between-objects sentence (2026-09-16)
 - [x] W320 Refresh BENCHMARK GATE pytest count to 145 (2026-09-16)
-- [ ] W321 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W321 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
+- [ ] W322 Local MATRIX nine-exit heartbeat on current main
 
 ## Build log
 
@@ -640,6 +641,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: adapter names JSONL blank lines between objects as skipped.
 - 2026-09-16: named test locks that adapter JSONL blank-line sentence.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 145.
+- 2026-09-16: BENCHMARK GATE CI tip refreshed to `55a5c95` (run 35144150088).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -974,10 +976,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W318 shipped; adapter names JSONL blank lines between objects as skipped. Next tick: W319 named adapter lock.
 - 2026-09-16 daily: W319 shipped; named test locks adapter JSONL blank-line sentence. Next tick: W320 pytest count.
 - 2026-09-16 daily: W320 shipped; BENCHMARK GATE named-claim pytest count is 145. Next tick: W321 CI tip refresh.
+- 2026-09-16 daily: W321 shipped; BENCHMARK GATE CI tip is `55a5c95` (run 35144150088). Next tick: W322 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W321: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
-- Why: gate row still names `445a758` / run 35143295664 from before the blank-line PRs. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: latest successful Actions run SHA on main; `python -m pytest -q && python -m ruff check .` green.
+- W322: Local MATRIX nine-exit heartbeat on current main.
+- Why: CI tip now names `55a5c95`; confirm nine exits still 0/2/0/2/1/1/0/2/1. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: nine MATRIX audits; `python -m pytest -q && python -m ruff check .` green.
 

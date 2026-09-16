@@ -105,7 +105,9 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W75 Document timezone-suffix JSONL timestamps as ERROR in `docs/ADAPTER.md` (2026-09-16)
 - [x] W76 Named test locks adapter timezone-suffix ERROR sentence (2026-09-16)
 - [x] W77 Named parser case: JSONL timestamp with `+00:00` offset is ERROR (2026-09-16)
-- [ ] W78 Document `+00:00` JSONL timestamps as ERROR in `docs/ADAPTER.md`
+- [x] W78 Document `+00:00` JSONL timestamps as ERROR in `docs/ADAPTER.md` (2026-09-16)
+- [x] W79 Named test locks adapter `+00:00` ERROR sentence (2026-09-16)
+- [ ] W80 Named parser case: JSONL timestamp with surrounding whitespace still parses
 
 ## Build log
 
@@ -156,6 +158,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: JSONL timestamps with a `Z` suffix are named ERROR.
 - 2026-09-16: adapter names `09:00Z` as the same JSONL ERROR.
 - 2026-09-16: JSONL timestamps with a `+00:00` offset are named ERROR.
+- 2026-09-16: adapter names `+00:00` as the same JSONL ERROR.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -249,10 +252,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W74 shipped; JSONL `09:00Z` timestamps are named ERROR. Next tick: W75 adapter timezone sentence.
 - 2026-09-16 daily: W75–W76 shipped; adapter names `09:00Z` as ERROR. Next tick: W77 `+00:00` offset parser case.
 - 2026-09-16 daily: W77 shipped; JSONL `+00:00` timestamps are named ERROR. Next tick: W78 adapter offset sentence.
+- 2026-09-16 daily: W78–W79 shipped; adapter names `+00:00` as ERROR. Next tick: W80 whitespace-padded valid timestamp still parses.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W78: Document `+00:00` JSONL timestamps as ERROR in `docs/ADAPTER.md`.
-- Why: Parser lock exists; adapter still names `Z` and seconds only.
-- Verify: adapter names `+00:00` as exit 1; `python -m pytest -q && python -m ruff check .` green.
+- W80: Named parser case that a JSONL timestamp with surrounding whitespace (`" 2026-08-11 09:00 "`) still parses.
+- Why: Fail-closed shapes are locked; the complement is that `strip()` keeps a valid floor timestamp CLEAN to parse.
+- Verify: `parse_jsonl_transcript` accepts the padded stamp; `python -m pytest -q && python -m ruff check .` green.
 

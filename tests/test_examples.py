@@ -484,6 +484,11 @@ def test_adapter_locks_fields_values_containing_a_colon_still_parse():
     assert "the value is not split" in ADAPTER
 
 
+def test_adapter_locks_two_key_fields_keep_insertion_order():
+    assert "A JSONL `fields` mapping with two keys keeps insertion order" in ADAPTER
+    assert "body lines follow that order" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

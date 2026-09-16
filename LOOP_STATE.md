@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `a4dae55` (2026-09-16, run 35112275020); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 93 passed; `ruff check .` clean (2026-09-16 W134) |
+| 2 | Named claim tests | PASS — `pytest` 95 passed; `ruff check .` clean (2026-09-16 W140) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -168,7 +168,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W138 Named parser case: UTF-8 BOM JSONL line is ERROR (2026-09-16)
 - [x] W139 Document UTF-8 BOM JSONL as ERROR in `docs/ADAPTER.md` (2026-09-16)
 - [x] W140 Named test locks adapter UTF-8 BOM JSONL ERROR sentence (2026-09-16)
-- [ ] W141 Refresh BENCHMARK GATE pytest count to 95
+- [x] W141 Refresh BENCHMARK GATE pytest count to 95 (2026-09-16)
+- [ ] W142 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -280,6 +281,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: UTF-8 BOM JSONL line as invalid JSONL ERROR is named.
 - 2026-09-16: adapter names UTF-8 BOM JSONL as invalid JSONL ERROR.
 - 2026-09-16: named test locks that adapter UTF-8 BOM JSONL sentence.
+- 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 95.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -434,10 +436,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W138 shipped; UTF-8 BOM JSONL is named invalid JSONL ERROR. Next tick: W139 adapter BOM sentence.
 - 2026-09-16 daily: W139 shipped; adapter names UTF-8 BOM JSONL as invalid JSONL ERROR. Next tick: W140 named adapter lock.
 - 2026-09-16 daily: W140 shipped; named test locks adapter UTF-8 BOM JSONL sentence. Next tick: W141 pytest count.
+- 2026-09-16 daily: W141 shipped; BENCHMARK GATE named-claim pytest count is 95. Next tick: W142 CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W141: Refresh BENCHMARK GATE named-claim pytest count from 93 to 95.
-- Why: W138 parser case and W140 adapter lock added two tests; the gate table is stale.
-- Verify: LOOP_STATE table shows 95; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W142: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
+- Why: Tip still names `a4dae55`; W137–W140 landed after that.
+- Verify: latest successful `ci.yml` SHA + run id in the gate table; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

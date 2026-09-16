@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `7683bdd` (2026-09-16, run 35128688176); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 111 passed; `ruff check .` clean (2026-09-16 W200) |
+| 2 | Named claim tests | PASS — `pytest` 112 passed; `ruff check .` clean (2026-09-16 W205) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -233,7 +233,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W203 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W204 Refresh `docs/DAILY_LEARN.md` for whitespace-only JSONL `text` with `fields` (2026-09-16)
 - [x] W205 Named parser case: empty-string JSONL `text` with `fields` uses fields (2026-09-16)
-- [ ] W206 Refresh BENCHMARK GATE pytest count to 112
+- [x] W206 Refresh BENCHMARK GATE pytest count to 112 (2026-09-16)
+- [ ] W207 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -410,6 +411,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `7a2e0dd`.
 - 2026-09-16: DAILY_LEARN names whitespace-only JSONL `text` with `fields` and pytest 111.
 - 2026-09-16: empty-string JSONL `text` with `fields` uses fields.
+- 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 112.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -629,10 +631,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W203 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W204 DAILY_LEARN refresh.
 - 2026-09-16 daily: W204 shipped; DAILY_LEARN names whitespace-only JSONL text with fields and pytest 111. Next tick: W205 empty-string text with fields.
 - 2026-09-16 daily: W205 shipped; empty-string JSONL text with fields uses fields. Next tick: W206 pytest count.
+- 2026-09-16 daily: W206 shipped; BENCHMARK GATE named-claim pytest count is 112. Next tick: W207 CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W206: Refresh BENCHMARK GATE named-claim pytest count to 112.
-- Why: W205 added `test_parse_jsonl_empty_string_text_with_fields_uses_fields`; the gate still says 111.
-- Verify: LOOP_STATE named-claim cell matches `python -m pytest -q`; `python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W207: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main after W205/W206.
+- Why: named-claim pytest is 112 on main; the gate still cites `7683bdd`.
+- Verify: paste a real success run for current `origin/main`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

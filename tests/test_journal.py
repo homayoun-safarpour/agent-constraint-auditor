@@ -229,6 +229,21 @@ def test_parse_jsonl_numeric_field_values_are_stringified(tmp_path):
     assert events[0].fields["gates"] == "1"
 
 
+def test_parse_jsonl_field_keys_are_stringified(tmp_path):
+    path = tmp_path / "events.jsonl"
+    path.write_text(
+        '{"timestamp": "2026-08-11 09:00", "fields": {"1": "lint=PASS"}}\n',
+        encoding="utf-8",
+    )
+    events = parse_jsonl_transcript(path)
+    assert len(events) == 1
+    (key,) = events[0].fields
+    assert key == "1"
+    assert type(key) is str
+    assert events[0].fields == {"1": "lint=PASS"}
+    assert events[0].text == "- 1: lint=PASS"
+
+
 def test_parse_jsonl_null_field_values_become_empty_strings(tmp_path):
     path = tmp_path / "events.jsonl"
     path.write_text(

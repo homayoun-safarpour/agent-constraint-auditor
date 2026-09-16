@@ -91,7 +91,11 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W61 Named test locks `docs/ADAPTER.md` jsonl_bad_timestamp row (exit 1) (2026-09-16)
 - [x] W62 Document `examples/jsonl_bad_timestamp` in `examples/MATRIX.md` (2026-09-16)
 - [x] W63 Named test locks `examples/MATRIX.md` jsonl_bad_timestamp row (exit 1) (2026-09-16)
-- [ ] W64 Document `examples/jsonl_bad_timestamp` on `docs/RELIABILITY_CARD.md`
+- [x] W64 Document `examples/jsonl_bad_timestamp` on `docs/RELIABILITY_CARD.md` (2026-09-16)
+- [x] W65 Named test locks `docs/RELIABILITY_CARD.md` jsonl_bad_timestamp ERROR row (2026-09-16)
+- [x] W66 Document `examples/jsonl_bad_timestamp` in `docs/INTERVIEW.md` (2026-09-16)
+- [x] W67 Named test locks `docs/INTERVIEW.md` jsonl_bad_timestamp demo (exit 1) (2026-09-16)
+- [ ] W68 Document `examples/jsonl_bad_timestamp` in `CONTRIBUTING.md`
 
 ## Build log
 
@@ -135,6 +139,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: `docs/ADAPTER.md` documents `examples/jsonl_bad_timestamp` JSONL ERROR (exit 1) beside jsonl_stable / jsonl_decaying.
 - 2026-09-16: named test locks `docs/ADAPTER.md` jsonl_bad_timestamp row (exit 1 ERROR, `--format jsonl`).
 - 2026-09-16: `examples/MATRIX.md` ninth row `jsonl_bad_timestamp` exit 1; named tests lock table + live audit (0/2/0/2/1/1/0/2/1).
+- 2026-09-16: reliability card + interview pack name `jsonl_bad_timestamp` ERROR exit 1; named tests lock both.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -221,10 +226,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W61 shipped; named test locks `docs/ADAPTER.md` jsonl_bad_timestamp row (exit 1 ERROR). Next tick: W62 document that fixture in `examples/MATRIX.md`.
 - 2026-09-16 heartbeat: OK (W61 matches `a2adf6f`; named ADAPTER jsonl_bad_timestamp lock; CI green run 35070809069; 84 pytest). ENRICH. Next tick: W62 document `examples/jsonl_bad_timestamp` in `examples/MATRIX.md`.
 - 2026-09-16 daily: W62–W63 shipped; MATRIX table + live lock include `jsonl_bad_timestamp` exit 1 (0/2/0/2/1/1/0/2/1). Next tick: W64 reliability-card row.
+- 2026-09-16 daily: W64–W67 shipped; reliability card and interview pack name `jsonl_bad_timestamp` as ERROR exit 1 (timestamp not `YYYY-MM-DD HH:MM`). Next tick: W68 CONTRIBUTING.md row.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W64: Document `examples/jsonl_bad_timestamp` on `docs/RELIABILITY_CARD.md`.
-- Why: MATRIX now has nine exits; the reliability card still only names jsonl_stable / jsonl_decaying.
-- Verify: reliability card names `jsonl_bad_timestamp` as ERROR exit 1; `python -m pytest -q && python -m ruff check .` green.
+- W68: Document `examples/jsonl_bad_timestamp` in `CONTRIBUTING.md`.
+- Why: Hire docs now name the ninth ERROR fixture; CONTRIBUTING still points at MATRIX without that path.
+- Verify: CONTRIBUTING names `jsonl_bad_timestamp` as exit 1; `python -m pytest -q && python -m ruff check .` green.
 

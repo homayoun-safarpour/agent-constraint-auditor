@@ -1,20 +1,20 @@
 # Daily learning — 2026-09-16
 
-**Skill.** An empty JSONL `fields` mapping (`{}`) is treated as missing fields. Timestamp plus `{}` and no text is ERROR (`needs text and/or fields`). Timestamp plus text plus `{}` still parses; `fields` on the event is `{}`.
+**Skill.** Whitespace-only JSONL `text` with `fields` uses the fields body. `"text": "   "` is not `has_text`. Without fields that is ERROR; with fields, body is synthesized from `fields`.
 
-**Why.** `if not has_text and not fields` treats an empty dict as absent. Without a named test, a later change that treated `{}` as present would look like a parser bug. This is not a boolean-field enum.
+**Why.** `has_text` requires a non-empty string after strip. Without a named test, a later change that kept the whitespace `text` instead of synthesizing from `fields` would look like a parser bug. This is not a boolean-field enum.
 
-**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 107. `"fields": {}` without text raises; with text, the event keeps empty fields.
+**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 111. Whitespace text plus `{"gates": "lint=PASS"}` yields `- gates: lint=PASS`.
 
 ```bash
 python -m pytest -q
-# 107 passed
-python -m pytest -q tests/test_journal.py::test_parse_jsonl_empty_fields_mapping_is_treated_as_missing
+# 111 passed
+python -m pytest -q tests/test_journal.py::test_parse_jsonl_whitespace_text_with_fields_uses_fields
 # 1 passed
 ```
 
-**Recall probe.** Does `docs/ADAPTER.md` say an empty JSONL `fields` mapping is treated as missing fields?
+**Recall probe.** Does `docs/ADAPTER.md` say whitespace-only JSONL `text` with `fields` uses the fields body?
 
-Answer: Yes. Named test `test_adapter_locks_empty_jsonl_fields_mapping_is_treated_as_missing` locks that sentence. Do not pytest-lock this card; it is rewritten each morning.
+Answer: Yes. Named test `test_adapter_locks_whitespace_jsonl_text_with_fields_uses_fields` locks that sentence. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W191
+**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W205

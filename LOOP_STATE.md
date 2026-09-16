@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `ace7f0a` (2026-09-14, run 34818339165); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 84 passed; `ruff check .` clean (2026-09-16 W61) |
+| 2 | Named claim tests | PASS — `pytest` 86 passed; `ruff check .` clean (2026-09-16 W90) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -117,7 +117,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W87 Named parser case: JSONL `timestamp` JSON `true` is ERROR (2026-09-16)
 - [x] W88 Document JSONL non-string timestamps as missing-timestamp ERROR in `docs/ADAPTER.md` (2026-09-16)
 - [x] W89 Named test locks adapter non-string timestamp ERROR sentence (2026-09-16)
-- [ ] W90 Refresh BENCHMARK GATE pytest count to the live 86
+- [x] W90 Refresh BENCHMARK GATE pytest count to the live 86 (2026-09-16)
+- [ ] W91 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -178,6 +179,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: JSONL timestamp JSON true is named ERROR (missing timestamp).
 - 2026-09-16: adapter names JSONL null, true, false, or numeric timestamps as the same ERROR.
 - 2026-09-16: named test locks that adapter non-string timestamp ERROR sentence.
+- 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 86.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -281,10 +283,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W87 shipped; JSONL timestamp JSON true is ERROR (missing timestamp). Next tick: W88 adapter non-string timestamp sentence.
 - 2026-09-16 daily: W88 shipped; adapter names JSONL null, true, false, or numeric timestamps as ERROR. Next tick: W89 named adapter lock.
 - 2026-09-16 daily: W89 shipped; named test locks adapter non-string timestamp ERROR sentence. Next tick: W90 BENCHMARK GATE pytest count.
+- 2026-09-16 daily: W90 shipped; BENCHMARK GATE named-claim pytest count is 86. Next tick: W91 CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W90: Refresh BENCHMARK GATE pytest count from 84 to the live 86.
-- Why: Gate row 2 still quotes W61; type-enum spray stops here.
-- Verify: LOOP_STATE named-claim row says 86; `python -m pytest -q && python -m ruff check .` green.
+- W91: Refresh BENCHMARK GATE CI tip to the latest green Actions run on `main`.
+- Why: Gate row 1 still cites `ace7f0a` from Monday while tip is `7f93c1f`.
+- Verify: paste the live run URL; `python -m pytest -q && python -m ruff check .` green.
 

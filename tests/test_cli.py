@@ -175,6 +175,18 @@ def test_parse_transcript_format_jsonl_whitespace_only_exit_1(tmp_path, capsys):
     assert "OK:" not in captured.out
 
 
+def test_parse_transcript_format_jsonl_utf8_bom_exit_1(tmp_path, capsys):
+    path = tmp_path / "bom.jsonl"
+    path.write_bytes(
+        b'\xef\xbb\xbf{"timestamp": "2026-08-11 09:00", "text": "- gates: lint=PASS"}\n'
+    )
+    code = main(["parse-transcript", str(path), "--format", "jsonl"])
+    assert code == 1
+    captured = capsys.readouterr()
+    assert "invalid JSONL" in captured.err
+    assert "OK:" not in captured.out
+
+
 def test_parse_transcript_format_jsonl_forces_invalid_line(tmp_path, capsys):
     path = tmp_path / "events.jsonl"
     path.write_text("not-an-object\n", encoding="utf-8")

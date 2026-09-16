@@ -415,6 +415,8 @@ def test_reliability_card_locks_jsonl_claim():
     assert "YYYY-MM-DD HH:MM" in RELIABILITY
     assert "exit `1`" in RELIABILITY
     assert "JSONL transcript" in RELIABILITY or "jsonl" in RELIABILITY.lower()
+    assert "valid JSON but not an object" in RELIABILITY
+    assert "`fields` value that is not a mapping" in RELIABILITY
 
 
 MATRIX_EXIT_ROWS = (

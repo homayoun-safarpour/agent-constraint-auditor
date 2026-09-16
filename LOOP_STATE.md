@@ -104,7 +104,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W74 Named parser case: JSONL timestamp with timezone suffix is ERROR (2026-09-16)
 - [x] W75 Document timezone-suffix JSONL timestamps as ERROR in `docs/ADAPTER.md` (2026-09-16)
 - [x] W76 Named test locks adapter timezone-suffix ERROR sentence (2026-09-16)
-- [ ] W77 Named parser case: JSONL timestamp with `+00:00` offset is ERROR
+- [x] W77 Named parser case: JSONL timestamp with `+00:00` offset is ERROR (2026-09-16)
+- [ ] W78 Document `+00:00` JSONL timestamps as ERROR in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -154,6 +155,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: adapter names `YYYY-MM-DD HH:MM:SS` as the same JSONL ERROR.
 - 2026-09-16: JSONL timestamps with a `Z` suffix are named ERROR.
 - 2026-09-16: adapter names `09:00Z` as the same JSONL ERROR.
+- 2026-09-16: JSONL timestamps with a `+00:00` offset are named ERROR.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -246,10 +248,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W72–W73 shipped; adapter names seconds timestamps as ERROR. Next tick: W74 timezone-suffix JSONL ERROR.
 - 2026-09-16 daily: W74 shipped; JSONL `09:00Z` timestamps are named ERROR. Next tick: W75 adapter timezone sentence.
 - 2026-09-16 daily: W75–W76 shipped; adapter names `09:00Z` as ERROR. Next tick: W77 `+00:00` offset parser case.
+- 2026-09-16 daily: W77 shipped; JSONL `+00:00` timestamps are named ERROR. Next tick: W78 adapter offset sentence.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W77: Named parser case for JSONL timestamps with a `+00:00` offset (`2026-08-11 09:00+00:00`) as ERROR.
-- Why: `Z` is locked; numeric offsets are the next nearby fail-closed shape.
-- Verify: pytest raises `timestamp must be YYYY-MM-DD HH:MM` on `+00:00`; `python -m pytest -q && python -m ruff check .` green.
+- W78: Document `+00:00` JSONL timestamps as ERROR in `docs/ADAPTER.md`.
+- Why: Parser lock exists; adapter still names `Z` and seconds only.
+- Verify: adapter names `+00:00` as exit 1; `python -m pytest -q && python -m ruff check .` green.
 

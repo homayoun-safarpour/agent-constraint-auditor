@@ -381,9 +381,11 @@ def test_adapter_locks_jsonl_bad_timestamp_row():
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW
+    assert "examples/jsonl_bad_timestamp/events.jsonl" in INTERVIEW
     assert "--format jsonl" in INTERVIEW
     assert "jsonl-decay.md" in INTERVIEW
     assert "Verdict: DECAY" in INTERVIEW
+    assert "YYYY-MM-DD HH:MM" in INTERVIEW
     assert "Markdown journals and JSONL events share the same exit contract" in INTERVIEW
     assert "--version" in INTERVIEW
     assert "0.1.0" in INTERVIEW
@@ -393,6 +395,9 @@ def test_reliability_card_locks_jsonl_claim():
     assert "--format jsonl" in RELIABILITY
     assert "jsonl_stable" in RELIABILITY
     assert "jsonl_decaying" in RELIABILITY
+    assert "jsonl_bad_timestamp" in RELIABILITY
+    assert "YYYY-MM-DD HH:MM" in RELIABILITY
+    assert "exit `1`" in RELIABILITY
     assert "JSONL transcript" in RELIABILITY or "jsonl" in RELIABILITY.lower()
 
 

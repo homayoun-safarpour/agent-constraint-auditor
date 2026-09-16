@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `445a758` (2026-09-16, run 35143295664); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 143 passed; `ruff check .` clean (2026-09-16 W312) |
+| 2 | Named claim tests | PASS — `pytest` 145 passed; `ruff check .` clean (2026-09-16 W319) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -347,7 +347,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W317 Named parser case: JSONL blank lines between objects are skipped (2026-09-16)
 - [x] W318 Document JSONL blank lines between objects in `docs/ADAPTER.md` (2026-09-16)
 - [x] W319 Named test locks adapter JSONL blank-lines-between-objects sentence (2026-09-16)
-- [ ] W320 Refresh BENCHMARK GATE pytest count to 145
+- [x] W320 Refresh BENCHMARK GATE pytest count to 145 (2026-09-16)
+- [ ] W321 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -638,6 +639,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: JSONL blank lines between objects are skipped is named.
 - 2026-09-16: adapter names JSONL blank lines between objects as skipped.
 - 2026-09-16: named test locks that adapter JSONL blank-line sentence.
+- 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 145.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -971,10 +973,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W317 shipped; JSONL blank lines between objects are skipped. Next tick: W318 adapter blank-line sentence.
 - 2026-09-16 daily: W318 shipped; adapter names JSONL blank lines between objects as skipped. Next tick: W319 named adapter lock.
 - 2026-09-16 daily: W319 shipped; named test locks adapter JSONL blank-line sentence. Next tick: W320 pytest count.
+- 2026-09-16 daily: W320 shipped; BENCHMARK GATE named-claim pytest count is 145. Next tick: W321 CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W320: Refresh BENCHMARK GATE pytest count to 145.
-- Why: named parser + adapter lock add two tests (144 then 145). Hire-doc ladder next is GATE count. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: BENCHMARK GATE named-claim row is 145; `python -m pytest -q && python -m ruff check .` green.
+- W321: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
+- Why: gate row still names `445a758` / run 35143295664 from before the blank-line PRs. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: latest successful Actions run SHA on main; `python -m pytest -q && python -m ruff check .` green.
 

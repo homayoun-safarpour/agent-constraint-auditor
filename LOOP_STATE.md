@@ -266,7 +266,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W236 Refresh BENCHMARK GATE pytest count to 121 (2026-09-16)
 - [x] W237 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W238 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
-- [ ] W239 Refresh `docs/DAILY_LEARN.md` for JSONL list `fields` values stringify
+- [x] W239 Refresh `docs/DAILY_LEARN.md` for JSONL list `fields` values stringify (2026-09-16)
+- [ ] W240 Named parser case: JSONL object `fields` values are stringified
 
 ## Build log
 
@@ -476,6 +477,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 121.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `e4a1277` (run 35133998223).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `07eff1e`.
+- 2026-09-16: DAILY_LEARN names JSONL list fields values stringify and pytest 121.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -728,10 +730,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W236 shipped; BENCHMARK GATE named-claim pytest count is 121. Next tick: W237 CI tip refresh.
 - 2026-09-16 daily: W237 shipped; BENCHMARK GATE CI tip is `e4a1277` (run 35133998223). Next tick: W238 MATRIX heartbeat.
 - 2026-09-16 daily: W238 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W239 DAILY_LEARN refresh.
+- 2026-09-16 daily: W239 shipped; DAILY_LEARN names JSONL list fields values stringify and pytest 121. Next tick: W240 object field values stringify.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W239: Refresh `docs/DAILY_LEARN.md` for JSONL list `fields` values stringify.
-- Why: parser + adapter + lock + pytest 121 + CI + MATRIX are named; hire-doc ladder next is DAILY_LEARN. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: one DAILY_LEARN sentence; `python -m pytest -q && python -m ruff check .` green.
+- W240: Named parser case that JSONL object `fields` values are stringified.
+- Why: numeric, boolean, and list values already stringify via `str(value)`; a nested JSON object value does not have a named test. Do not spray boolean field types.
+- Verify: named test in `tests/test_journal.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

@@ -1,20 +1,20 @@
 # Daily learning — 2026-09-16
 
-**Skill.** JSONL `fields` that are a mapping with numeric values still parse. Those values are stringified (`1` becomes `"1"`). That is not the timestamp fail-closed rule: a numeric `timestamp` is ERROR; a numeric field value is not.
+**Skill.** Extra JSONL object keys beyond `timestamp`, `text`, and `fields` are ignored. `id` and `role` do not ERROR and do not become event attributes. The parsed event still has only those three slots.
 
-**Why.** Hire docs that only say non-mapping `fields` is ERROR leave reviewers guessing whether `{"gates": 1}` is CLEAN or ERROR. The parser `str()`s values. A later fail-closed change would need a named test to fail first.
+**Why.** Loop-engine dumps often carry extra keys. Without a named test, a later “unknown key is ERROR” change would look like a bug in the fixtures. The adapter sentence matches the parser lock.
 
-**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 98. `{"fields": {"gates": 1}}` parses; `fields["gates"]` is `"1"`.
+**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 101. An object with `id` and `role` beside a valid timestamp and text still parses.
 
 ```bash
 python -m pytest -q
-# 98 passed
-python -m pytest -q tests/test_journal.py::test_parse_jsonl_numeric_field_values_are_stringified
+# 101 passed
+python -m pytest -q tests/test_journal.py::test_parse_jsonl_extra_object_keys_are_ignored
 # 1 passed
 ```
 
-**Recall probe.** Does `docs/ADAPTER.md` say a JSONL `fields` mapping with numeric values still parses and those values are stringified?
+**Recall probe.** Does `docs/ADAPTER.md` say extra JSONL object keys beyond `timestamp`, `text`, and `fields` are ignored?
 
-Answer: Yes. Named test `test_adapter_locks_numeric_fields_values_are_stringified` locks that sentence. Do not pytest-lock this card; it is rewritten each morning.
+Answer: Yes. Named test `test_adapter_locks_extra_jsonl_object_keys_are_ignored` locks that sentence. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W156
+**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W167

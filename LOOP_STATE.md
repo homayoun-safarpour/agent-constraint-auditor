@@ -377,7 +377,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W347 Named test locks adapter JSONL leading non-whitespace sentence (2026-09-16)
 - [x] W348 Refresh BENCHMARK GATE pytest count to 153 (2026-09-16)
 - [x] W349 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
-- [ ] W350 Local MATRIX nine-exit heartbeat on current main
+- [x] W350 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
+- [ ] W351 Refresh `docs/DAILY_LEARN.md` for JSONL leading non-whitespace before `{`
 
 ## Build log
 
@@ -698,6 +699,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: named test locks that adapter JSONL leading non-whitespace sentence.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 153.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `608ae44` (run 35150422076).
+- 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `f0484d8`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1061,10 +1063,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W347 shipped; named test locks adapter JSONL leading non-whitespace sentence. Next tick: W348 pytest count.
 - 2026-09-16 daily: W348 shipped; BENCHMARK GATE named-claim pytest count is 153. Next tick: W349 CI tip refresh.
 - 2026-09-16 daily: W349 shipped; BENCHMARK GATE CI tip is `608ae44` (run 35150422076). Next tick: W350 MATRIX heartbeat.
+- 2026-09-16 daily: W350 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W351 DAILY_LEARN refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W350: Local MATRIX nine-exit heartbeat on current main.
-- Why: GATE CI tip is the green W348 merge; hire-doc ladder next is MATRIX 0/2/0/2/1/1/0/2/1. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: nine exits match examples/MATRIX.md; `python -m pytest -q && python -m ruff check .` green.
+- W351: Refresh `docs/DAILY_LEARN.md` for JSONL leading non-whitespace before `{`.
+- Why: MATRIX still 0/2/0/2/1/1/0/2/1; hire-doc ladder next is DAILY_LEARN for leading-junk ERROR. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: DAILY_LEARN names leading-junk JSONL ERROR and pytest 153; `python -m pytest -q && python -m ruff check .` green.
 

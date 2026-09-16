@@ -245,7 +245,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W215 Named CLI case: empty-string JSONL `text` without fields is ERROR (2026-09-16)
 - [x] W216 Refresh BENCHMARK GATE pytest count to 115 (2026-09-16)
 - [x] W217 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
-- [ ] W218 Local MATRIX nine-exit heartbeat on current main
+- [x] W218 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
+- [ ] W219 Named parser case: JSONL `fields` keys are stringified
 
 ## Build log
 
@@ -434,6 +435,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: empty-string JSONL `text` without fields is CLI ERROR.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 115.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `f08ab40` (run 35131077152).
+- 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `2c16b94`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -665,10 +667,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W215 shipped; empty-string JSONL text without fields is CLI ERROR. Next tick: W216 pytest count.
 - 2026-09-16 daily: W216 shipped; BENCHMARK GATE named-claim pytest count is 115. Next tick: W217 CI tip refresh.
 - 2026-09-16 daily: W217 shipped; BENCHMARK GATE CI tip is `f08ab40` (run 35131077152). Next tick: W218 MATRIX heartbeat.
+- 2026-09-16 daily: W218 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W219 fields keys stringify.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W218: Local MATRIX nine-exit heartbeat on current main.
-- Why: CI tip is current; re-confirm MATRIX `0/2/0/2/1/1/0/2/1` after the empty-string CLI lock.
-- Verify: run the nine MATRIX commands; paste exits into LOOP_STATE; `python -m pytest -q && python -m ruff check .` green.
+- W219: Named parser case that JSONL `fields` keys are stringified.
+- Why: `_fields_from_mapping` uses `str(key)`; numeric field values already stringify, keys do not have a named test. Do not spray boolean field types.
+- Verify: named test in `tests/test_journal.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

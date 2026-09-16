@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `fa02d7d` (2026-09-16, run 35142556695); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 141 passed; `ruff check .` clean (2026-09-16 W305) |
+| 2 | Named claim tests | PASS — `pytest` 143 passed; `ruff check .` clean (2026-09-16 W312) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -340,7 +340,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W310 Named parser case: JSONL CRLF object lines still parse (2026-09-16)
 - [x] W311 Document JSONL CRLF object lines in `docs/ADAPTER.md` (2026-09-16)
 - [x] W312 Named test locks adapter JSONL CRLF object-line sentence (2026-09-16)
-- [ ] W313 Refresh BENCHMARK GATE pytest count to 143
+- [x] W313 Refresh BENCHMARK GATE pytest count to 143 (2026-09-16)
+- [ ] W314 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -624,6 +625,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: JSONL CRLF object lines still parse is named.
 - 2026-09-16: adapter names JSONL CRLF object lines as still parsing.
 - 2026-09-16: named test locks that adapter JSONL CRLF sentence.
+- 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 143.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -950,10 +952,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W310 shipped; JSONL CRLF object lines still parse. Next tick: W311 adapter CRLF sentence.
 - 2026-09-16 daily: W311 shipped; adapter names JSONL CRLF object lines as still parsing. Next tick: W312 named adapter lock.
 - 2026-09-16 daily: W312 shipped; named test locks adapter JSONL CRLF sentence. Next tick: W313 pytest count.
+- 2026-09-16 daily: W313 shipped; BENCHMARK GATE named-claim pytest count is 143. Next tick: W314 CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W313: Refresh BENCHMARK GATE pytest count to 143.
-- Why: named parser + adapter lock add two tests (142 then 143). Hire-doc ladder next is GATE count. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: BENCHMARK GATE named-claim row is 143; `python -m pytest -q && python -m ruff check .` green.
+- W314: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
+- Why: gate row still names `fa02d7d` / run 35142556695 from before the CRLF PRs. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: latest successful Actions run SHA on main; `python -m pytest -q && python -m ruff check .` green.
 

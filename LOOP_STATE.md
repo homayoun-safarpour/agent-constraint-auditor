@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `f08ab40` (2026-09-16, run 35131077152); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 115 passed; `ruff check .` clean (2026-09-16 W215) |
+| 2 | Named claim tests | PASS — `pytest` 117 passed; `ruff check .` clean (2026-09-16 W221) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -249,7 +249,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W219 Named parser case: JSONL `fields` keys are stringified (2026-09-16)
 - [x] W220 Document JSONL `fields` keys as stringified in `docs/ADAPTER.md` (2026-09-16)
 - [x] W221 Named test locks adapter JSONL `fields` keys sentence (2026-09-16)
-- [ ] W222 Refresh BENCHMARK GATE pytest count to 117
+- [x] W222 Refresh BENCHMARK GATE pytest count to 117 (2026-09-16)
+- [ ] W223 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -442,6 +443,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: JSONL fields keys remaining strings (including `"1"`) is named.
 - 2026-09-16: adapter names JSONL fields keys as strings.
 - 2026-09-16: named test locks that adapter JSONL fields-keys sentence.
+- 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 117.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -677,10 +679,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W219 shipped; JSONL fields keys are stringified (`"1"` stays `"1"`). Next tick: W220 adapter fields-keys sentence.
 - 2026-09-16 daily: W220 shipped; adapter names JSONL fields keys as strings. Next tick: W221 named adapter lock.
 - 2026-09-16 daily: W221 shipped; named test locks adapter JSONL fields-keys sentence. Next tick: W222 pytest count.
+- 2026-09-16 daily: W222 shipped; BENCHMARK GATE named-claim pytest count is 117. Next tick: W223 CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W222: Refresh BENCHMARK GATE pytest count to 117.
-- Why: named-claim count after the fields-keys parser + adapter lock. Do not spray boolean field types.
-- Verify: LOOP_STATE gate row matches `pytest -q`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W223: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
+- Why: gate row still names `f08ab40` / run 35131077152 from before the fields-keys PRs. Do not spray boolean field types.
+- Verify: latest successful Actions run SHA on main; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

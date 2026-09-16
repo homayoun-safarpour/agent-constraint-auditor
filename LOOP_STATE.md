@@ -253,7 +253,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W223 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W224 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W225 Refresh `docs/DAILY_LEARN.md` for JSONL `fields` keys stringify (2026-09-16)
-- [ ] W226 Named parser case: JSONL boolean `fields` values are stringified
+- [x] W226 Named parser case: JSONL boolean `fields` values are stringified (2026-09-16)
+- [ ] W227 Document JSONL boolean `fields` values as stringified in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -450,6 +451,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `716ad2e` (run 35132129589).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `657b3b1`.
 - 2026-09-16: DAILY_LEARN names JSONL fields keys as strings and pytest 117.
+- 2026-09-16: JSONL boolean fields values still parse (stringified) is named.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -689,10 +691,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W223 shipped; BENCHMARK GATE CI tip is `716ad2e` (run 35132129589). Next tick: W224 MATRIX heartbeat.
 - 2026-09-16 daily: W224 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W225 DAILY_LEARN refresh.
 - 2026-09-16 daily: W225 shipped; DAILY_LEARN names JSONL fields keys as strings and pytest 117. Next tick: W226 boolean field values stringify.
+- 2026-09-16 daily: W226 shipped; JSONL boolean fields values still parse (stringified). Next tick: W227 adapter boolean-fields sentence.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W226: Named parser case that JSONL boolean `fields` values are stringified.
-- Why: numeric values already stringify via `str(value)`; `true`/`false` do not have a named test. Values only — do not spray boolean field types.
-- Verify: named test in `tests/test_journal.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W227: Document JSONL boolean `fields` values as stringified in `docs/ADAPTER.md`.
+- Why: parser lock is named; hire-doc ladder next is one adapter sentence. Values only; do not spray boolean field types.
+- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

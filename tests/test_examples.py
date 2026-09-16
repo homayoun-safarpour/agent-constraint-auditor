@@ -369,6 +369,7 @@ def test_adapter_locks_jsonl_bad_timestamp_row():
     assert "+00:00" in ADAPTER
     assert "inner double space" in ADAPTER
     assert "markdown `##` heading" in ADAPTER
+    assert "JSON `null`, `true`, `false`, or a number is the same ERROR" in ADAPTER
     assert (
         main(
             [

@@ -388,7 +388,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W358 Refresh `docs/DAILY_LEARN.md` for JSONL trailing-comma object lines (2026-09-16)
 - [x] W359 Named parser case: JSONL object lines with single-quoted strings are invalid JSONL (2026-09-16)
 - [x] W360 Document JSONL single-quoted strings in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W361 Named test locks `docs/ADAPTER.md` JSONL single-quoted sentence
+- [x] W361 Named test locks adapter JSONL single-quoted sentence (2026-09-16)
+- [ ] W362 Refresh BENCHMARK GATE pytest count to 157
 
 ## Build log
 
@@ -720,6 +721,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: DAILY_LEARN names JSONL trailing-comma object lines and pytest 155.
 - 2026-09-16: JSONL object lines with single-quoted strings are invalid JSONL is named.
 - 2026-09-16: adapter names JSONL single-quoted strings as invalid JSONL.
+- 2026-09-16: named test locks that adapter JSONL single-quoted sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1094,10 +1096,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W358 shipped; DAILY_LEARN names JSONL trailing-comma object lines and pytest 155. Next tick: W359 single-quoted JSONL object line.
 - 2026-09-16 daily: W359 shipped; JSONL object lines with single-quoted strings are invalid JSONL. Next tick: W360 adapter single-quote sentence.
 - 2026-09-16 daily: W360 shipped; adapter names JSONL single-quoted strings as invalid JSONL. Next tick: W361 named adapter lock.
+- 2026-09-16 daily: W361 shipped; named test locks adapter JSONL single-quoted sentence. Next tick: W362 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W361: Named test locks `docs/ADAPTER.md` JSONL single-quoted sentence.
-- Why: adapter now says single-quoted strings are ERROR and single quotes are not accepted; hire-doc ladder next is the named lock. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: named `tests/test_examples.py` case; `python -m pytest -q && python -m ruff check .` green.
+- W362: Refresh BENCHMARK GATE pytest count to 157.
+- Why: named adapter lock for single-quoted JSONL ERROR is merged; hire-doc ladder next is the GATE count. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: GATE cell shows 157; `python -m pytest -q && python -m ruff check .` green.
 

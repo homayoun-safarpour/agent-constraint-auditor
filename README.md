@@ -99,7 +99,7 @@ constraint-auditor audit \
 
 Each YAML rule is a regex over a journal event. `forbid: true` (default) treats a match as decay. `forbid: false` treats a missing required pattern as decay (exit `2`). Invalid regex is a spec error (exit `1`).
 
-`--format jsonl` (or auto-detect when the first non-empty line starts with `{`) reads one JSON object per line. Each object needs a non-empty string `timestamp` of shape `YYYY-MM-DD HH:MM` plus `text` and/or `fields`. A line missing `timestamp` (blank or non-string) is ERROR (exit `1`). A timestamp that is not `YYYY-MM-DD HH:MM` is ERROR (exit `1`). A timestamp-only line is ERROR (exit `1`). Invalid or empty JSONL is ERROR (exit `1`). A dated journal heading (`## YYYY-MM-DD HH:MM`) with no body text or fields is ERROR (exit `1`), same as a timestamp-only JSONL object. `audit` and `parse-transcript` both accept `--format jsonl|journal|auto`.
+`--format jsonl` (or auto-detect when the first non-empty line starts with `{`) reads one JSON object per line. Each object needs a non-empty string `timestamp` of shape `YYYY-MM-DD HH:MM` plus `text` and/or `fields`. A line missing `timestamp` (blank or non-string) is ERROR (exit `1`). A timestamp that is not `YYYY-MM-DD HH:MM` is ERROR (exit `1`). A timestamp-only line is ERROR (exit `1`). Invalid or empty JSONL is ERROR (exit `1`). A JSONL line that is valid JSON but not an object, or a `fields` value that is not a mapping, is ERROR (exit `1`). A dated journal heading (`## YYYY-MM-DD HH:MM`) with no body text or fields is ERROR (exit `1`), same as a timestamp-only JSONL object. `audit` and `parse-transcript` both accept `--format jsonl|journal|auto`.
 
 ## Exit codes
 

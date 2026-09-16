@@ -133,7 +133,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W103 Refresh `docs/DAILY_LEARN.md` for pytest 88 and JSONL object/fields fail-closed locks (2026-09-16)
 - [x] W104 Document JSONL non-object lines and non-mapping `fields` in README (2026-09-16)
 - [x] W105 Named test locks README JSONL object/fields ERROR sentence (2026-09-16)
-- [ ] W106 Document JSONL non-object lines and non-mapping `fields` in CONTRIBUTING.md
+- [x] W106 Document JSONL non-object lines and non-mapping `fields` in CONTRIBUTING.md (2026-09-16)
+- [ ] W107 Named test locks CONTRIBUTING JSONL object/fields ERROR sentence
 
 ## Build log
 
@@ -210,6 +211,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: DAILY_LEARN refreshed for pytest 88 and JSONL object/fields fail-closed locks.
 - 2026-09-16: README names JSONL non-object lines and non-mapping fields as ERROR.
 - 2026-09-16: named test locks that README JSONL object/fields ERROR sentence.
+- 2026-09-16: CONTRIBUTING names JSONL non-object lines and non-mapping fields as ERROR.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -329,10 +331,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W103 shipped; DAILY_LEARN names pytest 88 and JSONL object/fields ERROR locks. Next tick: W104 README object/fields sentence.
 - 2026-09-16 daily: W104 shipped; README names JSONL non-object lines and non-mapping fields as ERROR. Next tick: W105 named README lock.
 - 2026-09-16 daily: W105 shipped; named test locks README JSONL object/fields ERROR sentence. Next tick: W106 CONTRIBUTING sentence.
+- 2026-09-16 daily: W106 shipped; CONTRIBUTING names JSONL non-object lines and non-mapping fields as ERROR. Next tick: W107 named CONTRIBUTING lock.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W106: Document JSONL non-object lines and non-mapping `fields` as ERROR in `CONTRIBUTING.md`.
-- Why: Parser, adapter, and README name those exits; CONTRIBUTING still only names `jsonl_bad_timestamp`.
-- Verify: one CONTRIBUTING sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W107: Named test locks the CONTRIBUTING sentence that a JSONL non-object line or non-mapping `fields` must stay ERROR.
+- Why: W106 wrote the hire-doc sentence; the lock belongs in `tests/test_examples.py`.
+- Verify: pytest asserts the sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

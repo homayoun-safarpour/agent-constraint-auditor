@@ -11,7 +11,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `499aa28` (2026-09-16, run 35123418703); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `015d068` (2026-09-16, run 35124251252); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 103 passed; `ruff check .` clean (2026-09-16 W173) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -202,7 +202,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W172 Document non-string JSONL `text` as missing text in `docs/ADAPTER.md` (2026-09-16)
 - [x] W173 Named test locks adapter non-string JSONL `text` sentence (2026-09-16)
 - [x] W174 Refresh BENCHMARK GATE pytest count to 103 (2026-09-16)
-- [ ] W175 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W175 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
+- [ ] W176 Local MATRIX nine-exit heartbeat on current main
 
 ## Build log
 
@@ -348,6 +349,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: adapter names non-string JSONL `text` as missing text.
 - 2026-09-16: named test locks that adapter non-string JSONL `text` sentence.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 103.
+- 2026-09-16: BENCHMARK GATE CI tip refreshed to `015d068` (run 35124251252).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -536,10 +538,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W172 shipped; adapter names non-string JSONL text as missing text. Next tick: W173 named adapter lock.
 - 2026-09-16 daily: W173 shipped; named test locks adapter non-string JSONL text sentence. Next tick: W174 pytest count.
 - 2026-09-16 daily: W174 shipped; BENCHMARK GATE named-claim pytest count is 103. Next tick: W175 CI tip refresh.
+- 2026-09-16 daily: W175 shipped; BENCHMARK GATE CI tip is `015d068` (run 35124251252). Next tick: W176 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W175: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main after W173/W174.
-- Why: named-claim pytest is 103 on main; the gate still cites `499aa28`.
-- Verify: paste a real success run for current `origin/main`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W176: Local MATRIX nine-exit heartbeat on current main.
+- Why: CI tip is current; re-confirm MATRIX `0/2/0/2/1/1/0/2/1` after the adapter lock.
+- Verify: run the nine MATRIX commands; paste exits into LOOP_STATE; `python -m pytest -q && python -m ruff check .` green.
 

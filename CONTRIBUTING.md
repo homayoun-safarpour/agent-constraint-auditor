@@ -13,7 +13,7 @@ python -m ruff check .
 constraint-auditor --version
 ```
 
-Exit contract: `0` CLEAN, `2` DECAY, `1` ERROR. Empty, headerless, empty-bodied dated events, or empty JSONL transcripts must stay ERROR.
+Exit contract: `0` CLEAN, `2` DECAY, `1` ERROR. Empty, headerless, empty-bodied dated events, or empty JSONL transcripts must stay ERROR. A JSONL `timestamp` that is not `YYYY-MM-DD HH:MM` must stay ERROR (`examples/jsonl_bad_timestamp`).
 
 Fixture matrix: [examples/MATRIX.md](examples/MATRIX.md).
 

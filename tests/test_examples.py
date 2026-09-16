@@ -96,6 +96,8 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "SECURITY.md" in README
     assert "agent-constraint-auditor/discussions" in README
     assert "empty-bodied dated events" in CONTRIBUTING
+    assert "jsonl_bad_timestamp" in CONTRIBUTING
+    assert "YYYY-MM-DD HH:MM" in CONTRIBUTING
     assert "actions/workflows/ci.yml/badge.svg" in README
 
 

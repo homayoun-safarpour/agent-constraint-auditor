@@ -391,7 +391,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W361 Named test locks adapter JSONL single-quoted sentence (2026-09-16)
 - [x] W362 Refresh BENCHMARK GATE pytest count to 157 (2026-09-16)
 - [x] W363 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
-- [ ] W364 Local MATRIX nine-exit heartbeat on current main
+- [x] W364 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
+- [ ] W365 Refresh `docs/DAILY_LEARN.md` for JSONL single-quoted strings
 
 ## Build log
 
@@ -726,6 +727,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: named test locks that adapter JSONL single-quoted sentence.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 157.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `2b73c25` (run 35153101959).
+- 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `1434d97`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1103,10 +1105,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W361 shipped; named test locks adapter JSONL single-quoted sentence. Next tick: W362 pytest count.
 - 2026-09-16 daily: W362 shipped; BENCHMARK GATE named-claim pytest count is 157. Next tick: W363 CI tip refresh.
 - 2026-09-16 daily: W363 shipped; BENCHMARK GATE CI tip is `2b73c25` (run 35153101959). Next tick: W364 MATRIX heartbeat.
+- 2026-09-16 daily: W364 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W365 DAILY_LEARN refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W364: Local MATRIX nine-exit heartbeat on current main.
-- Why: GATE CI tip is the green W362 merge; hire-doc ladder next is MATRIX 0/2/0/2/1/1/0/2/1. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: nine exits match examples/MATRIX.md; `python -m pytest -q && python -m ruff check .` green.
+- W365: Refresh `docs/DAILY_LEARN.md` for JSONL single-quoted strings.
+- Why: MATRIX still 0/2/0/2/1/1/0/2/1; hire-doc ladder next is DAILY_LEARN for single-quoted ERROR. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: DAILY_LEARN names single-quoted JSONL ERROR and pytest 157; `python -m pytest -q && python -m ruff check .` green.
 

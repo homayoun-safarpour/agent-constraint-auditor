@@ -164,7 +164,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W134 Named CLI case: whitespace-only JSONL is ERROR via `no parseable events` (2026-09-16)
 - [x] W135 Refresh BENCHMARK GATE pytest count to 93 (2026-09-16)
 - [x] W136 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
-- [ ] W137 Local MATRIX nine-exit heartbeat on current main
+- [x] W137 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
+- [ ] W138 Named parser case: UTF-8 BOM JSONL line is ERROR
 
 ## Build log
 
@@ -272,6 +273,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: whitespace-only JSONL CLI ERROR via no parseable events is named.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 93.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `a4dae55` (run 35112275020).
+- 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `4aa2b79`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -422,10 +424,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W134 shipped; whitespace-only JSONL CLI ERROR via no parseable events is named. Next tick: W135 pytest count.
 - 2026-09-16 daily: W135 shipped; BENCHMARK GATE named-claim pytest count is 93. Next tick: W136 CI tip refresh.
 - 2026-09-16 daily: W136 shipped; BENCHMARK GATE CI tip is `a4dae55` (run 35112275020). Next tick: W137 MATRIX heartbeat.
+- 2026-09-16 daily: W137 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W138 UTF-8 BOM JSONL ERROR.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W137: Local MATRIX nine-exit heartbeat on current main.
-- Why: Gate CI tip moved; prove the nine-exit contract still holds after the whitespace-only CLI lock.
-- Verify: MATRIX exits `0/2/0/2/1/1/0/2/1`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W138: Named parser case that a JSONL file with a UTF-8 BOM is ERROR (invalid JSONL).
+- Why: `json.loads` already rejects the BOM; there is no named test, so a later utf-8-sig change could silently pass.
+- Verify: named test in `tests/test_journal.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

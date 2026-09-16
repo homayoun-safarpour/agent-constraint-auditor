@@ -139,6 +139,18 @@ def test_parse_jsonl_blank_lines_between_objects_are_skipped(tmp_path):
     assert events[1].text == "- gates: b"
 
 
+def test_parse_jsonl_hash_comment_line_is_transcript_error(tmp_path):
+    path = tmp_path / "events.jsonl"
+    path.write_text(
+        '{"timestamp": "2026-08-11 09:00", "text": "- gates: a"}\n'
+        "# note\n"
+        '{"timestamp": "2026-08-11 10:00", "text": "- gates: b"}\n',
+        encoding="utf-8",
+    )
+    with pytest.raises(TranscriptError, match="invalid JSONL"):
+        parse_jsonl_transcript(path)
+
+
 def test_parse_jsonl_utf8_bom_is_transcript_error(tmp_path):
     path = tmp_path / "bom.jsonl"
     path.write_bytes(

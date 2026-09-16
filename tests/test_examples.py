@@ -418,6 +418,10 @@ def test_adapter_locks_extra_jsonl_object_keys_are_ignored():
     assert "Extra JSONL object keys beyond `timestamp`, `text`, and `fields` are ignored" in ADAPTER
 
 
+def test_adapter_locks_non_string_jsonl_text_is_treated_as_missing():
+    assert "A JSONL `text` value that is not a string is treated as missing text" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

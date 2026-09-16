@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `351da3c` (2026-09-16, run 35149339228); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 151 passed; `ruff check .` clean (2026-09-16 W340) |
+| 2 | Named claim tests | PASS — `pytest` 153 passed; `ruff check .` clean (2026-09-16 W347) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -375,7 +375,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W345 Named parser case: JSONL object lines with leading non-whitespace before `{` are invalid JSONL (2026-09-16)
 - [x] W346 Document JSONL leading non-whitespace before `{` in `docs/ADAPTER.md` (2026-09-16)
 - [x] W347 Named test locks adapter JSONL leading non-whitespace sentence (2026-09-16)
-- [ ] W348 Refresh BENCHMARK GATE pytest count to 153
+- [x] W348 Refresh BENCHMARK GATE pytest count to 153 (2026-09-16)
+- [ ] W349 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -694,6 +695,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: JSONL object lines with leading non-whitespace before `{` are invalid JSONL is named.
 - 2026-09-16: adapter names JSONL leading non-whitespace before `{` as invalid JSONL.
 - 2026-09-16: named test locks that adapter JSONL leading non-whitespace sentence.
+- 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 153.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1055,10 +1057,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W345 shipped; JSONL object lines with leading non-whitespace before `{` are invalid JSONL. Next tick: W346 adapter leading-junk sentence.
 - 2026-09-16 daily: W346 shipped; adapter names JSONL leading non-whitespace before `{` as invalid JSONL. Next tick: W347 named adapter lock.
 - 2026-09-16 daily: W347 shipped; named test locks adapter JSONL leading non-whitespace sentence. Next tick: W348 pytest count.
+- 2026-09-16 daily: W348 shipped; BENCHMARK GATE named-claim pytest count is 153. Next tick: W349 CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W348: Refresh BENCHMARK GATE pytest count to 153.
-- Why: named adapter lock for leading-junk JSONL ERROR is merged; hire-doc ladder next is the GATE count. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: GATE cell shows 153; `python -m pytest -q && python -m ruff check .` green.
+- W349: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
+- Why: GATE pytest count is 153; hire-doc ladder next is the CI SHA/run. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: GATE CI cell names a green Actions run on current main; `python -m pytest -q && python -m ruff check .` green.
 

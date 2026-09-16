@@ -80,6 +80,12 @@ def test_parse_jsonl_invalid_line_is_transcript_error(tmp_path):
         parse_jsonl_transcript(path)
 
 
+def test_parse_jsonl_empty_file_returns_no_events(tmp_path):
+    path = tmp_path / "empty.jsonl"
+    path.write_text("", encoding="utf-8")
+    assert parse_jsonl_transcript(path) == []
+
+
 def test_parse_jsonl_non_object_line_is_transcript_error(tmp_path):
     path = tmp_path / "array.jsonl"
     path.write_text(

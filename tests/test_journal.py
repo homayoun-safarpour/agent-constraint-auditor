@@ -304,6 +304,18 @@ def test_parse_jsonl_whitespace_only_field_keys_still_parse(tmp_path):
     assert events[0].text == "-  : lint=PASS"
 
 
+def test_parse_jsonl_whitespace_only_field_values_still_parse(tmp_path):
+    path = tmp_path / "events.jsonl"
+    path.write_text(
+        '{"timestamp": "2026-08-11 09:00", "fields": {"gates": "   "}}\n',
+        encoding="utf-8",
+    )
+    events = parse_jsonl_transcript(path)
+    assert len(events) == 1
+    assert events[0].fields == {"gates": "   "}
+    assert events[0].text == "- gates:    "
+
+
 def test_parse_jsonl_null_field_values_become_empty_strings(tmp_path):
     path = tmp_path / "events.jsonl"
     path.write_text(

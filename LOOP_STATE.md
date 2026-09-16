@@ -119,7 +119,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W89 Named test locks adapter non-string timestamp ERROR sentence (2026-09-16)
 - [x] W90 Refresh BENCHMARK GATE pytest count to the live 86 (2026-09-16)
 - [x] W91 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
-- [ ] W92 Local MATRIX nine-exit heartbeat on current main
+- [x] W92 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
+- [ ] W93 Named parser case: JSONL `fields` that is not a mapping is ERROR
 
 ## Build log
 
@@ -182,6 +183,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: named test locks that adapter non-string timestamp ERROR sentence.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 86.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `5807b22` (run 35088002570).
+- 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `b530da9`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -287,10 +289,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W89 shipped; named test locks adapter non-string timestamp ERROR sentence. Next tick: W90 BENCHMARK GATE pytest count.
 - 2026-09-16 daily: W90 shipped; BENCHMARK GATE named-claim pytest count is 86. Next tick: W91 CI tip refresh.
 - 2026-09-16 daily: W91 shipped; BENCHMARK GATE CI tip is `5807b22` (run 35088002570). Next tick: W92 MATRIX heartbeat.
+- 2026-09-16 daily: W92 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W93 JSONL fields-not-mapping ERROR.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W92: Local MATRIX nine-exit heartbeat (`0/2/0/2/1/1/0/2/1`) on current `main`.
-- Why: CI SHA refresh does not re-prove the worked fixtures still match the hire matrix.
-- Verify: nine audits match MATRIX; `python -m pytest -q && python -m ruff check .` green.
+- W93: Named parser case that a JSONL `fields` value that is not a mapping is ERROR (`fields must be a mapping`).
+- Why: Parser already fail-closes this; no named test locks it.
+- Verify: pytest raises `fields must be a mapping`; `python -m pytest -q && python -m ruff check .` green.
 

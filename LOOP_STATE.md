@@ -379,7 +379,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W349 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W350 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W351 Refresh `docs/DAILY_LEARN.md` for JSONL leading non-whitespace before `{` (2026-09-16)
-- [ ] W352 Named parser case: JSONL object lines with a trailing comma are invalid JSONL
+- [x] W352 Named parser case: JSONL object lines with a trailing comma are invalid JSONL (2026-09-16)
+- [ ] W353 Document JSONL trailing-comma object lines in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -702,6 +703,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `608ae44` (run 35150422076).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `f0484d8`.
 - 2026-09-16: DAILY_LEARN names JSONL leading non-whitespace before `{` and pytest 153.
+- 2026-09-16: JSONL object lines with a trailing comma are invalid JSONL is named.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1067,10 +1069,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W349 shipped; BENCHMARK GATE CI tip is `608ae44` (run 35150422076). Next tick: W350 MATRIX heartbeat.
 - 2026-09-16 daily: W350 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W351 DAILY_LEARN refresh.
 - 2026-09-16 daily: W351 shipped; DAILY_LEARN names JSONL leading non-whitespace before `{` and pytest 153. Next tick: W352 trailing-comma JSONL object line.
+- 2026-09-16 daily: W352 shipped; JSONL object lines with a trailing comma are invalid JSONL. Next tick: W353 adapter trailing-comma sentence.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W352: Named parser case: JSONL object lines with a trailing comma are invalid JSONL.
-- Why: standard JSON forbids a trailing comma; `json.loads` raises invalid JSONL. Spaces after `}` still parse. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: named `tests/test_journal.py` case; `python -m pytest -q && python -m ruff check .` green.
+- W353: Document JSONL trailing-comma object lines in `docs/ADAPTER.md`.
+- Why: named parser locks a trailing comma before `}` as invalid JSONL; hire-doc ladder next is one adapter sentence. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green.
 

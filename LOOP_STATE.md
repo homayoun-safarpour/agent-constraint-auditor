@@ -189,7 +189,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W159 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W160 Named parser case: extra JSONL object keys are ignored (2026-09-16)
 - [x] W161 Document extra JSONL object keys as ignored in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W162 Named test locks adapter extra-JSONL-keys sentence
+- [x] W162 Named test locks adapter extra-JSONL-keys sentence (2026-09-16)
+- [ ] W163 Refresh BENCHMARK GATE pytest count to 101
 
 ## Build log
 
@@ -322,6 +323,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `dd25c5f`.
 - 2026-09-16: extra JSONL object keys being ignored is named.
 - 2026-09-16: adapter names extra JSONL object keys as ignored.
+- 2026-09-16: named test locks that adapter extra-JSONL-keys sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -497,10 +499,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W159 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W160 extra JSONL keys ignored.
 - 2026-09-16 daily: W160 shipped; extra JSONL object keys are ignored. Next tick: W161 adapter extra-keys sentence.
 - 2026-09-16 daily: W161 shipped; adapter names extra JSONL object keys as ignored. Next tick: W162 named adapter lock.
+- 2026-09-16 daily: W162 shipped; named test locks adapter extra-JSONL-keys sentence. Next tick: W163 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W162: Named test locks the adapter extra-JSONL-keys sentence.
-- Why: Hire-doc sentence exists without a lock; next wake must not rewrite it. Do not spray boolean field types.
-- Verify: named test in `tests/test_examples.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W163: Refresh BENCHMARK GATE named-claim pytest count from 99 to 101.
+- Why: W160 parser case and W162 adapter lock added two tests; the gate table is stale. Do not spray boolean field types.
+- Verify: LOOP_STATE table shows 101; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

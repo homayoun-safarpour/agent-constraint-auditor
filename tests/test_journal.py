@@ -20,6 +20,25 @@ def test_parse_loop_engine_journal_blocks():
     assert "decision" in events[0].fields
 
 
+def test_parse_loop_engine_journal_double_space_heading_still_parses(tmp_path):
+    path = tmp_path / "double.md"
+    path.write_text(
+        "## 2026-08-11  09:00\n- gates: lint=PASS\n",
+        encoding="utf-8",
+    )
+    events = parse_loop_engine_journal(path)
+    assert len(events) == 1
+    assert events[0].timestamp == "2026-08-11  09:00"
+    assert events[0].fields["gates"] == "lint=PASS"
+    jsonl = tmp_path / "double.jsonl"
+    jsonl.write_text(
+        '{"timestamp": "2026-08-11  09:00", "text": "- gates: lint=PASS"}\n',
+        encoding="utf-8",
+    )
+    with pytest.raises(TranscriptError, match="timestamp must be YYYY-MM-DD HH:MM"):
+        parse_jsonl_transcript(jsonl)
+
+
 def test_parse_jsonl_transcript_uses_text_or_fields(tmp_path):
     path = tmp_path / "events.jsonl"
     path.write_text(

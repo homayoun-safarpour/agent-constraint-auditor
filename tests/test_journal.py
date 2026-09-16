@@ -228,6 +228,17 @@ def test_parse_jsonl_numeric_field_values_are_stringified(tmp_path):
     assert events[0].fields["gates"] == "1"
 
 
+def test_parse_jsonl_null_field_values_become_empty_strings(tmp_path):
+    path = tmp_path / "events.jsonl"
+    path.write_text(
+        '{"timestamp": "2026-08-11 09:00", "fields": {"gates": null}}\n',
+        encoding="utf-8",
+    )
+    events = parse_jsonl_transcript(path)
+    assert len(events) == 1
+    assert events[0].fields["gates"] == ""
+
+
 def test_parse_jsonl_whitespace_text_without_fields_is_transcript_error(tmp_path):
     path = tmp_path / "events.jsonl"
     path.write_text('{"timestamp": "2026-08-11 09:00", "text": "   "}\n', encoding="utf-8")

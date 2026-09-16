@@ -262,7 +262,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W232 Refresh `docs/DAILY_LEARN.md` for JSONL boolean `fields` values stringify (2026-09-16)
 - [x] W233 Named parser case: JSONL list `fields` values are stringified (2026-09-16)
 - [x] W234 Document JSONL list `fields` values as stringified in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W235 Named test locks adapter JSONL list `fields` values sentence
+- [x] W235 Named test locks adapter JSONL list `fields` values sentence (2026-09-16)
+- [ ] W236 Refresh BENCHMARK GATE pytest count to 121
 
 ## Build log
 
@@ -468,6 +469,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: DAILY_LEARN names JSONL boolean fields values stringify and pytest 119.
 - 2026-09-16: JSONL list fields values still parse (stringified) is named.
 - 2026-09-16: adapter names JSONL list fields values as stringified.
+- 2026-09-16: named test locks that adapter JSONL list-fields sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -716,10 +718,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W232 shipped; DAILY_LEARN names JSONL boolean fields values stringify and pytest 119. Next tick: W233 list field values stringify.
 - 2026-09-16 daily: W233 shipped; JSONL list fields values still parse (stringified). Next tick: W234 adapter list-fields sentence.
 - 2026-09-16 daily: W234 shipped; adapter names JSONL list fields values as stringified. Next tick: W235 named adapter lock.
+- 2026-09-16 daily: W235 shipped; named test locks adapter JSONL list-fields sentence. Next tick: W236 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W235: Named test locks adapter JSONL list `fields` values sentence.
-- Why: hire-doc ladder; one adapter sentence is written. Do not spray boolean field types.
-- Verify: named lock in `tests/test_examples.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W236: Refresh BENCHMARK GATE pytest count to 121.
+- Why: named-claim count after list fields-values parser + adapter lock. Do not spray boolean field types.
+- Verify: LOOP_STATE gate row matches `pytest -q`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

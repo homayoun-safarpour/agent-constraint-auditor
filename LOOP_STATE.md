@@ -204,7 +204,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W174 Refresh BENCHMARK GATE pytest count to 103 (2026-09-16)
 - [x] W175 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W176 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
-- [ ] W177 Named CLI case: non-string JSONL `text` without fields is ERROR
+- [x] W177 Named CLI case: non-string JSONL `text` without fields is ERROR (2026-09-16)
+- [ ] W178 Refresh BENCHMARK GATE pytest count to 105
 
 ## Build log
 
@@ -352,6 +353,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 103.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `015d068` (run 35124251252).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `7c885e3`.
+- 2026-09-16: non-string JSONL `text` without fields is CLI ERROR.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -542,10 +544,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W174 shipped; BENCHMARK GATE named-claim pytest count is 103. Next tick: W175 CI tip refresh.
 - 2026-09-16 daily: W175 shipped; BENCHMARK GATE CI tip is `015d068` (run 35124251252). Next tick: W176 MATRIX heartbeat.
 - 2026-09-16 daily: W176 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W177 CLI non-string text.
+- 2026-09-16 daily: W177 shipped; non-string JSONL text without fields is CLI ERROR. Next tick: W178 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W177: Named CLI case that a JSONL `text` value that is not a string, with no `fields`, is ERROR exit 1.
-- Why: parser lock exists; `audit` / `parse-transcript` should name the same ERROR. Numeric `text` only; do not spray boolean field types.
-- Verify: named tests in `tests/test_cli.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W178: Refresh BENCHMARK GATE named-claim pytest count to 105.
+- Why: W177 added two CLI tests; the gate still says 103.
+- Verify: LOOP_STATE named-claim cell matches `python -m pytest -q`; `python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

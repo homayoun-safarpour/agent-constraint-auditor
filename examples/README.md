@@ -12,6 +12,8 @@
 | [jsonl_decaying/](jsonl_decaying/) | `--format jsonl`; forbid match (`lint=FAIL` / force-push); exits **2** (DECAY) |
 | [jsonl_bad_timestamp/](jsonl_bad_timestamp/) | `--format jsonl`; timestamp not `YYYY-MM-DD HH:MM`; exits **1** (ERROR) |
 
+A JSONL line that is valid JSON but not an object, or a `fields` value that is not a mapping, is ERROR (exit `1`); those cases are parser-locked, not extra fixtures.
+
 Sunday prep matrix (all exits): [MATRIX.md](MATRIX.md)
 
 ```bash

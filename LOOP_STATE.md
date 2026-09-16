@@ -309,7 +309,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W279 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W280 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W281 Refresh `docs/DAILY_LEARN.md` for JSONL `fields` keys containing a colon (2026-09-16)
-- [ ] W282 Named parser case: JSONL `fields` values containing a colon still parse
+- [x] W282 Named parser case: JSONL `fields` values containing a colon still parse (2026-09-16)
+- [ ] W283 Document JSONL `fields` values containing a colon in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -562,6 +563,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `df3b8cc` (run 35139379206).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `4546562`.
 - 2026-09-16: DAILY_LEARN names JSONL fields keys containing a colon and pytest 133.
+- 2026-09-16: JSONL fields values containing a colon still parse is named.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -857,10 +859,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W279 shipped; BENCHMARK GATE CI tip is `df3b8cc` (run 35139379206). Next tick: W280 MATRIX heartbeat.
 - 2026-09-16 daily: W280 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W281 DAILY_LEARN refresh.
 - 2026-09-16 daily: W281 shipped; DAILY_LEARN names JSONL fields keys containing a colon and pytest 133. Next tick: W282 colon-in-field-value parser.
+- 2026-09-16 daily: W282 shipped; JSONL fields values containing a colon still parse. Next tick: W283 adapter colon-value sentence.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W282: Named parser case: JSONL `fields` values containing a colon still parse.
-- Why: `_text_from_fields` emits `- {key}: {value}`; a value `lint:PASS` becomes `- gates: lint:PASS`. Pair to the colon-in-key lock. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: named `tests/test_journal.py` case; `python -m pytest -q && python -m ruff check .` green.
+- W283: Document JSONL `fields` values containing a colon in `docs/ADAPTER.md`.
+- Why: named parser locks `"lint:PASS"` → `- gates: lint:PASS`; hire-doc ladder next is one adapter sentence. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green.
 

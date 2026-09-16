@@ -216,11 +216,12 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-15 daily: W59 shipped; named test locks `examples/README.md` jsonl_bad_timestamp row (exit 1 ERROR). Next tick: W60 document that fixture in `docs/ADAPTER.md`.
 - 2026-09-16 daily: W60 shipped; `docs/ADAPTER.md` names `examples/jsonl_bad_timestamp` as JSONL ERROR exit 1. Next tick: W61 named test lock on that ADAPTER row.
 - 2026-09-16 daily: W61 shipped; named test locks `docs/ADAPTER.md` jsonl_bad_timestamp row (exit 1 ERROR). Next tick: W62 document that fixture in `examples/MATRIX.md`.
+- 2026-09-16 heartbeat: OK (W61 matches `a2adf6f`; named ADAPTER jsonl_bad_timestamp lock; CI green run 35070809069; 84 pytest). ENRICH. Next tick: W62 document `examples/jsonl_bad_timestamp` in `examples/MATRIX.md`.
 
-## NEXT TICK (heartbeat 2026-09-14)
+## NEXT TICK (heartbeat 2026-09-16)
 
 - W62: Document `examples/jsonl_bad_timestamp` in `examples/MATRIX.md`.
-- Why: W61 froze the adapter ERROR row; the Sunday matrix still lists eight fixtures and omits the JSONL timestamp-shape ERROR polarity.
+- Why: Quality pass OK on `a2adf6f` (ADAPTER JSONL ERROR row + live exit 1). README still points at MATRIX as the full Sunday exit matrix, but the table stops at eight rows and omits the timestamp-shape ERROR fixture.
 - Verify: `examples/MATRIX.md` names `jsonl_bad_timestamp` as exit 1; `python3 -m pytest -q && python3 -m ruff check .` green.
 
 ## NEXT TICK (daily 2026-09-16)

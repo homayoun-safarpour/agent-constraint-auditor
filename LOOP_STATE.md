@@ -216,7 +216,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W186 Named test locks adapter empty-fields mapping sentence (2026-09-16)
 - [x] W187 Refresh BENCHMARK GATE pytest count to 107 (2026-09-16)
 - [x] W188 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
-- [ ] W189 Local MATRIX nine-exit heartbeat on current main
+- [x] W189 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
+- [ ] W190 Refresh `docs/DAILY_LEARN.md` for empty JSONL `fields` mapping
 
 ## Build log
 
@@ -376,6 +377,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: named test locks that adapter empty-fields mapping sentence.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 107.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `a1e40e7` (run 35126275073).
+- 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `8318464`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -578,10 +580,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W186 shipped; named test locks adapter empty-fields mapping sentence. Next tick: W187 pytest count.
 - 2026-09-16 daily: W187 shipped; BENCHMARK GATE named-claim pytest count is 107. Next tick: W188 CI tip refresh.
 - 2026-09-16 daily: W188 shipped; BENCHMARK GATE CI tip is `a1e40e7` (run 35126275073). Next tick: W189 MATRIX heartbeat.
+- 2026-09-16 daily: W189 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W190 DAILY_LEARN refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W189: Local MATRIX nine-exit heartbeat on current main.
-- Why: CI tip is current; re-confirm MATRIX `0/2/0/2/1/1/0/2/1` after the empty-fields adapter lock.
-- Verify: run the nine MATRIX commands; paste exits into LOOP_STATE; `python -m pytest -q && python -m ruff check .` green.
+- W190: Refresh `docs/DAILY_LEARN.md` for empty JSONL `fields` mapping treated as missing fields.
+- Why: parser, adapter, and adapter lock exist; the daily skill card still describes non-string `text`.
+- Verify: DAILY_LEARN names the W181/W185 behavior and pytest 107; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

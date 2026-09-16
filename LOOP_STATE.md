@@ -357,7 +357,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W327 Refresh BENCHMARK GATE pytest count to 147 (2026-09-16)
 - [x] W328 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W329 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
-- [ ] W330 Refresh `docs/DAILY_LEARN.md` for JSONL leading-whitespace object lines
+- [x] W330 Refresh `docs/DAILY_LEARN.md` for JSONL leading-whitespace object lines (2026-09-16)
+- [ ] W331 Named parser case: JSONL `#` comment lines are invalid JSONL
 
 ## Build log
 
@@ -658,6 +659,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 147.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `00b21c6` (run 35144894738).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `bedbc92`.
+- 2026-09-16: DAILY_LEARN names JSONL leading-whitespace object lines and pytest 147.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1001,10 +1003,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W327 shipped; BENCHMARK GATE named-claim pytest count is 147. Next tick: W328 CI tip refresh.
 - 2026-09-16 daily: W328 shipped; BENCHMARK GATE CI tip is `00b21c6` (run 35144894738). Next tick: W329 MATRIX heartbeat.
 - 2026-09-16 daily: W329 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W330 DAILY_LEARN refresh.
+- 2026-09-16 daily: W330 shipped; DAILY_LEARN names JSONL leading-whitespace object lines and pytest 147. Next tick: W331 hash-comment JSONL ERROR.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W330: Refresh `docs/DAILY_LEARN.md` for JSONL leading-whitespace object lines.
-- Why: parser + adapter + lock + pytest 147 + CI + MATRIX are named; hire-doc ladder next is DAILY_LEARN. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: one DAILY_LEARN sentence; `python -m pytest -q && python -m ruff check .` green.
+- W331: Named parser case: JSONL `#` comment lines are invalid JSONL.
+- Why: blank lines are skipped; a `#` line is not blank, so `json.loads` raises invalid JSONL. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: named `tests/test_journal.py` case; `python -m pytest -q && python -m ruff check .` green.
 

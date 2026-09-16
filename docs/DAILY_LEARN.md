@@ -1,20 +1,20 @@
 # Daily learning — 2026-09-16
 
-**Skill.** A JSONL file with a blank line between objects still parses. The blank line is not invalid JSONL: empty lines are skipped, so two objects with `\n\n` between them both become events. A whitespace-only file still returns no events and CLI still ERROR.
+**Skill.** A JSONL object line with leading whitespace still parses. Spaces before `{` are stripped before `json.loads`. Pair to trailing spaces after `}`. A UTF-8 BOM is still ERROR.
 
-**Why.** Without a named blank-between-objects lock, a later change that treated any blank line as invalid JSONL would fail a normal pretty dump. This is not a boolean-field enum.
+**Why.** Without a named leading-whitespace lock, a later change that passed the raw line to `json.loads` would ERROR an indented object. This is not a boolean-field enum.
 
-**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 145.
+**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 147.
 
 ```bash
 python -m pytest -q
-# 145 passed
-python -m pytest -q tests/test_journal.py::test_parse_jsonl_blank_lines_between_objects_are_skipped
+# 147 passed
+python -m pytest -q tests/test_journal.py::test_parse_jsonl_object_line_with_leading_whitespace_still_parses
 # 1 passed
 ```
 
-**Recall probe.** Does `docs/ADAPTER.md` say a JSONL file with a blank line between objects still parses?
+**Recall probe.** Does `docs/ADAPTER.md` say a JSONL object line with leading whitespace still parses?
 
-Answer: Yes. Named test `test_adapter_locks_jsonl_blank_lines_between_objects_are_skipped` locks that sentence. Do not pytest-lock this card; it is rewritten each morning.
+Answer: Yes. Named test `test_adapter_locks_jsonl_object_line_leading_whitespace_still_parses` locks that sentence. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W324
+**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W331

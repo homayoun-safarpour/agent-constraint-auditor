@@ -39,6 +39,18 @@ def test_parse_jsonl_transcript_uses_text_or_fields(tmp_path):
     assert detect_format(path) == "jsonl"
 
 
+def test_parse_jsonl_padded_timestamp_still_parses(tmp_path):
+    path = tmp_path / "padded.jsonl"
+    path.write_text(
+        '{"timestamp": " 2026-08-11 09:00 ", "text": "- gates: lint=PASS"}\n',
+        encoding="utf-8",
+    )
+    events = parse_jsonl_transcript(path)
+    assert len(events) == 1
+    assert events[0].timestamp == "2026-08-11 09:00"
+    assert events[0].text == "- gates: lint=PASS"
+
+
 def test_parse_jsonl_invalid_line_is_transcript_error(tmp_path):
     path = tmp_path / "bad.jsonl"
     path.write_text(

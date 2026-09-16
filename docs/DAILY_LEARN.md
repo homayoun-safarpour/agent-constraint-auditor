@@ -1,24 +1,21 @@
 # Daily learning — 2026-09-16
 
-**Skill.** Fail-closed JSONL is more than timestamp shape. A line that is valid JSON but not an object, and a `fields` value that is not a mapping, must ERROR the same way a bad timestamp does: parser named test, then adapter sentence, then adapter lock.
+**Skill.** An empty JSONL file is not a parse error. The parser returns no events; `audit` and `parse-transcript` still ERROR via `no parseable events`. Hire docs must name that split, or reviewers treat empty JSONL as invalid JSON.
 
-**Why.** Timestamp-shape coverage can look complete while a JSON array line or `fields: ["gates"]` still has no hire-doc sentence. Reviewers who only read the adapter would miss those exits.
+**Why.** Object/fields shape errors raise in the parser. An empty file does not. CLI fail-closed is a second step. Mixing those two looks like one ERROR bucket and hides the contract.
 
-**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 88. A JSONL array line raises `must be an object`. A JSONL `fields` array raises `fields must be a mapping`.
+**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 90. `parse_jsonl_transcript` on an empty file returns `[]`. CLI still exits `1`.
 
 ```bash
 python -m pytest -q
-# 88 passed
-constraint-auditor audit \
-  --constraints examples/jsonl_bad_timestamp/constraints.yaml \
-  --transcript examples/jsonl_bad_timestamp/events.jsonl \
-  --format jsonl
-# ERROR: JSONL line 1 timestamp must be YYYY-MM-DD HH:MM
+# 90 passed
+constraint-auditor parse-transcript --format jsonl path/to/empty.jsonl
+# ERROR: transcript contains no parseable events
 # exit 1
 ```
 
-**Recall probe.** Does `docs/ADAPTER.md` name both a non-object JSONL line and a non-mapping `fields` value as ERROR?
+**Recall probe.** Does `docs/ADAPTER.md` say an empty JSONL file parses to no events and CLI still ERROR?
 
-Answer: Yes. Named tests lock those sentences. Do not pytest-lock this card; it is rewritten each morning.
+Answer: Yes. Named test `test_adapter_locks_empty_jsonl_parses_to_no_events` locks that sentence. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W104
+**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W127

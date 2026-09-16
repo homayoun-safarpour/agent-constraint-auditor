@@ -283,7 +283,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W253 Refresh `docs/DAILY_LEARN.md` for JSONL empty-string `fields` keys (2026-09-16)
 - [x] W254 Named parser case: JSONL whitespace-only `fields` keys still parse (2026-09-16)
 - [x] W255 Document JSONL whitespace-only `fields` keys in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W256 Named test locks adapter JSONL whitespace-only `fields` keys sentence
+- [x] W256 Named test locks adapter JSONL whitespace-only `fields` keys sentence (2026-09-16)
+- [ ] W257 Refresh BENCHMARK GATE pytest count to 127
 
 ## Build log
 
@@ -510,6 +511,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: DAILY_LEARN names JSONL empty-string fields keys and pytest 125.
 - 2026-09-16: JSONL whitespace-only fields keys still parse is named.
 - 2026-09-16: adapter names JSONL whitespace-only fields keys as still parsing.
+- 2026-09-16: named test locks that adapter JSONL whitespace-key sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -779,10 +781,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W253 shipped; DAILY_LEARN names JSONL empty-string fields keys and pytest 125. Next tick: W254 whitespace-only fields keys.
 - 2026-09-16 daily: W254 shipped; JSONL whitespace-only fields keys still parse. Next tick: W255 adapter whitespace-key sentence.
 - 2026-09-16 daily: W255 shipped; adapter names JSONL whitespace-only fields keys as still parsing. Next tick: W256 named adapter lock.
+- 2026-09-16 daily: W256 shipped; named test locks adapter JSONL whitespace-key sentence. Next tick: W257 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W256: Named test locks adapter JSONL whitespace-only `fields` keys sentence.
-- Why: hire-doc ladder; one adapter sentence is written. Do not spray boolean field types.
-- Verify: named lock in `tests/test_examples.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W257: Refresh BENCHMARK GATE pytest count to 127.
+- Why: named-claim count after whitespace-only fields-keys parser + adapter lock. Do not spray boolean field types.
+- Verify: LOOP_STATE gate row matches `pytest -q`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

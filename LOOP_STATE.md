@@ -113,7 +113,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W83 Document JSONL vs markdown double-space timestamp difference in `docs/ADAPTER.md` (2026-09-16)
 - [x] W84 Named test locks adapter JSONL vs markdown double-space sentence (2026-09-16)
 - [x] W85 Named parser case: JSONL `timestamp` JSON `null` is ERROR (2026-09-16)
-- [ ] W86 Named parser case: JSONL `timestamp` JSON `false` is ERROR
+- [x] W86 Named parser case: JSONL `timestamp` JSON `false` is ERROR (2026-09-16)
+- [ ] W87 Named parser case: JSONL `timestamp` JSON `true` is ERROR
 
 ## Build log
 
@@ -170,6 +171,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: markdown `##` headings with an internal double space still parse; JSONL of that stamp does not.
 - 2026-09-16: adapter names that JSONL vs markdown inner-double-space difference.
 - 2026-09-16: JSONL timestamp JSON null is named ERROR (missing timestamp).
+- 2026-09-16: JSONL timestamp JSON false is named ERROR (missing timestamp).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -269,10 +271,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W82 shipped; markdown `##` heading with inner double space still parses; JSONL of the same stamp is ERROR. Next tick: W83 adapter documents that difference.
 - 2026-09-16 daily: W83–W84 shipped; adapter names JSONL vs markdown inner-double-space difference. Next tick: W85 JSONL null timestamp is ERROR.
 - 2026-09-16 daily: W85 shipped; JSONL timestamp JSON null is ERROR (missing timestamp). Next tick: W86 JSONL timestamp false is ERROR.
+- 2026-09-16 daily: W86 shipped; JSONL timestamp JSON false is ERROR (missing timestamp). Next tick: W87 JSONL timestamp true is ERROR.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W86: Named parser case that a JSONL `timestamp` of JSON `false` is ERROR (`missing timestamp`).
-- Why: Null is locked; boolean is the next non-string type, not another date shape.
+- W87: Named parser case that a JSONL `timestamp` of JSON `true` is ERROR (`missing timestamp`).
+- Why: False is locked; true is the remaining boolean.
 - Verify: pytest raises `missing timestamp`; `python -m pytest -q && python -m ruff check .` green.
 

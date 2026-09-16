@@ -80,6 +80,16 @@ def test_parse_jsonl_invalid_line_is_transcript_error(tmp_path):
         parse_jsonl_transcript(path)
 
 
+def test_parse_jsonl_non_object_line_is_transcript_error(tmp_path):
+    path = tmp_path / "array.jsonl"
+    path.write_text(
+        '[{"timestamp": "2026-08-11 09:00", "text": "- gates: lint=PASS"}]\n',
+        encoding="utf-8",
+    )
+    with pytest.raises(TranscriptError, match="must be an object"):
+        parse_jsonl_transcript(path)
+
+
 def test_parse_jsonl_timestamp_only_is_transcript_error(tmp_path):
     path = tmp_path / "events.jsonl"
     path.write_text('{"timestamp": "2026-08-11 09:00"}\n', encoding="utf-8")

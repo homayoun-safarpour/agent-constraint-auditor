@@ -110,7 +110,9 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W80 Named parser case: JSONL timestamp with surrounding whitespace still parses (2026-09-16)
 - [x] W81 Named parser case: JSONL timestamp with an internal double space is ERROR (2026-09-16)
 - [x] W82 Named parser case: markdown `##` heading with an internal double space still parses (2026-09-16)
-- [ ] W83 Document JSONL vs markdown double-space timestamp difference in `docs/ADAPTER.md`
+- [x] W83 Document JSONL vs markdown double-space timestamp difference in `docs/ADAPTER.md` (2026-09-16)
+- [x] W84 Named test locks adapter JSONL vs markdown double-space sentence (2026-09-16)
+- [ ] W85 Named parser case: JSONL `timestamp` JSON `null` is ERROR
 
 ## Build log
 
@@ -165,6 +167,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: JSONL timestamps with surrounding whitespace still parse after strip.
 - 2026-09-16: JSONL timestamps with an internal double space are named ERROR.
 - 2026-09-16: markdown `##` headings with an internal double space still parse; JSONL of that stamp does not.
+- 2026-09-16: adapter names that JSONL vs markdown inner-double-space difference.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -262,10 +265,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W80 shipped; padded `" 2026-08-11 09:00 "` still parses. Next tick: W81 internal double-space timestamp is ERROR.
 - 2026-09-16 daily: W81 shipped; JSONL `2026-08-11  09:00` (inner double space) is ERROR. Next tick: W82 markdown heading double space still parses.
 - 2026-09-16 daily: W82 shipped; markdown `##` heading with inner double space still parses; JSONL of the same stamp is ERROR. Next tick: W83 adapter documents that difference.
+- 2026-09-16 daily: W83–W84 shipped; adapter names JSONL vs markdown inner-double-space difference. Next tick: W85 JSONL null timestamp is ERROR.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W83: Document the JSONL vs markdown inner-double-space timestamp difference in `docs/ADAPTER.md`.
-- Why: Measured in W81/W82; adapter currently talks as if one space rule is universal.
-- Verify: adapter names the difference; `python -m pytest -q && python -m ruff check .` green.
+- W85: Named parser case that a JSONL `timestamp` of JSON `null` is ERROR (`missing timestamp`).
+- Why: Timestamp dialect ticks are done; null is a type fail-closed case, not another date shape.
+- Verify: pytest raises `missing timestamp`; `python -m pytest -q && python -m ruff check .` green.
 

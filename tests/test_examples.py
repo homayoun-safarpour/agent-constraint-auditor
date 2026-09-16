@@ -524,6 +524,11 @@ def test_adapter_locks_jsonl_trailing_non_whitespace_after_brace_is_invalid_json
     assert "that extra text is not stripped" in ADAPTER
 
 
+def test_adapter_locks_jsonl_leading_non_whitespace_before_brace_is_invalid_jsonl():
+    assert "A JSONL object line with leading non-whitespace before the opening brace is ERROR (invalid JSONL)" in ADAPTER
+    assert "that prefix is not stripped" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

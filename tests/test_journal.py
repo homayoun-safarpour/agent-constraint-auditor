@@ -111,6 +111,10 @@ def test_parse_jsonl_blank_or_non_string_timestamp_is_transcript_error(tmp_path)
     false_ts.write_text('{"timestamp": false, "text": "- gates: lint=PASS"}\n', encoding="utf-8")
     with pytest.raises(TranscriptError, match="missing timestamp"):
         parse_jsonl_transcript(false_ts)
+    true_ts = tmp_path / "true.jsonl"
+    true_ts.write_text('{"timestamp": true, "text": "- gates: lint=PASS"}\n', encoding="utf-8")
+    with pytest.raises(TranscriptError, match="missing timestamp"):
+        parse_jsonl_transcript(true_ts)
 
 
 def test_parse_jsonl_non_shaped_timestamp_is_transcript_error(tmp_path):

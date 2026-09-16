@@ -92,6 +92,15 @@ def test_parse_jsonl_whitespace_only_file_returns_no_events(tmp_path):
     assert parse_jsonl_transcript(path) == []
 
 
+def test_parse_jsonl_utf8_bom_is_transcript_error(tmp_path):
+    path = tmp_path / "bom.jsonl"
+    path.write_bytes(
+        b'\xef\xbb\xbf{"timestamp": "2026-08-11 09:00", "text": "- gates: lint=PASS"}\n'
+    )
+    with pytest.raises(TranscriptError, match="invalid JSONL"):
+        parse_jsonl_transcript(path)
+
+
 def test_parse_jsonl_non_object_line_is_transcript_error(tmp_path):
     path = tmp_path / "array.jsonl"
     path.write_text(

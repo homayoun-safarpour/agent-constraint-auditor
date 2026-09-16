@@ -136,7 +136,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W106 Document JSONL non-object lines and non-mapping `fields` in CONTRIBUTING.md (2026-09-16)
 - [x] W107 Named test locks CONTRIBUTING JSONL object/fields ERROR sentence (2026-09-16)
 - [x] W108 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
-- [ ] W109 Local MATRIX nine-exit heartbeat on current main
+- [x] W109 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
+- [ ] W110 Document JSONL non-object lines and non-mapping `fields` in `docs/INTERVIEW.md`
 
 ## Build log
 
@@ -216,6 +217,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: CONTRIBUTING names JSONL non-object lines and non-mapping fields as ERROR.
 - 2026-09-16: named test locks that CONTRIBUTING JSONL object/fields ERROR sentence.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `b8cd098` (run 35099078475).
+- 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `d64e080`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -338,10 +340,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W106 shipped; CONTRIBUTING names JSONL non-object lines and non-mapping fields as ERROR. Next tick: W107 named CONTRIBUTING lock.
 - 2026-09-16 daily: W107 shipped; named test locks CONTRIBUTING JSONL object/fields ERROR sentence. Next tick: W108 CI tip refresh.
 - 2026-09-16 daily: W108 shipped; BENCHMARK GATE CI tip is `b8cd098` (run 35099078475). Next tick: W109 MATRIX heartbeat.
+- 2026-09-16 daily: W109 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W110 INTERVIEW object/fields sentence.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W109: Local MATRIX nine-exit heartbeat (`0/2/0/2/1/1/0/2/1`) on current `main`.
-- Why: CI SHA refresh does not re-prove the worked fixtures still match the hire matrix.
-- Verify: nine audits match MATRIX; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W110: Document JSONL non-object lines and non-mapping `fields` as ERROR in `docs/INTERVIEW.md`.
+- Why: Interview pack still only demos `jsonl_bad_timestamp`; parser/README/CONTRIBUTING already name object/fields.
+- Verify: one INTERVIEW sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

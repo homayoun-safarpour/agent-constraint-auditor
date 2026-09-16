@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `bc4bc49` (2026-09-16, run 35117842162); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 98 passed; `ruff check .` clean (2026-09-16 W151) |
+| 2 | Named claim tests | PASS — `pytest` 99 passed; `ruff check .` clean (2026-09-16 W156) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -184,7 +184,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W154 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W155 Refresh `docs/DAILY_LEARN.md` for numeric JSONL `fields` stringify (2026-09-16)
 - [x] W156 Named parser case: JSONL `fields` null values become empty strings (2026-09-16)
-- [ ] W157 Refresh BENCHMARK GATE pytest count to 99
+- [x] W157 Refresh BENCHMARK GATE pytest count to 99 (2026-09-16)
+- [ ] W158 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -312,6 +313,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `bbd4b9b`.
 - 2026-09-16: DAILY_LEARN names numeric JSONL fields stringify and pytest 98.
 - 2026-09-16: JSONL null fields values becoming empty strings is named.
+- 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 99.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -482,10 +484,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W154 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W155 DAILY_LEARN refresh.
 - 2026-09-16 daily: W155 shipped; DAILY_LEARN names numeric JSONL fields stringify and pytest 98. Next tick: W156 null fields stringify.
 - 2026-09-16 daily: W156 shipped; JSONL null fields values become empty strings. Next tick: W157 pytest count.
+- 2026-09-16 daily: W157 shipped; BENCHMARK GATE named-claim pytest count is 99. Next tick: W158 CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W157: Refresh BENCHMARK GATE named-claim pytest count from 98 to 99.
-- Why: W156 parser case added one test; the gate table is stale. Do not spray adapter/boolean field types.
-- Verify: LOOP_STATE table shows 99; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W158: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
+- Why: Tip still names `bc4bc49`; W154–W156 landed after that.
+- Verify: latest successful `ci.yml` SHA + run id in the gate table; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN. Do not spray adapter/boolean field types.
 

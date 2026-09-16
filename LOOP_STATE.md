@@ -225,7 +225,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W195 Named parser case: whitespace-only JSONL `text` with `fields` uses fields (2026-09-16)
 - [x] W196 Refresh BENCHMARK GATE pytest count to 110 (2026-09-16)
 - [x] W197 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
-- [ ] W198 Local MATRIX nine-exit heartbeat on current main
+- [x] W198 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
+- [ ] W199 Document whitespace-only JSONL `text` with `fields` in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -394,6 +395,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: whitespace-only JSONL `text` with `fields` uses fields.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 110.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `0c9b3eb` (run 35127904542).
+- 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `ff62555`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -605,10 +607,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W195 shipped; whitespace-only JSONL text with fields uses fields. Next tick: W196 pytest count.
 - 2026-09-16 daily: W196 shipped; BENCHMARK GATE named-claim pytest count is 110. Next tick: W197 CI tip refresh.
 - 2026-09-16 daily: W197 shipped; BENCHMARK GATE CI tip is `0c9b3eb` (run 35127904542). Next tick: W198 MATRIX heartbeat.
+- 2026-09-16 daily: W198 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W199 adapter whitespace-text-with-fields.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W198: Local MATRIX nine-exit heartbeat on current main.
-- Why: CI tip is current; re-confirm MATRIX `0/2/0/2/1/1/0/2/1` after the whitespace-text-with-fields lock.
-- Verify: run the nine MATRIX commands; paste exits into LOOP_STATE; `python -m pytest -q && python -m ruff check .` green.
+- W199: Document in `docs/ADAPTER.md` that whitespace-only JSONL `text` with `fields` uses the fields body.
+- Why: parser lock exists; hire-doc should name the same rule. One sentence. Do not spray boolean field types.
+- Verify: adapter paragraph includes that sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

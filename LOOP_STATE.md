@@ -387,7 +387,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W357 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W358 Refresh `docs/DAILY_LEARN.md` for JSONL trailing-comma object lines (2026-09-16)
 - [x] W359 Named parser case: JSONL object lines with single-quoted strings are invalid JSONL (2026-09-16)
-- [ ] W360 Document JSONL single-quoted strings in `docs/ADAPTER.md`
+- [x] W360 Document JSONL single-quoted strings in `docs/ADAPTER.md` (2026-09-16)
+- [ ] W361 Named test locks `docs/ADAPTER.md` JSONL single-quoted sentence
 
 ## Build log
 
@@ -718,6 +719,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `73a01cb`.
 - 2026-09-16: DAILY_LEARN names JSONL trailing-comma object lines and pytest 155.
 - 2026-09-16: JSONL object lines with single-quoted strings are invalid JSONL is named.
+- 2026-09-16: adapter names JSONL single-quoted strings as invalid JSONL.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1091,10 +1093,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W357 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W358 DAILY_LEARN refresh.
 - 2026-09-16 daily: W358 shipped; DAILY_LEARN names JSONL trailing-comma object lines and pytest 155. Next tick: W359 single-quoted JSONL object line.
 - 2026-09-16 daily: W359 shipped; JSONL object lines with single-quoted strings are invalid JSONL. Next tick: W360 adapter single-quote sentence.
+- 2026-09-16 daily: W360 shipped; adapter names JSONL single-quoted strings as invalid JSONL. Next tick: W361 named adapter lock.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W360: Document JSONL single-quoted strings in `docs/ADAPTER.md`.
-- Why: named parser locks Python-style single quotes as invalid JSONL; hire-doc ladder next is one adapter sentence. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green.
+- W361: Named test locks `docs/ADAPTER.md` JSONL single-quoted sentence.
+- Why: adapter now says single-quoted strings are ERROR and single quotes are not accepted; hire-doc ladder next is the named lock. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: named `tests/test_examples.py` case; `python -m pytest -q && python -m ruff check .` green.
 

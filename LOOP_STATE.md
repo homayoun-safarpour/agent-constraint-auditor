@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `84c2866` (2026-09-16, run 35109709041); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 90 passed; `ruff check .` clean (2026-09-16 W122) |
+| 2 | Named claim tests | PASS — `pytest` 92 passed; `ruff check .` clean (2026-09-16 W129) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -157,7 +157,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W127 Named parser case: whitespace-only JSONL file returns no events (2026-09-16)
 - [x] W128 Document whitespace-only JSONL as no events / CLI ERROR in `docs/ADAPTER.md` (2026-09-16)
 - [x] W129 Named test locks adapter whitespace-only JSONL sentence (2026-09-16)
-- [ ] W130 Refresh BENCHMARK GATE pytest count to 92
+- [x] W130 Refresh BENCHMARK GATE pytest count to 92 (2026-09-16)
+- [ ] W131 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -258,6 +259,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: whitespace-only JSONL file returning no events is named (CLI still ERROR).
 - 2026-09-16: adapter names whitespace-only JSONL as no events then CLI ERROR.
 - 2026-09-16: named test locks that adapter whitespace-only JSONL sentence.
+- 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 92.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -401,10 +403,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W127 shipped; whitespace-only JSONL file returns no events (CLI still ERROR). Next tick: W128 adapter whitespace-only sentence.
 - 2026-09-16 daily: W128 shipped; adapter names whitespace-only JSONL as no events then CLI ERROR. Next tick: W129 named adapter lock.
 - 2026-09-16 daily: W129 shipped; named test locks adapter whitespace-only JSONL sentence. Next tick: W130 pytest count.
+- 2026-09-16 daily: W130 shipped; BENCHMARK GATE named-claim pytest count is 92. Next tick: W131 CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W130: Refresh BENCHMARK GATE named-claim pytest count from 90 to 92.
-- Why: W127 parser case and W129 adapter lock added two tests; the gate table is stale.
-- Verify: LOOP_STATE table shows 92; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W131: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
+- Why: Tip still names `84c2866`; W125–W129 landed after that.
+- Verify: latest successful `ci.yml` SHA + run id in the gate table; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

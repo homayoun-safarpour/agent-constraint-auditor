@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `88c745b` (2026-09-16, run 35116142413); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 96 passed; `ruff check .` clean (2026-09-16 W145) |
+| 2 | Named claim tests | PASS — `pytest` 98 passed; `ruff check .` clean (2026-09-16 W151) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -179,7 +179,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W149 Named parser case: JSONL numeric `fields` values still parse (stringified) (2026-09-16)
 - [x] W150 Document numeric JSONL `fields` values as stringified in `docs/ADAPTER.md` (2026-09-16)
 - [x] W151 Named test locks adapter numeric-fields stringify sentence (2026-09-16)
-- [ ] W152 Refresh BENCHMARK GATE pytest count to 98
+- [x] W152 Refresh BENCHMARK GATE pytest count to 98 (2026-09-16)
+- [ ] W153 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -302,6 +303,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: JSONL numeric fields values still parse (stringified) is named.
 - 2026-09-16: adapter names JSONL numeric fields values as stringified.
 - 2026-09-16: named test locks that adapter numeric-fields stringify sentence.
+- 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 98.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -467,10 +469,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W149 shipped; JSONL numeric fields values still parse (stringified). Next tick: W150 adapter numeric-fields sentence.
 - 2026-09-16 daily: W150 shipped; adapter names JSONL numeric fields values as stringified. Next tick: W151 named adapter lock.
 - 2026-09-16 daily: W151 shipped; named test locks adapter numeric-fields stringify sentence. Next tick: W152 pytest count.
+- 2026-09-16 daily: W152 shipped; BENCHMARK GATE named-claim pytest count is 98. Next tick: W153 CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W152: Refresh BENCHMARK GATE named-claim pytest count from 96 to 98.
-- Why: W149 parser case and W151 adapter lock added two tests; the gate table is stale.
-- Verify: LOOP_STATE table shows 98; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W153: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
+- Why: Tip still names `88c745b`; W149–W151 landed after that.
+- Verify: latest successful `ci.yml` SHA + run id in the gate table; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

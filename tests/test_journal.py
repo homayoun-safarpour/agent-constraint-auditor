@@ -96,6 +96,13 @@ def test_parse_jsonl_non_shaped_timestamp_is_transcript_error(tmp_path):
     )
     with pytest.raises(TranscriptError, match="timestamp must be YYYY-MM-DD HH:MM"):
         parse_jsonl_transcript(date_only)
+    with_seconds = tmp_path / "seconds.jsonl"
+    with_seconds.write_text(
+        '{"timestamp": "2026-08-11 09:00:00", "text": "- gates: lint=PASS"}\n',
+        encoding="utf-8",
+    )
+    with pytest.raises(TranscriptError, match="timestamp must be YYYY-MM-DD HH:MM"):
+        parse_jsonl_transcript(with_seconds)
 
 
 def test_parse_jsonl_empty_fields_without_text_is_transcript_error(tmp_path):

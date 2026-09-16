@@ -178,7 +178,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W148 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W149 Named parser case: JSONL numeric `fields` values still parse (stringified) (2026-09-16)
 - [x] W150 Document numeric JSONL `fields` values as stringified in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W151 Named test locks adapter numeric-fields stringify sentence
+- [x] W151 Named test locks adapter numeric-fields stringify sentence (2026-09-16)
+- [ ] W152 Refresh BENCHMARK GATE pytest count to 98
 
 ## Build log
 
@@ -300,6 +301,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `b83c4ae`.
 - 2026-09-16: JSONL numeric fields values still parse (stringified) is named.
 - 2026-09-16: adapter names JSONL numeric fields values as stringified.
+- 2026-09-16: named test locks that adapter numeric-fields stringify sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -464,10 +466,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W148 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W149 numeric fields still parse.
 - 2026-09-16 daily: W149 shipped; JSONL numeric fields values still parse (stringified). Next tick: W150 adapter numeric-fields sentence.
 - 2026-09-16 daily: W150 shipped; adapter names JSONL numeric fields values as stringified. Next tick: W151 named adapter lock.
+- 2026-09-16 daily: W151 shipped; named test locks adapter numeric-fields stringify sentence. Next tick: W152 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W151: Named test locks the adapter numeric-fields stringify sentence.
-- Why: Hire-doc sentence exists without a lock; next wake must not rewrite it.
-- Verify: named test in `tests/test_examples.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W152: Refresh BENCHMARK GATE named-claim pytest count from 96 to 98.
+- Why: W149 parser case and W151 adapter lock added two tests; the gate table is stale.
+- Verify: LOOP_STATE table shows 98; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

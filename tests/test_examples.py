@@ -409,6 +409,11 @@ def test_adapter_locks_utf8_bom_jsonl_is_invalid_jsonl_error():
     assert "A JSONL file with a UTF-8 BOM is ERROR (invalid JSONL)" in ADAPTER
 
 
+def test_adapter_locks_numeric_fields_values_are_stringified():
+    assert "A JSONL `fields` mapping with numeric values still parses" in ADAPTER
+    assert "those values are stringified" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

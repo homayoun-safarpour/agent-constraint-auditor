@@ -373,7 +373,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W343 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W344 Refresh `docs/DAILY_LEARN.md` for JSONL trailing non-whitespace after `}` (2026-09-16)
 - [x] W345 Named parser case: JSONL object lines with leading non-whitespace before `{` are invalid JSONL (2026-09-16)
-- [ ] W346 Document JSONL leading non-whitespace before `{` in `docs/ADAPTER.md`
+- [x] W346 Document JSONL leading non-whitespace before `{` in `docs/ADAPTER.md` (2026-09-16)
+- [ ] W347 Named test locks `docs/ADAPTER.md` JSONL leading non-whitespace sentence
 
 ## Build log
 
@@ -690,6 +691,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `ee42cc0`.
 - 2026-09-16: DAILY_LEARN names JSONL trailing non-whitespace after `}` and pytest 151.
 - 2026-09-16: JSONL object lines with leading non-whitespace before `{` are invalid JSONL is named.
+- 2026-09-16: adapter names JSONL leading non-whitespace before `{` as invalid JSONL.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1049,10 +1051,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W343 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W344 DAILY_LEARN refresh.
 - 2026-09-16 daily: W344 shipped; DAILY_LEARN names JSONL trailing non-whitespace after `}` and pytest 151. Next tick: W345 leading-junk JSONL object line.
 - 2026-09-16 daily: W345 shipped; JSONL object lines with leading non-whitespace before `{` are invalid JSONL. Next tick: W346 adapter leading-junk sentence.
+- 2026-09-16 daily: W346 shipped; adapter names JSONL leading non-whitespace before `{` as invalid JSONL. Next tick: W347 named adapter lock.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W346: Document JSONL leading non-whitespace before `{` in `docs/ADAPTER.md`.
-- Why: named parser locks `extra {` as invalid JSONL; hire-doc ladder next is one adapter sentence. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green.
+- W347: Named test locks `docs/ADAPTER.md` JSONL leading non-whitespace sentence.
+- Why: adapter now says leading non-whitespace before the opening brace is ERROR and that prefix is not stripped; hire-doc ladder next is the named lock. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: named `tests/test_examples.py` case; `python -m pytest -q && python -m ruff check .` green.
 

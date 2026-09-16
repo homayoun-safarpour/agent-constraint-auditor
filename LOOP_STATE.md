@@ -124,7 +124,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W94 Document JSONL non-mapping `fields` as ERROR in `docs/ADAPTER.md` (2026-09-16)
 - [x] W95 Named test locks adapter non-mapping `fields` ERROR sentence (2026-09-16)
 - [x] W96 Refresh BENCHMARK GATE pytest count to the live 87 (2026-09-16)
-- [ ] W97 Named parser case: JSONL line that is not an object is ERROR
+- [x] W97 Named parser case: JSONL line that is not an object is ERROR (2026-09-16)
+- [ ] W98 Document JSONL non-object lines as ERROR in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -192,6 +193,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: adapter names JSONL non-mapping fields as ERROR.
 - 2026-09-16: named test locks that adapter non-mapping fields ERROR sentence.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 87.
+- 2026-09-16: JSONL line that is not an object is named ERROR.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -302,10 +304,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W94 shipped; adapter names JSONL non-mapping fields as ERROR. Next tick: W95 named adapter lock.
 - 2026-09-16 daily: W95 shipped; named test locks adapter non-mapping fields ERROR sentence. Next tick: W96 BENCHMARK GATE pytest count.
 - 2026-09-16 daily: W96 shipped; BENCHMARK GATE named-claim pytest count is 87. Next tick: W97 JSONL line-not-object ERROR.
+- 2026-09-16 daily: W97 shipped; JSONL line that is not an object is ERROR. Next tick: W98 adapter non-object line sentence.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W97: Named parser case that a JSONL line that is not an object is ERROR (`must be an object`).
-- Why: Parser already fail-closes arrays/scalars at line top-level; no named test locks it.
-- Verify: pytest raises `must be an object`; `python -m pytest -q && python -m ruff check .` green.
+- W98: Document JSONL lines that are not objects as ERROR in `docs/ADAPTER.md`.
+- Why: Parser lock exists; hire docs still only name invalid or empty JSONL.
+- Verify: named sentence in ADAPTER; `python -m pytest -q && python -m ruff check .` green.
 

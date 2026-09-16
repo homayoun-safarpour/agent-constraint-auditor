@@ -1,21 +1,20 @@
 # Daily learning — 2026-09-16
 
-**Skill.** A whitespace-only JSONL file is the same contract as an empty file. Blank lines are skipped, the parser returns no events, and `audit` / `parse-transcript` still ERROR via `no parseable events`.
+**Skill.** A UTF-8 BOM on a JSONL file is invalid JSONL, not a silent decode. `json.loads` rejects the BOM; the parser raises `TranscriptError` (`invalid JSONL`). Switching the reader to `utf-8-sig` would hide that ERROR.
 
-**Why.** Reviewers who only read the empty-file sentence can treat a file of spaces and newlines as a different ERROR class. It is not. The skip is in `parse_jsonl_transcript`; CLI fail-closed is the second step.
+**Why.** Windows editors often write a BOM. Without a named test, a later “helpful” decode change would turn ERROR into CLEAN. The adapter sentence exists so hire docs match the parser lock.
 
-**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 92. `parse_jsonl_transcript` on a whitespace-only file returns `[]`. CLI still exits `1`.
+**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 95. A leading UTF-8 BOM on an otherwise valid JSONL line is ERROR (exit `1`).
 
 ```bash
 python -m pytest -q
-# 92 passed
-constraint-auditor parse-transcript --format jsonl path/to/whitespace.jsonl
-# ERROR: transcript contains no parseable events
-# exit 1
+# 95 passed
+python -m pytest -q tests/test_journal.py::test_parse_jsonl_utf8_bom_is_transcript_error
+# 1 passed
 ```
 
-**Recall probe.** Does `docs/ADAPTER.md` say a whitespace-only JSONL file skips blank lines, parses to no events, and CLI still ERROR?
+**Recall probe.** Does `docs/ADAPTER.md` say a JSONL file with a UTF-8 BOM is ERROR (invalid JSONL)?
 
-Answer: Yes. Named test `test_adapter_locks_whitespace_only_jsonl_parses_to_no_events` locks that sentence. Do not pytest-lock this card; it is rewritten each morning.
+Answer: Yes. Named test `test_adapter_locks_utf8_bom_jsonl_is_invalid_jsonl_error` locks that sentence. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W134
+**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W145

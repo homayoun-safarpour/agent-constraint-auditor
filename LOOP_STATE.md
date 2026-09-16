@@ -325,7 +325,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W295 Refresh `docs/DAILY_LEARN.md` for JSONL two-key `fields` insertion order (2026-09-16)
 - [x] W296 Named parser case: JSONL non-empty `text` with `fields` uses the text body (2026-09-16)
 - [x] W297 Document JSONL non-empty `text` with `fields` in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W298 Named test locks adapter JSONL non-empty `text` with `fields` sentence
+- [x] W298 Named test locks adapter JSONL non-empty `text` with `fields` sentence (2026-09-16)
+- [ ] W299 Refresh BENCHMARK GATE pytest count to 139
 
 ## Build log
 
@@ -594,6 +595,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: DAILY_LEARN names JSONL two-key fields insertion order and pytest 137.
 - 2026-09-16: JSONL non-empty text with fields uses the text body is named.
 - 2026-09-16: adapter names JSONL non-empty text with fields as using the text body.
+- 2026-09-16: named test locks that adapter JSONL text-with-fields sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -905,10 +907,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W295 shipped; DAILY_LEARN names JSONL two-key fields insertion order and pytest 137. Next tick: W296 non-empty text with fields uses text.
 - 2026-09-16 daily: W296 shipped; JSONL non-empty text with fields uses the text body. Next tick: W297 adapter text-with-fields sentence.
 - 2026-09-16 daily: W297 shipped; adapter names JSONL non-empty text with fields as using the text body. Next tick: W298 named adapter lock.
+- 2026-09-16 daily: W298 shipped; named test locks adapter JSONL text-with-fields sentence. Next tick: W299 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W298: Named test locks adapter JSONL non-empty `text` with `fields` sentence.
-- Why: one adapter sentence names text-wins-over-fields; hire-doc ladder next is the named lock. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: named `tests/test_examples.py` lock; `python -m pytest -q && python -m ruff check .` green.
+- W299: Refresh BENCHMARK GATE pytest count to 139.
+- Why: named parser + adapter lock add two tests (138 then 139). Hire-doc ladder next is GATE count. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: BENCHMARK GATE named-claim row is 139; `python -m pytest -q && python -m ruff check .` green.
 

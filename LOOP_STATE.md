@@ -247,7 +247,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W217 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W218 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W219 Named parser case: JSONL `fields` keys are stringified (2026-09-16)
-- [ ] W220 Document JSONL `fields` keys as stringified in `docs/ADAPTER.md`
+- [x] W220 Document JSONL `fields` keys as stringified in `docs/ADAPTER.md` (2026-09-16)
+- [ ] W221 Named test locks adapter JSONL `fields` keys sentence
 
 ## Build log
 
@@ -438,6 +439,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `f08ab40` (run 35131077152).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `2c16b94`.
 - 2026-09-16: JSONL fields keys remaining strings (including `"1"`) is named.
+- 2026-09-16: adapter names JSONL fields keys as strings.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -671,10 +673,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W217 shipped; BENCHMARK GATE CI tip is `f08ab40` (run 35131077152). Next tick: W218 MATRIX heartbeat.
 - 2026-09-16 daily: W218 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W219 fields keys stringify.
 - 2026-09-16 daily: W219 shipped; JSONL fields keys are stringified (`"1"` stays `"1"`). Next tick: W220 adapter fields-keys sentence.
+- 2026-09-16 daily: W220 shipped; adapter names JSONL fields keys as strings. Next tick: W221 named adapter lock.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W220: Document JSONL `fields` keys as stringified in `docs/ADAPTER.md`.
-- Why: parser lock is named; hire-doc ladder next is one adapter sentence. Do not spray boolean field types.
-- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W221: Named test locks adapter JSONL `fields` keys sentence.
+- Why: hire-doc ladder; one adapter sentence is written. Do not spray boolean field types.
+- Verify: named lock in `tests/test_examples.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

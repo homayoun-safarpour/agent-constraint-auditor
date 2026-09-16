@@ -95,7 +95,9 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W65 Named test locks `docs/RELIABILITY_CARD.md` jsonl_bad_timestamp ERROR row (2026-09-16)
 - [x] W66 Document `examples/jsonl_bad_timestamp` in `docs/INTERVIEW.md` (2026-09-16)
 - [x] W67 Named test locks `docs/INTERVIEW.md` jsonl_bad_timestamp demo (exit 1) (2026-09-16)
-- [ ] W68 Document `examples/jsonl_bad_timestamp` in `CONTRIBUTING.md`
+- [x] W68 Document `examples/jsonl_bad_timestamp` in `CONTRIBUTING.md` (2026-09-16)
+- [x] W69 Named test locks `CONTRIBUTING.md` jsonl_bad_timestamp ERROR sentence (2026-09-16)
+- [ ] W70 Refresh `docs/DAILY_LEARN.md` for the ninth MATRIX row
 
 ## Build log
 
@@ -140,6 +142,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: named test locks `docs/ADAPTER.md` jsonl_bad_timestamp row (exit 1 ERROR, `--format jsonl`).
 - 2026-09-16: `examples/MATRIX.md` ninth row `jsonl_bad_timestamp` exit 1; named tests lock table + live audit (0/2/0/2/1/1/0/2/1).
 - 2026-09-16: reliability card + interview pack name `jsonl_bad_timestamp` ERROR exit 1; named tests lock both.
+- 2026-09-16: CONTRIBUTING names `jsonl_bad_timestamp` as fail-closed ERROR; named test locks that sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -227,10 +230,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 heartbeat: OK (W61 matches `a2adf6f`; named ADAPTER jsonl_bad_timestamp lock; CI green run 35070809069; 84 pytest). ENRICH. Next tick: W62 document `examples/jsonl_bad_timestamp` in `examples/MATRIX.md`.
 - 2026-09-16 daily: W62–W63 shipped; MATRIX table + live lock include `jsonl_bad_timestamp` exit 1 (0/2/0/2/1/1/0/2/1). Next tick: W64 reliability-card row.
 - 2026-09-16 daily: W64–W67 shipped; reliability card and interview pack name `jsonl_bad_timestamp` as ERROR exit 1 (timestamp not `YYYY-MM-DD HH:MM`). Next tick: W68 CONTRIBUTING.md row.
+- 2026-09-16 daily: W68–W69 shipped; CONTRIBUTING names `jsonl_bad_timestamp` as ERROR. Next tick: W70 DAILY_LEARN refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W68: Document `examples/jsonl_bad_timestamp` in `CONTRIBUTING.md`.
-- Why: Hire docs now name the ninth ERROR fixture; CONTRIBUTING still points at MATRIX without that path.
-- Verify: CONTRIBUTING names `jsonl_bad_timestamp` as exit 1; `python -m pytest -q && python -m ruff check .` green.
+- W70: Refresh `docs/DAILY_LEARN.md` so the recall probe matches the ninth MATRIX row and adapter lock (W60–W63), not the stale W60 wording.
+- Why: DAILY_LEARN still says adapter JSONL ERROR is unnamed; that is false after W61.
+- Verify: DAILY_LEARN recall answer is yes for adapter `jsonl_bad_timestamp`; `python -m pytest -q && python -m ruff check .` green.
 

@@ -160,7 +160,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W130 Refresh BENCHMARK GATE pytest count to 92 (2026-09-16)
 - [x] W131 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W132 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
-- [ ] W133 Refresh `docs/DAILY_LEARN.md` for whitespace-only JSONL parse-then-CLI split
+- [x] W133 Refresh `docs/DAILY_LEARN.md` for whitespace-only JSONL parse-then-CLI split (2026-09-16)
+- [ ] W134 Named CLI case: whitespace-only JSONL is ERROR via `no parseable events`
 
 ## Build log
 
@@ -264,6 +265,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 92.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `4c06e8a` (run 35111122883).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `88e88c4`.
+- 2026-09-16: DAILY_LEARN names whitespace-only JSONL parse-then-CLI split and pytest 92.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -410,10 +412,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W130 shipped; BENCHMARK GATE named-claim pytest count is 92. Next tick: W131 CI tip refresh.
 - 2026-09-16 daily: W131 shipped; BENCHMARK GATE CI tip is `4c06e8a` (run 35111122883). Next tick: W132 MATRIX heartbeat.
 - 2026-09-16 daily: W132 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W133 DAILY_LEARN refresh.
+- 2026-09-16 daily: W133 shipped; DAILY_LEARN names whitespace-only JSONL parse-then-CLI split and pytest 92. Next tick: W134 whitespace-only CLI ERROR.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W133: Refresh `docs/DAILY_LEARN.md` for the whitespace-only JSONL parse-then-CLI split and pytest 92.
-- Why: Card still names empty-file split and pytest 90; whitespace-only is the live sibling that just closed.
-- Verify: DAILY_LEARN names whitespace-only JSONL no-events then CLI ERROR and pytest 92; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W134: Named CLI case that a whitespace-only JSONL file is ERROR via `no parseable events`.
+- Why: Parser and adapter are locked; `parse-transcript` only names the empty-string file, not skipped blank lines.
+- Verify: named test in `tests/test_cli.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

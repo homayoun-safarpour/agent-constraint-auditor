@@ -176,6 +176,16 @@ def test_parse_jsonl_empty_fields_without_text_is_transcript_error(tmp_path):
         parse_jsonl_transcript(path)
 
 
+def test_parse_jsonl_non_mapping_fields_is_transcript_error(tmp_path):
+    path = tmp_path / "events.jsonl"
+    path.write_text(
+        '{"timestamp": "2026-08-11 09:00", "fields": ["gates"]}\n',
+        encoding="utf-8",
+    )
+    with pytest.raises(TranscriptError, match="fields must be a mapping"):
+        parse_jsonl_transcript(path)
+
+
 def test_parse_jsonl_whitespace_text_without_fields_is_transcript_error(tmp_path):
     path = tmp_path / "events.jsonl"
     path.write_text('{"timestamp": "2026-08-11 09:00", "text": "   "}\n', encoding="utf-8")

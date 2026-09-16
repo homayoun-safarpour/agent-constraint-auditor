@@ -300,7 +300,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W270 Named test locks adapter JSONL empty-string `fields` values sentence (2026-09-16)
 - [x] W271 Refresh BENCHMARK GATE pytest count to 131 (2026-09-16)
 - [x] W272 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
-- [ ] W273 Local MATRIX nine-exit heartbeat on current main
+- [x] W273 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
+- [ ] W274 Refresh `docs/DAILY_LEARN.md` for JSONL empty-string `fields` values
 
 ## Build log
 
@@ -544,6 +545,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: named test locks that adapter JSONL empty-string-value sentence.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 131.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `d729fb0` (run 35138439638).
+- 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `fae41e3`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -830,10 +832,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W270 shipped; named test locks adapter JSONL empty-string-value sentence. Next tick: W271 pytest count.
 - 2026-09-16 daily: W271 shipped; BENCHMARK GATE named-claim pytest count is 131. Next tick: W272 CI tip refresh.
 - 2026-09-16 daily: W272 shipped; BENCHMARK GATE CI tip is `d729fb0` (run 35138439638). Next tick: W273 MATRIX heartbeat.
+- 2026-09-16 daily: W273 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W274 DAILY_LEARN refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W273: Local MATRIX nine-exit heartbeat on current main.
-- Why: CI tip now names `d729fb0`; confirm nine exits still 0/2/0/2/1/1/0/2/1. Do not spray boolean field types.
-- Verify: nine MATRIX audits; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W274: Refresh `docs/DAILY_LEARN.md` for JSONL empty-string `fields` values.
+- Why: parser + adapter + lock + pytest 131 + CI + MATRIX are named; hire-doc ladder next is DAILY_LEARN. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: one DAILY_LEARN sentence; `python -m pytest -q && python -m ruff check .` green.
 

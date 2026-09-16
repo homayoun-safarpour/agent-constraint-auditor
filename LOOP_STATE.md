@@ -227,7 +227,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W197 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W198 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W199 Document whitespace-only JSONL `text` with `fields` in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W200 Named test locks adapter whitespace-text-with-fields sentence
+- [x] W200 Named test locks adapter whitespace-text-with-fields sentence (2026-09-16)
+- [ ] W201 Refresh BENCHMARK GATE pytest count to 111
 
 ## Build log
 
@@ -398,6 +399,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `0c9b3eb` (run 35127904542).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `ff62555`.
 - 2026-09-16: adapter names whitespace-only JSONL `text` with `fields` as using fields.
+- 2026-09-16: named test locks that adapter whitespace-text-with-fields sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -611,10 +613,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W197 shipped; BENCHMARK GATE CI tip is `0c9b3eb` (run 35127904542). Next tick: W198 MATRIX heartbeat.
 - 2026-09-16 daily: W198 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W199 adapter whitespace-text-with-fields.
 - 2026-09-16 daily: W199 shipped; adapter names whitespace-only JSONL text with fields as using fields. Next tick: W200 named adapter lock.
+- 2026-09-16 daily: W200 shipped; named test locks adapter whitespace-text-with-fields sentence. Next tick: W201 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W200: Named test locks the adapter sentence that whitespace-only JSONL `text` with `fields` uses the fields body.
-- Why: hire-doc without a lock can drift. One assert on that sentence. Do not spray boolean field types.
-- Verify: named test in `tests/test_examples.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W201: Refresh BENCHMARK GATE named-claim pytest count to 111.
+- Why: W200 added `test_adapter_locks_whitespace_jsonl_text_with_fields_uses_fields`; the gate still says 110.
+- Verify: LOOP_STATE named-claim cell matches `python -m pytest -q`; `python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

@@ -126,7 +126,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W96 Refresh BENCHMARK GATE pytest count to the live 87 (2026-09-16)
 - [x] W97 Named parser case: JSONL line that is not an object is ERROR (2026-09-16)
 - [x] W98 Document JSONL non-object lines as ERROR in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W99 Named test locks adapter non-object JSONL line ERROR sentence
+- [x] W99 Named test locks adapter non-object JSONL line ERROR sentence (2026-09-16)
+- [ ] W100 Refresh BENCHMARK GATE pytest count to the live 88
 
 ## Build log
 
@@ -196,6 +197,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 87.
 - 2026-09-16: JSONL line that is not an object is named ERROR.
 - 2026-09-16: adapter names JSONL non-object lines as ERROR.
+- 2026-09-16: named test locks that adapter non-object JSONL line ERROR sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -308,10 +310,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W96 shipped; BENCHMARK GATE named-claim pytest count is 87. Next tick: W97 JSONL line-not-object ERROR.
 - 2026-09-16 daily: W97 shipped; JSONL line that is not an object is ERROR. Next tick: W98 adapter non-object line sentence.
 - 2026-09-16 daily: W98 shipped; adapter names JSONL non-object lines as ERROR. Next tick: W99 named adapter lock.
+- 2026-09-16 daily: W99 shipped; named test locks adapter non-object JSONL line ERROR sentence. Next tick: W100 BENCHMARK GATE pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W99: Named test locks the adapter sentence that a JSONL line that is valid JSON but not an object is ERROR.
-- Why: W98 wrote the hire-doc sentence; the lock belongs in `tests/test_examples.py`.
-- Verify: pytest asserts the sentence; `python -m pytest -q && python -m ruff check .` green.
+- W100: Refresh BENCHMARK GATE pytest count from 87 to the live 88.
+- Why: Gate row 2 still quotes W96; W97 added a named test.
+- Verify: LOOP_STATE named-claim row says 88; `python -m pytest -q && python -m ruff check .` green.
 

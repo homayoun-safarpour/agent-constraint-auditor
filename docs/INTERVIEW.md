@@ -9,7 +9,7 @@
    Reads agent-loop-engine journals natively; exit `0`/`2` plugs into `--gate`; sentinel handles judge drift, auditor handles agent rule drift.
 
 3. **What does exit 2 mean in CI?**
-   Measurable constraint decay - fail the build, repair before new feature work (same contract family as sentinel JUDGE_DRIFT). Empty journals, invalid regex specs, and a JSONL `timestamp` that is not `YYYY-MM-DD HH:MM` exit `1` (ERROR), not `0`.
+   Measurable constraint decay - fail the build, repair before new feature work (same contract family as sentinel JUDGE_DRIFT). Empty journals, invalid regex specs, and a JSONL `timestamp` that is not `YYYY-MM-DD HH:MM` exit `1` (ERROR), not `0`. A JSONL line that is valid JSON but not an object, or a `fields` value that is not a mapping, is the same ERROR.
 
 ## 2-min demo
 

@@ -11,7 +11,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `69b5a32` (2026-09-16, run 35130232351); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `f08ab40` (2026-09-16, run 35131077152); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 115 passed; `ruff check .` clean (2026-09-16 W215) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -244,7 +244,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W214 Refresh `docs/DAILY_LEARN.md` for empty-string JSONL `text` with `fields` (2026-09-16)
 - [x] W215 Named CLI case: empty-string JSONL `text` without fields is ERROR (2026-09-16)
 - [x] W216 Refresh BENCHMARK GATE pytest count to 115 (2026-09-16)
-- [ ] W217 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W217 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
+- [ ] W218 Local MATRIX nine-exit heartbeat on current main
 
 ## Build log
 
@@ -432,6 +433,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: DAILY_LEARN names empty-string JSONL `text` with `fields` and pytest 113.
 - 2026-09-16: empty-string JSONL `text` without fields is CLI ERROR.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 115.
+- 2026-09-16: BENCHMARK GATE CI tip refreshed to `f08ab40` (run 35131077152).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -662,10 +664,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W214 shipped; DAILY_LEARN names empty-string JSONL text with fields and pytest 113. Next tick: W215 CLI empty-string text.
 - 2026-09-16 daily: W215 shipped; empty-string JSONL text without fields is CLI ERROR. Next tick: W216 pytest count.
 - 2026-09-16 daily: W216 shipped; BENCHMARK GATE named-claim pytest count is 115. Next tick: W217 CI tip refresh.
+- 2026-09-16 daily: W217 shipped; BENCHMARK GATE CI tip is `f08ab40` (run 35131077152). Next tick: W218 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W217: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main after W215/W216.
-- Why: named-claim pytest is 115 on main; the gate still cites `69b5a32`.
-- Verify: paste a real success run for current `origin/main`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W218: Local MATRIX nine-exit heartbeat on current main.
+- Why: CI tip is current; re-confirm MATRIX `0/2/0/2/1/1/0/2/1` after the empty-string CLI lock.
+- Verify: run the nine MATRIX commands; paste exits into LOOP_STATE; `python -m pytest -q && python -m ruff check .` green.
 

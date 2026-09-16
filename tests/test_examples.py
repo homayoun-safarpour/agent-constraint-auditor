@@ -366,6 +366,7 @@ def test_adapter_locks_jsonl_bad_timestamp_row():
     assert "`examples/jsonl_bad_timestamp` is the worked fixture (exit `1`)" in ADAPTER
     assert "YYYY-MM-DD HH:MM:SS" in ADAPTER
     assert "09:00Z" in ADAPTER
+    assert "+00:00" in ADAPTER
     assert (
         main(
             [

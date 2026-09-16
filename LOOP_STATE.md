@@ -353,7 +353,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W323 Refresh `docs/DAILY_LEARN.md` for JSONL blank lines between objects (2026-09-16)
 - [x] W324 Named parser case: JSONL object lines with leading whitespace still parse (2026-09-16)
 - [x] W325 Document JSONL leading-whitespace object lines in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W326 Named test locks adapter JSONL leading-whitespace object-line sentence
+- [x] W326 Named test locks adapter JSONL leading-whitespace object-line sentence (2026-09-16)
+- [ ] W327 Refresh BENCHMARK GATE pytest count to 147
 
 ## Build log
 
@@ -650,6 +651,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: DAILY_LEARN names JSONL blank lines between objects and pytest 145.
 - 2026-09-16: JSONL object lines with leading whitespace still parse is named.
 - 2026-09-16: adapter names JSONL leading-whitespace object lines as still parsing.
+- 2026-09-16: named test locks that adapter JSONL leading-whitespace sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -989,10 +991,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W323 shipped; DAILY_LEARN names JSONL blank lines between objects and pytest 145. Next tick: W324 leading-whitespace JSONL object line.
 - 2026-09-16 daily: W324 shipped; JSONL object lines with leading whitespace still parse. Next tick: W325 adapter leading-whitespace sentence.
 - 2026-09-16 daily: W325 shipped; adapter names JSONL leading-whitespace object lines as still parsing. Next tick: W326 named adapter lock.
+- 2026-09-16 daily: W326 shipped; named test locks adapter JSONL leading-whitespace sentence. Next tick: W327 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W326: Named test locks adapter JSONL leading-whitespace object-line sentence.
-- Why: one adapter sentence names leading-whitespace object lines; hire-doc ladder next is the named lock. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: named `tests/test_examples.py` lock; `python -m pytest -q && python -m ruff check .` green.
+- W327: Refresh BENCHMARK GATE pytest count to 147.
+- Why: named parser + adapter lock add two tests (146 then 147). Hire-doc ladder next is GATE count. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: BENCHMARK GATE named-claim row is 147; `python -m pytest -q && python -m ruff check .` green.
 

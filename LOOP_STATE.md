@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `4c06e8a` (2026-09-16, run 35111122883); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 92 passed; `ruff check .` clean (2026-09-16 W129) |
+| 2 | Named claim tests | PASS — `pytest` 93 passed; `ruff check .` clean (2026-09-16 W134) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -162,7 +162,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W132 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W133 Refresh `docs/DAILY_LEARN.md` for whitespace-only JSONL parse-then-CLI split (2026-09-16)
 - [x] W134 Named CLI case: whitespace-only JSONL is ERROR via `no parseable events` (2026-09-16)
-- [ ] W135 Refresh BENCHMARK GATE pytest count to 93
+- [x] W135 Refresh BENCHMARK GATE pytest count to 93 (2026-09-16)
+- [ ] W136 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -268,6 +269,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `88e88c4`.
 - 2026-09-16: DAILY_LEARN names whitespace-only JSONL parse-then-CLI split and pytest 92.
 - 2026-09-16: whitespace-only JSONL CLI ERROR via no parseable events is named.
+- 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 93.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -416,10 +418,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W132 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W133 DAILY_LEARN refresh.
 - 2026-09-16 daily: W133 shipped; DAILY_LEARN names whitespace-only JSONL parse-then-CLI split and pytest 92. Next tick: W134 whitespace-only CLI ERROR.
 - 2026-09-16 daily: W134 shipped; whitespace-only JSONL CLI ERROR via no parseable events is named. Next tick: W135 pytest count.
+- 2026-09-16 daily: W135 shipped; BENCHMARK GATE named-claim pytest count is 93. Next tick: W136 CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W135: Refresh BENCHMARK GATE named-claim pytest count from 92 to 93.
-- Why: W134 CLI case added one test; the gate table is stale.
-- Verify: LOOP_STATE table shows 93; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W136: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
+- Why: Tip still names `4c06e8a`; W132–W134 landed after that.
+- Verify: latest successful `ci.yml` SHA + run id in the gate table; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

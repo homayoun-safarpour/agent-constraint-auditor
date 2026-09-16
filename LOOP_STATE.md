@@ -386,7 +386,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W356 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W357 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W358 Refresh `docs/DAILY_LEARN.md` for JSONL trailing-comma object lines (2026-09-16)
-- [ ] W359 Named parser case: JSONL object lines with single-quoted strings are invalid JSONL
+- [x] W359 Named parser case: JSONL object lines with single-quoted strings are invalid JSONL (2026-09-16)
+- [ ] W360 Document JSONL single-quoted strings in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -716,6 +717,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `1727d8d` (run 35151425949).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `73a01cb`.
 - 2026-09-16: DAILY_LEARN names JSONL trailing-comma object lines and pytest 155.
+- 2026-09-16: JSONL object lines with single-quoted strings are invalid JSONL is named.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1088,10 +1090,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W356 shipped; BENCHMARK GATE CI tip is `1727d8d` (run 35151425949). Next tick: W357 MATRIX heartbeat.
 - 2026-09-16 daily: W357 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W358 DAILY_LEARN refresh.
 - 2026-09-16 daily: W358 shipped; DAILY_LEARN names JSONL trailing-comma object lines and pytest 155. Next tick: W359 single-quoted JSONL object line.
+- 2026-09-16 daily: W359 shipped; JSONL object lines with single-quoted strings are invalid JSONL. Next tick: W360 adapter single-quote sentence.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W359: Named parser case: JSONL object lines with single-quoted strings are invalid JSONL.
-- Why: JSON requires double quotes; `json.loads` raises invalid JSONL. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: named `tests/test_journal.py` case; `python -m pytest -q && python -m ruff check .` green.
+- W360: Document JSONL single-quoted strings in `docs/ADAPTER.md`.
+- Why: named parser locks Python-style single quotes as invalid JSONL; hire-doc ladder next is one adapter sentence. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green.
 

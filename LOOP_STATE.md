@@ -211,7 +211,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W181 Named parser case: empty JSONL `fields` mapping is treated as missing fields (2026-09-16)
 - [x] W182 Refresh BENCHMARK GATE pytest count to 106 (2026-09-16)
 - [x] W183 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
-- [ ] W184 Local MATRIX nine-exit heartbeat on current main
+- [x] W184 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
+- [ ] W185 Document empty JSONL `fields` mapping as missing fields in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -366,6 +367,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: empty JSONL `fields` mapping is treated as missing fields.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 106.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `ed718dc` (run 35125462235).
+- 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `cc79c60`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -563,10 +565,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W181 shipped; empty JSONL fields mapping is treated as missing fields. Next tick: W182 pytest count.
 - 2026-09-16 daily: W182 shipped; BENCHMARK GATE named-claim pytest count is 106. Next tick: W183 CI tip refresh.
 - 2026-09-16 daily: W183 shipped; BENCHMARK GATE CI tip is `ed718dc` (run 35125462235). Next tick: W184 MATRIX heartbeat.
+- 2026-09-16 daily: W184 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W185 adapter empty-fields sentence.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W184: Local MATRIX nine-exit heartbeat on current main.
-- Why: CI tip is current; re-confirm MATRIX `0/2/0/2/1/1/0/2/1` after the empty-fields lock.
-- Verify: run the nine MATRIX commands; paste exits into LOOP_STATE; `python -m pytest -q && python -m ruff check .` green.
+- W185: Document in `docs/ADAPTER.md` that an empty JSONL `fields` mapping is treated as missing fields.
+- Why: parser lock exists; hire-doc should name the same rule. One sentence. Do not spray boolean field types.
+- Verify: adapter paragraph includes that sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

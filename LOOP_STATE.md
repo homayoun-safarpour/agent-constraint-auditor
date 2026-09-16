@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `5807b22` (2026-09-16, run 35088002570); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 86 passed; `ruff check .` clean (2026-09-16 W90) |
+| 2 | Named claim tests | PASS — `pytest` 87 passed; `ruff check .` clean (2026-09-16 W96) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -123,7 +123,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W93 Named parser case: JSONL `fields` that is not a mapping is ERROR (2026-09-16)
 - [x] W94 Document JSONL non-mapping `fields` as ERROR in `docs/ADAPTER.md` (2026-09-16)
 - [x] W95 Named test locks adapter non-mapping `fields` ERROR sentence (2026-09-16)
-- [ ] W96 Refresh BENCHMARK GATE pytest count to the live 87
+- [x] W96 Refresh BENCHMARK GATE pytest count to the live 87 (2026-09-16)
+- [ ] W97 Named parser case: JSONL line that is not an object is ERROR
 
 ## Build log
 
@@ -190,6 +191,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: JSONL fields that is not a mapping is named ERROR.
 - 2026-09-16: adapter names JSONL non-mapping fields as ERROR.
 - 2026-09-16: named test locks that adapter non-mapping fields ERROR sentence.
+- 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 87.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -299,10 +301,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W93 shipped; JSONL fields that is not a mapping is ERROR. Next tick: W94 adapter fields-mapping sentence.
 - 2026-09-16 daily: W94 shipped; adapter names JSONL non-mapping fields as ERROR. Next tick: W95 named adapter lock.
 - 2026-09-16 daily: W95 shipped; named test locks adapter non-mapping fields ERROR sentence. Next tick: W96 BENCHMARK GATE pytest count.
+- 2026-09-16 daily: W96 shipped; BENCHMARK GATE named-claim pytest count is 87. Next tick: W97 JSONL line-not-object ERROR.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W96: Refresh BENCHMARK GATE pytest count from 86 to the live 87.
-- Why: Gate row 2 still quotes W90; W93 added a named test.
-- Verify: LOOP_STATE named-claim row says 87; `python -m pytest -q && python -m ruff check .` green.
+- W97: Named parser case that a JSONL line that is not an object is ERROR (`must be an object`).
+- Why: Parser already fail-closes arrays/scalars at line top-level; no named test locks it.
+- Verify: pytest raises `must be an object`; `python -m pytest -q && python -m ruff check .` green.
 

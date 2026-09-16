@@ -103,6 +103,10 @@ def test_parse_jsonl_blank_or_non_string_timestamp_is_transcript_error(tmp_path)
     numeric.write_text('{"timestamp": 1757664000, "text": "- gates: lint=PASS"}\n', encoding="utf-8")
     with pytest.raises(TranscriptError, match="missing timestamp"):
         parse_jsonl_transcript(numeric)
+    null_ts = tmp_path / "null.jsonl"
+    null_ts.write_text('{"timestamp": null, "text": "- gates: lint=PASS"}\n', encoding="utf-8")
+    with pytest.raises(TranscriptError, match="missing timestamp"):
+        parse_jsonl_transcript(null_ts)
 
 
 def test_parse_jsonl_non_shaped_timestamp_is_transcript_error(tmp_path):

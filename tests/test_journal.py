@@ -305,6 +305,19 @@ def test_parse_jsonl_whitespace_text_without_fields_is_transcript_error(tmp_path
         parse_jsonl_transcript(path)
 
 
+def test_parse_jsonl_whitespace_text_with_fields_uses_fields(tmp_path):
+    path = tmp_path / "events.jsonl"
+    path.write_text(
+        '{"timestamp": "2026-08-11 09:00", "text": "   ",'
+        ' "fields": {"gates": "lint=PASS"}}\n',
+        encoding="utf-8",
+    )
+    events = parse_jsonl_transcript(path)
+    assert len(events) == 1
+    assert events[0].text == "- gates: lint=PASS"
+    assert events[0].fields == {"gates": "lint=PASS"}
+
+
 def test_parse_loop_engine_journal_empty_bodied_event_is_error(tmp_path):
     path = tmp_path / "empty-body.md"
     path.write_text("## 2026-08-11 09:00\n\n", encoding="utf-8")

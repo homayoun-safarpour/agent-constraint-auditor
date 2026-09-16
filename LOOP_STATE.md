@@ -324,7 +324,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W294 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W295 Refresh `docs/DAILY_LEARN.md` for JSONL two-key `fields` insertion order (2026-09-16)
 - [x] W296 Named parser case: JSONL non-empty `text` with `fields` uses the text body (2026-09-16)
-- [ ] W297 Document JSONL non-empty `text` with `fields` in `docs/ADAPTER.md`
+- [x] W297 Document JSONL non-empty `text` with `fields` in `docs/ADAPTER.md` (2026-09-16)
+- [ ] W298 Named test locks adapter JSONL non-empty `text` with `fields` sentence
 
 ## Build log
 
@@ -592,6 +593,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `a5ed9e6`.
 - 2026-09-16: DAILY_LEARN names JSONL two-key fields insertion order and pytest 137.
 - 2026-09-16: JSONL non-empty text with fields uses the text body is named.
+- 2026-09-16: adapter names JSONL non-empty text with fields as using the text body.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -902,10 +904,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W294 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W295 DAILY_LEARN refresh.
 - 2026-09-16 daily: W295 shipped; DAILY_LEARN names JSONL two-key fields insertion order and pytest 137. Next tick: W296 non-empty text with fields uses text.
 - 2026-09-16 daily: W296 shipped; JSONL non-empty text with fields uses the text body. Next tick: W297 adapter text-with-fields sentence.
+- 2026-09-16 daily: W297 shipped; adapter names JSONL non-empty text with fields as using the text body. Next tick: W298 named adapter lock.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W297: Document JSONL non-empty `text` with `fields` in `docs/ADAPTER.md`.
-- Why: named parser locks body from text while fields still parse; hire-doc ladder next is one adapter sentence. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green.
+- W298: Named test locks adapter JSONL non-empty `text` with `fields` sentence.
+- Why: one adapter sentence names text-wins-over-fields; hire-doc ladder next is the named lock. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: named `tests/test_examples.py` lock; `python -m pytest -q && python -m ruff check .` green.
 

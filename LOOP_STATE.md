@@ -11,7 +11,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `5807b22` (2026-09-16, run 35088002570); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `6be2b5b` (2026-09-16, run 35094287950); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 88 passed; `ruff check .` clean (2026-09-16 W100) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -128,7 +128,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W98 Document JSONL non-object lines as ERROR in `docs/ADAPTER.md` (2026-09-16)
 - [x] W99 Named test locks adapter non-object JSONL line ERROR sentence (2026-09-16)
 - [x] W100 Refresh BENCHMARK GATE pytest count to the live 88 (2026-09-16)
-- [ ] W101 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W101 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
+- [ ] W102 Local MATRIX nine-exit heartbeat on current main
 
 ## Build log
 
@@ -200,6 +201,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: adapter names JSONL non-object lines as ERROR.
 - 2026-09-16: named test locks that adapter non-object JSONL line ERROR sentence.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 88.
+- 2026-09-16: BENCHMARK GATE CI tip refreshed to `6be2b5b` (run 35094287950).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -314,10 +316,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W98 shipped; adapter names JSONL non-object lines as ERROR. Next tick: W99 named adapter lock.
 - 2026-09-16 daily: W99 shipped; named test locks adapter non-object JSONL line ERROR sentence. Next tick: W100 BENCHMARK GATE pytest count.
 - 2026-09-16 daily: W100 shipped; BENCHMARK GATE named-claim pytest count is 88. Next tick: W101 CI tip refresh.
+- 2026-09-16 daily: W101 shipped; BENCHMARK GATE CI tip is `6be2b5b` (run 35094287950). Next tick: W102 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W101: Refresh BENCHMARK GATE CI tip to the latest green Actions run on `main`.
-- Why: Gate row 1 still cites `5807b22` from this morning; tip is `f934518`.
-- Verify: paste the live run URL; `python -m pytest -q && python -m ruff check .` green.
+- W102: Local MATRIX nine-exit heartbeat (`0/2/0/2/1/1/0/2/1`) on current `main`.
+- Why: CI SHA refresh does not re-prove the worked fixtures still match the hire matrix.
+- Verify: nine audits match MATRIX; `python -m pytest -q && python -m ruff check .` green.
 

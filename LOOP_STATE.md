@@ -680,10 +680,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W220 shipped; adapter names JSONL fields keys as strings. Next tick: W221 named adapter lock.
 - 2026-09-16 daily: W221 shipped; named test locks adapter JSONL fields-keys sentence. Next tick: W222 pytest count.
 - 2026-09-16 daily: W222 shipped; BENCHMARK GATE named-claim pytest count is 117. Next tick: W223 CI tip refresh.
+- 2026-09-16 evening: CI green on `78c6114` (Actions 35132320975); W222 on main. SHIP. Next tick: W223 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
 
 ## NEXT TICK (daily 2026-09-16)
 
 - W223: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
 - Why: gate row still names `f08ab40` / run 35131077152 from before the fields-keys PRs. Do not spray boolean field types.
 - Verify: latest successful Actions run SHA on main; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+
+## NEXT TICK (evening 2026-09-16)
+
+- W223: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
+- Why: evening gates green on `78c6114` (CI run 35132320975); W222 pytest count 117 already on main. Daily's remaining backlog is the BENCHMARK GATE CI tip still naming `f08ab40` — no new product scope.
+- Verify: paste a real success run for current `origin/main`; `python3 -m pytest -q && python3 -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

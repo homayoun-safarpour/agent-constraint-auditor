@@ -11,7 +11,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `7516ce6` (2026-09-16, run 35140914834); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `8c58f52` (2026-09-16, run 35141810401); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 139 passed; `ruff check .` clean (2026-09-16 W298) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -327,7 +327,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W297 Document JSONL non-empty `text` with `fields` in `docs/ADAPTER.md` (2026-09-16)
 - [x] W298 Named test locks adapter JSONL non-empty `text` with `fields` sentence (2026-09-16)
 - [x] W299 Refresh BENCHMARK GATE pytest count to 139 (2026-09-16)
-- [ ] W300 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W300 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
+- [ ] W301 Local MATRIX nine-exit heartbeat on current main
 
 ## Build log
 
@@ -598,6 +599,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: adapter names JSONL non-empty text with fields as using the text body.
 - 2026-09-16: named test locks that adapter JSONL text-with-fields sentence.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 139.
+- 2026-09-16: BENCHMARK GATE CI tip refreshed to `8c58f52` (run 35141810401).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -911,10 +913,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W297 shipped; adapter names JSONL non-empty text with fields as using the text body. Next tick: W298 named adapter lock.
 - 2026-09-16 daily: W298 shipped; named test locks adapter JSONL text-with-fields sentence. Next tick: W299 pytest count.
 - 2026-09-16 daily: W299 shipped; BENCHMARK GATE named-claim pytest count is 139. Next tick: W300 CI tip refresh.
+- 2026-09-16 daily: W300 shipped; BENCHMARK GATE CI tip is `8c58f52` (run 35141810401). Next tick: W301 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W300: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
-- Why: gate row still names `7516ce6` / run 35140914834 from before the text-with-fields PRs. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: latest successful Actions run SHA on main; `python -m pytest -q && python -m ruff check .` green.
+- W301: Local MATRIX nine-exit heartbeat on current main.
+- Why: CI tip now names `8c58f52`; confirm nine exits still 0/2/0/2/1/1/0/2/1. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: nine MATRIX audits; `python -m pytest -q && python -m ruff check .` green.
 

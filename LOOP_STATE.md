@@ -282,7 +282,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W252 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W253 Refresh `docs/DAILY_LEARN.md` for JSONL empty-string `fields` keys (2026-09-16)
 - [x] W254 Named parser case: JSONL whitespace-only `fields` keys still parse (2026-09-16)
-- [ ] W255 Document JSONL whitespace-only `fields` keys in `docs/ADAPTER.md`
+- [x] W255 Document JSONL whitespace-only `fields` keys in `docs/ADAPTER.md` (2026-09-16)
+- [ ] W256 Named test locks adapter JSONL whitespace-only `fields` keys sentence
 
 ## Build log
 
@@ -508,6 +509,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `a7f2176`.
 - 2026-09-16: DAILY_LEARN names JSONL empty-string fields keys and pytest 125.
 - 2026-09-16: JSONL whitespace-only fields keys still parse is named.
+- 2026-09-16: adapter names JSONL whitespace-only fields keys as still parsing.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -776,10 +778,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W252 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W253 DAILY_LEARN refresh.
 - 2026-09-16 daily: W253 shipped; DAILY_LEARN names JSONL empty-string fields keys and pytest 125. Next tick: W254 whitespace-only fields keys.
 - 2026-09-16 daily: W254 shipped; JSONL whitespace-only fields keys still parse. Next tick: W255 adapter whitespace-key sentence.
+- 2026-09-16 daily: W255 shipped; adapter names JSONL whitespace-only fields keys as still parsing. Next tick: W256 named adapter lock.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W255: Document JSONL whitespace-only `fields` keys in `docs/ADAPTER.md`.
-- Why: parser lock is named; hire-doc ladder next is one adapter sentence. Do not spray boolean field types.
-- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W256: Named test locks adapter JSONL whitespace-only `fields` keys sentence.
+- Why: hire-doc ladder; one adapter sentence is written. Do not spray boolean field types.
+- Verify: named lock in `tests/test_examples.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

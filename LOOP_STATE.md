@@ -194,7 +194,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W164 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W165 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W166 Refresh `docs/DAILY_LEARN.md` for extra JSONL object keys ignored (2026-09-16)
-- [ ] W167 Named parser case: non-string JSONL `text` is treated as missing text
+- [x] W167 Named parser case: non-string JSONL `text` is treated as missing text (2026-09-16)
+- [ ] W168 Refresh BENCHMARK GATE pytest count to 102
 
 ## Build log
 
@@ -332,6 +333,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `583aafa` (run 35122002858).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `246d9c7`.
 - 2026-09-16: DAILY_LEARN names extra JSONL object keys as ignored and pytest 101.
+- 2026-09-16: non-string JSONL `text` is treated as missing text.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -512,10 +514,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W164 shipped; BENCHMARK GATE CI tip is `583aafa` (run 35122002858). Next tick: W165 MATRIX heartbeat.
 - 2026-09-16 daily: W165 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W166 DAILY_LEARN refresh.
 - 2026-09-16 daily: W166 shipped; DAILY_LEARN names extra JSONL object keys as ignored and pytest 101. Next tick: W167 non-string text.
+- 2026-09-16 daily: W167 shipped; non-string JSONL text is treated as missing text. Next tick: W168 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W167: Named parser case that a JSONL `text` value that is not a string is treated as missing text.
-- Why: `has_text` requires a non-empty string; numeric/`null` text currently falls through to fields or ERROR and has no named test. Do not spray boolean field types.
-- Verify: named test in `tests/test_journal.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W168: Refresh BENCHMARK GATE named-claim pytest count to 102.
+- Why: W167 added `test_parse_jsonl_non_string_text_is_treated_as_missing`; the gate still says 101.
+- Verify: LOOP_STATE named-claim cell matches `python -m pytest -q`; `python -m ruff check .` green. Do not pytest-lock DAILY_LEARN. Do not spray boolean field types.
 

@@ -256,6 +256,27 @@ def test_parse_jsonl_extra_object_keys_are_ignored(tmp_path):
     assert "role" not in data
 
 
+def test_parse_jsonl_non_string_text_is_treated_as_missing(tmp_path):
+    missing = tmp_path / "numeric-text.jsonl"
+    missing.write_text(
+        '{"timestamp": "2026-08-11 09:00", "text": 1}\n',
+        encoding="utf-8",
+    )
+    with pytest.raises(TranscriptError, match="needs text and/or fields"):
+        parse_jsonl_transcript(missing)
+
+    with_fields = tmp_path / "numeric-text-fields.jsonl"
+    with_fields.write_text(
+        '{"timestamp": "2026-08-11 09:00", "text": 1,'
+        ' "fields": {"gates": "lint=PASS"}}\n',
+        encoding="utf-8",
+    )
+    events = parse_jsonl_transcript(with_fields)
+    assert len(events) == 1
+    assert events[0].text == "- gates: lint=PASS"
+    assert events[0].fields == {"gates": "lint=PASS"}
+
+
 def test_parse_jsonl_whitespace_text_without_fields_is_transcript_error(tmp_path):
     path = tmp_path / "events.jsonl"
     path.write_text('{"timestamp": "2026-08-11 09:00", "text": "   "}\n', encoding="utf-8")

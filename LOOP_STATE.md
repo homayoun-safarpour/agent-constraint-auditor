@@ -311,7 +311,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W281 Refresh `docs/DAILY_LEARN.md` for JSONL `fields` keys containing a colon (2026-09-16)
 - [x] W282 Named parser case: JSONL `fields` values containing a colon still parse (2026-09-16)
 - [x] W283 Document JSONL `fields` values containing a colon in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W284 Named test locks adapter JSONL `fields` values containing a colon sentence
+- [x] W284 Named test locks adapter JSONL `fields` values containing a colon sentence (2026-09-16)
+- [ ] W285 Refresh BENCHMARK GATE pytest count to 135
 
 ## Build log
 
@@ -566,6 +567,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: DAILY_LEARN names JSONL fields keys containing a colon and pytest 133.
 - 2026-09-16: JSONL fields values containing a colon still parse is named.
 - 2026-09-16: adapter names JSONL fields values containing a colon as still parsing.
+- 2026-09-16: named test locks that adapter JSONL colon-value sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -863,10 +865,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W281 shipped; DAILY_LEARN names JSONL fields keys containing a colon and pytest 133. Next tick: W282 colon-in-field-value parser.
 - 2026-09-16 daily: W282 shipped; JSONL fields values containing a colon still parse. Next tick: W283 adapter colon-value sentence.
 - 2026-09-16 daily: W283 shipped; adapter names JSONL fields values containing a colon as still parsing. Next tick: W284 named adapter lock.
+- 2026-09-16 daily: W284 shipped; named test locks adapter JSONL colon-value sentence. Next tick: W285 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W284: Named test locks adapter JSONL `fields` values containing a colon sentence.
-- Why: one adapter sentence names colon-in-field-value; hire-doc ladder next is the named lock. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: named `tests/test_examples.py` lock; `python -m pytest -q && python -m ruff check .` green.
+- W285: Refresh BENCHMARK GATE pytest count to 135.
+- Why: named parser + adapter lock add two tests (134 then 135). Hire-doc ladder next is GATE count. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: BENCHMARK GATE named-claim row is 135; `python -m pytest -q && python -m ruff check .` green.
 

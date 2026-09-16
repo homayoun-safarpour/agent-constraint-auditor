@@ -359,7 +359,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W329 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W330 Refresh `docs/DAILY_LEARN.md` for JSONL leading-whitespace object lines (2026-09-16)
 - [x] W331 Named parser case: JSONL `#` comment lines are invalid JSONL (2026-09-16)
-- [ ] W332 Document JSONL `#` comment lines in `docs/ADAPTER.md`
+- [x] W332 Document JSONL `#` comment lines in `docs/ADAPTER.md` (2026-09-16)
+- [ ] W333 Named test locks `docs/ADAPTER.md` JSONL `#` comment sentence
 
 ## Build log
 
@@ -662,6 +663,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `bedbc92`.
 - 2026-09-16: DAILY_LEARN names JSONL leading-whitespace object lines and pytest 147.
 - 2026-09-16: JSONL hash-comment lines are invalid JSONL is named.
+- 2026-09-16: adapter names JSONL hash-comment lines as invalid JSONL.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1007,10 +1009,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W329 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W330 DAILY_LEARN refresh.
 - 2026-09-16 daily: W330 shipped; DAILY_LEARN names JSONL leading-whitespace object lines and pytest 147. Next tick: W331 hash-comment JSONL ERROR.
 - 2026-09-16 daily: W331 shipped; JSONL hash-comment lines are invalid JSONL. Next tick: W332 adapter hash-comment sentence.
+- 2026-09-16 daily: W332 shipped; adapter names JSONL hash-comment lines as invalid JSONL. Next tick: W333 named adapter lock.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W332: Document JSONL `#` comment lines in `docs/ADAPTER.md`.
-- Why: named parser locks `# note` between objects as invalid JSONL; hire-doc ladder next is one adapter sentence. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green.
+- W333: Named test locks `docs/ADAPTER.md` JSONL `#` comment sentence.
+- Why: adapter now says a `#` comment line is ERROR and is not skipped; hire-doc ladder next is the named lock. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: named `tests/test_examples.py` case; `python -m pytest -q && python -m ruff check .` green.
 

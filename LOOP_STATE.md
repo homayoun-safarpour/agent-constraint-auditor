@@ -241,7 +241,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W211 Refresh BENCHMARK GATE pytest count to 113 (2026-09-16)
 - [x] W212 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W213 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
-- [ ] W214 Refresh `docs/DAILY_LEARN.md` for empty-string JSONL `text` with `fields`
+- [x] W214 Refresh `docs/DAILY_LEARN.md` for empty-string JSONL `text` with `fields` (2026-09-16)
+- [ ] W215 Named CLI case: empty-string JSONL `text` without fields is ERROR
 
 ## Build log
 
@@ -426,6 +427,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 113.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `69b5a32` (run 35130232351).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `dcecc05`.
+- 2026-09-16: DAILY_LEARN names empty-string JSONL `text` with `fields` and pytest 113.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -653,10 +655,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W211 shipped; BENCHMARK GATE named-claim pytest count is 113. Next tick: W212 CI tip refresh.
 - 2026-09-16 daily: W212 shipped; BENCHMARK GATE CI tip is `69b5a32` (run 35130232351). Next tick: W213 MATRIX heartbeat.
 - 2026-09-16 daily: W213 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W214 DAILY_LEARN refresh.
+- 2026-09-16 daily: W214 shipped; DAILY_LEARN names empty-string JSONL text with fields and pytest 113. Next tick: W215 CLI empty-string text.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W214: Refresh `docs/DAILY_LEARN.md` for empty-string JSONL `text` with `fields` using the fields body.
-- Why: parser, adapter, and adapter lock exist; the daily skill card still describes whitespace-only text.
-- Verify: DAILY_LEARN names the W205/W209 behavior and pytest 113; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W215: Named CLI case that empty-string JSONL `text` with no `fields` is ERROR exit 1.
+- Why: parser lock exists; `audit` / `parse-transcript` should name the same ERROR. Do not spray boolean field types.
+- Verify: named tests in `tests/test_cli.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

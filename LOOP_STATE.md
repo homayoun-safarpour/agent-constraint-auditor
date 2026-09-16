@@ -280,7 +280,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W250 Refresh BENCHMARK GATE pytest count to 125 (2026-09-16)
 - [x] W251 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W252 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
-- [ ] W253 Refresh `docs/DAILY_LEARN.md` for JSONL empty-string `fields` keys
+- [x] W253 Refresh `docs/DAILY_LEARN.md` for JSONL empty-string `fields` keys (2026-09-16)
+- [ ] W254 Named parser case: JSONL whitespace-only `fields` keys still parse
 
 ## Build log
 
@@ -504,6 +505,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 125.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `06a7e95` (run 35135671720).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `a7f2176`.
+- 2026-09-16: DAILY_LEARN names JSONL empty-string fields keys and pytest 125.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -770,10 +772,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W250 shipped; BENCHMARK GATE named-claim pytest count is 125. Next tick: W251 CI tip refresh.
 - 2026-09-16 daily: W251 shipped; BENCHMARK GATE CI tip is `06a7e95` (run 35135671720). Next tick: W252 MATRIX heartbeat.
 - 2026-09-16 daily: W252 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W253 DAILY_LEARN refresh.
+- 2026-09-16 daily: W253 shipped; DAILY_LEARN names JSONL empty-string fields keys and pytest 125. Next tick: W254 whitespace-only fields keys.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W253: Refresh `docs/DAILY_LEARN.md` for JSONL empty-string `fields` keys.
-- Why: parser + adapter + lock + pytest 125 + CI + MATRIX are named; hire-doc ladder next is DAILY_LEARN. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: one DAILY_LEARN sentence; `python -m pytest -q && python -m ruff check .` green.
+- W254: Named parser case that JSONL whitespace-only `fields` keys still parse.
+- Why: empty-string keys still parse; a whitespace-only key is a different mapping entry. Do not spray boolean field types.
+- Verify: named test in `tests/test_journal.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

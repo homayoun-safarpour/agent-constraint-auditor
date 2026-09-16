@@ -11,7 +11,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `06a7e95` (2026-09-16, run 35135671720); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `f5fc2ca` (2026-09-16, run 35136512223); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 127 passed; `ruff check .` clean (2026-09-16 W256) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -285,7 +285,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W255 Document JSONL whitespace-only `fields` keys in `docs/ADAPTER.md` (2026-09-16)
 - [x] W256 Named test locks adapter JSONL whitespace-only `fields` keys sentence (2026-09-16)
 - [x] W257 Refresh BENCHMARK GATE pytest count to 127 (2026-09-16)
-- [ ] W258 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W258 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
+- [ ] W259 Local MATRIX nine-exit heartbeat on current main
 
 ## Build log
 
@@ -514,6 +515,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: adapter names JSONL whitespace-only fields keys as still parsing.
 - 2026-09-16: named test locks that adapter JSONL whitespace-key sentence.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 127.
+- 2026-09-16: BENCHMARK GATE CI tip refreshed to `f5fc2ca` (run 35136512223).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -785,10 +787,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W255 shipped; adapter names JSONL whitespace-only fields keys as still parsing. Next tick: W256 named adapter lock.
 - 2026-09-16 daily: W256 shipped; named test locks adapter JSONL whitespace-key sentence. Next tick: W257 pytest count.
 - 2026-09-16 daily: W257 shipped; BENCHMARK GATE named-claim pytest count is 127. Next tick: W258 CI tip refresh.
+- 2026-09-16 daily: W258 shipped; BENCHMARK GATE CI tip is `f5fc2ca` (run 35136512223). Next tick: W259 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W258: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
-- Why: gate row still names `06a7e95` / run 35135671720 from before the whitespace-key PRs. Do not spray boolean field types.
-- Verify: latest successful Actions run SHA on main; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W259: Local MATRIX nine-exit heartbeat on current main.
+- Why: CI tip now names `f5fc2ca`; confirm nine exits still 0/2/0/2/1/1/0/2/1. Do not spray boolean field types.
+- Verify: nine MATRIX audits; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

@@ -381,7 +381,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W351 Refresh `docs/DAILY_LEARN.md` for JSONL leading non-whitespace before `{` (2026-09-16)
 - [x] W352 Named parser case: JSONL object lines with a trailing comma are invalid JSONL (2026-09-16)
 - [x] W353 Document JSONL trailing-comma object lines in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W354 Named test locks `docs/ADAPTER.md` JSONL trailing-comma sentence
+- [x] W354 Named test locks adapter JSONL trailing-comma sentence (2026-09-16)
+- [ ] W355 Refresh BENCHMARK GATE pytest count to 155
 
 ## Build log
 
@@ -706,6 +707,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: DAILY_LEARN names JSONL leading non-whitespace before `{` and pytest 153.
 - 2026-09-16: JSONL object lines with a trailing comma are invalid JSONL is named.
 - 2026-09-16: adapter names JSONL trailing-comma object lines as invalid JSONL.
+- 2026-09-16: named test locks that adapter JSONL trailing-comma sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1073,10 +1075,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W351 shipped; DAILY_LEARN names JSONL leading non-whitespace before `{` and pytest 153. Next tick: W352 trailing-comma JSONL object line.
 - 2026-09-16 daily: W352 shipped; JSONL object lines with a trailing comma are invalid JSONL. Next tick: W353 adapter trailing-comma sentence.
 - 2026-09-16 daily: W353 shipped; adapter names JSONL trailing-comma object lines as invalid JSONL. Next tick: W354 named adapter lock.
+- 2026-09-16 daily: W354 shipped; named test locks adapter JSONL trailing-comma sentence. Next tick: W355 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W354: Named test locks `docs/ADAPTER.md` JSONL trailing-comma sentence.
-- Why: adapter now says a trailing comma before the closing brace is ERROR and the comma is not ignored; hire-doc ladder next is the named lock. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: named `tests/test_examples.py` case; `python -m pytest -q && python -m ruff check .` green.
+- W355: Refresh BENCHMARK GATE pytest count to 155.
+- Why: named adapter lock for trailing-comma JSONL ERROR is merged; hire-doc ladder next is the GATE count. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: GATE cell shows 155; `python -m pytest -q && python -m ruff check .` green.
 

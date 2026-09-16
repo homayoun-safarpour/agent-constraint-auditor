@@ -11,7 +11,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `ae2af17` (2026-09-16, run 35119944211); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `583aafa` (2026-09-16, run 35122002858); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 101 passed; `ruff check .` clean (2026-09-16 W162) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -191,7 +191,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W161 Document extra JSONL object keys as ignored in `docs/ADAPTER.md` (2026-09-16)
 - [x] W162 Named test locks adapter extra-JSONL-keys sentence (2026-09-16)
 - [x] W163 Refresh BENCHMARK GATE pytest count to 101 (2026-09-16)
-- [ ] W164 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W164 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
+- [ ] W165 Local MATRIX nine-exit heartbeat on current main
 
 ## Build log
 
@@ -326,6 +327,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: adapter names extra JSONL object keys as ignored.
 - 2026-09-16: named test locks that adapter extra-JSONL-keys sentence.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 101.
+- 2026-09-16: BENCHMARK GATE CI tip refreshed to `583aafa` (run 35122002858).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -503,10 +505,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W161 shipped; adapter names extra JSONL object keys as ignored. Next tick: W162 named adapter lock.
 - 2026-09-16 daily: W162 shipped; named test locks adapter extra-JSONL-keys sentence. Next tick: W163 pytest count.
 - 2026-09-16 daily: W163 shipped; BENCHMARK GATE named-claim pytest count is 101. Next tick: W164 CI tip refresh.
+- 2026-09-16 daily: W164 shipped; BENCHMARK GATE CI tip is `583aafa` (run 35122002858). Next tick: W165 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W164: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
-- Why: Tip still names `ae2af17`; W160–W162 landed after that.
-- Verify: latest successful `ci.yml` SHA + run id in the gate table; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN. Do not spray boolean field types.
+- W165: Local MATRIX nine-exit heartbeat on current main.
+- Why: Gate CI tip moved; prove the nine-exit contract still holds after extra-JSONL-keys hire-doc.
+- Verify: MATRIX exits `0/2/0/2/1/1/0/2/1`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN. Do not spray boolean field types.
 

@@ -166,7 +166,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W136 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W137 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W138 Named parser case: UTF-8 BOM JSONL line is ERROR (2026-09-16)
-- [ ] W139 Document UTF-8 BOM JSONL as ERROR in `docs/ADAPTER.md`
+- [x] W139 Document UTF-8 BOM JSONL as ERROR in `docs/ADAPTER.md` (2026-09-16)
+- [ ] W140 Named test locks adapter UTF-8 BOM JSONL ERROR sentence
 
 ## Build log
 
@@ -276,6 +277,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `a4dae55` (run 35112275020).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `4aa2b79`.
 - 2026-09-16: UTF-8 BOM JSONL line as invalid JSONL ERROR is named.
+- 2026-09-16: adapter names UTF-8 BOM JSONL as invalid JSONL ERROR.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -428,10 +430,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W136 shipped; BENCHMARK GATE CI tip is `a4dae55` (run 35112275020). Next tick: W137 MATRIX heartbeat.
 - 2026-09-16 daily: W137 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W138 UTF-8 BOM JSONL ERROR.
 - 2026-09-16 daily: W138 shipped; UTF-8 BOM JSONL is named invalid JSONL ERROR. Next tick: W139 adapter BOM sentence.
+- 2026-09-16 daily: W139 shipped; adapter names UTF-8 BOM JSONL as invalid JSONL ERROR. Next tick: W140 named adapter lock.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W139: Document that a JSONL file with a UTF-8 BOM is ERROR (invalid JSONL) in `docs/ADAPTER.md`.
-- Why: Parser lock exists; adapter currently names invalid JSONL without the BOM case.
-- Verify: named sentence in ADAPTER; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W140: Named test locks the adapter UTF-8 BOM JSONL ERROR sentence.
+- Why: Hire-doc sentence exists without a lock; next wake must not rewrite it.
+- Verify: named test in `tests/test_examples.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

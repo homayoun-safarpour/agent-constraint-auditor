@@ -370,6 +370,7 @@ def test_adapter_locks_jsonl_bad_timestamp_row():
     assert "inner double space" in ADAPTER
     assert "markdown `##` heading" in ADAPTER
     assert "JSON `null`, `true`, `false`, or a number is the same ERROR" in ADAPTER
+    assert "`fields` value that is not a mapping is ERROR" in ADAPTER
     assert (
         main(
             [

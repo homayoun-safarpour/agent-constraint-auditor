@@ -494,6 +494,11 @@ def test_adapter_locks_nonempty_text_with_fields_uses_text():
     assert "fields still parse" in ADAPTER
 
 
+def test_adapter_locks_jsonl_object_line_trailing_whitespace_still_parses():
+    assert "A JSONL object line with trailing whitespace still parses" in ADAPTER
+    assert "spaces after the closing brace are stripped" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

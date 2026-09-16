@@ -11,7 +11,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `6be2b5b` (2026-09-16, run 35094287950); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `b8cd098` (2026-09-16, run 35099078475); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 88 passed; `ruff check .` clean (2026-09-16 W100) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -135,7 +135,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W105 Named test locks README JSONL object/fields ERROR sentence (2026-09-16)
 - [x] W106 Document JSONL non-object lines and non-mapping `fields` in CONTRIBUTING.md (2026-09-16)
 - [x] W107 Named test locks CONTRIBUTING JSONL object/fields ERROR sentence (2026-09-16)
-- [ ] W108 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W108 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
+- [ ] W109 Local MATRIX nine-exit heartbeat on current main
 
 ## Build log
 
@@ -214,6 +215,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: named test locks that README JSONL object/fields ERROR sentence.
 - 2026-09-16: CONTRIBUTING names JSONL non-object lines and non-mapping fields as ERROR.
 - 2026-09-16: named test locks that CONTRIBUTING JSONL object/fields ERROR sentence.
+- 2026-09-16: BENCHMARK GATE CI tip refreshed to `b8cd098` (run 35099078475).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -335,10 +337,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W105 shipped; named test locks README JSONL object/fields ERROR sentence. Next tick: W106 CONTRIBUTING sentence.
 - 2026-09-16 daily: W106 shipped; CONTRIBUTING names JSONL non-object lines and non-mapping fields as ERROR. Next tick: W107 named CONTRIBUTING lock.
 - 2026-09-16 daily: W107 shipped; named test locks CONTRIBUTING JSONL object/fields ERROR sentence. Next tick: W108 CI tip refresh.
+- 2026-09-16 daily: W108 shipped; BENCHMARK GATE CI tip is `b8cd098` (run 35099078475). Next tick: W109 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W108: Refresh BENCHMARK GATE CI tip to the latest green Actions run on `main`.
-- Why: Hire-doc object/fields ladder is locked; gate row 1 still cites `6be2b5b`.
-- Verify: paste the live run URL; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W109: Local MATRIX nine-exit heartbeat (`0/2/0/2/1/1/0/2/1`) on current `main`.
+- Why: CI SHA refresh does not re-prove the worked fixtures still match the hire matrix.
+- Verify: nine audits match MATRIX; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

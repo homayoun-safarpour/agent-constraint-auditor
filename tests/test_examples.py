@@ -519,6 +519,11 @@ def test_adapter_locks_jsonl_hash_comment_lines_are_invalid_jsonl():
     assert "it is not skipped" in ADAPTER
 
 
+def test_adapter_locks_jsonl_trailing_non_whitespace_after_brace_is_invalid_jsonl():
+    assert "A JSONL object line with trailing non-whitespace after the closing brace is ERROR (invalid JSONL)" in ADAPTER
+    assert "that extra text is not stripped" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

@@ -12,6 +12,7 @@ Run from repo root after `pip install -e ".[dev]"`.
 | `headerless/` | fail-closed | **1** ERROR |
 | `jsonl_stable/` | `--format jsonl` | **0** CLEAN |
 | `jsonl_decaying/` | `--format jsonl` (+ `--report`) | **2** DECAY |
+| `jsonl_bad_timestamp/` | `--format jsonl`; timestamp not `YYYY-MM-DD HH:MM` | **1** ERROR |
 
 ```bash
 python -m pytest -q
@@ -24,6 +25,7 @@ constraint-auditor audit --constraints examples/empty/constraints.yaml --transcr
 constraint-auditor audit --constraints examples/headerless/constraints.yaml --transcript examples/headerless/journal.md
 constraint-auditor audit --constraints examples/jsonl_stable/constraints.yaml --transcript examples/jsonl_stable/events.jsonl --format jsonl
 constraint-auditor audit --constraints examples/jsonl_decaying/constraints.yaml --transcript examples/jsonl_decaying/events.jsonl --format jsonl --report /tmp/jsonl-decay.md
+constraint-auditor audit --constraints examples/jsonl_bad_timestamp/constraints.yaml --transcript examples/jsonl_bad_timestamp/events.jsonl --format jsonl
 ```
 
-Named pytest `test_examples_matrix_locks_exit_rows` locks the eight table exits; `test_examples_matrix_live_exits_match_table` re-runs the audits (0/2/0/2/1/1/0/2). Full Sunday gate: `LOOP_STATE.md` → `## BENCHMARK GATE` + `WEEKLY_BUILD_BENCHMARK_RULE.md`.
+Named pytest `test_examples_matrix_locks_exit_rows` locks the nine table exits; `test_examples_matrix_live_exits_match_table` re-runs the audits (0/2/0/2/1/1/0/2/1). Full Sunday gate: `LOOP_STATE.md` → `## BENCHMARK GATE` + `WEEKLY_BUILD_BENCHMARK_RULE.md`.

@@ -405,6 +405,7 @@ MATRIX_EXIT_ROWS = (
     ("headerless/", 1, "ERROR"),
     ("jsonl_stable/", 0, "CLEAN"),
     ("jsonl_decaying/", 2, "DECAY"),
+    ("jsonl_bad_timestamp/", 1, "ERROR"),
 )
 
 
@@ -433,6 +434,7 @@ def test_examples_matrix_live_exits_match_table():
         ("headerless", "journal.md", None, 1),
         ("jsonl_stable", "events.jsonl", "jsonl", 0),
         ("jsonl_decaying", "events.jsonl", "jsonl", 2),
+        ("jsonl_bad_timestamp", "events.jsonl", "jsonl", 1),
     )
     for name, transcript, fmt, expected in cases:
         args = [

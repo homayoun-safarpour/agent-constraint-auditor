@@ -1,12 +1,14 @@
 # Daily learning — 2026-09-16
 
-**Skill.** A fail-closed JSONL timestamp is not done until every hire surface names the same fixture: parser → worked example → examples table → adapter → MATRIX → reliability card → interview pack → CONTRIBUTING.
+**Skill.** Fail-closed JSONL is more than timestamp shape. A line that is valid JSON but not an object, and a `fields` value that is not a mapping, must ERROR the same way a bad timestamp does: parser named test, then adapter sentence, then adapter lock.
 
-**Why.** A reviewer who only reads `docs/RELIABILITY_CARD.md` or `CONTRIBUTING.md` would have missed `jsonl_bad_timestamp` while MATRIX already had nine exits. Hire docs that lag the matrix look like an incomplete instrument.
+**Why.** Timestamp-shape coverage can look complete while a JSON array line or `fields: ["gates"]` still has no hire-doc sentence. Reviewers who only read the adapter would miss those exits.
 
-**Worked example** (this repo). ISO `T` is ERROR, not CLEAN:
+**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 88. A JSONL array line raises `must be an object`. A JSONL `fields` array raises `fields must be a mapping`.
 
 ```bash
+python -m pytest -q
+# 88 passed
 constraint-auditor audit \
   --constraints examples/jsonl_bad_timestamp/constraints.yaml \
   --transcript examples/jsonl_bad_timestamp/events.jsonl \
@@ -15,10 +17,8 @@ constraint-auditor audit \
 # exit 1
 ```
 
-Sunday exit matrix is now `0/2/0/2/1/1/0/2/1` (`examples/MATRIX.md`).
+**Recall probe.** Does `docs/ADAPTER.md` name both a non-object JSONL line and a non-mapping `fields` value as ERROR?
 
-**Recall probe.** Does `docs/RELIABILITY_CARD.md` name `jsonl_bad_timestamp` as ERROR exit 1?
+Answer: Yes. Named tests lock those sentences. Do not pytest-lock this card; it is rewritten each morning.
 
-Answer: Yes. Primary signal is `0` / `2` / `1`. Field alignment names `jsonl_stable` / `jsonl_decaying` / `jsonl_bad_timestamp`. Interview demo and CONTRIBUTING name the same fixture.
-
-**Retrieve.** `examples/jsonl_bad_timestamp/` · `examples/MATRIX.md` · `docs/RELIABILITY_CARD.md` · `docs/INTERVIEW.md` · `CONTRIBUTING.md` · `tests/test_examples.py` · `LOOP_STATE.md` NEXT TICK W70
+**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W104

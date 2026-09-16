@@ -130,7 +130,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W100 Refresh BENCHMARK GATE pytest count to the live 88 (2026-09-16)
 - [x] W101 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W102 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
-- [ ] W103 Refresh `docs/DAILY_LEARN.md` for pytest 88 and JSONL object/fields fail-closed locks
+- [x] W103 Refresh `docs/DAILY_LEARN.md` for pytest 88 and JSONL object/fields fail-closed locks (2026-09-16)
+- [ ] W104 Document JSONL non-object lines and non-mapping `fields` in README
 
 ## Build log
 
@@ -204,6 +205,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 88.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `6be2b5b` (run 35094287950).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `53bd98f`.
+- 2026-09-16: DAILY_LEARN refreshed for pytest 88 and JSONL object/fields fail-closed locks.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -320,10 +322,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W100 shipped; BENCHMARK GATE named-claim pytest count is 88. Next tick: W101 CI tip refresh.
 - 2026-09-16 daily: W101 shipped; BENCHMARK GATE CI tip is `6be2b5b` (run 35094287950). Next tick: W102 MATRIX heartbeat.
 - 2026-09-16 daily: W102 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W103 DAILY_LEARN refresh.
+- 2026-09-16 daily: W103 shipped; DAILY_LEARN names pytest 88 and JSONL object/fields ERROR locks. Next tick: W104 README object/fields sentence.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W103: Refresh `docs/DAILY_LEARN.md` for pytest 88 and the JSONL object/fields fail-closed locks.
-- Why: Card still points at W70; do not pytest-lock this file.
-- Verify: card names pytest 88 and MATRIX 0/2/0/2/1/1/0/2/1; `python -m pytest -q && python -m ruff check .` green.
+- W104: Document JSONL non-object lines and non-mapping `fields` as ERROR in README.
+- Why: Adapter and parser locks exist; README still only names invalid/empty JSONL and blank/non-string timestamps.
+- Verify: one README sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

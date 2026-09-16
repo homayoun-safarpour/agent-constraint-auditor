@@ -100,6 +100,8 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "empty-bodied dated events" in CONTRIBUTING
     assert "jsonl_bad_timestamp" in CONTRIBUTING
     assert "YYYY-MM-DD HH:MM" in CONTRIBUTING
+    assert "valid JSON but not an object" in CONTRIBUTING
+    assert "`fields` value that is not a mapping" in CONTRIBUTING
     assert "actions/workflows/ci.yml/badge.svg" in README
 
 

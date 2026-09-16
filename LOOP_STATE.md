@@ -330,7 +330,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W300 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
 - [x] W301 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W302 Refresh `docs/DAILY_LEARN.md` for JSONL non-empty `text` with `fields` (2026-09-16)
-- [ ] W303 Named parser case: JSONL object lines with trailing whitespace still parse
+- [x] W303 Named parser case: JSONL object lines with trailing whitespace still parse (2026-09-16)
+- [ ] W304 Document JSONL trailing-whitespace object lines in `docs/ADAPTER.md`
 
 ## Build log
 
@@ -604,6 +605,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `8c58f52` (run 35141810401).
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `7998bca`.
 - 2026-09-16: DAILY_LEARN names JSONL non-empty text with fields and pytest 139.
+- 2026-09-16: JSONL object lines with trailing whitespace still parse is named.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -920,10 +922,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W300 shipped; BENCHMARK GATE CI tip is `8c58f52` (run 35141810401). Next tick: W301 MATRIX heartbeat.
 - 2026-09-16 daily: W301 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W302 DAILY_LEARN refresh.
 - 2026-09-16 daily: W302 shipped; DAILY_LEARN names JSONL non-empty text with fields and pytest 139. Next tick: W303 trailing-whitespace JSONL object line.
+- 2026-09-16 daily: W303 shipped; JSONL object lines with trailing whitespace still parse. Next tick: W304 adapter trailing-whitespace sentence.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W303: Named parser case: JSONL object lines with trailing whitespace still parse.
-- Why: `raw_line.strip()` runs before `json.loads`, so spaces after `}` are not invalid JSONL. UTF-8 BOM is a different ERROR. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: named `tests/test_journal.py` case; `python -m pytest -q && python -m ruff check .` green.
+- W304: Document JSONL trailing-whitespace object lines in `docs/ADAPTER.md`.
+- Why: named parser locks spaces after `}` as still parseable; hire-doc ladder next is one adapter sentence. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green.
 

@@ -93,6 +93,17 @@ def test_parse_jsonl_whitespace_only_file_returns_no_events(tmp_path):
     assert parse_jsonl_transcript(path) == []
 
 
+def test_parse_jsonl_object_line_with_trailing_whitespace_still_parses(tmp_path):
+    path = tmp_path / "events.jsonl"
+    path.write_text(
+        '{"timestamp": "2026-08-11 09:00", "text": "- gates: lint=PASS"}  \n',
+        encoding="utf-8",
+    )
+    events = parse_jsonl_transcript(path)
+    assert len(events) == 1
+    assert events[0].text == "- gates: lint=PASS"
+
+
 def test_parse_jsonl_utf8_bom_is_transcript_error(tmp_path):
     path = tmp_path / "bom.jsonl"
     path.write_bytes(

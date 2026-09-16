@@ -1,20 +1,20 @@
 # Daily learning — 2026-09-16
 
-**Skill.** A UTF-8 BOM on a JSONL file is invalid JSONL, not a silent decode. `json.loads` rejects the BOM; the parser raises `TranscriptError` (`invalid JSONL`). Switching the reader to `utf-8-sig` would hide that ERROR.
+**Skill.** JSONL `fields` that are a mapping with numeric values still parse. Those values are stringified (`1` becomes `"1"`). That is not the timestamp fail-closed rule: a numeric `timestamp` is ERROR; a numeric field value is not.
 
-**Why.** Windows editors often write a BOM. Without a named test, a later “helpful” decode change would turn ERROR into CLEAN. The adapter sentence exists so hire docs match the parser lock.
+**Why.** Hire docs that only say non-mapping `fields` is ERROR leave reviewers guessing whether `{"gates": 1}` is CLEAN or ERROR. The parser `str()`s values. A later fail-closed change would need a named test to fail first.
 
-**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 95. A leading UTF-8 BOM on an otherwise valid JSONL line is ERROR (exit `1`).
+**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 98. `{"fields": {"gates": 1}}` parses; `fields["gates"]` is `"1"`.
 
 ```bash
 python -m pytest -q
-# 95 passed
-python -m pytest -q tests/test_journal.py::test_parse_jsonl_utf8_bom_is_transcript_error
+# 98 passed
+python -m pytest -q tests/test_journal.py::test_parse_jsonl_numeric_field_values_are_stringified
 # 1 passed
 ```
 
-**Recall probe.** Does `docs/ADAPTER.md` say a JSONL file with a UTF-8 BOM is ERROR (invalid JSONL)?
+**Recall probe.** Does `docs/ADAPTER.md` say a JSONL `fields` mapping with numeric values still parses and those values are stringified?
 
-Answer: Yes. Named test `test_adapter_locks_utf8_bom_jsonl_is_invalid_jsonl_error` locks that sentence. Do not pytest-lock this card; it is rewritten each morning.
+Answer: Yes. Named test `test_adapter_locks_numeric_fields_values_are_stringified` locks that sentence. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W145
+**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W156

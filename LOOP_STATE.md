@@ -268,7 +268,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W238 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W239 Refresh `docs/DAILY_LEARN.md` for JSONL list `fields` values stringify (2026-09-16)
 - [x] W240 Named parser case: JSONL object `fields` values are stringified (2026-09-16)
-- [ ] W241 Document JSONL object `fields` values as stringified in `docs/ADAPTER.md`
+- [x] W241 Document JSONL object `fields` values as stringified in `docs/ADAPTER.md` (2026-09-16)
+- [ ] W242 Named test locks adapter JSONL object `fields` values sentence
 
 ## Build log
 
@@ -480,6 +481,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `07eff1e`.
 - 2026-09-16: DAILY_LEARN names JSONL list fields values stringify and pytest 121.
 - 2026-09-16: JSONL object fields values still parse (stringified) is named.
+- 2026-09-16: adapter names JSONL object fields values as stringified.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -734,10 +736,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W238 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W239 DAILY_LEARN refresh.
 - 2026-09-16 daily: W239 shipped; DAILY_LEARN names JSONL list fields values stringify and pytest 121. Next tick: W240 object field values stringify.
 - 2026-09-16 daily: W240 shipped; JSONL object fields values still parse (stringified). Next tick: W241 adapter object-fields sentence.
+- 2026-09-16 daily: W241 shipped; adapter names JSONL object fields values as stringified. Next tick: W242 named adapter lock.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W241: Document JSONL object `fields` values as stringified in `docs/ADAPTER.md`.
-- Why: parser lock is named; hire-doc ladder next is one adapter sentence. Do not spray boolean field types.
-- Verify: one ADAPTER sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W242: Named test locks adapter JSONL object `fields` values sentence.
+- Why: hire-doc ladder; one adapter sentence is written. Do not spray boolean field types.
+- Verify: named lock in `tests/test_examples.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

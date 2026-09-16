@@ -175,7 +175,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W145 Named CLI case: UTF-8 BOM JSONL is ERROR (`invalid JSONL`) (2026-09-16)
 - [x] W146 Refresh BENCHMARK GATE pytest count to 96 (2026-09-16)
 - [x] W147 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
-- [ ] W148 Local MATRIX nine-exit heartbeat on current main
+- [x] W148 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
+- [ ] W149 Named parser case: JSONL numeric `fields` values still parse (stringified)
 
 ## Build log
 
@@ -294,6 +295,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: UTF-8 BOM JSONL CLI ERROR via invalid JSONL is named.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 96.
 - 2026-09-16: BENCHMARK GATE CI tip refreshed to `88c745b` (run 35116142413).
+- 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `b83c4ae`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -455,10 +457,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W145 shipped; UTF-8 BOM JSONL CLI ERROR via invalid JSONL is named. Next tick: W146 pytest count.
 - 2026-09-16 daily: W146 shipped; BENCHMARK GATE named-claim pytest count is 96. Next tick: W147 CI tip refresh.
 - 2026-09-16 daily: W147 shipped; BENCHMARK GATE CI tip is `88c745b` (run 35116142413). Next tick: W148 MATRIX heartbeat.
+- 2026-09-16 daily: W148 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W149 numeric fields still parse.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W148: Local MATRIX nine-exit heartbeat on current main.
-- Why: Gate CI tip moved; prove the nine-exit contract still holds after the BOM CLI lock.
-- Verify: MATRIX exits `0/2/0/2/1/1/0/2/1`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W149: Named parser case that JSONL `fields` values that are numbers still parse (stringified).
+- Why: Timestamp types fail closed; field values currently `str()` and have no named test.
+- Verify: named test in `tests/test_journal.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

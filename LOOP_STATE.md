@@ -139,7 +139,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W109 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W110 Document JSONL non-object lines and non-mapping `fields` in `docs/INTERVIEW.md` (2026-09-16)
 - [x] W111 Named test locks INTERVIEW JSONL object/fields ERROR sentence (2026-09-16)
-- [ ] W112 Document JSONL non-object lines and non-mapping `fields` in `docs/RELIABILITY_CARD.md`
+- [x] W112 Document JSONL non-object lines and non-mapping `fields` in `docs/RELIABILITY_CARD.md` (2026-09-16)
+- [ ] W113 Named test locks RELIABILITY_CARD JSONL object/fields ERROR sentence
 
 ## Build log
 
@@ -222,6 +223,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `d64e080`.
 - 2026-09-16: INTERVIEW names JSONL non-object lines and non-mapping fields as ERROR.
 - 2026-09-16: named test locks that INTERVIEW JSONL object/fields ERROR sentence.
+- 2026-09-16: RELIABILITY_CARD names JSONL non-object lines and non-mapping fields as ERROR.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -347,10 +349,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W109 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W110 INTERVIEW object/fields sentence.
 - 2026-09-16 daily: W110 shipped; INTERVIEW names JSONL non-object lines and non-mapping fields as ERROR. Next tick: W111 named INTERVIEW lock.
 - 2026-09-16 daily: W111 shipped; named test locks INTERVIEW JSONL object/fields ERROR sentence. Next tick: W112 RELIABILITY_CARD sentence.
+- 2026-09-16 daily: W112 shipped; RELIABILITY_CARD names JSONL non-object lines and non-mapping fields as ERROR. Next tick: W113 named RELIABILITY_CARD lock.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W112: Document JSONL non-object lines and non-mapping `fields` as ERROR in `docs/RELIABILITY_CARD.md`.
-- Why: Reliability card still only names `jsonl_bad_timestamp`; interview/README/CONTRIBUTING already name object/fields.
-- Verify: one RELIABILITY_CARD sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W113: Named test locks the RELIABILITY_CARD sentence that a JSONL non-object line or non-mapping `fields` is ERROR.
+- Why: W112 wrote the hire-doc sentence; the lock belongs in `tests/test_examples.py`.
+- Verify: pytest asserts the sentence; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

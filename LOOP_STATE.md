@@ -200,7 +200,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W170 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W171 Refresh `docs/DAILY_LEARN.md` for non-string JSONL `text` treated as missing (2026-09-16)
 - [x] W172 Document non-string JSONL `text` as missing text in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W173 Named test locks adapter non-string JSONL `text` sentence
+- [x] W173 Named test locks adapter non-string JSONL `text` sentence (2026-09-16)
+- [ ] W174 Refresh BENCHMARK GATE pytest count to 103
 
 ## Build log
 
@@ -344,6 +345,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `c677844`.
 - 2026-09-16: DAILY_LEARN names non-string JSONL `text` as missing text and pytest 102.
 - 2026-09-16: adapter names non-string JSONL `text` as missing text.
+- 2026-09-16: named test locks that adapter non-string JSONL `text` sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -530,10 +532,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W170 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W171 DAILY_LEARN refresh.
 - 2026-09-16 daily: W171 shipped; DAILY_LEARN names non-string JSONL text as missing and pytest 102. Next tick: W172 adapter sentence.
 - 2026-09-16 daily: W172 shipped; adapter names non-string JSONL text as missing text. Next tick: W173 named adapter lock.
+- 2026-09-16 daily: W173 shipped; named test locks adapter non-string JSONL text sentence. Next tick: W174 pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W173: Named test locks the adapter sentence that a JSONL `text` value that is not a string is treated as missing text.
-- Why: hire-doc without a lock can drift. One assert on that sentence. Do not spray boolean field types.
-- Verify: named test in `tests/test_examples.py`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W174: Refresh BENCHMARK GATE named-claim pytest count to 103.
+- Why: W173 added `test_adapter_locks_non_string_jsonl_text_is_treated_as_missing`; the gate still says 102.
+- Verify: LOOP_STATE named-claim cell matches `python -m pytest -q`; `python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

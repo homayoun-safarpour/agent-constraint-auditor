@@ -414,6 +414,10 @@ def test_adapter_locks_numeric_fields_values_are_stringified():
     assert "those values are stringified" in ADAPTER
 
 
+def test_adapter_locks_extra_jsonl_object_keys_are_ignored():
+    assert "Extra JSONL object keys beyond `timestamp`, `text`, and `fields` are ignored" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

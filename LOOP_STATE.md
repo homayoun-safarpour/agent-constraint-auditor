@@ -11,7 +11,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `fc677c2` (2026-09-16, run 35127150986); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `0c9b3eb` (2026-09-16, run 35127904542); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 110 passed; `ruff check .` clean (2026-09-16 W195) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -224,7 +224,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W194 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W195 Named parser case: whitespace-only JSONL `text` with `fields` uses fields (2026-09-16)
 - [x] W196 Refresh BENCHMARK GATE pytest count to 110 (2026-09-16)
-- [ ] W197 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W197 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-16)
+- [ ] W198 Local MATRIX nine-exit heartbeat on current main
 
 ## Build log
 
@@ -392,6 +393,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `98f2172`.
 - 2026-09-16: whitespace-only JSONL `text` with `fields` uses fields.
 - 2026-09-16: BENCHMARK GATE named-claim pytest count refreshed to 110.
+- 2026-09-16: BENCHMARK GATE CI tip refreshed to `0c9b3eb` (run 35127904542).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -602,10 +604,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W194 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W195 whitespace text with fields.
 - 2026-09-16 daily: W195 shipped; whitespace-only JSONL text with fields uses fields. Next tick: W196 pytest count.
 - 2026-09-16 daily: W196 shipped; BENCHMARK GATE named-claim pytest count is 110. Next tick: W197 CI tip refresh.
+- 2026-09-16 daily: W197 shipped; BENCHMARK GATE CI tip is `0c9b3eb` (run 35127904542). Next tick: W198 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W197: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main after W195/W196.
-- Why: named-claim pytest is 110 on main; the gate still cites `fc677c2`.
-- Verify: paste a real success run for current `origin/main`; `python -m pytest -q && python -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
+- W198: Local MATRIX nine-exit heartbeat on current main.
+- Why: CI tip is current; re-confirm MATRIX `0/2/0/2/1/1/0/2/1` after the whitespace-text-with-fields lock.
+- Verify: run the nine MATRIX commands; paste exits into LOOP_STATE; `python -m pytest -q && python -m ruff check .` green.
 

@@ -504,6 +504,11 @@ def test_adapter_locks_jsonl_crlf_object_lines_still_parse():
     assert "carriage returns are not invalid JSONL" in ADAPTER
 
 
+def test_adapter_locks_jsonl_blank_lines_between_objects_are_skipped():
+    assert "A JSONL file with a blank line between objects still parses" in ADAPTER
+    assert "the blank line is not invalid JSONL" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

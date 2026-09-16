@@ -464,6 +464,11 @@ def test_adapter_locks_whitespace_only_fields_keys_still_parse():
     assert "the key is not stripped" in ADAPTER
 
 
+def test_adapter_locks_whitespace_only_fields_values_still_parse():
+    assert "A JSONL `fields` mapping with a whitespace-only value still parses" in ADAPTER
+    assert "the value is not stripped" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

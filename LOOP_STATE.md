@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `ace7f0a` (2026-09-14, run 34818339165); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 83 passed; `ruff check .` clean (2026-09-16 W60) |
+| 2 | Named claim tests | PASS — `pytest` 84 passed; `ruff check .` clean (2026-09-16 W61) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -88,7 +88,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W58 Worked ERROR fixture under `examples/jsonl_bad_timestamp` (exit 1) (2026-09-15)
 - [x] W59 Named test locks `examples/README.md` jsonl_bad_timestamp row (exit 1) (2026-09-15)
 - [x] W60 Document `examples/jsonl_bad_timestamp` in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W61 Named test locks `docs/ADAPTER.md` jsonl_bad_timestamp row (exit 1)
+- [x] W61 Named test locks `docs/ADAPTER.md` jsonl_bad_timestamp row (exit 1) (2026-09-16)
+- [ ] W62 Document `examples/jsonl_bad_timestamp` in `examples/MATRIX.md`
 
 ## Build log
 
@@ -130,6 +131,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-15: `examples/jsonl_bad_timestamp` worked ERROR fixture (ISO `T` timestamp, exit 1) + Quickstart commands.
 - 2026-09-15: named test locks `examples/README.md` jsonl_bad_timestamp row (exit 1 ERROR, `--format jsonl`).
 - 2026-09-16: `docs/ADAPTER.md` documents `examples/jsonl_bad_timestamp` JSONL ERROR (exit 1) beside jsonl_stable / jsonl_decaying.
+- 2026-09-16: named test locks `docs/ADAPTER.md` jsonl_bad_timestamp row (exit 1 ERROR, `--format jsonl`).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -213,16 +215,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-15 daily: W58 shipped; `examples/jsonl_bad_timestamp` is ERROR exit 1 (timestamp not `YYYY-MM-DD HH:MM`). Next tick: W59 named test lock on that `examples/README.md` row.
 - 2026-09-15 daily: W59 shipped; named test locks `examples/README.md` jsonl_bad_timestamp row (exit 1 ERROR). Next tick: W60 document that fixture in `docs/ADAPTER.md`.
 - 2026-09-16 daily: W60 shipped; `docs/ADAPTER.md` names `examples/jsonl_bad_timestamp` as JSONL ERROR exit 1. Next tick: W61 named test lock on that ADAPTER row.
+- 2026-09-16 daily: W61 shipped; named test locks `docs/ADAPTER.md` jsonl_bad_timestamp row (exit 1 ERROR). Next tick: W62 document that fixture in `examples/MATRIX.md`.
 
 ## NEXT TICK (heartbeat 2026-09-14)
 
-- W61: Named test locks `docs/ADAPTER.md` jsonl_bad_timestamp row (exit 1).
-- Why: W60 named the adapter fixture; named tests still only lock JSONL CLEAN/DECAY rows.
-- Verify: ADAPTER JSONL ERROR row names `examples/jsonl_bad_timestamp` and exit 1; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W62: Document `examples/jsonl_bad_timestamp` in `examples/MATRIX.md`.
+- Why: W61 froze the adapter ERROR row; the Sunday matrix still lists eight fixtures and omits the JSONL timestamp-shape ERROR polarity.
+- Verify: `examples/MATRIX.md` names `jsonl_bad_timestamp` as exit 1; `python3 -m pytest -q && python3 -m ruff check .` green.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W61: Named test locks `docs/ADAPTER.md` jsonl_bad_timestamp row (exit 1).
-- Why: Adapter table and verify block now name the ERROR JSONL timestamp fixture; named tests still only lock jsonl_stable / jsonl_decaying, same gap W21/W32 closed for earlier adapter rows.
-- Verify: named test asserts the ADAPTER JSONL ERROR row names `examples/jsonl_bad_timestamp` and exit 1; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W62: Document `examples/jsonl_bad_timestamp` in `examples/MATRIX.md`.
+- Why: Adapter named lock is in; MATRIX still only covers jsonl_stable / jsonl_decaying, so the fail-closed timestamp fixture is missing from the Sunday exit table.
+- Verify: MATRIX table or command block names `jsonl_bad_timestamp` exit 1; `python3 -m pytest -q && python3 -m ruff check .` green.
 

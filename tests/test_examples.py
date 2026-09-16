@@ -353,6 +353,31 @@ def test_adapter_locks_jsonl_fixture_rows():
     assert "that is not `YYYY-MM-DD HH:MM` is ERROR" in ADAPTER
 
 
+def test_adapter_locks_jsonl_bad_timestamp_row():
+    error_line = next(line for line in ADAPTER.splitlines() if "JSONL ERROR" in line)
+    assert "`examples/jsonl_bad_timestamp`" in error_line
+    assert "exit 1" in error_line
+    assert "--format jsonl" in error_line
+    assert "YYYY-MM-DD HH:MM" in error_line
+    assert "examples/jsonl_bad_timestamp/events.jsonl" in ADAPTER
+    assert "examples/jsonl_bad_timestamp/constraints.yaml" in ADAPTER
+    assert "`examples/jsonl_bad_timestamp` is the worked fixture (exit `1`)" in ADAPTER
+    assert (
+        main(
+            [
+                "audit",
+                "--constraints",
+                str(JSONL_BAD_TIMESTAMP_CONSTRAINTS),
+                "--transcript",
+                str(JSONL_BAD_TIMESTAMP_EVENTS),
+                "--format",
+                "jsonl",
+            ]
+        )
+        == 1
+    )
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

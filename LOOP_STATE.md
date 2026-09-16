@@ -116,7 +116,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W86 Named parser case: JSONL `timestamp` JSON `false` is ERROR (2026-09-16)
 - [x] W87 Named parser case: JSONL `timestamp` JSON `true` is ERROR (2026-09-16)
 - [x] W88 Document JSONL non-string timestamps as missing-timestamp ERROR in `docs/ADAPTER.md` (2026-09-16)
-- [ ] W89 Named test locks adapter non-string timestamp ERROR sentence
+- [x] W89 Named test locks adapter non-string timestamp ERROR sentence (2026-09-16)
+- [ ] W90 Refresh BENCHMARK GATE pytest count to the live 86
 
 ## Build log
 
@@ -176,6 +177,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: JSONL timestamp JSON false is named ERROR (missing timestamp).
 - 2026-09-16: JSONL timestamp JSON true is named ERROR (missing timestamp).
 - 2026-09-16: adapter names JSONL null, true, false, or numeric timestamps as the same ERROR.
+- 2026-09-16: named test locks that adapter non-string timestamp ERROR sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -278,10 +280,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W86 shipped; JSONL timestamp JSON false is ERROR (missing timestamp). Next tick: W87 JSONL timestamp true is ERROR.
 - 2026-09-16 daily: W87 shipped; JSONL timestamp JSON true is ERROR (missing timestamp). Next tick: W88 adapter non-string timestamp sentence.
 - 2026-09-16 daily: W88 shipped; adapter names JSONL null, true, false, or numeric timestamps as ERROR. Next tick: W89 named adapter lock.
+- 2026-09-16 daily: W89 shipped; named test locks adapter non-string timestamp ERROR sentence. Next tick: W90 BENCHMARK GATE pytest count.
 
 ## NEXT TICK (daily 2026-09-16)
 
-- W89: Named test locks the adapter sentence that JSONL `null`/`true`/`false`/number timestamps are ERROR.
-- Why: W88 wrote the hire-doc sentence; the lock belongs in `tests/test_examples.py` with the other adapter claims.
-- Verify: pytest asserts the sentence; `python -m pytest -q && python -m ruff check .` green.
+- W90: Refresh BENCHMARK GATE pytest count from 84 to the live 86.
+- Why: Gate row 2 still quotes W61; type-enum spray stops here.
+- Verify: LOOP_STATE named-claim row says 86; `python -m pytest -q && python -m ruff check .` green.
 

@@ -1112,10 +1112,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W364 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W365 DAILY_LEARN refresh.
 - 2026-09-17 daily: W365 shipped; DAILY_LEARN names JSONL single-quoted strings and pytest 157. Next tick: W366 unquoted-key JSONL object line.
 - 2026-09-17 daily: W366 shipped; JSONL object lines with unquoted keys are invalid JSONL. Next tick: W367 adapter unquoted-key sentence.
+- 2026-09-17 evening: CI green on `72c28e7` (Actions 35196030690); W366 on main. SHIP. Next tick: W367 Document JSONL unquoted keys in `docs/ADAPTER.md`.
 
 ## NEXT TICK (daily 2026-09-17)
 
 - W367: Document JSONL unquoted keys in `docs/ADAPTER.md`.
 - Why: named parser lock exists; hire-doc ladder next is the adapter sentence. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
 - Verify: adapter names unquoted JSONL keys as invalid JSONL; `python -m pytest -q && python -m ruff check .` green.
+
+## NEXT TICK (evening 2026-09-17)
+
+- W367: Document JSONL unquoted keys in `docs/ADAPTER.md`.
+- Why: evening gates green on `72c28e7` (CI run 35196030690); W366 unquoted-key parser lock already on main. Daily's remaining backlog is the adapter sentence — no new product scope.
+- Verify: adapter names unquoted JSONL keys as invalid JSONL; `python3 -m pytest -q && python3 -m ruff check .` green. Do not pytest-lock DAILY_LEARN.
 

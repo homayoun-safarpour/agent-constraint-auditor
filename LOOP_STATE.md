@@ -394,7 +394,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W364 Local MATRIX nine-exit heartbeat on current main (2026-09-16)
 - [x] W365 Refresh `docs/DAILY_LEARN.md` for JSONL single-quoted strings (2026-09-17)
 - [x] W366 Named parser case: JSONL object lines with unquoted keys are invalid JSONL (2026-09-17)
-- [ ] W367 Document JSONL unquoted keys in `docs/ADAPTER.md`
+- [x] W367 Document JSONL unquoted keys in `docs/ADAPTER.md` (2026-09-18)
+- [ ] W368 Named test locks adapter JSONL unquoted-key sentence
 
 ## Build log
 
@@ -732,6 +733,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-16: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `1434d97`.
 - 2026-09-17: DAILY_LEARN names JSONL single-quoted strings and pytest 157.
 - 2026-09-17: JSONL object lines with unquoted keys are invalid JSONL is named.
+- 2026-09-18: adapter names JSONL unquoted keys as invalid JSONL.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1112,10 +1114,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-16 daily: W364 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W365 DAILY_LEARN refresh.
 - 2026-09-17 daily: W365 shipped; DAILY_LEARN names JSONL single-quoted strings and pytest 157. Next tick: W366 unquoted-key JSONL object line.
 - 2026-09-17 daily: W366 shipped; JSONL object lines with unquoted keys are invalid JSONL. Next tick: W367 adapter unquoted-key sentence.
+- 2026-09-18 daily: W367 shipped; adapter names JSONL unquoted keys as invalid JSONL. Next tick: W368 named adapter lock.
 
-## NEXT TICK (daily 2026-09-17)
+## NEXT TICK (daily 2026-09-18)
 
-- W367: Document JSONL unquoted keys in `docs/ADAPTER.md`.
-- Why: named parser lock exists; hire-doc ladder next is the adapter sentence. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: adapter names unquoted JSONL keys as invalid JSONL; `python -m pytest -q && python -m ruff check .` green.
+- W368: Named test locks adapter JSONL unquoted-key sentence.
+- Why: adapter sentence exists; hire-doc ladder next is the named lock. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: named test freezes the adapter unquoted-key ERROR sentence; `python -m pytest -q && python -m ruff check .` green.
 

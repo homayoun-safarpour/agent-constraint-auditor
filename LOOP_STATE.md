@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `fe38c38` (2026-09-18, run 35371895625); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 161 passed; `ruff check .` clean (2026-09-18 W375) |
+| 2 | Named claim tests | PASS — `pytest` 162 passed; `ruff check .` clean (2026-09-18 W380) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -408,7 +408,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W378 Local MATRIX nine-exit heartbeat on `cd81110` (2026-09-18)
 - [x] W379 Refresh `docs/DAILY_LEARN.md` for JSONL unquoted string values (2026-09-18)
 - [x] W380 Named parser case: JSONL object lines missing a comma between members are invalid JSONL (2026-09-18)
-- [ ] W381 Sunday pack: MATRIX heartbeat + GATE pytest count vs live `pytest -q` (no more JSONL hire-doc spray)
+- [x] W381 Sunday pack: MATRIX heartbeat + GATE pytest count vs live `pytest -q` (no more JSONL hire-doc spray) (2026-09-18)
+- [ ] W382 Sunday 2026-09-20: full BENCHMARK GATE §A + growth pulse
 
 ## Build log
 
@@ -761,6 +762,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-18: DAILY_LEARN names JSONL unquoted string values and pytest 161.
 - 2026-09-18: JSONL object lines missing a comma between members are invalid JSONL is named.
 - 2026-09-18: JSONL hire-doc ladder stopped; NEXT TICK is Sunday pack. Next public week is `agent-trust-gate`.
+- 2026-09-18: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `d87acb2`.
+- 2026-09-18: BENCHMARK GATE named-claim pytest count refreshed to 162.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1157,10 +1160,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-18 daily: W379 shipped; DAILY_LEARN names JSONL unquoted string values and pytest 161. Next tick: W380 missing-comma JSONL object line.
 - 2026-09-18 daily: W380 shipped; JSONL object lines missing a comma between members are invalid JSONL. Next tick: W381 adapter missing-comma sentence.
 - 2026-09-18 daily: Boss redirected to next core (`agent-trust-gate` Mon). JSONL hire-doc ladder stops. Next tick: W381 Sunday pack.
+- 2026-09-18 daily: W381 shipped; MATRIX 0/2/0/2/1/1/0/2/1 and GATE pytest 162. Next tick: W382 Sunday full gate.
 
 ## NEXT TICK (daily 2026-09-18)
 
-- W381: Sunday pack — re-run MATRIX nine exits; refresh GATE named-claim pytest count to live `python -m pytest -q`.
-- Why: Boss moved the hire core to a trust-gate composition. Do not spray another JSONL parser family. Do not pytest-lock DAILY_LEARN. Do not open a second public repo before Sunday gate.
-- Verify: nine exits 0/2/0/2/1/1/0/2/1; GATE count matches pytest; `python -m ruff check .` green.
+- W382: Sunday 2026-09-20 full BENCHMARK GATE §A + growth pulse.
+- Why: auditor week counts only if Sunday gate passes; then Monday scaffolds `agent-trust-gate`. Do not open a second public repo before that. Do not spray JSONL parser families.
+- Verify: CI green on main; pytest 162; MATRIX unchanged; `public_git_guard.py` PASS.
 

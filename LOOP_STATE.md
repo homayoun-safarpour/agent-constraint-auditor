@@ -12,7 +12,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `fe95c79` (2026-09-18, run 35358383530); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 159 passed; `ruff check .` clean (2026-09-18 W368) |
+| 2 | Named claim tests | PASS — `pytest` 161 passed; `ruff check .` clean (2026-09-18 W375) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -403,7 +403,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W373 Named parser case: JSONL object lines with unquoted string values are invalid JSONL (2026-09-18)
 - [x] W374 Document JSONL unquoted string values in `docs/ADAPTER.md` (2026-09-18)
 - [x] W375 Named adapter lock: JSONL unquoted string values are invalid JSONL (2026-09-18)
-- [ ] W376 Refresh BENCHMARK GATE named-claim pytest count to 161
+- [x] W376 Refresh BENCHMARK GATE named-claim pytest count to 161 (2026-09-18)
+- [ ] W377 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -750,6 +751,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-18: JSONL object lines with unquoted string values are invalid JSONL is named.
 - 2026-09-18: ADAPTER names JSONL unquoted string values as invalid JSONL.
 - 2026-09-18: named adapter lock for JSONL unquoted string values.
+- 2026-09-18: BENCHMARK GATE named-claim pytest count refreshed to 161.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1140,10 +1142,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-18 daily: W373 shipped; JSONL object lines with unquoted string values are invalid JSONL. Next tick: W374 adapter unquoted-value sentence.
 - 2026-09-18 daily: W374 shipped; ADAPTER names unquoted string values as invalid JSONL. Next tick: W375 named adapter lock.
 - 2026-09-18 daily: W375 shipped; named adapter lock for JSONL unquoted string values. Next tick: W376 pytest count 161.
+- 2026-09-18 daily: W376 shipped; BENCHMARK GATE named-claim pytest count is 161. Next tick: W377 CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-18)
 
-- W376: Refresh BENCHMARK GATE named-claim pytest count to 161.
-- Why: W375 adds one named adapter lock; hire-doc ladder next is the GATE count. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: LOOP_STATE GATE line 161; `python -m pytest -q && python -m ruff check .` green.
+- W377: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
+- Why: GATE pytest is 161; hire-doc ladder next is the CI tip. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: GATE row 1 names a green SHA/run after W375 merge; `python -m pytest -q && python -m ruff check .` green.
 

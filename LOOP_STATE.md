@@ -405,7 +405,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W375 Named adapter lock: JSONL unquoted string values are invalid JSONL (2026-09-18)
 - [x] W376 Refresh BENCHMARK GATE named-claim pytest count to 161 (2026-09-18)
 - [x] W377 Refresh BENCHMARK GATE CI tip to `fe38c38` (run 35371895625) (2026-09-18)
-- [ ] W378 Local MATRIX nine-exit heartbeat on current main
+- [x] W378 Local MATRIX nine-exit heartbeat on `cd81110` (2026-09-18)
+- [ ] W379 Refresh `docs/DAILY_LEARN.md` for JSONL unquoted string values
 
 ## Build log
 
@@ -754,6 +755,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-18: named adapter lock for JSONL unquoted string values.
 - 2026-09-18: BENCHMARK GATE named-claim pytest count refreshed to 161.
 - 2026-09-18: BENCHMARK GATE CI tip refreshed to `fe38c38` (run 35371895625).
+- 2026-09-18: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `cd81110`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1146,10 +1148,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-18 daily: W375 shipped; named adapter lock for JSONL unquoted string values. Next tick: W376 pytest count 161.
 - 2026-09-18 daily: W376 shipped; BENCHMARK GATE named-claim pytest count is 161. Next tick: W377 CI tip refresh.
 - 2026-09-18 daily: W377 shipped; BENCHMARK GATE CI tip is `fe38c38` (run 35371895625). Next tick: W378 MATRIX heartbeat.
+- 2026-09-18 daily: W378 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W379 DAILY_LEARN refresh.
 
 ## NEXT TICK (daily 2026-09-18)
 
-- W378: Local MATRIX nine-exit heartbeat on current main.
-- Why: GATE CI tip is `fe38c38`; hire-doc ladder next is MATRIX. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: nine exits 0/2/0/2/1/1/0/2/1; `python -m pytest -q && python -m ruff check .` green.
+- W379: Refresh `docs/DAILY_LEARN.md` for JSONL unquoted string values.
+- Why: named parser + adapter lock are on main; hire-doc ladder last step is DAILY_LEARN. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: DAILY_LEARN names unquoted values and pytest 161; `python -m pytest -q && python -m ruff check .` green.
 

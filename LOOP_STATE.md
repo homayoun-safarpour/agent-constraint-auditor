@@ -1118,10 +1118,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-17 daily: W366 shipped; JSONL object lines with unquoted keys are invalid JSONL. Next tick: W367 adapter unquoted-key sentence.
 - 2026-09-18 daily: W367 shipped; adapter names JSONL unquoted keys as invalid JSONL. Next tick: W368 named adapter lock.
 - 2026-09-18 daily: W368 shipped; named test locks adapter JSONL unquoted-key sentence. Next tick: W369 pytest count.
+- 2026-09-18 heartbeat: OK (W368 matches `a9885ef`; named ADAPTER unquoted-key lock; CI green run 35320364110; 159 pytest). ENRICH. Next tick: W369 refresh BENCHMARK GATE pytest count to 159.
 
 ## NEXT TICK (daily 2026-09-18)
 
 - W369: Refresh BENCHMARK GATE pytest count to 159.
 - Why: named adapter lock landed; hire-doc ladder next is the live named-claim count. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: BENCHMARK GATE named-claim pytest count is 159; `python -m pytest -q && python -m ruff check .` green.
+
+## NEXT TICK (heartbeat 2026-09-18)
+
+- W369: Refresh BENCHMARK GATE pytest count to 159.
+- Why: quality pass OK on `a9885ef` (`test_adapter_locks_jsonl_unquoted_keys_are_invalid_jsonl`); GATE still claims 157. Hire-doc ladder next is the live named-claim count. Do not invent scope. Do not pytest-lock DAILY_LEARN.
 - Verify: BENCHMARK GATE named-claim pytest count is 159; `python -m pytest -q && python -m ruff check .` green.
 

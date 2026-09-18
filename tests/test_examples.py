@@ -539,6 +539,11 @@ def test_adapter_locks_jsonl_single_quoted_strings_are_invalid_jsonl():
     assert "single quotes are not accepted" in ADAPTER
 
 
+def test_adapter_locks_jsonl_unquoted_keys_are_invalid_jsonl():
+    assert "A JSONL object line with unquoted keys is ERROR (invalid JSONL)" in ADAPTER
+    assert "unquoted keys are not accepted" in ADAPTER
+
+
 def test_interview_locks_jsonl_demo():
     assert "examples/jsonl_stable/events.jsonl" in INTERVIEW
     assert "examples/jsonl_decaying/events.jsonl" in INTERVIEW

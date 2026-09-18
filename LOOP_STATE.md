@@ -395,7 +395,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W365 Refresh `docs/DAILY_LEARN.md` for JSONL single-quoted strings (2026-09-17)
 - [x] W366 Named parser case: JSONL object lines with unquoted keys are invalid JSONL (2026-09-17)
 - [x] W367 Document JSONL unquoted keys in `docs/ADAPTER.md` (2026-09-18)
-- [ ] W368 Named test locks adapter JSONL unquoted-key sentence
+- [x] W368 Named test locks adapter JSONL unquoted-key sentence (2026-09-18)
+- [ ] W369 Refresh BENCHMARK GATE pytest count to 159
 
 ## Build log
 
@@ -734,6 +735,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-17: DAILY_LEARN names JSONL single-quoted strings and pytest 157.
 - 2026-09-17: JSONL object lines with unquoted keys are invalid JSONL is named.
 - 2026-09-18: adapter names JSONL unquoted keys as invalid JSONL.
+- 2026-09-18: named test locks that adapter JSONL unquoted-key sentence.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1115,10 +1117,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-17 daily: W365 shipped; DAILY_LEARN names JSONL single-quoted strings and pytest 157. Next tick: W366 unquoted-key JSONL object line.
 - 2026-09-17 daily: W366 shipped; JSONL object lines with unquoted keys are invalid JSONL. Next tick: W367 adapter unquoted-key sentence.
 - 2026-09-18 daily: W367 shipped; adapter names JSONL unquoted keys as invalid JSONL. Next tick: W368 named adapter lock.
+- 2026-09-18 daily: W368 shipped; named test locks adapter JSONL unquoted-key sentence. Next tick: W369 pytest count.
 
 ## NEXT TICK (daily 2026-09-18)
 
-- W368: Named test locks adapter JSONL unquoted-key sentence.
-- Why: adapter sentence exists; hire-doc ladder next is the named lock. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: named test freezes the adapter unquoted-key ERROR sentence; `python -m pytest -q && python -m ruff check .` green.
+- W369: Refresh BENCHMARK GATE pytest count to 159.
+- Why: named adapter lock landed; hire-doc ladder next is the live named-claim count. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: BENCHMARK GATE named-claim pytest count is 159; `python -m pytest -q && python -m ruff check .` green.
 

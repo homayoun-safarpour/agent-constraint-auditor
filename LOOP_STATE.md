@@ -1161,10 +1161,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-18 daily: W380 shipped; JSONL object lines missing a comma between members are invalid JSONL. Next tick: W381 adapter missing-comma sentence.
 - 2026-09-18 daily: Boss redirected to next core (`agent-trust-gate` Mon). JSONL hire-doc ladder stops. Next tick: W381 Sunday pack.
 - 2026-09-18 daily: W381 shipped; MATRIX 0/2/0/2/1/1/0/2/1 and GATE pytest 162. Next tick: W382 Sunday full gate.
+- 2026-09-18 evening: CI green on `61a4c98` (Actions 35377708298); W381 on main. HOLD. Next tick: W382 Sunday 2026-09-20 full BENCHMARK GATE §A + growth pulse.
 
 ## NEXT TICK (daily 2026-09-18)
 
 - W382: Sunday 2026-09-20 full BENCHMARK GATE §A + growth pulse.
 - Why: auditor week counts only if Sunday gate passes; then Monday scaffolds `agent-trust-gate`. Do not open a second public repo before that. Do not spray JSONL parser families.
 - Verify: CI green on main; pytest 162; MATRIX unchanged; `public_git_guard.py` PASS.
+
+## NEXT TICK (evening 2026-09-18)
+
+- W382: Hold line — Sun 2026-09-20 full BENCHMARK GATE §A + growth pulse.
+- Why: evening gates green on `61a4c98` (CI run 35377708298); W381 Sunday pack already on main. Week graph says hold Fri/Sat — Daily ships the Sunday usefulness gate, not new product scope. Do not open a second public repo. Do not spray JSONL parser families.
+- Verify: CI green on main; `python3 -m pytest -q` is 162; `python3 -m ruff check .` green; MATRIX still 0/2/0/2/1/1/0/2/1; `public_git_guard.py` PASS.
 

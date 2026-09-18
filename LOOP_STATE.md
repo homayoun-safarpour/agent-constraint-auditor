@@ -399,7 +399,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W369 Refresh BENCHMARK GATE pytest count to 159 (2026-09-18)
 - [x] W370 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-18)
 - [x] W371 Local MATRIX nine-exit heartbeat on current main (2026-09-18)
-- [ ] W372 Refresh `docs/DAILY_LEARN.md` for JSONL unquoted keys
+- [x] W372 Refresh `docs/DAILY_LEARN.md` for JSONL unquoted keys (2026-09-18)
+- [ ] W373 Named parser case: JSONL object lines with unquoted string values are invalid JSONL
 
 ## Build log
 
@@ -742,6 +743,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-18: BENCHMARK GATE named-claim pytest count refreshed to 159.
 - 2026-09-18: BENCHMARK GATE CI tip refreshed to `fe95c79` (run 35358383530).
 - 2026-09-18: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `5f08ee0`.
+- 2026-09-18: DAILY_LEARN names JSONL unquoted keys and pytest 159.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1128,10 +1130,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-18 daily: W369 shipped; BENCHMARK GATE named-claim pytest count is 159. Next tick: W370 CI tip refresh.
 - 2026-09-18 daily: W370 shipped; BENCHMARK GATE CI tip is `fe95c79` (run 35358383530). Next tick: W371 MATRIX heartbeat.
 - 2026-09-18 daily: W371 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W372 DAILY_LEARN refresh.
+- 2026-09-18 daily: W372 shipped; DAILY_LEARN names JSONL unquoted keys and pytest 159. Next tick: W373 unquoted-value JSONL object line.
 
 ## NEXT TICK (daily 2026-09-18)
 
-- W372: Refresh `docs/DAILY_LEARN.md` for JSONL unquoted keys.
-- Why: MATRIX still 0/2/0/2/1/1/0/2/1; hire-doc ladder next is DAILY_LEARN for unquoted-key ERROR. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: DAILY_LEARN names unquoted JSONL keys and pytest 159; `python -m pytest -q && python -m ruff check .` green.
+- W373: Named parser case: JSONL object lines with unquoted string values are invalid JSONL.
+- Why: JSON requires quoted strings; `{ "text": gates }` is invalid JSONL. Unquoted keys already locked. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: named `tests/test_journal.py` case; `python -m pytest -q && python -m ruff check .` green.
 

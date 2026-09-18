@@ -144,6 +144,16 @@ def test_parse_jsonl_object_line_with_unquoted_keys_is_transcript_error(tmp_path
         parse_jsonl_transcript(path)
 
 
+def test_parse_jsonl_object_line_with_unquoted_string_values_is_transcript_error(tmp_path):
+    path = tmp_path / "events.jsonl"
+    path.write_text(
+        '{"timestamp": "2026-08-11 09:00", "text": gates}\n',
+        encoding="utf-8",
+    )
+    with pytest.raises(TranscriptError, match="invalid JSONL"):
+        parse_jsonl_transcript(path)
+
+
 def test_parse_jsonl_object_line_with_leading_whitespace_still_parses(tmp_path):
     path = tmp_path / "events.jsonl"
     path.write_text(

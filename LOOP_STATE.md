@@ -11,7 +11,7 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-14 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `2b73c25` (2026-09-16, run 35153101959); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `fe95c79` (2026-09-18, run 35358383530); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 159 passed; `ruff check .` clean (2026-09-18 W368) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -397,7 +397,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W367 Document JSONL unquoted keys in `docs/ADAPTER.md` (2026-09-18)
 - [x] W368 Named test locks adapter JSONL unquoted-key sentence (2026-09-18)
 - [x] W369 Refresh BENCHMARK GATE pytest count to 159 (2026-09-18)
-- [ ] W370 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W370 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-18)
+- [ ] W371 Local MATRIX nine-exit heartbeat on current main
 
 ## Build log
 
@@ -738,6 +739,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-18: adapter names JSONL unquoted keys as invalid JSONL.
 - 2026-09-18: named test locks that adapter JSONL unquoted-key sentence.
 - 2026-09-18: BENCHMARK GATE named-claim pytest count refreshed to 159.
+- 2026-09-18: BENCHMARK GATE CI tip refreshed to `fe95c79` (run 35358383530).
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1122,10 +1124,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-18 daily: W368 shipped; named test locks adapter JSONL unquoted-key sentence. Next tick: W369 pytest count.
 - 2026-09-18 heartbeat: OK (W368 matches `a9885ef`; named ADAPTER unquoted-key lock; CI green run 35320364110; 159 pytest). ENRICH. Next tick: W369 refresh BENCHMARK GATE pytest count to 159.
 - 2026-09-18 daily: W369 shipped; BENCHMARK GATE named-claim pytest count is 159. Next tick: W370 CI tip refresh.
+- 2026-09-18 daily: W370 shipped; BENCHMARK GATE CI tip is `fe95c79` (run 35358383530). Next tick: W371 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-09-18)
 
-- W370: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main.
-- Why: GATE pytest count is 159; hire-doc ladder next is the CI SHA/run. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: GATE CI cell names a green Actions run on current main; `python -m pytest -q && python -m ruff check .` green.
+- W371: Local MATRIX nine-exit heartbeat on current main.
+- Why: GATE CI tip is the green W369 merge; hire-doc ladder next is MATRIX 0/2/0/2/1/1/0/2/1. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: nine exits match examples/MATRIX.md; `python -m pytest -q && python -m ruff check .` green.
 

@@ -398,7 +398,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W368 Named test locks adapter JSONL unquoted-key sentence (2026-09-18)
 - [x] W369 Refresh BENCHMARK GATE pytest count to 159 (2026-09-18)
 - [x] W370 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main (2026-09-18)
-- [ ] W371 Local MATRIX nine-exit heartbeat on current main
+- [x] W371 Local MATRIX nine-exit heartbeat on current main (2026-09-18)
+- [ ] W372 Refresh `docs/DAILY_LEARN.md` for JSONL unquoted keys
 
 ## Build log
 
@@ -740,6 +741,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-18: named test locks that adapter JSONL unquoted-key sentence.
 - 2026-09-18: BENCHMARK GATE named-claim pytest count refreshed to 159.
 - 2026-09-18: BENCHMARK GATE CI tip refreshed to `fe95c79` (run 35358383530).
+- 2026-09-18: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `5f08ee0`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1125,10 +1127,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-18 heartbeat: OK (W368 matches `a9885ef`; named ADAPTER unquoted-key lock; CI green run 35320364110; 159 pytest). ENRICH. Next tick: W369 refresh BENCHMARK GATE pytest count to 159.
 - 2026-09-18 daily: W369 shipped; BENCHMARK GATE named-claim pytest count is 159. Next tick: W370 CI tip refresh.
 - 2026-09-18 daily: W370 shipped; BENCHMARK GATE CI tip is `fe95c79` (run 35358383530). Next tick: W371 MATRIX heartbeat.
+- 2026-09-18 daily: W371 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W372 DAILY_LEARN refresh.
 
 ## NEXT TICK (daily 2026-09-18)
 
-- W371: Local MATRIX nine-exit heartbeat on current main.
-- Why: GATE CI tip is the green W369 merge; hire-doc ladder next is MATRIX 0/2/0/2/1/1/0/2/1. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: nine exits match examples/MATRIX.md; `python -m pytest -q && python -m ruff check .` green.
+- W372: Refresh `docs/DAILY_LEARN.md` for JSONL unquoted keys.
+- Why: MATRIX still 0/2/0/2/1/1/0/2/1; hire-doc ladder next is DAILY_LEARN for unquoted-key ERROR. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: DAILY_LEARN names unquoted JSONL keys and pytest 159; `python -m pytest -q && python -m ruff check .` green.
 

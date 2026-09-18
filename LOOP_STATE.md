@@ -402,7 +402,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W372 Refresh `docs/DAILY_LEARN.md` for JSONL unquoted keys (2026-09-18)
 - [x] W373 Named parser case: JSONL object lines with unquoted string values are invalid JSONL (2026-09-18)
 - [x] W374 Document JSONL unquoted string values in `docs/ADAPTER.md` (2026-09-18)
-- [ ] W375 Named adapter lock: JSONL unquoted string values are invalid JSONL
+- [x] W375 Named adapter lock: JSONL unquoted string values are invalid JSONL (2026-09-18)
+- [ ] W376 Refresh BENCHMARK GATE named-claim pytest count to 161
 
 ## Build log
 
@@ -748,6 +749,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-18: DAILY_LEARN names JSONL unquoted keys and pytest 159.
 - 2026-09-18: JSONL object lines with unquoted string values are invalid JSONL is named.
 - 2026-09-18: ADAPTER names JSONL unquoted string values as invalid JSONL.
+- 2026-09-18: named adapter lock for JSONL unquoted string values.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1137,10 +1139,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-18 daily: W372 shipped; DAILY_LEARN names JSONL unquoted keys and pytest 159. Next tick: W373 unquoted-value JSONL object line.
 - 2026-09-18 daily: W373 shipped; JSONL object lines with unquoted string values are invalid JSONL. Next tick: W374 adapter unquoted-value sentence.
 - 2026-09-18 daily: W374 shipped; ADAPTER names unquoted string values as invalid JSONL. Next tick: W375 named adapter lock.
+- 2026-09-18 daily: W375 shipped; named adapter lock for JSONL unquoted string values. Next tick: W376 pytest count 161.
 
 ## NEXT TICK (daily 2026-09-18)
 
-- W375: Named adapter lock: JSONL unquoted string values are invalid JSONL.
-- Why: ADAPTER now says unquoted values are not accepted; hire-doc ladder next is a pytest lock on that sentence. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: named `tests/test_examples.py` case; `python -m pytest -q && python -m ruff check .` green.
+- W376: Refresh BENCHMARK GATE named-claim pytest count to 161.
+- Why: W375 adds one named adapter lock; hire-doc ladder next is the GATE count. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
+- Verify: LOOP_STATE GATE line 161; `python -m pytest -q && python -m ruff check .` green.
 

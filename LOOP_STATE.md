@@ -408,7 +408,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W378 Local MATRIX nine-exit heartbeat on `cd81110` (2026-09-18)
 - [x] W379 Refresh `docs/DAILY_LEARN.md` for JSONL unquoted string values (2026-09-18)
 - [x] W380 Named parser case: JSONL object lines missing a comma between members are invalid JSONL (2026-09-18)
-- [ ] W381 Document JSONL missing comma between members in `docs/ADAPTER.md`
+- [ ] W381 Sunday pack: MATRIX heartbeat + GATE pytest count vs live `pytest -q` (no more JSONL hire-doc spray)
 
 ## Build log
 
@@ -760,6 +760,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-18: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `cd81110`.
 - 2026-09-18: DAILY_LEARN names JSONL unquoted string values and pytest 161.
 - 2026-09-18: JSONL object lines missing a comma between members are invalid JSONL is named.
+- 2026-09-18: JSONL hire-doc ladder stopped; NEXT TICK is Sunday pack. Next public week is `agent-trust-gate`.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1155,10 +1156,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-18 daily: W378 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1. Next tick: W379 DAILY_LEARN refresh.
 - 2026-09-18 daily: W379 shipped; DAILY_LEARN names JSONL unquoted string values and pytest 161. Next tick: W380 missing-comma JSONL object line.
 - 2026-09-18 daily: W380 shipped; JSONL object lines missing a comma between members are invalid JSONL. Next tick: W381 adapter missing-comma sentence.
+- 2026-09-18 daily: Boss redirected to next core (`agent-trust-gate` Mon). JSONL hire-doc ladder stops. Next tick: W381 Sunday pack.
 
 ## NEXT TICK (daily 2026-09-18)
 
-- W381: Document JSONL missing comma between members in `docs/ADAPTER.md`.
-- Why: named parser locks `{ "timestamp": "..." "text": "..." }` as invalid JSONL; hire-doc ladder next is one adapter sentence. Do not spray boolean field types. Do not pytest-lock DAILY_LEARN.
-- Verify: one ADAPTER sentence unique vs trailing-comma wording; `python -m pytest -q && python -m ruff check .` green.
+- W381: Sunday pack — re-run MATRIX nine exits; refresh GATE named-claim pytest count to live `python -m pytest -q`.
+- Why: Boss moved the hire core to a trust-gate composition. Do not spray another JSONL parser family. Do not pytest-lock DAILY_LEARN. Do not open a second public repo before Sunday gate.
+- Verify: nine exits 0/2/0/2/1/1/0/2/1; GATE count matches pytest; `python -m ruff check .` green.
 

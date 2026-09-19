@@ -1,20 +1,20 @@
-# Daily learning — 2026-09-18
+# Daily learning — 2026-09-19
 
-**Skill.** A JSONL object line with an unquoted string value is ERROR (invalid JSONL). Quoted strings still parse; `{ "text": gates }` is not accepted because JSON requires quoted strings.
+**Skill.** Saturday Sunday-prep freezes the nine-fixture MATRIX at `0/2/0/2/1/1/0/2/1` and the LinkedIn week-close paste at that same exit row. Named-claim pytest is 163. Do not open a new JSONL parser family before the Sunday gate.
 
-**Why.** Without a named unquoted-value lock, a later JSON5 loosening would silently accept `{ "text": gates }`. Unquoted keys are already locked. This is not a boolean-field enum.
+**Why.** Without the named LinkedIn lock, the week-close paste can drift back to eight fixtures. The JSONL hire-doc ladder stopped; Sunday W382 is the usefulness gate.
 
-**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 161.
+**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 163.
 
 ```bash
 python -m pytest -q
-# 161 passed
-python -m pytest -q tests/test_journal.py::test_parse_jsonl_object_line_with_unquoted_string_values_is_transcript_error
+# 163 passed
+python -m pytest -q tests/test_examples.py::test_linkedin_draft_locks_nine_fixture_matrix
 # 1 passed
 ```
 
-**Recall probe.** Does `docs/ADAPTER.md` say a JSONL object line with an unquoted string value is ERROR and unquoted values are not accepted?
+**Recall probe.** Does `docs/LINKEDIN_DRAFT.md` name the nine-fixture matrix `0/2/0/2/1/1/0/2/1`?
 
-Answer: Yes. Named test `test_adapter_locks_jsonl_unquoted_string_values_are_invalid_jsonl` locks that sentence. Do not pytest-lock this card; it is rewritten each morning.
+Answer: Yes. Named test `test_linkedin_draft_locks_nine_fixture_matrix` locks that paste. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W380
+**Retrieve.** `docs/LINKEDIN_DRAFT.md` · `tests/test_examples.py` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W382

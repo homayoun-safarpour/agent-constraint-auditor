@@ -410,6 +410,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W380 Named parser case: JSONL object lines missing a comma between members are invalid JSONL (2026-09-18)
 - [x] W381 Sunday pack: MATRIX heartbeat + GATE pytest count vs live `pytest -q` (no more JSONL hire-doc spray) (2026-09-18)
 - [x] W383 Sat 2026-09-19 Sunday-prep: MATRIX 0/2/0/2/1/1/0/2/1; GATE CI tip `61a4c98`; LinkedIn nine-exit lock (2026-09-19)
+- [x] W384 Refresh `docs/DAILY_LEARN.md` for Saturday Sunday-prep (pytest 163, LinkedIn nine-exit) (2026-09-19)
 - [ ] W382 Sunday 2026-09-20: full BENCHMARK GATE §A + growth pulse
 
 ## Build log
@@ -769,6 +770,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-19: BENCHMARK GATE CI tip refreshed to `61a4c98` (run 35377708298).
 - 2026-09-19: LinkedIn week-close draft names the nine-fixture MATRIX 0/2/0/2/1/1/0/2/1; named test locks that paste.
 - 2026-09-19: BENCHMARK GATE named-claim pytest count refreshed to 163.
+- 2026-09-19: DAILY_LEARN names Saturday Sunday-prep, pytest 163, and the LinkedIn nine-exit lock.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1167,10 +1169,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-18 daily: Boss redirected to next core (`agent-trust-gate` Mon). JSONL hire-doc ladder stops. Next tick: W381 Sunday pack.
 - 2026-09-18 daily: W381 shipped; MATRIX 0/2/0/2/1/1/0/2/1 and GATE pytest 162. Next tick: W382 Sunday full gate.
 - 2026-09-19 daily: W383 shipped; Saturday Sunday-prep + LinkedIn nine-exit lock; GATE CI tip `61a4c98` (run 35377708298); pytest 163. Next tick: W382 Sunday full gate.
+- 2026-09-19 daily: W384 shipped; DAILY_LEARN names Saturday Sunday-prep, pytest 163, and the LinkedIn nine-exit lock. Next tick: W382 Sunday full gate.
 
 ## NEXT TICK (daily 2026-09-19)
 
 - W382: Sunday 2026-09-20 full BENCHMARK GATE §A + growth pulse.
 - Why: auditor week counts only if Sunday gate passes; then Monday scaffolds `agent-trust-gate`. Do not open a second public repo before that. Do not spray JSONL parser families.
-- Verify: CI green on main; pytest 163; MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` 3 / first_index=2 / slope=2.000; LinkedIn paste still names that matrix; `public_git_guard.py` PASS.
+- Verify: CI green on main; pytest 163; MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` 3 / first_index=2 / slope=2.000; LinkedIn paste still names that matrix; DAILY_LEARN names pytest 163; `public_git_guard.py` PASS.
 

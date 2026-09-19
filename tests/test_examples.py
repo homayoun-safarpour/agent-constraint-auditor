@@ -11,6 +11,7 @@ ADAPTER = (ROOT / "docs" / "ADAPTER.md").read_text(encoding="utf-8")
 CONTRIBUTING = (ROOT / "CONTRIBUTING.md").read_text(encoding="utf-8")
 INTERVIEW = (ROOT / "docs" / "INTERVIEW.md").read_text(encoding="utf-8")
 RELIABILITY = (ROOT / "docs" / "RELIABILITY_CARD.md").read_text(encoding="utf-8")
+LINKEDIN = (ROOT / "docs" / "LINKEDIN_DRAFT.md").read_text(encoding="utf-8")
 DECAYING_JOURNAL = ROOT / "examples" / "decaying" / "journal.md"
 DECAYING_CONSTRAINTS = ROOT / "examples" / "decaying" / "constraints.yaml"
 REQUIRED_MISSING_JOURNAL = ROOT / "examples" / "required_missing" / "journal.md"
@@ -574,6 +575,16 @@ def test_reliability_card_locks_jsonl_claim():
     assert "JSONL transcript" in RELIABILITY or "jsonl" in RELIABILITY.lower()
     assert "valid JSON but not an object" in RELIABILITY
     assert "`fields` value that is not a mapping" in RELIABILITY
+
+
+def test_linkedin_draft_locks_nine_fixture_matrix():
+    assert "0/2/0/2/1/1/0/2/1" in LINKEDIN
+    assert "examples/MATRIX.md" in LINKEDIN
+    assert "examples/jsonl_bad_timestamp" in LINKEDIN
+    assert "nine-fixture matrix" in LINKEDIN
+    assert "eight-fixture" not in LINKEDIN
+    assert "eight golden" not in LINKEDIN
+    assert "eight worked" not in LINKEDIN
 
 
 MATRIX_EXIT_ROWS = (

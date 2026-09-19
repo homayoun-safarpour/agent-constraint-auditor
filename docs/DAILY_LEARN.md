@@ -1,20 +1,22 @@
-# Daily learning — 2026-09-18
+# Daily learning — 2026-09-19
 
-**Skill.** A JSONL object line with an unquoted string value is ERROR (invalid JSONL). Quoted strings still parse; `{ "text": gates }` is not accepted because JSON requires quoted strings.
+**Skill.** The nine-row MATRIX is the Sunday usefulness gate: exits `0/2/0/2/1/1/0/2/1`. Empty, headerless, and `jsonl_bad_timestamp` are ERROR (`1`), never a free CLEAN.
 
-**Why.** Without a named unquoted-value lock, a later JSON5 loosening would silently accept `{ "text": gates }`. Unquoted keys are already locked. This is not a boolean-field enum.
+**Why.** Interview Q3 and CI both rest on this polarity. Tomorrow is W382 full BENCHMARK GATE. Monday retargets; do not open a second public repo mid-week. This is not a new JSONL parser family.
 
-**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 161.
+**Worked example** (this repo). Named-claim pytest is 162. MATRIX stays `0/2/0/2/1/1/0/2/1`.
 
 ```bash
 python -m pytest -q
-# 161 passed
-python -m pytest -q tests/test_journal.py::test_parse_jsonl_object_line_with_unquoted_string_values_is_transcript_error
+# 162 passed
+python -m pytest -q tests/test_examples.py::test_examples_matrix_live_exits_match_table
 # 1 passed
+constraint-auditor audit --constraints examples/empty/constraints.yaml --transcript examples/empty/journal.md
+# expect exit 1
 ```
 
-**Recall probe.** Does `docs/ADAPTER.md` say a JSONL object line with an unquoted string value is ERROR and unquoted values are not accepted?
+**Recall probe.** What exits do `examples/empty`, `examples/headerless`, and `examples/jsonl_bad_timestamp` return, and is any of them CLEAN?
 
-Answer: Yes. Named test `test_adapter_locks_jsonl_unquoted_string_values_are_invalid_jsonl` locks that sentence. Do not pytest-lock this card; it is rewritten each morning.
+Answer: All three exit `1` ERROR. Named tests `test_examples_matrix_locks_exit_rows` and `test_examples_matrix_live_exits_match_table` lock the nine-row table. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `src/constraintauditor/journal.py` · `tests/test_journal.py` · `docs/ADAPTER.md` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W380
+**Retrieve.** `examples/MATRIX.md` · `docs/INTERVIEW.md` · `docs/RELIABILITY_CARD.md` · `LOOP_STATE.md` NEXT TICK W382

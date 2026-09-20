@@ -1,20 +1,25 @@
-# Daily learning — 2026-09-19
+# Daily learning — 2026-09-20
 
-**Skill.** Saturday Sunday-prep freezes the nine-fixture MATRIX at `0/2/0/2/1/1/0/2/1` and the LinkedIn week-close paste at that same exit row. Named-claim pytest is 163. Do not open a new JSONL parser family before the Sunday gate.
+**Skill.** Sunday usefulness gate: the week only counts if BENCHMARK GATE §A still reprints the frozen nine-fixture MATRIX `0/2/0/2/1/1/0/2/1`. Named-claim pytest stays 163. Monday retargets; no mid-week new repo.
 
-**Why.** Without the named LinkedIn lock, the week-close paste can drift back to eight fixtures. The JSONL hire-doc ladder stopped; Sunday W382 is the usefulness gate.
+**Why.** The hire signal is a replayable exit contract, not another JSONL parser family. If Sunday cannot reprint those exits and the decaying `--report` triple, the week did not close.
 
-**Worked example** (this repo). MATRIX stays `0/2/0/2/1/1/0/2/1`. Named-claim pytest is 163.
+**Worked example** (this repo). Replay the live MATRIX lock and the decaying report numbers.
 
 ```bash
 python -m pytest -q
 # 163 passed
-python -m pytest -q tests/test_examples.py::test_linkedin_draft_locks_nine_fixture_matrix
-# 1 passed
+python -m pytest -q tests/test_examples.py::test_examples_matrix_live_exits_match_table
+# 1 passed — 0/2/0/2/1/1/0/2/1
+constraint-auditor audit \
+  --constraints examples/decaying/constraints.yaml \
+  --transcript examples/decaying/journal.md \
+  --report /tmp/decay.md
+# exit 2; Verdict: DECAY; 3 violations; first at event 2; slope 2.000
 ```
 
-**Recall probe.** Does `docs/LINKEDIN_DRAFT.md` name the nine-fixture matrix `0/2/0/2/1/1/0/2/1`?
+**Recall probe.** What nine-exit row and decaying `--report` triple must Sunday reprint?
 
-Answer: Yes. Named test `test_linkedin_draft_locks_nine_fixture_matrix` locks that paste. Do not pytest-lock this card; it is rewritten each morning.
+Answer: `0/2/0/2/1/1/0/2/1`. Decaying report stays 3 / first_index=2 / slope=2.000. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `docs/LINKEDIN_DRAFT.md` · `tests/test_examples.py` · `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W382
+**Retrieve.** `examples/MATRIX.md` · `LOOP_STATE.md` BENCHMARK GATE §A · `tests/test_examples.py` · `docs/LINKEDIN_DRAFT.md`

@@ -1193,10 +1193,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-19 daily: W383 shipped; Saturday Sunday-prep + LinkedIn nine-exit lock; GATE CI tip `61a4c98` (run 35377708298); pytest 163. Next tick: W382 Sunday full gate.
 - 2026-09-19 daily: W384 shipped; DAILY_LEARN names Saturday Sunday-prep, pytest 163, and the LinkedIn nine-exit lock. Next tick: W382 Sunday full gate.
 - 2026-09-20 sunday: W382 usefulness gate green (CI `ab5f8b9` run 35495864557, ruff + 163 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000). Claim holds. Growth pulse: 1 star / 0 forks. Next tick: W385 Monday week-close freeze 2026-09-21.
+- 2026-09-20 evening: CI green on `be3aefa` (Actions 35497142557); W382 on main. HOLD. Next tick: W385 Mon 2026-09-21 week-close freeze.
 
 ## NEXT TICK (daily 2026-09-20)
 
 - W385: Mon 2026-09-21 week-close freeze (LOOP_STATE header: week counted 2026-09-14 to 2026-09-20). Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
 - Why: Sunday usefulness gate closed week 2026-09-14; supervisor retargets the active public week. This file stays the auditor close record until that retarget.
 - Verify: header names week counted 2026-09-14 to 2026-09-20; `python3 -m pytest -q && python3 -m ruff check .`; MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` 3 / first_index=2 / slope=2.000.
+
+## NEXT TICK (evening 2026-09-20)
+
+- W385: Hold line — Mon 2026-09-21 week-close freeze (LOOP_STATE header: week counted 2026-09-14 to 2026-09-20).
+- Why: evening gates green on `be3aefa` (CI run 35497142557); W382 Sunday usefulness gate already on main. Daily ships the Monday week-close freeze, not new product scope. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Verify: header names week counted 2026-09-14 to 2026-09-20; CI green on main; `python3 -m pytest -q` is 163; `python3 -m ruff check .` green; MATRIX still 0/2/0/2/1/1/0/2/1; decaying `--report` 3 / first_index=2 / slope=2.000; `public_git_guard.py` PASS.
 

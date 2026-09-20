@@ -11,8 +11,8 @@ Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-20 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `ab5f8b9` (2026-09-20, run 35495864557); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 163 passed; `ruff check .` clean (2026-09-20 W382) |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `be3aefa` (2026-09-20, run 35497142557); first public green `0a916b2` |
+| 2 | Named claim tests | PASS — `pytest` 163 passed; `ruff check .` clean (2026-09-20 Sunday gate) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -772,15 +772,15 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-19: LinkedIn week-close draft names the nine-fixture MATRIX 0/2/0/2/1/1/0/2/1; named test locks that paste.
 - 2026-09-19: BENCHMARK GATE named-claim pytest count refreshed to 163.
 - 2026-09-19: DAILY_LEARN names Saturday Sunday-prep, pytest 163, and the LinkedIn nine-exit lock.
-- 2026-09-20: Sunday usefulness gate green on `ab5f8b9` (CI run 35495864557, ruff + 163 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` 3 / first_index=2 / slope=2.000).
+- 2026-09-20: Sunday usefulness gate green on `be3aefa` (CI run 35497142557, ruff + 163 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` 3 / first_index=2 / slope=2.000).
 
 ## SUNDAY CLOSE (2026-09-20)
 
-Week opened Mon 2026-09-14. Usefulness gate re-run on `ab5f8b9` (HEAD = origin/main after W384 DAILY_LEARN + 2026-09-20 second-brain card).
+Week opened Mon 2026-09-14. Usefulness gate re-run on `be3aefa` (HEAD = origin/main after W382 Sunday usefulness gate).
 
 | Signal | Result |
 | --- | --- |
-| CI status | PASS — Actions success 3.10 / 3.11 / 3.12 on `ab5f8b9` ([run 35495864557](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/35495864557)) |
+| CI status | PASS — Actions success 3.10 / 3.11 / 3.12 on `be3aefa` ([run 35497142557](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/35497142557)) |
 | Local gate | PASS — `ruff check .` clean; `pytest` 163 passed |
 | Claim still true? | YES — YAML spec + loop-engine journal or JSONL → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000 |
 | Example still runnable? | YES — MATRIX 0/2/0/2/1/1/0/2/1 (stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying, jsonl_bad_timestamp); `--report` still opens `Verdict: CLEAN\|DECAY` |
@@ -788,11 +788,15 @@ Week opened Mon 2026-09-14. Usefulness gate re-run on `ab5f8b9` (HEAD = origin/m
 
 ### LinkedIn draft (field pain first; no employer demand)
 
-Angle: **golden set → frozen floor → CI exit 0/2.** Ragas/DeepEval/Anthropic are the field front of that chain; this repo is the last arrow (nine golden fixtures, MATRIX 0/2/0/2/1/1/0/2/1). Full paste: `docs/LINKEDIN_DRAFT.md`. Not a Ragas wrapper. Not a new repo this week.
+1. Long-horizon agents can drop the rules you wrote down and still look busy. The missing piece is not another metric library — it is a golden set you freeze, then a CI exit that moves when the set does.
+2. I keep a narrow public CLI that audits *your* journal or JSONL events against *your* YAML constraint spec (regex/predicate, not an LLM judge).
+3. Exit contract: `0` CLEAN, `2` DECAY, `1` ERROR. Empty input and a JSONL timestamp that is not `YYYY-MM-DD HH:MM` are ERROR, not a free CLEAN.
+4. This week the nine-fixture MATRIX still returns 0/2/0/2/1/1/0/2/1; decaying `--report` stays 3 / first_index=2 / slope=2.000. Full paste: `docs/LINKEDIN_DRAFT.md`. Not a Ragas wrapper.
+5. Fork path: README first screen (pip + one CLEAN audit) + `examples/MATRIX.md` (nine worked exits), `pip install -e ".[dev]"`, under 30 minutes.
 
 ### Growth pulse
 
-Public GitHub as of 2026-09-20: 1 star, 0 forks, 1 watcher. LinkedIn week-close paste remains the nine-exit lock. No second public repo this week.
+Public GitHub as of 2026-09-20: 1 star, 0 forks. LinkedIn week-close paste remains the nine-exit lock. No second public repo this week.
 
 ## SUNDAY CLOSE (2026-09-13)
 
@@ -1192,11 +1196,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-18 daily: W381 shipped; MATRIX 0/2/0/2/1/1/0/2/1 and GATE pytest 162. Next tick: W382 Sunday full gate.
 - 2026-09-19 daily: W383 shipped; Saturday Sunday-prep + LinkedIn nine-exit lock; GATE CI tip `61a4c98` (run 35377708298); pytest 163. Next tick: W382 Sunday full gate.
 - 2026-09-19 daily: W384 shipped; DAILY_LEARN names Saturday Sunday-prep, pytest 163, and the LinkedIn nine-exit lock. Next tick: W382 Sunday full gate.
-- 2026-09-20 sunday: W382 usefulness gate green (CI `ab5f8b9` run 35495864557, ruff + 163 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000). Claim holds. Growth pulse: 1 star / 0 forks. Next tick: W385 Monday week-close freeze 2026-09-21.
+- 2026-09-20 sunday: W382 usefulness gate re-verified on tip `be3aefa` (CI run 35497142557, ruff + 163 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000). Claim holds. Growth pulse: 1 star / 0 forks. Next tick: W385 Monday week-close freeze 2026-09-21.
 
-## NEXT TICK (daily 2026-09-20)
+## NEXT TICK (sunday 2026-09-20)
 
 - W385: Mon 2026-09-21 week-close freeze (LOOP_STATE header: week counted 2026-09-14 to 2026-09-20). Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: Sunday usefulness gate closed week 2026-09-14; supervisor retargets the active public week. This file stays the auditor close record until that retarget.
+- Why: Sunday usefulness gate closed week 2026-09-14 on `be3aefa`; supervisor retargets the active public week. This file stays the auditor close record until that retarget.
 - Verify: header names week counted 2026-09-14 to 2026-09-20; `python3 -m pytest -q && python3 -m ruff check .`; MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` 3 / first_index=2 / slope=2.000.
 

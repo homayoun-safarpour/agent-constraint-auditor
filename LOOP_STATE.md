@@ -1,18 +1,18 @@
-﻿# LOOP_STATE - agent-constraint-auditor (LIVE Week focus 2026-09-14)
+﻿# LOOP_STATE - agent-constraint-auditor (week counted 2026-09-14 to 2026-09-20)
 
 > Public: https://github.com/homayoun-safarpour/agent-constraint-auditor  
 > Local: `D:\ship\agent-constraint-auditor`
 
 ## BENCHMARK GATE
 
-Week: opened Mon 2026-09-14 · repo: agent-constraint-auditor
+Week: counted 2026-09-14 to 2026-09-20 · repo: agent-constraint-auditor
 
 ### A. Our benchmarks (always)
 
-| # | Check | Status 2026-09-20 |
+| # | Check | Status 2026-09-21 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `ab5f8b9` (2026-09-20, run 35495864557); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 163 passed; `ruff check .` clean (2026-09-20 W382) |
+| 2 | Named claim tests | PASS — `pytest` 163 passed; `ruff check .` clean (2026-09-21 W385 week-close freeze) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -412,7 +412,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W383 Sat 2026-09-19 Sunday-prep: MATRIX 0/2/0/2/1/1/0/2/1; GATE CI tip `61a4c98`; LinkedIn nine-exit lock (2026-09-19)
 - [x] W384 Refresh `docs/DAILY_LEARN.md` for Saturday Sunday-prep (pytest 163, LinkedIn nine-exit) (2026-09-19)
 - [x] W382 Sunday 2026-09-20: full BENCHMARK GATE §A + growth pulse (2026-09-20)
-- [ ] W385 Mon 2026-09-21 week-close freeze (LOOP_STATE header: week counted 2026-09-14 to 2026-09-20); do not scaffold agent-trust-gate from this checkout
+- [x] W385 Mon 2026-09-21 week-close freeze (LOOP_STATE header: week counted 2026-09-14 to 2026-09-20); do not scaffold agent-trust-gate from this checkout (2026-09-21)
+- [ ] W386 Refresh `docs/DAILY_LEARN.md` for week-close freeze (week counted 2026-09-14 to 2026-09-20)
 
 ## Build log
 
@@ -773,6 +774,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-19: BENCHMARK GATE named-claim pytest count refreshed to 163.
 - 2026-09-19: DAILY_LEARN names Saturday Sunday-prep, pytest 163, and the LinkedIn nine-exit lock.
 - 2026-09-20: Sunday usefulness gate green on `ab5f8b9` (CI run 35495864557, ruff + 163 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` 3 / first_index=2 / slope=2.000).
+- 2026-09-21: week-close freeze; LOOP_STATE header names week counted 2026-09-14 to 2026-09-20. Local gate still 163 pytest + ruff clean on `be3aefa`.
 
 ## SUNDAY CLOSE (2026-09-20)
 
@@ -1193,10 +1195,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-19 daily: W383 shipped; Saturday Sunday-prep + LinkedIn nine-exit lock; GATE CI tip `61a4c98` (run 35377708298); pytest 163. Next tick: W382 Sunday full gate.
 - 2026-09-19 daily: W384 shipped; DAILY_LEARN names Saturday Sunday-prep, pytest 163, and the LinkedIn nine-exit lock. Next tick: W382 Sunday full gate.
 - 2026-09-20 sunday: W382 usefulness gate green (CI `ab5f8b9` run 35495864557, ruff + 163 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000). Claim holds. Growth pulse: 1 star / 0 forks. Next tick: W385 Monday week-close freeze 2026-09-21.
+- 2026-09-21 daily: W385 shipped; LOOP_STATE header and GATE week line name week counted 2026-09-14 to 2026-09-20. Do not scaffold `agent-trust-gate` from this checkout. Next tick: W386 DAILY_LEARN week-close freeze.
 
-## NEXT TICK (daily 2026-09-20)
+## NEXT TICK (daily 2026-09-21)
 
-- W385: Mon 2026-09-21 week-close freeze (LOOP_STATE header: week counted 2026-09-14 to 2026-09-20). Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: Sunday usefulness gate closed week 2026-09-14; supervisor retargets the active public week. This file stays the auditor close record until that retarget.
-- Verify: header names week counted 2026-09-14 to 2026-09-20; `python3 -m pytest -q && python3 -m ruff check .`; MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` 3 / first_index=2 / slope=2.000.
+- W386: Refresh `docs/DAILY_LEARN.md` for week-close freeze (week counted 2026-09-14 to 2026-09-20). Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: the second-brain card still names Monday retarget; after freeze it should name the counted week and hold this file as the auditor close record.
+- Verify: `docs/DAILY_LEARN.md` names week counted 2026-09-14 to 2026-09-20; `python3 -m pytest -q && python3 -m ruff check .` green; MATRIX 0/2/0/2/1/1/0/2/1.
 

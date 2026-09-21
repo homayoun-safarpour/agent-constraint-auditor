@@ -1196,10 +1196,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-19 daily: W384 shipped; DAILY_LEARN names Saturday Sunday-prep, pytest 163, and the LinkedIn nine-exit lock. Next tick: W382 Sunday full gate.
 - 2026-09-20 sunday: W382 usefulness gate green (CI `ab5f8b9` run 35495864557, ruff + 163 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000). Claim holds. Growth pulse: 1 star / 0 forks. Next tick: W385 Monday week-close freeze 2026-09-21.
 - 2026-09-21 daily: W385 shipped; LOOP_STATE header and GATE week line name week counted 2026-09-14 to 2026-09-20. Do not scaffold `agent-trust-gate` from this checkout. Next tick: W386 DAILY_LEARN week-close freeze.
+- 2026-09-21 heartbeat: OK (W385 matches `6b35cf0`; last product lock `e4ed92f` named `test_parse_jsonl_object_line_missing_comma_between_members_is_transcript_error`; README invalid-JSONL claim still true; CI green run 35573430595; 163 pytest). HOLD. Next tick: W386 DAILY_LEARN week-close freeze.
 
 ## NEXT TICK (daily 2026-09-21)
 
 - W386: Refresh `docs/DAILY_LEARN.md` for week-close freeze (week counted 2026-09-14 to 2026-09-20). Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
 - Why: the second-brain card still names Monday retarget; after freeze it should name the counted week and hold this file as the auditor close record.
+- Verify: `docs/DAILY_LEARN.md` names week counted 2026-09-14 to 2026-09-20; `python3 -m pytest -q && python3 -m ruff check .` green; MATRIX 0/2/0/2/1/1/0/2/1.
+
+## NEXT TICK (heartbeat 2026-09-21)
+
+- W386: Refresh `docs/DAILY_LEARN.md` for week-close freeze (week counted 2026-09-14 to 2026-09-20). Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: quality pass OK on freeze `6b35cf0` and product lock `e4ed92f` (named missing-comma parse test); no false README claim. Only open item is the second-brain card still naming Monday retarget.
 - Verify: `docs/DAILY_LEARN.md` names week counted 2026-09-14 to 2026-09-20; `python3 -m pytest -q && python3 -m ruff check .` green; MATRIX 0/2/0/2/1/1/0/2/1.
 

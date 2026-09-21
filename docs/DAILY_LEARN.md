@@ -1,10 +1,10 @@
-# Daily learning — 2026-09-20
+# Daily learning — 2026-09-21
 
-**Skill.** Sunday usefulness gate: the week only counts if BENCHMARK GATE §A still reprints the frozen nine-fixture MATRIX `0/2/0/2/1/1/0/2/1`. Named-claim pytest stays 163. Monday retargets; no mid-week new repo.
+**Skill.** Monday week-close freeze: this checkout reprints last week's floor. It does not start the next instrument.
 
-**Why.** The hire signal is a replayable exit contract, not another JSONL parser family. If Sunday cannot reprint those exits and the decaying `--report` triple, the week did not close.
+**Why.** Sunday already closed week 2026-09-14. The hire signal is a frozen nine-exit contract, not a new JSONL parser family. Supervisor retargets the next public week elsewhere. Scaffolding that repo from here would be a mid-week new-repo move on a Monday freeze.
 
-**Worked example** (this repo). Replay the live MATRIX lock and the decaying report numbers.
+**Worked example** (this repo). Replay the closed-week floor. Do not add fixtures.
 
 ```bash
 python -m pytest -q
@@ -18,8 +18,8 @@ constraint-auditor audit \
 # exit 2; Verdict: DECAY; 3 violations; first at event 2; slope 2.000
 ```
 
-**Recall probe.** What nine-exit row and decaying `--report` triple must Sunday reprint?
+**Recall probe.** After Sunday's gate, what does Monday do in this repo?
 
-Answer: `0/2/0/2/1/1/0/2/1`. Decaying report stays 3 / first_index=2 / slope=2.000. Do not pytest-lock this card; it is rewritten each morning.
+Answer: Freeze. Reprint MATRIX `0/2/0/2/1/1/0/2/1` and decaying `--report` 3 / first_index=2 / slope=2.000. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family. Do not pytest-lock this card.
 
-**Retrieve.** `examples/MATRIX.md` · `LOOP_STATE.md` BENCHMARK GATE §A · `tests/test_examples.py` · `docs/LINKEDIN_DRAFT.md`
+**Retrieve.** `examples/MATRIX.md` · `LOOP_STATE.md` NEXT TICK W385 · `tests/test_examples.py` · `docs/LINKEDIN_DRAFT.md`

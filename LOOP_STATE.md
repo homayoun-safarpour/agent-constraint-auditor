@@ -413,7 +413,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W384 Refresh `docs/DAILY_LEARN.md` for Saturday Sunday-prep (pytest 163, LinkedIn nine-exit) (2026-09-19)
 - [x] W382 Sunday 2026-09-20: full BENCHMARK GATE §A + growth pulse (2026-09-20)
 - [x] W385 Mon 2026-09-21 week-close freeze (LOOP_STATE header: week counted 2026-09-14 to 2026-09-20); do not scaffold agent-trust-gate from this checkout (2026-09-21)
-- [ ] W386 Refresh `docs/DAILY_LEARN.md` for week-close freeze (week counted 2026-09-14 to 2026-09-20)
+- [x] W386 Refresh `docs/DAILY_LEARN.md` for week-close freeze (week counted 2026-09-14 to 2026-09-20) (2026-09-22)
+- [ ] W387 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -775,6 +776,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-19: DAILY_LEARN names Saturday Sunday-prep, pytest 163, and the LinkedIn nine-exit lock.
 - 2026-09-20: Sunday usefulness gate green on `ab5f8b9` (CI run 35495864557, ruff + 163 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` 3 / first_index=2 / slope=2.000).
 - 2026-09-21: week-close freeze; LOOP_STATE header names week counted 2026-09-14 to 2026-09-20. Local gate still 163 pytest + ruff clean on `be3aefa`.
+- 2026-09-22: DAILY_LEARN names week-close freeze, week counted 2026-09-14 to 2026-09-20.
 
 ## SUNDAY CLOSE (2026-09-20)
 
@@ -1197,16 +1199,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-20 sunday: W382 usefulness gate green (CI `ab5f8b9` run 35495864557, ruff + 163 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000). Claim holds. Growth pulse: 1 star / 0 forks. Next tick: W385 Monday week-close freeze 2026-09-21.
 - 2026-09-21 daily: W385 shipped; LOOP_STATE header and GATE week line name week counted 2026-09-14 to 2026-09-20. Do not scaffold `agent-trust-gate` from this checkout. Next tick: W386 DAILY_LEARN week-close freeze.
 - 2026-09-21 heartbeat: OK (W385 matches `6b35cf0`; last product lock `e4ed92f` named `test_parse_jsonl_object_line_missing_comma_between_members_is_transcript_error`; README invalid-JSONL claim still true; CI green run 35573430595; 163 pytest). HOLD. Next tick: W386 DAILY_LEARN week-close freeze.
+- 2026-09-22 daily: W386 shipped; DAILY_LEARN names week counted 2026-09-14 to 2026-09-20 and holds this file as the auditor close record. Next tick: W387 GATE CI tip refresh.
 
-## NEXT TICK (daily 2026-09-21)
+## NEXT TICK (daily 2026-09-22)
 
-- W386: Refresh `docs/DAILY_LEARN.md` for week-close freeze (week counted 2026-09-14 to 2026-09-20). Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: the second-brain card still names Monday retarget; after freeze it should name the counted week and hold this file as the auditor close record.
-- Verify: `docs/DAILY_LEARN.md` names week counted 2026-09-14 to 2026-09-20; `python3 -m pytest -q && python3 -m ruff check .` green; MATRIX 0/2/0/2/1/1/0/2/1.
+- W387: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: GATE §A still cites Sunday `ab5f8b9`; later main commits have their own green Actions runs, and the freeze hold should name the current tip.
+- Verify: GATE row 1 names a SHA later than `ab5f8b9` with a live Actions run id; `python3 -m pytest -q && python3 -m ruff check .` green; MATRIX 0/2/0/2/1/1/0/2/1.
 
 ## NEXT TICK (heartbeat 2026-09-21)
 
-- W386: Refresh `docs/DAILY_LEARN.md` for week-close freeze (week counted 2026-09-14 to 2026-09-20). Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: quality pass OK on freeze `6b35cf0` and product lock `e4ed92f` (named missing-comma parse test); no false README claim. Only open item is the second-brain card still naming Monday retarget.
-- Verify: `docs/DAILY_LEARN.md` names week counted 2026-09-14 to 2026-09-20; `python3 -m pytest -q && python3 -m ruff check .` green; MATRIX 0/2/0/2/1/1/0/2/1.
+- W387: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W386 closed the second-brain card; GATE row 1 is the remaining stale freeze field.
+- Verify: GATE row 1 names a SHA later than `ab5f8b9` with a live Actions run id; `python3 -m pytest -q && python3 -m ruff check .` green; MATRIX 0/2/0/2/1/1/0/2/1.
 

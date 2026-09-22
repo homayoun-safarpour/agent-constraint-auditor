@@ -28,9 +28,6 @@ verdict=CLEAN exit=0 violations=0 first_index=None slope=0.000
 
 ## Quickstart
 
-Full fixture exit matrix (Sunday prep): [examples/MATRIX.md](examples/MATRIX.md).
-
-
 ```bash
 cd agent-constraint-auditor
 pip install -e ".[dev]"
@@ -94,6 +91,8 @@ constraint-auditor audit \
   --format jsonl
 # expect exit 1; JSONL timestamp not YYYY-MM-DD HH:MM is ERROR, not CLEAN
 ```
+
+Full fixture exit matrix: [examples/MATRIX.md](examples/MATRIX.md).
 
 ## Constraint spec
 

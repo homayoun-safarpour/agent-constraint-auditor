@@ -415,6 +415,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W385 Mon 2026-09-21 week-close freeze (LOOP_STATE header: week counted 2026-09-14 to 2026-09-20); do not scaffold agent-trust-gate from this checkout (2026-09-21)
 - [x] W386 Refresh `docs/DAILY_LEARN.md` for week-close freeze (week counted 2026-09-14 to 2026-09-20) (2026-09-22)
 - [x] W387 Refresh BENCHMARK GATE CI tip to `3dcb035` (run 35700133657) (2026-09-22)
+- [x] W389 Restyle README first screen (MATRIX below fold); good-first-issue for ADAPTER missing-comma (2026-09-22)
 - [ ] W388 Local MATRIX nine-exit heartbeat on current main
 
 ## Build log
@@ -779,6 +780,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-21: week-close freeze; LOOP_STATE header names week counted 2026-09-14 to 2026-09-20. Local gate still 163 pytest + ruff clean on `be3aefa`.
 - 2026-09-22: DAILY_LEARN names week-close freeze, week counted 2026-09-14 to 2026-09-20.
 - 2026-09-22: BENCHMARK GATE CI tip refreshed to `3dcb035` (run 35700133657).
+- 2026-09-22: README MATRIX link moved below Quickstart (live-stack restyle).
 
 ## SUNDAY CLOSE (2026-09-20)
 
@@ -1203,12 +1205,13 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-21 heartbeat: OK (W385 matches `6b35cf0`; last product lock `e4ed92f` named `test_parse_jsonl_object_line_missing_comma_between_members_is_transcript_error`; README invalid-JSONL claim still true; CI green run 35573430595; 163 pytest). HOLD. Next tick: W386 DAILY_LEARN week-close freeze.
 - 2026-09-22 daily: W386 shipped; DAILY_LEARN names week counted 2026-09-14 to 2026-09-20 and holds this file as the auditor close record. Next tick: W387 GATE CI tip refresh.
 - 2026-09-22 daily: W387 shipped; BENCHMARK GATE CI tip is `3dcb035` (run 35700133657). Next tick: W388 MATRIX heartbeat.
+- 2026-09-22 daily: W389 shipped; README MATRIX link below Quickstart; live-stack restyle. Next tick: W388 MATRIX (unchanged). No JSONL spray.
 
 ## NEXT TICK (daily 2026-09-22)
 
 - W388: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: GATE CI tip now names `3dcb035`; the freeze hold next reprints the nine-exit contract on this tip.
-- Verify: nine exits 0/2/0/2/1/1/0/2/1; `python3 -m pytest -q && python3 -m ruff check .` green.
+- Why: GATE CI tip now names `3dcb035`; live-stack restyle is W389. Remaining freeze field is the live nine-exit reprint.
+- Verify: nine exits 0/2/0/2/1/1/0/2/1; `python -m pytest -q && python -m ruff check .` green.
 
 ## NEXT TICK (heartbeat 2026-09-21)
 

@@ -1203,6 +1203,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-21 heartbeat: OK (W385 matches `6b35cf0`; last product lock `e4ed92f` named `test_parse_jsonl_object_line_missing_comma_between_members_is_transcript_error`; README invalid-JSONL claim still true; CI green run 35573430595; 163 pytest). HOLD. Next tick: W386 DAILY_LEARN week-close freeze.
 - 2026-09-22 daily: W386 shipped; DAILY_LEARN names week counted 2026-09-14 to 2026-09-20 and holds this file as the auditor close record. Next tick: W387 GATE CI tip refresh.
 - 2026-09-22 daily: W387 shipped; BENCHMARK GATE CI tip is `3dcb035` (run 35700133657). Next tick: W388 MATRIX heartbeat.
+- 2026-09-22 evening: CI green on `20bc5ef` (Actions 35701405592); W387 on main. HOLD. Next tick: W388 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-09-22)
 
@@ -1215,4 +1216,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - W388: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
 - Why: W387 closed the stale Sunday CI tip; remaining freeze field is the live nine-exit reprint.
 - Verify: nine exits 0/2/0/2/1/1/0/2/1; `python3 -m pytest -q && python3 -m ruff check .` green.
+
+## NEXT TICK (evening 2026-09-22)
+
+- W388: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: evening gates green on `20bc5ef` (CI run 35701405592); W387 GATE CI tip already on main. Daily reprints the nine-exit contract on this tip, not new product scope. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Verify: nine exits 0/2/0/2/1/1/0/2/1; CI green on main; `python3 -m pytest -q` is 163; `python3 -m ruff check .` green; decaying `--report` 3 / first_index=2 / slope=2.000; `public_git_guard.py` PASS.
 

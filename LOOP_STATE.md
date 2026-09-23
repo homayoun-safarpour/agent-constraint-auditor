@@ -416,7 +416,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W386 Refresh `docs/DAILY_LEARN.md` for week-close freeze (week counted 2026-09-14 to 2026-09-20) (2026-09-22)
 - [x] W387 Refresh BENCHMARK GATE CI tip to `3dcb035` (run 35700133657) (2026-09-22)
 - [x] W389 Restyle README first screen (MATRIX below fold); good-first-issue for ADAPTER missing-comma (2026-09-22)
-- [ ] W388 Local MATRIX nine-exit heartbeat on current main
+- [x] W388 Local MATRIX nine-exit heartbeat on `3b57301` (2026-09-23)
+- [ ] W390 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -1206,16 +1207,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-22 daily: W386 shipped; DAILY_LEARN names week counted 2026-09-14 to 2026-09-20 and holds this file as the auditor close record. Next tick: W387 GATE CI tip refresh.
 - 2026-09-22 daily: W387 shipped; BENCHMARK GATE CI tip is `3dcb035` (run 35700133657). Next tick: W388 MATRIX heartbeat.
 - 2026-09-22 daily: W389 shipped; README MATRIX link below Quickstart; live-stack restyle. Next tick: W388 MATRIX (unchanged). No JSONL spray.
+- 2026-09-23 daily: W388 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `3b57301`. Next tick: W390 GATE CI tip refresh.
 
-## NEXT TICK (daily 2026-09-22)
+## NEXT TICK (daily 2026-09-23)
 
-- W388: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: GATE CI tip now names `3dcb035`; live-stack restyle is W389. Remaining freeze field is the live nine-exit reprint.
-- Verify: nine exits 0/2/0/2/1/1/0/2/1; `python -m pytest -q && python -m ruff check .` green.
+- W390: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W388 closed the live nine-exit reprint; GATE still names `3dcb035` while HEAD is `3b57301` after the W389 merge and today's learn card.
+- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
 
 ## NEXT TICK (heartbeat 2026-09-21)
 
-- W388: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: W387 closed the stale Sunday CI tip; remaining freeze field is the live nine-exit reprint.
-- Verify: nine exits 0/2/0/2/1/1/0/2/1; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W390: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W388 closed the live nine-exit reprint; remaining freeze field is the stale `3dcb035` CI tip versus HEAD `3b57301`.
+- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
 

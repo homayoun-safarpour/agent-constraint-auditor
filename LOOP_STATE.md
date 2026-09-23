@@ -1209,6 +1209,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-22 daily: W389 shipped; README MATRIX link below Quickstart; live-stack restyle. Next tick: W388 MATRIX (unchanged). No JSONL spray.
 - 2026-09-23 daily: W388 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `3b57301`. Next tick: W390 GATE CI tip refresh.
 - 2026-09-23 heartbeat: OK (W388 matches `9163743`; last product commit `eb011f1` named `test_readme_first_screen_matches_top100_craft` + `test_readme_links_examples_matrix`; README MATRIX-below-fold and invalid-JSONL claims still true; MATRIX 0/2/0/2/1/1/0/2/1; CI green run 35832196986; 163 pytest). HOLD. Next tick: W390 GATE CI tip refresh.
+- 2026-09-23 evening: CI green on `3bfaddc` (Actions 35895133182); W388 on main (164 pytest). HOLD. Next tick: W390 GATE CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-23)
 
@@ -1221,4 +1222,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - W390: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
 - Why: Quality pass OK on `eb011f1` (MATRIX below fold still true; named first-screen + MATRIX-link locks). GATE still names `3dcb035` (run 35700133657) while HEAD is `9163743` (green run 35832196986).
 - Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
+
+## NEXT TICK (evening 2026-09-23)
+
+- W390: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: evening gates green on `3bfaddc` (CI run 35895133182, 164 pytest); W388 MATRIX heartbeat already on main. GATE still names `3dcb035` (run 35700133657) while HEAD is `3bfaddc`. Daily retips §A row 1, not new product scope. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q` is 164; `python3 -m ruff check .` green; decaying `--report` 3 / first_index=2 / slope=2.000; `public_git_guard.py` PASS.
 

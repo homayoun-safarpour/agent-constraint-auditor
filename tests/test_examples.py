@@ -587,6 +587,15 @@ def test_linkedin_draft_locks_nine_fixture_matrix():
     assert "eight worked" not in LINKEDIN
 
 
+def test_linkedin_paste_shows_decay_as_the_stranger_run():
+    """The hook is a broken rule. The command the reader runs must be decaying."""
+    assert "examples/decaying/constraints.yaml" in LINKEDIN
+    assert "examples/decaying/journal.md" in LINKEDIN
+    assert "verdict=DECAY exit=2" in LINKEDIN
+    assert "git clone https://github.com/homayoun-safarpour/agent-constraint-auditor" in LINKEDIN
+    assert "\u2014" not in LINKEDIN
+
+
 MATRIX_EXIT_ROWS = (
     ("stable/", 0, "CLEAN"),
     ("decaying/", 2, "DECAY"),

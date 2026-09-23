@@ -1,4 +1,4 @@
-# LinkedIn draft (public-safe) — restyle 2026-09-23
+# LinkedIn draft (public-safe) - Cursor applied Claude DECAY paste 2026-09-23
 
 Field pain first. No employer demand. No unpublished research.
 Named-test locks (keep in this file): `nine-fixture matrix`, `0/2/0/2/1/1/0/2/1`, `examples/MATRIX.md`, `examples/jsonl_bad_timestamp`.
@@ -9,7 +9,15 @@ Named-test locks (keep in this file): `nine-fixture matrix`, `0/2/0/2/1/1/0/2/1`
 
 **Invention (true, narrow):** not a new eval framework. A CI gate that treats declared agent rules as a spec, scores decay over the transcript, and refuses to call an empty or invalid log CLEAN.
 
+**Grok critic (HB-LI-CRIT-001):** Cursor direction kept. Wanted command+output earlier. Still showed the CLEAN run.
+
+**Homi rewrite Accepted:** still CLEAN, still no clone URL, em dash, `[dev]` extra, no limit sentence.
+
+**Claude (CLAUDE-LI-001):** re-ran the decaying fixture. Applied below. Hook and sibling line kept. Homayoun posts himself.
+
 Internal MATRIX: `examples/MATRIX.md` nine-fixture matrix `0/2/0/2/1/1/0/2/1`. `examples/jsonl_bad_timestamp` is ERROR.
+
+Paste verified 2026-09-23 on `examples/decaying/`: verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000
 
 ---
 
@@ -19,20 +27,21 @@ Your agent can break a rule you wrote down and still look busy.
 
 That is a CI problem, not a chat complaint.
 
-constraint-auditor takes two files: a YAML spec of the rules, and the journal (or JSONL) of what the agent actually did. No LLM in the loop. Regex and predicates only.
+constraint-auditor reads two files: your rules as YAML, and the journal of what the agent did. No LLM in the loop.
 
-Exit 0 CLEAN.
-Exit 2 DECAY (rule broke; you get when and how fast).
-Exit 1 ERROR (empty log, bad JSONL, timestamp not YYYY-MM-DD HH:MM). Empty is not a free pass.
+Run it on the bundled journal where the rules start slipping:
 
-One command:
+git clone https://github.com/homayoun-safarpour/agent-constraint-auditor
+cd agent-constraint-auditor && pip install -e .
+constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md
 
-pip install -e ".[dev]"
-constraint-auditor audit --constraints examples/stable/constraints.yaml --transcript examples/stable/journal.md
+verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000
 
-verdict=CLEAN exit=0 violations=0 first_index=None slope=0.000
+Exit 2 fails the CI job. Exit 0 is CLEAN. Exit 1 is ERROR, and an empty or unreadable log counts as ERROR, not as a pass.
 
-If you freeze human labels to watch the *judge*, that is judge-drift-sentinel (`pip install judge-drift-sentinel`). This repo is the sibling: did the *agent* still obey the spec over time.
+The limit: it only checks rules you can write as a regex or a predicate. Whether the agent's work was good is a different question.
+
+If you freeze human labels to watch the judge, that is judge-drift-sentinel (pip install judge-drift-sentinel). This repo is the sibling: did the agent still obey the spec over time.
 
 Repo and worked fixtures:
 https://github.com/homayoun-safarpour/agent-constraint-auditor

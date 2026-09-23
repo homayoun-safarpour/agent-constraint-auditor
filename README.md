@@ -9,12 +9,13 @@
 Audit agent transcripts for declared-constraint decay. Exit 0 CLEAN, 2 DECAY, 1 ERROR.
 
 ```bash
-pip install -e ".[dev]"
-constraint-auditor audit --constraints examples/stable/constraints.yaml --transcript examples/stable/journal.md
+git clone https://github.com/homayoun-safarpour/agent-constraint-auditor
+cd agent-constraint-auditor && pip install -e .
+constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md
 ```
 
 ```text
-verdict=CLEAN exit=0 violations=0 first_index=None slope=0.000
+verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000
 ```
 
 ## Use this when

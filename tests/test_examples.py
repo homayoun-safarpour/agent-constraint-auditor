@@ -46,9 +46,12 @@ def test_readme_first_screen_matches_top100_craft():
     assert 0 <= pip_at < contracts_at
     head = "\n".join(README.splitlines()[:22])
     assert "# constraint-auditor" in head
+    assert "git clone https://github.com/homayoun-safarpour/agent-constraint-auditor" in head
     assert "pip install -e" in head
+    assert "examples/decaying/" in head
     assert "constraint-auditor audit" in head
-    assert "verdict=CLEAN exit=0" in head
+    assert "verdict=DECAY exit=2" in head
+    assert "verdict=CLEAN exit=0" not in head
     assert "Interview pack" not in head
 
 

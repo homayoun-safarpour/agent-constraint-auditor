@@ -1208,6 +1208,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-22 daily: W387 shipped; BENCHMARK GATE CI tip is `3dcb035` (run 35700133657). Next tick: W388 MATRIX heartbeat.
 - 2026-09-22 daily: W389 shipped; README MATRIX link below Quickstart; live-stack restyle. Next tick: W388 MATRIX (unchanged). No JSONL spray.
 - 2026-09-23 daily: W388 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `3b57301`. Next tick: W390 GATE CI tip refresh.
+- 2026-09-23 heartbeat: OK (W388 matches `9163743`; W389 README MATRIX below fold still true; learn card `3b57301` ERROR polarity matches empty/headerless/jsonl_bad_timestamp; named `test_examples_matrix_live_exits_match_table`; CI green run 35832196986; 163 pytest). HOLD. Next tick: W390 GATE CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-23)
 
@@ -1220,4 +1221,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - W390: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
 - Why: W388 closed the live nine-exit reprint; remaining freeze field is the stale `3dcb035` CI tip versus HEAD `3b57301`.
 - Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
+
+## NEXT TICK (heartbeat 2026-09-23)
+
+- W390: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: quality pass OK on W388 `9163743` and W389 first-screen restyle; GATE §A still names `3dcb035` (run 35700133657) while main HEAD is `9163743` (run 35832196986).
+- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green; MATRIX 0/2/0/2/1/1/0/2/1.
 

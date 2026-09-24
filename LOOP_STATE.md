@@ -12,7 +12,7 @@ Week: counted 2026-09-14 to 2026-09-20 · repo: agent-constraint-auditor
 | # | Check | Status 2026-09-21 |
 | --- | --- | --- |
 | 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `3bfaddc` (2026-09-23, run 35895133182); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 163 passed; `ruff check .` clean (2026-09-21 W385 week-close freeze) |
+| 2 | Named claim tests | PASS — `pytest` 164 passed; `ruff check .` clean (2026-09-24 W391) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -418,7 +418,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W389 Restyle README first screen (MATRIX below fold); good-first-issue for ADAPTER missing-comma (2026-09-22)
 - [x] W388 Local MATRIX nine-exit heartbeat on `3b57301` (2026-09-23)
 - [x] W390 Refresh BENCHMARK GATE CI tip to `3bfaddc` (run 35895133182) (2026-09-24)
-- [ ] W391 Refresh BENCHMARK GATE named-claim pytest count to 164
+- [x] W391 Refresh BENCHMARK GATE named-claim pytest count to 164 (2026-09-24)
+- [ ] W392 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -784,6 +785,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-22: BENCHMARK GATE CI tip refreshed to `3dcb035` (run 35700133657).
 - 2026-09-22: README MATRIX link moved below Quickstart (live-stack restyle).
 - 2026-09-24: BENCHMARK GATE CI tip refreshed to `3bfaddc` (run 35895133182).
+- 2026-09-24: BENCHMARK GATE named-claim pytest count refreshed to 164.
 
 ## SUNDAY CLOSE (2026-09-20)
 
@@ -1212,16 +1214,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-23 daily: W388 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `3b57301`. Next tick: W390 GATE CI tip refresh.
 - 2026-09-23 heartbeat: OK (W388 matches `9163743`; last product commit `eb011f1` named `test_readme_first_screen_matches_top100_craft` + `test_readme_links_examples_matrix`; README MATRIX-below-fold and invalid-JSONL claims still true; MATRIX 0/2/0/2/1/1/0/2/1; CI green run 35832196986; 163 pytest). HOLD. Next tick: W390 GATE CI tip refresh.
 - 2026-09-24 daily: W390 shipped; BENCHMARK GATE CI tip is `3bfaddc` (run 35895133182). Next tick: W391 pytest count.
+- 2026-09-24 daily: W391 shipped; BENCHMARK GATE named-claim pytest count is 164. Next tick: W392 CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-24)
 
-- W391: Refresh BENCHMARK GATE named-claim pytest count to 164. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: first-screen decay work landed a 164th named lock; GATE §A row 2 still names the W385 freeze 163.
-- Verify: GATE §A row 2 names 164 and matches `python3 -m pytest -q`; `python3 -m ruff check .` green.
+- W392: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W391 closed the 163→164 pytest count; GATE §A row 1 still names `3bfaddc` while HEAD is `1dc464a` (green run 35970264780).
+- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
 
 ## NEXT TICK (heartbeat 2026-09-23)
 
-- W391: Refresh BENCHMARK GATE named-claim pytest count to 164. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: W390 closed the stale `3dcb035` CI tip; remaining GATE named-claim field is the live pytest count (164).
-- Verify: GATE §A row 2 names 164 and matches `python3 -m pytest -q`; `python3 -m ruff check .` green.
+- W392: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W391 closed the named-claim pytest count at 164; GATE still names `3bfaddc` (run 35895133182) while HEAD is `1dc464a`.
+- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
 

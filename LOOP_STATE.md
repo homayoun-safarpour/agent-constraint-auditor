@@ -1223,6 +1223,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-25 daily: W393 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `3e98161`. Next tick: W394 GATE CI tip refresh.
 - 2026-09-25 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W393 matches `fbb6131`; CI green run 36109324922; 164 pytest). HOLD. Next tick: W394 GATE CI tip refresh.
 - 2026-09-25 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W393 matches `fbb6131`; latest main CI `3b1cd62` run 36110991292; 164 pytest). HOLD. Next tick: W394 GATE CI tip refresh.
+- 2026-09-25 evening: CI green on `1aa8d6b` (Actions 36112221659); W393 on main (164 pytest). HOLD. Next tick: W394 GATE CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-25)
 
@@ -1235,4 +1236,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - W394: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
 - Why: Quality pass on `d3c4f57` still holds (README first-screen DECAY matches live decaying output and `test_readme_first_screen_matches_top100_craft`); remaining freeze field is GATE §A row 1 still naming `34d2887` (run 35971321659) while latest green main is `3b1cd62` (run 36110991292).
 - Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
+
+## NEXT TICK (evening 2026-09-25)
+
+- W394: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: evening gates green on `1aa8d6b` (CI run 36112221659, 164 pytest); W393 closed the live nine-exit reprint on `3e98161`. GATE still names `34d2887` (run 35971321659) while HEAD is `1aa8d6b`. Daily retips §A row 1, not new product scope. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q` is 164; `python3 -m ruff check .` green; decaying `--report` 3 / first_index=2 / slope=2.000; `public_git_guard.py` PASS.
 

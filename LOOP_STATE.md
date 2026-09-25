@@ -11,7 +11,7 @@ Week: counted 2026-09-14 to 2026-09-20 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-21 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `3bfaddc` (2026-09-23, run 35895133182); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `34d2887` (2026-09-24, run 35971321659); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 164 passed; `ruff check .` clean (2026-09-24 W391) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -419,7 +419,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W388 Local MATRIX nine-exit heartbeat on `3b57301` (2026-09-23)
 - [x] W390 Refresh BENCHMARK GATE CI tip to `3bfaddc` (run 35895133182) (2026-09-24)
 - [x] W391 Refresh BENCHMARK GATE named-claim pytest count to 164 (2026-09-24)
-- [ ] W392 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W392 Refresh BENCHMARK GATE CI tip to `34d2887` (run 35971321659) (2026-09-25)
+- [ ] W393 Local MATRIX nine-exit heartbeat on current main
 
 ## Build log
 
@@ -786,6 +787,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-09-22: README MATRIX link moved below Quickstart (live-stack restyle).
 - 2026-09-24: BENCHMARK GATE CI tip refreshed to `3bfaddc` (run 35895133182).
 - 2026-09-24: BENCHMARK GATE named-claim pytest count refreshed to 164.
+- 2026-09-25: BENCHMARK GATE CI tip refreshed to `34d2887` (run 35971321659).
 
 ## SUNDAY CLOSE (2026-09-20)
 
@@ -1215,16 +1217,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-23 heartbeat: OK (W388 matches `9163743`; last product commit `eb011f1` named `test_readme_first_screen_matches_top100_craft` + `test_readme_links_examples_matrix`; README MATRIX-below-fold and invalid-JSONL claims still true; MATRIX 0/2/0/2/1/1/0/2/1; CI green run 35832196986; 163 pytest). HOLD. Next tick: W390 GATE CI tip refresh.
 - 2026-09-24 daily: W390 shipped; BENCHMARK GATE CI tip is `3bfaddc` (run 35895133182). Next tick: W391 pytest count.
 - 2026-09-24 daily: W391 shipped; BENCHMARK GATE named-claim pytest count is 164. Next tick: W392 CI tip refresh.
+- 2026-09-25 daily: W392 shipped; BENCHMARK GATE CI tip is `34d2887` (run 35971321659). Next tick: W393 MATRIX heartbeat.
 
-## NEXT TICK (daily 2026-09-24)
+## NEXT TICK (daily 2026-09-25)
 
-- W392: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: W391 closed the 163→164 pytest count; GATE §A row 1 still names `3bfaddc` while HEAD is `1dc464a` (green run 35970264780).
-- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W393: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W392 closed the GATE CI tip to `34d2887` (run 35971321659); next cheap verify is the nine-fixture MATRIX still 0/2/0/2/1/1/0/2/1.
+- Verify: live MATRIX exits 0/2/0/2/1/1/0/2/1; `python3 -m pytest -q && python3 -m ruff check .` green.
 
 ## NEXT TICK (heartbeat 2026-09-23)
 
-- W392: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: W391 closed the named-claim pytest count at 164; GATE still names `3bfaddc` (run 35895133182) while HEAD is `1dc464a`.
-- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W393: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W392 closed the GATE CI tip to `34d2887`; next cheap verify is the nine-fixture MATRIX still 0/2/0/2/1/1/0/2/1.
+- Verify: live MATRIX exits 0/2/0/2/1/1/0/2/1; `python3 -m pytest -q && python3 -m ruff check .` green.
 

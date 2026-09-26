@@ -1,36 +1,36 @@
-# Daily learning — 2026-09-23
+# Daily learning — 2026-09-26
 
-**Skill.** Fail-closed ERROR: a transcript you cannot parse is exit 1, never CLEAN. MATRIX reprints `0/2/0/2/1/1/0/2/1`. The three `1`s are `empty`, `headerless`, and `jsonl_bad_timestamp`.
+**Skill.** Journal and JSONL share the exit contract. `decaying` and `jsonl_decaying` both print `verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000`. Format is encoding, not a second product.
 
-**Why.** The hire-visible lock is polarity, not a new parser family. "No violations" is a free pass only if broken input still exits 0. This CLI refuses that.
+**Why.** Interview Q3 and the reliability card rest on one polarity: 0 CLEAN / 2 DECAY / 1 ERROR, markdown or JSONL. Saturday Sunday-prep is replaying that lock, not opening a parser family.
 
-**Worked example** (this repo). Replay the three ERROR fixtures. Contrast decaying so you do not mix exit 1 with exit 2.
+**Worked example** (this repo). Same four events, same two forbid rules (`never_skip_lint`, `no_force_push`). Event 2 hits `lint=FAIL`. Event 3 hits `lint=FAIL` and force-push. Parse still says 4 events; audit applies the spec.
 
 ```bash
-constraint-auditor audit \
-  --constraints examples/empty/constraints.yaml \
-  --transcript examples/empty/journal.md
-# exit 1 — no parseable events
-
-constraint-auditor audit \
-  --constraints examples/headerless/constraints.yaml \
-  --transcript examples/headerless/journal.md
-# exit 1 — no dated ## YYYY-MM-DD HH:MM heading
-
-constraint-auditor audit \
-  --constraints examples/jsonl_bad_timestamp/constraints.yaml \
-  --transcript examples/jsonl_bad_timestamp/events.jsonl \
-  --format jsonl
-# exit 1 — ISO `T` timestamp is not YYYY-MM-DD HH:MM
+constraint-auditor parse-transcript --format jsonl examples/jsonl_decaying/events.jsonl
+# OK: 4 events — parser does not score decay
 
 constraint-auditor audit \
   --constraints examples/decaying/constraints.yaml \
   --transcript examples/decaying/journal.md
-# exit 2 DECAY — events parsed; rules broken
+# exit 2 · violations=3 first_index=2 slope=2.000
+
+constraint-auditor audit \
+  --constraints examples/jsonl_decaying/constraints.yaml \
+  --transcript examples/jsonl_decaying/events.jsonl \
+  --format jsonl \
+  --report /tmp/jsonl-decay.md
+# exit 2 · same line · report: Verdict: DECAY
+
+constraint-auditor audit \
+  --constraints examples/jsonl_stable/constraints.yaml \
+  --transcript examples/jsonl_stable/events.jsonl \
+  --format jsonl
+# exit 0 · first_index=None · slope=0.000
 ```
 
-**Recall probe.** Which three fixtures print `1` in the nine-exit row, and what exit is decaying?
+**Recall probe.** Do `decaying` and `jsonl_decaying` share exit and decay line? What does `parse-transcript` print on the JSONL decaying file?
 
-Answer: `empty`, `headerless`, `jsonl_bad_timestamp` → 1 ERROR. Decaying → 2 DECAY. Row stays `0/2/0/2/1/1/0/2/1`. Do not pytest-lock this card; it is rewritten each morning.
+Answer: Both exit 2 with 3 / first_index=2 / slope=2.000. Parse prints `OK: 4 events` — it does not apply constraints. Row stays `0/2/0/2/1/1/0/2/1`. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `examples/MATRIX.md` · `examples/empty` · `examples/headerless` · `examples/jsonl_bad_timestamp` · README Exit codes
+**Retrieve.** `examples/decaying` · `examples/jsonl_decaying` · `examples/jsonl_stable` · `docs/INTERVIEW.md` · `docs/RELIABILITY_CARD.md`

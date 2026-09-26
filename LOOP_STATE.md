@@ -1229,6 +1229,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-25 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W393 matches `fbb6131`; latest main CI `3b1cd62` run 36110991292; 164 pytest). HOLD. Next tick: W394 GATE CI tip refresh.
 - 2026-09-26 daily: W394 shipped; BENCHMARK GATE CI tip is `1aa8d6b` (run 36112221659). Next tick: W395 MATRIX heartbeat.
 - 2026-09-26 daily: W395 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `e413d18`. Next tick: W396 GATE CI tip refresh.
+- 2026-09-26 evening: CI green on `6b0a4c6` (Actions 36227688365); W395 on main (164 pytest). HOLD. Next tick: W396 GATE CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-26)
 
@@ -1241,4 +1242,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - W396: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
 - Why: W395 closed the live nine-exit reprint; remaining freeze field is the stale `1aa8d6b` CI tip versus HEAD `e413d18`.
 - Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
+
+## NEXT TICK (evening 2026-09-26)
+
+- W396: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: evening gates green on `6b0a4c6` (CI run 36227688365, 164 pytest); W395 closed the live nine-exit reprint on `e413d18`. GATE still names `1aa8d6b` (run 36112221659) while HEAD is `6b0a4c6`. Daily retips §A row 1, not new product scope. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q` is 164; `python3 -m ruff check .` green; decaying `--report` 3 / first_index=2 / slope=2.000; `public_git_guard.py` PASS.
 

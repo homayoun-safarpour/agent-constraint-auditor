@@ -1235,6 +1235,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-26 daily: W395 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `e413d18`. Next tick: W396 GATE CI tip refresh.
 - 2026-09-27 daily: W396 shipped; BENCHMARK GATE CI tip is `6b0a4c6` (run 36227688365). Next tick: W397 MATRIX heartbeat.
 - 2026-09-27 daily: W397 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `c74647e`. Next tick: W398 GATE CI tip refresh.
+- 2026-09-27 evening: CI green on `03e899b` (Actions 36304166622); W397 on main (164 pytest). HOLD. Next tick: W398 GATE CI tip refresh.
 
 ## NEXT TICK (daily 2026-09-27)
 
@@ -1247,4 +1248,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - W398: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
 - Why: W397 closed the live nine-exit reprint; remaining freeze field is the stale `6b0a4c6` CI tip versus HEAD `c74647e`.
 - Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
+
+## NEXT TICK (evening 2026-09-27)
+
+- W398: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: evening gates green on `03e899b` (CI run 36304166622, 164 pytest); W397 closed the live nine-exit reprint on `c74647e`. GATE still names `6b0a4c6` (run 36227688365) while HEAD is `03e899b`. Daily retips §A row 1, not new product scope. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q` is 164; `python3 -m ruff check .` green; decaying `--report` 3 / first_index=2 / slope=2.000; `public_git_guard.py` PASS.
 

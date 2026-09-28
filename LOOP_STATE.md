@@ -1239,6 +1239,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-27 daily: W397 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `c74647e`. Next tick: W398 GATE CI tip refresh.
 - 2026-09-28 daily: W398 shipped; BENCHMARK GATE CI tip is `03e899b` (run 36304166622). Next tick: W399 MATRIX heartbeat.
 - 2026-09-28 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W398 matches `69e8fe4`; latest main CI `69e8fe4` run 36392140978; 164 pytest). HOLD. Next tick: W399 MATRIX heartbeat.
+- 2026-09-28 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W398 matches `69e8fe4`; latest main CI `ad2dbef` run 36395095220; 164 pytest). HOLD. Next tick: W399 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-09-28)
 
@@ -1249,6 +1250,6 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 ## NEXT TICK (heartbeat 2026-09-28)
 
 - W399: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: Quality pass OK on `d3c4f57`; README decaying first-screen claim still true and named-tested. Remaining backlog is still the nine-exit MATRIX verify, not new product.
+- Why: Quality pass OK on `d3c4f57`; live decaying line still `verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000` and named-tested. Remaining backlog is still the nine-exit MATRIX verify, not new product.
 - Verify: live MATRIX exits 0/2/0/2/1/1/0/2/1; `python3 -m pytest -q && python3 -m ruff check .` green.
 

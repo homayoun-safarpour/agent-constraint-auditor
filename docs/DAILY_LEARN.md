@@ -1,36 +1,29 @@
-# Daily learning — 2026-09-23
+# Daily learning — 2026-09-30
 
-**Skill.** Fail-closed ERROR: a transcript you cannot parse is exit 1, never CLEAN. MATRIX reprints `0/2/0/2/1/1/0/2/1`. The three `1`s are `empty`, `headerless`, and `jsonl_bad_timestamp`.
+**Skill.** `first_index` is 0-based. The decaying journal has four events (09:00, 10:00, 11:00, 12:00). `first_index=2` is the 11:00 turn (`lint=FAIL`, advance anyway), not the 10:00 green event.
 
-**Why.** The hire-visible lock is polarity, not a new parser family. "No violations" is a free pass only if broken input still exits 0. This CLI refuses that.
+**Why.** The public decaying line is `verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000`. Yesterday: `violations` counts hits. Today: `first_index` names the first broken event. Read it as one-based and the story is the wrong hour.
 
-**Worked example** (this repo). Replay the three ERROR fixtures. Contrast decaying so you do not mix exit 1 with exit 2.
+**Worked example** (this repo). Parse the four stamps, then audit. Stable prints `first_index=None`.
 
 ```bash
-constraint-auditor audit \
-  --constraints examples/empty/constraints.yaml \
-  --transcript examples/empty/journal.md
-# exit 1 — no parseable events
-
-constraint-auditor audit \
-  --constraints examples/headerless/constraints.yaml \
-  --transcript examples/headerless/journal.md
-# exit 1 — no dated ## YYYY-MM-DD HH:MM heading
-
-constraint-auditor audit \
-  --constraints examples/jsonl_bad_timestamp/constraints.yaml \
-  --transcript examples/jsonl_bad_timestamp/events.jsonl \
-  --format jsonl
-# exit 1 — ISO `T` timestamp is not YYYY-MM-DD HH:MM
+constraint-auditor parse-transcript examples/decaying/journal.md
+# OK: 4 events
+# 09:00, 10:00, 11:00, 12:00
 
 constraint-auditor audit \
   --constraints examples/decaying/constraints.yaml \
   --transcript examples/decaying/journal.md
-# exit 2 DECAY — events parsed; rules broken
+# verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000
+
+constraint-auditor audit \
+  --constraints examples/stable/constraints.yaml \
+  --transcript examples/stable/journal.md
+# verdict=CLEAN exit=0 violations=0 first_index=None slope=0.000
 ```
 
-**Recall probe.** Which three fixtures print `1` in the nine-exit row, and what exit is decaying?
+**Recall probe.** Which decaying timestamp is `first_index=2`, and which rule hits first?
 
-Answer: `empty`, `headerless`, `jsonl_bad_timestamp` → 1 ERROR. Decaying → 2 DECAY. Row stays `0/2/0/2/1/1/0/2/1`. Do not pytest-lock this card; it is rewritten each morning.
+Answer: `2026-08-11 11:00`. `never_skip_lint` matches `lint=FAIL`. Event 3 then adds a second lint hit plus `no_force_push`. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `examples/MATRIX.md` · `examples/empty` · `examples/headerless` · `examples/jsonl_bad_timestamp` · README Exit codes
+**Retrieve.** `examples/decaying/` · `examples/stable/` · `src/constraintauditor/decay.py` · README first screen

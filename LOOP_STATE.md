@@ -1254,6 +1254,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-09-30 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W401 matches `dc88fe7`; latest main CI `dc88fe7` run 36685629027; 164 pytest). HOLD. Next tick: W402 GATE CI tip refresh.
 - 2026-10-01 daily: W402 shipped; BENCHMARK GATE CI tip is `b33e682` (run 36828095888). Next tick: W403 MATRIX heartbeat.
 - 2026-10-01 daily: W403 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `8c09b24`. Next tick: W404 GATE CI tip refresh.
+- 2026-10-01 evening: CI green on `df518e2` (Actions 36832386042); W403 on main (164 pytest). HOLD. Next tick: W404 GATE CI tip refresh.
 
 ## NEXT TICK (daily 2026-10-01)
 
@@ -1266,4 +1267,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - W404: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
 - Why: W403 closed the live nine-exit reprint on `8c09b24`; remaining freeze field is the stale `b33e682` CI tip versus HEAD `8c09b24`.
 - Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
+
+## NEXT TICK (evening 2026-10-01)
+
+- W404: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: evening gates green on `df518e2` (CI run 36832386042, 164 pytest); W403 closed the live nine-exit reprint on `8c09b24`. GATE §A row 1 still names `b33e682` (run 36828095888) while latest green main is `df518e2`. Remaining cheap verify is the GATE CI tip refresh, not new product. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q` is 164; `python3 -m ruff check .` green; decaying `--report` 3 / first_index=2 / slope=2.000; `public_git_guard.py` PASS.
 

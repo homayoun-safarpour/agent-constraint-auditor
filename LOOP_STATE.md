@@ -1261,6 +1261,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-10-02 daily: W404 shipped; BENCHMARK GATE CI tip is `df518e2` (run 36832386042). Next tick: W405 MATRIX heartbeat.
 - 2026-10-02 daily: W405 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `89fc6cd`. Next tick: W406 GATE CI tip refresh.
 - 2026-10-02 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W405 matches `148655e`; latest main CI `148655e` run 36979646309; 164 pytest). HOLD. Next tick: W406 GATE CI tip refresh.
+- 2026-10-02 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W405 matches `148655e`; latest main CI `9b67169` run 36981926152; 164 pytest). HOLD. Next tick: W406 GATE CI tip refresh.
 
 ## NEXT TICK (daily 2026-10-02)
 
@@ -1271,6 +1272,6 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 ## NEXT TICK (heartbeat 2026-10-02)
 
 - W406: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: W405 closed the live nine-exit reprint on `89fc6cd`; GATE §A row 1 still names `df518e2` (run 36832386042) versus HEAD `148655e` (run 36979646309).
+- Why: W405 closed the live nine-exit reprint on `89fc6cd`; GATE §A row 1 still names `df518e2` (run 36832386042) versus latest green `9b67169` (run 36981926152).
 - Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
 

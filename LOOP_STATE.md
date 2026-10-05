@@ -1280,6 +1280,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-10-05 daily: W411 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `7864cb9`. Next tick: W412 GATE CI tip refresh.
 - 2026-10-05 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W411 matches `7eec4ef`; latest main CI `7eec4ef` run 37278324075; 164 pytest). HOLD. Next tick: W412 GATE CI tip refresh.
 - 2026-10-05 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W411 matches `7eec4ef`; latest main CI `b9b326f` run 37281347115; 164 pytest). HOLD. Next tick: W412 GATE CI tip refresh.
+- 2026-10-05 evening: CI green on `ef5717c` (Actions 37281676474); W411 on main (164 pytest). HOLD. Next tick: W412 GATE CI tip refresh.
 
 ## NEXT TICK (daily 2026-10-05)
 
@@ -1292,4 +1293,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - W412: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
 - Why: Quality pass OK on `d3c4f57`; W411 matches `7eec4ef`. GATE §A row 1 still names `09684b6` (run 37186107259) while latest green main is `b9b326f` (run 37281347115).
 - Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
+
+## NEXT TICK (evening 2026-10-05)
+
+- W412: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: evening gates green on `ef5717c` (CI run 37281676474, 164 pytest); W411 closed the live nine-exit reprint on `7864cb9`. GATE §A row 1 still names `09684b6` (run 37186107259) while latest green main is `ef5717c`. Remaining cheap verify is the GATE CI tip refresh, not new product. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q` is 164; `python3 -m ruff check .` green; decaying `--report` 3 / first_index=2 / slope=2.000; `public_git_guard.py` PASS.
 

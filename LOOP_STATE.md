@@ -11,7 +11,7 @@ Week: counted 2026-09-14 to 2026-09-20 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-09-21 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `09684b6` (2026-10-04, run 37186107259); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `ef5717c` (2026-10-05, run 37281676474); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 164 passed; `ruff check .` clean (2026-09-24 W391) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -439,7 +439,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W409 Local MATRIX nine-exit heartbeat on `ec8e8d1` (2026-10-04)
 - [x] W410 Refresh BENCHMARK GATE CI tip to `09684b6` (run 37186107259) (2026-10-05)
 - [x] W411 Local MATRIX nine-exit heartbeat on `7864cb9` (2026-10-05)
-- [ ] W412 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W412 Refresh BENCHMARK GATE CI tip to `ef5717c` (run 37281676474) (2026-10-06)
+- [ ] W413 Local MATRIX nine-exit heartbeat on current main
 
 ## Build log
 
@@ -1280,16 +1281,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-10-05 daily: W411 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `7864cb9`. Next tick: W412 GATE CI tip refresh.
 - 2026-10-05 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W411 matches `7eec4ef`; latest main CI `7eec4ef` run 37278324075; 164 pytest). HOLD. Next tick: W412 GATE CI tip refresh.
 - 2026-10-05 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W411 matches `7eec4ef`; latest main CI `b9b326f` run 37281347115; 164 pytest). HOLD. Next tick: W412 GATE CI tip refresh.
+- 2026-10-06 daily: W412 shipped; BENCHMARK GATE CI tip is `ef5717c` (run 37281676474). Next tick: W413 MATRIX heartbeat.
 
-## NEXT TICK (daily 2026-10-05)
+## NEXT TICK (daily 2026-10-06)
 
-- W412: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: W411 closed the live nine-exit reprint on `7864cb9`; GATE §A row 1 still names `09684b6` (run 37186107259).
-- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W413: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W412 closed the GATE CI tip on `ef5717c` (run 37281676474); remaining freeze field is the live nine-exit reprint.
+- Verify: nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
 
 ## NEXT TICK (heartbeat 2026-10-05)
 
-- W412: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: Quality pass OK on `d3c4f57`; W411 matches `7eec4ef`. GATE §A row 1 still names `09684b6` (run 37186107259) while latest green main is `b9b326f` (run 37281347115).
-- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W413: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W412 closed the GATE CI tip on `ef5717c`; remaining freeze field is the live nine-exit reprint versus HEAD.
+- Verify: nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
 

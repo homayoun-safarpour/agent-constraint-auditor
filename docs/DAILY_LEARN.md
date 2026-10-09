@@ -1,38 +1,40 @@
-# Daily learning — 2026-10-08
+# Daily learning — 2026-10-09
 
-**Skill.** Checkers search `event.text`, not the JSON object. Fields-only JSONL is turned into `- key: value` lines before the regex runs. `jsonl_decaying` has no `text` key; `lint=FAIL` still matches because it lives in `fields.gates`.
+**Skill.** `slope` is Q4 rate minus Q1 rate, not a fitted trend. Four events → one event per quartile. Rate is hits / events in that bucket and can exceed 1.0 when one event matches two forbids.
 
-**Why.** Journal and JSONL share one hire-visible line: `verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000`. Format is a parser choice. Matching is always against declared or synthesized text.
+**Why.** The hire-visible line ends `slope=2.000`. DECAY does not mean the slope rose. `required_missing` is also exit 2 with `slope=0.000` because every event misses the required pattern at the same rate.
 
-**Worked example** (this repo). Parse JSONL to see field keys, then audit. Contrast the markdown journal and the clean JSONL.
+**Worked example** (this repo). Audit decaying, then the constant-miss DECAY, then CLEAN.
 
 ```bash
-constraint-auditor parse-transcript --format jsonl examples/jsonl_decaying/events.jsonl
-# OK: 4 events
-# - 2026-08-11 09:00: ['gates', 'decision', 'reason']
-# parse lists keys; checkers do not search those names.
+constraint-auditor audit \
+  --constraints examples/decaying/constraints.yaml \
+  --transcript examples/decaying/journal.md \
+  --report /tmp/decay.md
+# verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000
+# --report: | 0.00 | 0.00 | 1.00 | 2.00 |  and  Decay slope (Q4-Q1 rate): 2.000
+# event 2 is Q3 (lint=FAIL); event 3 is Q4 (lint=FAIL + force-push) → 2.00 − 0.00
 
 constraint-auditor audit \
   --constraints examples/jsonl_decaying/constraints.yaml \
   --transcript examples/jsonl_decaying/events.jsonl \
   --format jsonl
-# verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000
-# Event 2: fields.gates holds lint=FAIL → synthesized "- gates: ... lint=FAIL"
+# same line: slope=2.000 — format is a parser choice
 
 constraint-auditor audit \
-  --constraints examples/decaying/constraints.yaml \
-  --transcript examples/decaying/journal.md
-# same line: the markdown body is already event.text
+  --constraints examples/required_missing/constraints.yaml \
+  --transcript examples/required_missing/journal.md
+# verdict=DECAY exit=2 violations=4 first_index=0 slope=0.000
+# quartile row 1.00 | 1.00 | 1.00 | 1.00 → Q4 − Q1 = 0
 
 constraint-auditor audit \
-  --constraints examples/jsonl_stable/constraints.yaml \
-  --transcript examples/jsonl_stable/events.jsonl \
-  --format jsonl
+  --constraints examples/stable/constraints.yaml \
+  --transcript examples/stable/journal.md
 # verdict=CLEAN exit=0 violations=0 first_index=None slope=0.000
 ```
 
-**Recall probe.** Why does fields-only `jsonl_decaying` match `lint\s*=\s*FAIL` when no object has a `text` key?
+**Recall probe.** Why is decaying `slope=2.000` while `required_missing` is DECAY with `slope=0.000`?
 
-Answer: Missing or blank `text` is replaced with `- {key}: {value}` from `fields`. Regex runs on that string (`IGNORECASE`). `parse-transcript` prints field keys only; it is not the match surface. Do not pytest-lock this card; it is rewritten each morning.
+Answer: Slope = Q4−Q1. Decaying piles two hits into the last event (Q4=2.00, Q1=0.00). `required_missing` omits `lint=PASS` on every event (Q4=Q1=1.00). CLEAN is also `slope=0.000`; read `verdict=` first. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `examples/jsonl_decaying` · `examples/decaying` · `examples/jsonl_stable` · `src/constraintauditor/journal.py` · `src/constraintauditor/checkers.py`
+**Retrieve.** `examples/decaying` · `examples/jsonl_decaying` · `examples/required_missing` · `examples/stable` · `src/constraintauditor/decay.py`

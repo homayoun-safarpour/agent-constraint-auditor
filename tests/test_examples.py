@@ -538,6 +538,11 @@ def test_adapter_locks_jsonl_trailing_comma_before_brace_is_invalid_jsonl():
     assert "the comma is not ignored" in ADAPTER
 
 
+def test_adapter_locks_jsonl_missing_comma_between_members_is_invalid_jsonl():
+    assert "A JSONL object line with a missing comma between members is ERROR (invalid JSONL)" in ADAPTER
+    assert "the omitted comma is not inferred" in ADAPTER
+
+
 def test_adapter_locks_jsonl_single_quoted_strings_are_invalid_jsonl():
     assert "A JSONL object line with single-quoted strings is ERROR (invalid JSONL)" in ADAPTER
     assert "single quotes are not accepted" in ADAPTER

@@ -11,7 +11,7 @@ Week: opened Mon 2026-10-12 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-10-12 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `9712099` (2026-10-11, run 38121755889); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `becd711` (2026-10-12, run 38218324270); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 164 passed; `ruff check .` clean (2026-10-12 Monday retarget) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -452,7 +452,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W422 Refresh BENCHMARK GATE CI tip to `9712099` (run 38121755889) (2026-10-11)
 - [x] W423 Sunday 2026-10-11: usefulness gate + growth pulse (2026-10-11)
 - [x] W424 Mon 2026-10-12 week retarget (LOOP_STATE header + BENCHMARK GATE week date); do not scaffold agent-trust-gate from this checkout (2026-10-12)
-- [ ] W425 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W425 Refresh BENCHMARK GATE CI tip to `becd711` (run 38218324270) (2026-10-12)
+- [ ] W426 Local MATRIX nine-exit heartbeat on current main; do not scaffold agent-trust-gate from this checkout
 
 ## Build log
 
@@ -842,6 +843,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-10-11: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `7020571`.
 - 2026-10-11: Sunday usefulness gate green on `9712099` (CI run 38121755889, ruff + 164 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` 3 / first_index=2 / slope=2.000).
 - 2026-10-12: week retarget Mon 2026-10-12; local gate still 164 pytest + ruff clean on `ed85018`.
+- 2026-10-12: BENCHMARK GATE CI tip refreshed to `becd711` (run 38218324270).
 
 ## SUNDAY CLOSE (2026-10-11)
 
@@ -1340,16 +1342,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-10-11 daily: W421 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `7020571`. Next tick: W422 GATE CI tip refresh.
 - 2026-10-11 sunday: W422 GATE CI tip is `9712099` (run 38121755889). W423 usefulness gate green (CI `9712099` run 38121755889, ruff + 164 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000). Claim holds. Growth pulse: 1 star / 0 forks. Next tick: W424 Monday week retarget 2026-10-12.
 - 2026-10-12 daily: W424 shipped; LOOP_STATE header and GATE week line opened Mon 2026-10-12. Do not scaffold `agent-trust-gate` from this checkout. Next tick: W425 GATE CI tip refresh.
-
-## NEXT TICK (daily 2026-10-12)
-
-- W425: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: Monday retarget opened LIVE Week focus 2026-10-12; GATE row 1 still names `9712099`. Refresh the CI tip before the next MATRIX heartbeat.
-- Verify: GATE row 1 names the latest green Actions run on main; `python3 -m pytest -q && python3 -m ruff check .` still green.
+- 2026-10-12 daily: W425 shipped; BENCHMARK GATE CI tip is `becd711` (run 38218324270). Next tick: W426 MATRIX heartbeat.
 
 ## NEXT TICK (heartbeat 2026-10-09)
 
-- W425: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: Monday retarget opened LIVE Week focus 2026-10-12; remaining field is GATE row 1 still pointing at `9712099`.
-- Verify: GATE row 1 names the latest green Actions run on main; `python3 -m pytest -q && python3 -m ruff check .` still green.
+- W426: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W425 closed the GATE CI tip on `becd711` (run 38218324270); remaining freeze field is the live nine-exit reprint.
+- Verify: nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
+
+## NEXT TICK (daily 2026-10-12)
+
+- W426: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W425 closed the GATE CI tip on `becd711` (run 38218324270); remaining freeze field is the live nine-exit reprint.
+- Verify: nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
 

@@ -1344,6 +1344,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-10-12 daily: W424 shipped; LOOP_STATE header and GATE week line opened Mon 2026-10-12. Do not scaffold `agent-trust-gate` from this checkout. Next tick: W425 GATE CI tip refresh.
 - 2026-10-12 daily: W425 shipped; BENCHMARK GATE CI tip is `becd711` (run 38218324270). Next tick: W426 MATRIX heartbeat.
 - 2026-10-12 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W425 matches `9c8321e`; latest main CI `9c8321e` run 38218447015; 164 pytest). HOLD. Next tick: W426 MATRIX heartbeat.
+- 2026-10-12 evening: CI green on `962886c` (Actions 38221491115); W425 on main (164 pytest). HOLD. Next tick: W426 MATRIX nine-exit heartbeat.
 
 ## NEXT TICK (daily 2026-10-12)
 
@@ -1355,5 +1356,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 
 - W426: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
 - Why: quality pass on `d3c4f57` still holds; W425 closed the GATE CI tip on `becd711` (run 38218324270); remaining freeze field is the live nine-exit reprint.
+- Verify: nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
+
+## NEXT TICK (evening 2026-10-12)
+
+- W426: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: evening gates green on `962886c` (CI run 38221491115, 164 pytest); W425 closed the GATE CI tip on `becd711` (run 38218324270). Remaining freeze field is the live nine-exit reprint. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
 - Verify: nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
 

@@ -1,29 +1,28 @@
-# Daily learning — 2026-10-13
+# Daily learning — 2026-10-14
 
-**Skill.** `--json` `violations` is the hit list. Stdout `violations=3` is the count. Tuesday after Monday's freeze keys: do not treat the array as three numbers.
+**Skill.** `detail` is a template, not a journal quote. Two prefixes only: `forbid pattern matched:` and `required pattern missing:`. Then the spec `pattern`, not the matching line.
 
-**Why.** A gate that sums unique `constraint_id`s undercounts decaying. `decay.n_violations` is `len(violations)`, not distinct rules. Two forbid IDs, three hits: event 2 then event 3.
+**Why.** Tuesday named the four `--json` keys. Wednesday: the fourth key is the rule that fired. A gate that greps `detail` for `lint=FAIL` or `force-push` misses — those strings live in `event.text`. `--report` reprints the same `detail` after the id.
 
 **Worked example** (this repo).
 
 ```bash
 constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md --json
-# exit 2  verdict=DECAY  spec_name=decaying-agent
-# decay.n_violations=3  (same as len(violations); stdout still prints violations=3)
-# violations[0]: constraint_id=never_skip_lint  event_index=2  timestamp=2026-08-11 11:00
-# violations[1]: constraint_id=never_skip_lint  event_index=3  timestamp=2026-08-11 12:00
-# violations[2]: constraint_id=no_force_push    event_index=3  timestamp=2026-08-11 12:00
-# each object: constraint_id, event_index, timestamp, detail
+# exit 2  three rows; none quote "shipping despite red lint"
+# [0] never_skip_lint  event 2  detail=forbid pattern matched: lint\s*=\s*FAIL
+# [1] never_skip_lint  event 3  same detail (second lint hit)
+# [2] no_force_push    event 3  detail=forbid pattern matched: force-push|git push --force
 
-constraint-auditor audit --constraints examples/jsonl_decaying/constraints.yaml --transcript examples/jsonl_decaying/events.jsonl --format jsonl --json
-# same three hits; spec_name=jsonl-decaying-agent
+constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md --report /tmp/decay.md
+# ## Violations reprints the same three details after `never_skip_lint` / `no_force_push`
 
-constraint-auditor audit --constraints examples/stable/constraints.yaml --transcript examples/stable/journal.md --json
-# verdict=CLEAN exit=0  violations=[]  decay.n_violations=0
+constraint-auditor audit --constraints examples/required_missing/constraints.yaml --transcript examples/required_missing/journal.md --json
+# exit 2  four rows  constraint_id=require_lint_pass
+# each detail=required pattern missing: lint\s*=\s*PASS
 ```
 
-**Recall probe.** How many unique constraint IDs vs how many `violations[]` rows on decaying? Name the four keys on one row.
+**Recall probe.** Recite the two `detail` prefixes. What is decaying `violations[0].detail` vs required_missing `violations[0].detail`?
 
-Answer: 2 IDs (`never_skip_lint`, `no_force_push`), 3 rows. Keys: `constraint_id`, `event_index`, `timestamp`, `detail`. Do not pytest-lock this card; it is rewritten each morning.
+Answer: `forbid pattern matched:` and `required pattern missing:`. Decaying[0]: `forbid pattern matched: lint\s*=\s*FAIL`. required_missing[0]: `required pattern missing: lint\s*=\s*PASS`. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `src/constraintauditor/checkers.py` · `src/constraintauditor/audit.py` · `examples/decaying/`
+**Retrieve.** `src/constraintauditor/checkers.py` · `src/constraintauditor/decay.py` · `examples/decaying/` · `examples/required_missing/`

@@ -11,7 +11,7 @@ Week: opened Mon 2026-10-12 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-10-12 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `d270385` (2026-10-13, run 38363345777); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `a77d73a` (2026-10-14, run 38529049052); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 164 passed; `ruff check .` clean (2026-10-12 Monday retarget) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -456,7 +456,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W426 Local MATRIX nine-exit heartbeat on `dea9af0` (2026-10-13)
 - [x] W427 Refresh BENCHMARK GATE CI tip to `d270385` (run 38363345777) (2026-10-13)
 - [x] W428 Local MATRIX nine-exit heartbeat on `fcae79f` (2026-10-14)
-- [ ] W429 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W429 Refresh BENCHMARK GATE CI tip to `a77d73a` (run 38529049052) (2026-10-14)
+- [ ] W430 Local MATRIX nine-exit heartbeat on current main; do not scaffold agent-trust-gate from this checkout
 
 ## Build log
 
@@ -850,6 +851,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-10-13: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `dea9af0`.
 - 2026-10-13: BENCHMARK GATE CI tip refreshed to `d270385` (run 38363345777).
 - 2026-10-14: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `fcae79f`.
+- 2026-10-14: BENCHMARK GATE CI tip refreshed to `a77d73a` (run 38529049052).
 
 ## SUNDAY CLOSE (2026-10-11)
 
@@ -1353,16 +1355,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-10-13 daily: W426 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `dea9af0`. Next tick: W427 GATE CI tip refresh.
 - 2026-10-13 daily: W427 shipped; BENCHMARK GATE CI tip is `d270385` (run 38363345777). Next tick: W428 MATRIX heartbeat.
 - 2026-10-14 daily: W428 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `fcae79f`. Next tick: W429 GATE CI tip refresh.
+- 2026-10-14 daily: W429 shipped; BENCHMARK GATE CI tip is `a77d73a` (run 38529049052). Next tick: W430 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-10-14)
 
-- W429: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: W428 closed the live nine-exit reprint on `fcae79f`; GATE §A row 1 still names `d270385` (run 38363345777).
-- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W430: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W429 closed the GATE CI tip on `a77d73a` (run 38529049052); remaining freeze field is the live nine-exit reprint.
+- Verify: nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
 
 ## NEXT TICK (heartbeat 2026-10-12)
 
-- W429: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: W428 closed the live nine-exit reprint on `fcae79f`; remaining freeze field is the stale `d270385` CI tip versus HEAD `fcae79f`.
-- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W430: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W429 closed the GATE CI tip on `a77d73a` (run 38529049052); remaining freeze field is the live nine-exit reprint versus HEAD.
+- Verify: nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
 

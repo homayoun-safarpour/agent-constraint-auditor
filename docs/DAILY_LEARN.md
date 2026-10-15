@@ -1,28 +1,29 @@
-# Daily learning — 2026-10-14
+# Daily learning — 2026-10-15
 
-**Skill.** `detail` is a template, not a journal quote. Two prefixes only: `forbid pattern matched:` and `required pattern missing:`. Then the spec `pattern`, not the matching line.
+**Skill.** `timestamp` is the event heading, copied onto the hit. Not wall-clock. Not `--report` write time.
 
-**Why.** Tuesday named the four `--json` keys. Wednesday: the fourth key is the rule that fired. A gate that greps `detail` for `lint=FAIL` or `force-push` misses — those strings live in `event.text`. `--report` reprints the same `detail` after the id.
+**Why.** Wednesday: `detail` is the spec pattern, so you cannot grep the body out of JSON. Join back to the journal with `timestamp` (and `event_index`). Same string is the `## YYYY-MM-DD HH:MM` heading, the JSONL `timestamp` field, `--json` `violations[i].timestamp`, and the `--report` `[timestamp]` prefix.
 
 **Worked example** (this repo).
 
 ```bash
 constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md --json
-# exit 2  three rows; none quote "shipping despite red lint"
-# [0] never_skip_lint  event 2  detail=forbid pattern matched: lint\s*=\s*FAIL
-# [1] never_skip_lint  event 3  same detail (second lint hit)
-# [2] no_force_push    event 3  detail=forbid pattern matched: force-push|git push --force
+# exit 2
+# [0] event 2  timestamp=2026-08-11 11:00  never_skip_lint
+# [1] event 3  timestamp=2026-08-11 12:00  never_skip_lint
+# [2] event 3  timestamp=2026-08-11 12:00  no_force_push
+# JSONL decaying reprints the same three timestamps (spec_name=jsonl-decaying-agent)
 
 constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md --report /tmp/decay.md
-# ## Violations reprints the same three details after `never_skip_lint` / `no_force_push`
+# - [2026-08-11 11:00] event 2 · `never_skip_lint` · forbid pattern matched: ...
 
-constraint-auditor audit --constraints examples/required_missing/constraints.yaml --transcript examples/required_missing/journal.md --json
-# exit 2  four rows  constraint_id=require_lint_pass
-# each detail=required pattern missing: lint\s*=\s*PASS
+constraint-auditor parse-transcript examples/decaying/journal.md
+# OK: 4 events
+# - 2026-08-11 09:00 / 10:00 / 11:00 / 12:00
 ```
 
-**Recall probe.** Recite the two `detail` prefixes. What is decaying `violations[0].detail` vs required_missing `violations[0].detail`?
+**Recall probe.** Recite decaying `violations[0].timestamp` vs `[2].timestamp`. CLEAN `violations` is `[]` so there is no timestamp to recite.
 
-Answer: `forbid pattern matched:` and `required pattern missing:`. Decaying[0]: `forbid pattern matched: lint\s*=\s*FAIL`. required_missing[0]: `required pattern missing: lint\s*=\s*PASS`. Do not pytest-lock this card; it is rewritten each morning.
+Answer: `2026-08-11 11:00` vs `2026-08-11 12:00`. Both event-3 rows share `12:00`. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `src/constraintauditor/checkers.py` · `src/constraintauditor/decay.py` · `examples/decaying/` · `examples/required_missing/`
+**Retrieve.** `src/constraintauditor/checkers.py` · `src/constraintauditor/journal.py` · `examples/decaying/` · `examples/jsonl_decaying/`

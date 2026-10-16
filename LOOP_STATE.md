@@ -11,7 +11,7 @@ Week: opened Mon 2026-10-12 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-10-12 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `a77d73a` (2026-10-14, run 38529049052); first public green `0a916b2` |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `b1b82ed` (2026-10-16, run 38865124227); first public green `0a916b2` |
 | 2 | Named claim tests | PASS — `pytest` 164 passed; `ruff check .` clean (2026-10-12 Monday retarget) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
@@ -458,7 +458,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W428 Local MATRIX nine-exit heartbeat on `fcae79f` (2026-10-14)
 - [x] W429 Refresh BENCHMARK GATE CI tip to `a77d73a` (run 38529049052) (2026-10-14)
 - [x] W430 Local MATRIX nine-exit heartbeat on `9d51c4d` (2026-10-15)
-- [ ] W431 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
+- [x] W431 Refresh BENCHMARK GATE CI tip to `b1b82ed` (run 38865124227) (2026-10-16)
+- [ ] W432 Local MATRIX nine-exit heartbeat on current main; do not scaffold agent-trust-gate from this checkout
 
 ## Build log
 
@@ -854,6 +855,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-10-14: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `fcae79f`.
 - 2026-10-14: BENCHMARK GATE CI tip refreshed to `a77d73a` (run 38529049052).
 - 2026-10-15: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `9d51c4d`.
+- 2026-10-16: BENCHMARK GATE CI tip refreshed to `b1b82ed` (run 38865124227).
 
 ## SUNDAY CLOSE (2026-10-11)
 
@@ -1360,16 +1362,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-10-14 daily: W429 shipped; BENCHMARK GATE CI tip is `a77d73a` (run 38529049052). Next tick: W430 MATRIX heartbeat.
 - 2026-10-14 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W429 matches `1fcff77`; latest main CI `1fcff77` run 38529218410; 164 pytest). HOLD. Next tick: W430 MATRIX heartbeat.
 - 2026-10-15 daily: W430 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `9d51c4d`. Next tick: W431 GATE CI tip refresh.
+- 2026-10-16 daily: W431 shipped; BENCHMARK GATE CI tip is `b1b82ed` (run 38865124227). Next tick: W432 MATRIX heartbeat.
 
-## NEXT TICK (daily 2026-10-15)
+## NEXT TICK (daily 2026-10-16)
 
-- W431: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: W430 closed the live nine-exit reprint on `9d51c4d`; GATE §A row 1 still names `a77d73a` (run 38529049052).
-- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W432: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W431 closed the GATE CI tip on `b1b82ed` (run 38865124227); remaining freeze field is the live nine-exit reprint.
+- Verify: nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
 
 ## NEXT TICK (heartbeat 2026-10-14)
 
-- W431: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: W430 closed the live nine-exit reprint on `9d51c4d`; remaining freeze field is the stale `a77d73a` CI tip versus HEAD `9d51c4d`.
-- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W432: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W431 closed the GATE CI tip on `b1b82ed` (run 38865124227); remaining freeze field is the live nine-exit reprint versus HEAD.
+- Verify: nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
 

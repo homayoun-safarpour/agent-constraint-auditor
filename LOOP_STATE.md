@@ -1364,6 +1364,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-10-15 daily: W430 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `9d51c4d`. Next tick: W431 GATE CI tip refresh.
 - 2026-10-16 daily: W431 shipped; BENCHMARK GATE CI tip is `b1b82ed` (run 38865124227). Next tick: W432 MATRIX heartbeat.
 - 2026-10-16 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W431 matches `60163a0`; latest main CI `60163a0` run 38867754401; 164 pytest). HOLD. Next tick: W432 MATRIX heartbeat.
+- 2026-10-16 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W431 matches `60163a0`; latest main CI `f143693` run 38871239870; 164 pytest). HOLD. Next tick: W432 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-10-16)
 
@@ -1374,6 +1375,6 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 ## NEXT TICK (heartbeat 2026-10-16)
 
 - W432: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: Quality pass OK on `d3c4f57`; W431 closed the GATE CI tip on `b1b82ed` (run 38865124227). Remaining freeze field is the live nine-exit reprint versus HEAD `60163a0`.
+- Why: Quality pass OK on `d3c4f57`; W431 closed the GATE CI tip on `b1b82ed` (run 38865124227). Remaining freeze field is the live nine-exit reprint versus HEAD `f143693`.
 - Verify: nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
 

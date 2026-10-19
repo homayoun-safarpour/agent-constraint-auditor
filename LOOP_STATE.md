@@ -1408,6 +1408,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-10-18 sunday: W434 local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `53ab9bc`. W435 usefulness gate green (CI `53ab9bc` run 39107972991, ruff + 164 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000). Claim holds. Growth pulse: 1 star / 1 fork. Next tick: W436 Monday week retarget 2026-10-19.
 - 2026-10-19 daily: W436 shipped; LOOP_STATE header and GATE week line opened Mon 2026-10-19. Do not scaffold `agent-trust-gate` from this checkout. Next tick: W437 GATE CI tip refresh.
 - 2026-10-19 daily: W437 shipped; BENCHMARK GATE CI tip is `9251d58` (run 39216580477). Next tick: W438 MATRIX heartbeat.
+- 2026-10-19 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W437 matches `3d726ce`; latest main CI `3d726ce` run 39216990375; 164 pytest). HOLD. Next tick: W438 MATRIX heartbeat.
 
 ## NEXT TICK (daily 2026-10-19)
 
@@ -1419,5 +1420,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 
 - W438: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
 - Why: W437 closed the GATE CI tip on `9251d58` (run 39216580477); remaining freeze field is the live nine-exit reprint versus HEAD.
+- Verify: nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
+
+## NEXT TICK (heartbeat 2026-10-19)
+
+- W438: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: Week is retargeted to 2026-10-19 and the last product lock still holds; remaining freeze field is the live nine-exit reprint versus HEAD.
 - Verify: nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
 

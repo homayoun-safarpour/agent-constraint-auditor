@@ -1,28 +1,30 @@
-# Daily learning — 2026-10-18
+# Daily learning — 2026-10-19
 
-**Skill.** `spec_name` is the YAML `name:`, copied onto the audit object. Not the folder. Not `constraint_id`.
+**Skill.** The stdout hire line is one string: `verdict=` `exit=` `violations=` `first_index=` `slope=`. Not `--json`. Not `--report`.
 
-**Why.** Thursday: `timestamp` joins the heading. Friday: `constraint_id` joins the rule. Saturday: `event_index` joins the event list. Sunday: `spec_name` joins the spec document. Journal decaying and JSONL decaying share the same three hits; the name is how you tell which YAML ran. Stdout hire line omits it.
+**Why.** Last week: join keys on each hit (`detail`, `timestamp`, `constraint_id`, `event_index`, `spec_name`). Monday retarget: the line a reviewer greps. `--json` and `--report` reprint the same three numbers, split. `required_missing` is also DECAY with `slope=0.000` — read `verdict=` first. ERROR writes no hire line.
 
 **Worked example** (this repo).
 
 ```bash
-constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md --json
-# exit 2
-# spec_name=decaying-agent  (YAML `name: decaying-agent`, not examples/decaying/)
+constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md
+# verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000
 
-constraint-auditor audit --constraints examples/jsonl_decaying/constraints.yaml --transcript examples/jsonl_decaying/events.jsonl --json
-# spec_name=jsonl-decaying-agent  — same 3 hits, different YAML name
+constraint-auditor audit --constraints examples/jsonl_decaying/constraints.yaml --transcript examples/jsonl_decaying/events.jsonl
+# same hire line (JSONL decaying)
 
-constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md --report /tmp/decay.md
-# # Constraint decay report: decaying-agent
+constraint-auditor audit --constraints examples/stable/constraints.yaml --transcript examples/stable/journal.md
+# verdict=CLEAN exit=0 violations=0 first_index=None slope=0.000
 
-constraint-auditor check-constraints examples/decaying/constraints.yaml
-# OK: decaying-agent (2 constraints)  — same name, compile only
+constraint-auditor audit --constraints examples/required_missing/constraints.yaml --transcript examples/required_missing/journal.md
+# verdict=DECAY exit=2 violations=4 first_index=0 slope=0.000  — slope 0 is not CLEAN
+
+constraint-auditor audit --constraints examples/empty/constraints.yaml --transcript examples/empty/journal.md
+# ERROR: transcript contains no parseable events  — no hire line, exit 1
 ```
 
-**Recall probe.** Recite journal decaying `spec_name` vs JSONL decaying `spec_name`. Does stdout print it?
+**Recall probe.** Recite the decaying stdout hire line. What does CLEAN print for `first_index`? Does `required_missing` `slope=0.000` mean CLEAN?
 
-Answer: `decaying-agent` vs `jsonl-decaying-agent`. Stdout hire line does not. CLEAN is `stable-agent`. `parse-transcript` has no spec so no name. Do not pytest-lock this card; it is rewritten each morning.
+Answer: `verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000`. CLEAN is `first_index=None`. No — `required_missing` is DECAY (`violations=4 first_index=0`). ERROR has no hire line. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `src/constraintauditor/audit.py` · `src/constraintauditor/spec.py` · `examples/decaying/constraints.yaml` · `examples/jsonl_decaying/constraints.yaml`
+**Retrieve.** `src/constraintauditor/cli.py` · `examples/decaying/` · `examples/required_missing/` · `examples/MATRIX.md`

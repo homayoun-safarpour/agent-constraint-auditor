@@ -1,33 +1,30 @@
-# Daily learning — 2026-10-22
+# Daily learning — 2026-10-23
 
-**Skill.** Process exit is the gate. The hire line, `--json` `exit_code`, and `--report` Verdict describe the same decision; CI and `loop-engine --gate` bind to `return result.exit_code` (0 CLEAN, 2 DECAY, 1 ERROR). `--json` and `--report` do not change it.
+**Skill.** Exit 2 is what a decay gate fails on. This repo's Actions job does not run `audit` as a step; pytest `test_examples_matrix_live_exits_match_table` re-runs the nine audits and locks `0/2/0/2/1/1/0/2/1`. `loop-engine --gate` binds the same `return result.exit_code`. Grepping the hire line or opening `--report` is not the gate.
 
-**Why.** Monday: the greppable string. Tuesday: the object. Wednesday: the file. Thursday: a passing `check-constraints` or `parse-transcript` is not an audit. Recite MATRIX `0/2/0/2/1/1/0/2/1`.
+**Why.** Mon–Wed: three descriptions of one audit. Thursday: process exit is the gate. Friday: who consumes it. INTERVIEW Q3 — exit 2 is measurable constraint decay. `check-constraints` / `parse-transcript` on decaying stay exit 0 and would pass a naive "command succeeded" gate.
 
 **Worked example** (this repo).
 
 ```bash
-constraint-auditor audit --constraints examples/stable/constraints.yaml --transcript examples/stable/journal.md
-# exit 0
-
-constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md --json
-# stdout is JSON; process exit still 2
+constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md
+# exit 2 — --gate / a decay CI step fail here
 
 constraint-auditor audit --constraints examples/required_missing/constraints.yaml --transcript examples/required_missing/journal.md
-# DECAY exit=2 slope=0.000 — slope 0 is not CLEAN
+# DECAY exit=2 slope=0.000 — slope 0 is still a fail
 
 constraint-auditor audit --constraints examples/empty/constraints.yaml --transcript examples/empty/journal.md
-# ERROR exit 1 — no hire line
+# ERROR exit 1 — fail-closed, not a free CLEAN
 
 constraint-auditor check-constraints examples/decaying/constraints.yaml
 # OK: decaying-agent (2 constraints) — exit 0, compile only
 
-constraint-auditor parse-transcript examples/decaying/journal.md
-# OK: 4 events — exit 0, not an audit
+python -m pytest tests/test_examples.py::test_examples_matrix_live_exits_match_table -q
+# this repo's CI lock of 0/2/0/2/1/1/0/2/1
 ```
 
-**Recall probe.** Does `check-constraints` on decaying fail CI the same way `audit` does? After `--json` on decaying, is the process still exit 2?
+**Recall probe.** If `--gate` wraps `check-constraints` on decaying, does the tick fail? Does `.github/workflows/ci.yml` invoke `constraint-auditor audit`?
 
-Answer: No — check-constraints is exit 0 (regex compile). `--json` only replaces stdout; `return result.exit_code` is still 2. Empty stays 1. Do not pytest-lock this card; it is rewritten each morning.
+Answer: No and no. check-constraints is exit 0 (regex compile). Actions here is ruff + pytest; the live MATRIX test is the lock. Empty stays 1. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `src/constraintauditor/cli.py` (`return result.exit_code`) · `src/constraintauditor/audit.py` · `examples/MATRIX.md` · `docs/INTERVIEW.md` (exit 2 in CI)
+**Retrieve.** `.github/workflows/ci.yml` · `tests/test_examples.py` (`test_examples_matrix_live_exits_match_table`) · `src/constraintauditor/cli.py` (`return result.exit_code`) · `docs/INTERVIEW.md` (exit 2 in CI) · README (`loop-engine --gate`) · `examples/MATRIX.md`

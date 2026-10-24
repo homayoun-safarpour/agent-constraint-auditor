@@ -1,30 +1,30 @@
-# Daily learning — 2026-10-23
+# Daily learning — 2026-10-24
 
-**Skill.** Exit 2 is what a decay gate fails on. This repo's Actions job does not run `audit` as a step; pytest `test_examples_matrix_live_exits_match_table` re-runs the nine audits and locks `0/2/0/2/1/1/0/2/1`. `loop-engine --gate` binds the same `return result.exit_code`. Grepping the hire line or opening `--report` is not the gate.
+**Skill.** Saturday Sunday-prep is one string: `0/2/0/2/1/1/0/2/1`. Fixture order is stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying, jsonl_bad_timestamp. The live lock is `test_examples_matrix_live_exits_match_table`; the table lock is `test_examples_matrix_locks_exit_rows`.
 
-**Why.** Mon–Wed: three descriptions of one audit. Thursday: process exit is the gate. Friday: who consumes it. INTERVIEW Q3 — exit 2 is measurable constraint decay. `check-constraints` / `parse-transcript` on decaying stay exit 0 and would pass a naive "command succeeded" gate.
+**Why.** Mon–Fri named one audit (hire line → JSON → report → process exit → who consumes it). Saturday names the week-close set Sunday re-runs with ruff + pytest. INTERVIEW Q3 stays "exit 2 is decay"; the MATRIX is how the other seven rows cannot drift. Do not open a JSONL parser family or scaffold `agent-trust-gate` from this checkout.
 
 **Worked example** (this repo).
 
 ```bash
-constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md
-# exit 2 — --gate / a decay CI step fail here
+python -m pytest tests/test_examples.py::test_examples_matrix_live_exits_match_table -q
+# nine audits; lock is 0/2/0/2/1/1/0/2/1
 
 constraint-auditor audit --constraints examples/required_missing/constraints.yaml --transcript examples/required_missing/journal.md
-# DECAY exit=2 slope=0.000 — slope 0 is still a fail
+# 2 — forbid:false missing pattern; slope 0.000 is still DECAY
 
 constraint-auditor audit --constraints examples/empty/constraints.yaml --transcript examples/empty/journal.md
-# ERROR exit 1 — fail-closed, not a free CLEAN
+# 1 — fail-closed, not a free CLEAN
 
-constraint-auditor check-constraints examples/decaying/constraints.yaml
-# OK: decaying-agent (2 constraints) — exit 0, compile only
+constraint-auditor audit --constraints examples/jsonl_bad_timestamp/constraints.yaml --transcript examples/jsonl_bad_timestamp/events.jsonl --format jsonl
+# 1 — ISO T timestamp is not YYYY-MM-DD HH:MM
 
-python -m pytest tests/test_examples.py::test_examples_matrix_live_exits_match_table -q
-# this repo's CI lock of 0/2/0/2/1/1/0/2/1
+python -m pytest tests/test_examples.py::test_linkedin_draft_locks_nine_fixture_matrix -q
+# LinkedIn paste names the same nine-exit row
 ```
 
-**Recall probe.** If `--gate` wraps `check-constraints` on decaying, does the tick fail? Does `.github/workflows/ci.yml` invoke `constraint-auditor audit`?
+**Recall probe.** Recite the nine exits. Which row is `forbid: false` DECAY? Which is JSONL ERROR?
 
-Answer: No and no. check-constraints is exit 0 (regex compile). Actions here is ruff + pytest; the live MATRIX test is the lock. Empty stays 1. Do not pytest-lock this card; it is rewritten each morning.
+Answer: `0/2/0/2/1/1/0/2/1`. required_missing is the fourth 2. jsonl_bad_timestamp is the last 1. empty/headerless are the middle 1/1. Do not pytest-lock this card; it is rewritten each morning.
 
-**Retrieve.** `.github/workflows/ci.yml` · `tests/test_examples.py` (`test_examples_matrix_live_exits_match_table`) · `src/constraintauditor/cli.py` (`return result.exit_code`) · `docs/INTERVIEW.md` (exit 2 in CI) · README (`loop-engine --gate`) · `examples/MATRIX.md`
+**Retrieve.** `examples/MATRIX.md` · `tests/test_examples.py` · `docs/LINKEDIN_DRAFT.md` · `docs/INTERVIEW.md` · README Quickstart

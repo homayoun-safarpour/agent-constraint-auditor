@@ -473,7 +473,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W443 Refresh BENCHMARK GATE CI tip to `8473f73` (run 39922131133) (2026-10-24)
 - [x] W444 Local MATRIX nine-exit heartbeat on `1e21902` (2026-10-24)
 - [x] W445 Refresh BENCHMARK GATE CI tip to `818e949` (run 40074704574) (2026-10-25)
-- [ ] W446 Local MATRIX nine-exit heartbeat on current main; do not scaffold agent-trust-gate from this checkout
+- [x] W446 Local MATRIX nine-exit heartbeat on `5a87bb3` (2026-10-25)
+- [ ] W447 Sunday 2026-10-25: usefulness gate + growth pulse; do not scaffold agent-trust-gate from this checkout
 
 ## Build log
 
@@ -884,6 +885,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-10-24: BENCHMARK GATE CI tip refreshed to `8473f73` (run 39922131133).
 - 2026-10-24: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `1e21902`.
 - 2026-10-25: BENCHMARK GATE CI tip refreshed to `818e949` (run 40074704574).
+- 2026-10-25: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `5a87bb3`.
 
 ## SUNDAY CLOSE (2026-10-18)
 
@@ -1436,16 +1438,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-10-24 daily: W443 shipped; BENCHMARK GATE CI tip is `8473f73` (run 39922131133). Next tick: W444 MATRIX heartbeat.
 - 2026-10-24 daily: W444 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `1e21902`. Next tick: W445 GATE CI tip refresh.
 - 2026-10-25 daily: W445 shipped; BENCHMARK GATE CI tip is `818e949` (run 40074704574). Next tick: W446 MATRIX heartbeat.
+- 2026-10-25 daily: W446 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `5a87bb3`. Next tick: W447 Sunday usefulness gate.
 
 ## NEXT TICK (daily 2026-10-25)
 
-- W446: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: W445 closed the GATE CI tip on `818e949` (run 40074704574); remaining freeze field is the live nine-exit reprint.
-- Verify: nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W447: Sunday 2026-10-25 usefulness gate + growth pulse. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W446 closed the live nine-exit reprint on `5a87bb3`; Sunday usefulness gate is the remaining week-close field.
+- Verify: CI green on current main; ruff + 164 pytest; MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
 
 ## NEXT TICK (heartbeat 2026-10-23)
 
-- W446: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: W445 closed the GATE CI tip on `818e949` (run 40074704574); remaining freeze field is the live nine-exit reprint versus HEAD.
-- Verify: nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W447: Sunday 2026-10-25 usefulness gate + growth pulse. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W446 closed the live nine-exit reprint on `5a87bb3`; Sunday usefulness gate is the remaining week-close field.
+- Verify: CI green on current main; ruff + 164 pytest; MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
 

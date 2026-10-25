@@ -1439,6 +1439,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-10-24 daily: W444 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `1e21902`. Next tick: W445 GATE CI tip refresh.
 - 2026-10-25 daily: W445 shipped; BENCHMARK GATE CI tip is `818e949` (run 40074704574). Next tick: W446 MATRIX heartbeat.
 - 2026-10-25 daily: W446 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `5a87bb3`. Next tick: W447 Sunday usefulness gate.
+- 2026-10-25 evening: CI green on `c8146d3` (Actions 40173200518); W446 on main (164 pytest). HOLD. Next tick: W447 Sunday usefulness gate.
 
 ## NEXT TICK (daily 2026-10-25)
 
@@ -1450,5 +1451,11 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 
 - W447: Sunday 2026-10-25 usefulness gate + growth pulse. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
 - Why: W446 closed the live nine-exit reprint on `5a87bb3`; Sunday usefulness gate is the remaining week-close field.
+- Verify: CI green on current main; ruff + 164 pytest; MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
+
+## NEXT TICK (evening 2026-10-25)
+
+- W447: Sunday 2026-10-25 usefulness gate + growth pulse. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: evening gates green on `c8146d3` (CI run 40173200518, 164 pytest); W446 closed the live nine-exit reprint on `5a87bb3`. W447 remains the open week-close field on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
 - Verify: CI green on current main; ruff + 164 pytest; MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
 

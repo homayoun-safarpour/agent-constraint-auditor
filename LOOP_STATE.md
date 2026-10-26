@@ -1471,6 +1471,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-10-25 daily: W446 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `5a87bb3`. Next tick: W447 Sunday usefulness gate.
 - 2026-10-26 daily: W447 usefulness gate green (CI `c8146d3` run 40173200518, ruff + 164 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000). Claim holds. Growth pulse: 1 star / 1 fork. Next tick: W448 Monday week retarget 2026-10-26.
 - 2026-10-26 daily: W448 shipped; LOOP_STATE header and GATE week line opened Mon 2026-10-26. Do not scaffold `agent-trust-gate` from this checkout. Next tick: W449 GATE CI tip refresh.
+- 2026-10-26 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W448 matches `4c3b8d8`; latest main CI `4c3b8d8` run 40286564489; 164 pytest). HOLD. Next tick: W449 GATE CI tip refresh.
 
 ## NEXT TICK (daily 2026-10-26)
 
@@ -1478,9 +1479,9 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - Why: Monday retarget opened LIVE Week focus 2026-10-26; GATE row 1 still names `c8146d3`. Refresh the CI tip before the next MATRIX heartbeat.
 - Verify: GATE row 1 names the latest green Actions run on main; `python3 -m pytest -q && python3 -m ruff check .` still green.
 
-## NEXT TICK (heartbeat 2026-10-23)
+## NEXT TICK (heartbeat 2026-10-26)
 
 - W449: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: Monday retarget opened LIVE Week focus 2026-10-26; remaining field is GATE row 1 still pointing at `c8146d3`.
+- Why: Monday retarget opened LIVE Week focus 2026-10-26; GATE row 1 still names `c8146d3` while latest green on main is `4c3b8d8` (run 40286564489).
 - Verify: GATE row 1 names the latest green Actions run on main; `python3 -m pytest -q && python3 -m ruff check .` still green.
 

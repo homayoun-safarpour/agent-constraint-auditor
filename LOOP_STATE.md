@@ -1478,6 +1478,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-10-26 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W448 matches `4c3b8d8`; latest main CI `4c3b8d8` run 40286564489; 164 pytest). HOLD. Next tick: W449 GATE CI tip refresh.
 - 2026-10-28 daily: W449 shipped; BENCHMARK GATE CI tip is `82b440c` (run 40289689119). Next tick: W450 MATRIX heartbeat.
 - 2026-10-28 daily: W450 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `e6110e5`. Next tick: W451 GATE CI tip refresh.
+- 2026-10-28 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W450 matches `21cbb01`; latest main CI `21cbb01` run 40650777696; 164 pytest). HOLD. Next tick: W451 GATE CI tip refresh.
 
 ## NEXT TICK (daily 2026-10-28)
 
@@ -1485,9 +1486,9 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - Why: W450 closed the live nine-exit reprint on `e6110e5`; GATE §A row 1 still names `82b440c` (run 40289689119).
 - Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
 
-## NEXT TICK (heartbeat 2026-10-26)
+## NEXT TICK (heartbeat 2026-10-28)
 
 - W451: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: W450 closed the live nine-exit reprint on `e6110e5`; GATE §A row 1 still names `82b440c` (run 40289689119) versus HEAD.
-- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
+- Why: W450 closed the live nine-exit reprint on `e6110e5`; GATE §A row 1 still names `82b440c` (run 40289689119) while latest green on main is `21cbb01` (run 40650777696).
+- Verify: GATE §A row 1 names the latest green Actions run on main; `python3 -m pytest -q && python3 -m ruff check .` still green.
 

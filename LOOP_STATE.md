@@ -1541,6 +1541,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-11-02 daily: W460 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `86d73b7`. Next tick: W461 GATE CI tip refresh.
 - 2026-11-02 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W460 matches `01f1235`; latest main CI `01f1235` run 41407482065; 164 pytest). HOLD. Next tick: W461 GATE CI tip refresh.
 - 2026-11-02 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W458 matches `86d73b7`; W460 matches `01f1235`; latest main CI `3924267` run 41410216310; 164 pytest). HOLD. Next tick: W461 GATE CI tip refresh.
+- 2026-11-02 evening: CI green on `1985f34` (Actions 41410694706); W460 on main (164 pytest). HOLD. Next tick: W461 GATE CI tip refresh.
 
 ## NEXT TICK (daily 2026-11-02)
 
@@ -1553,4 +1554,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - W461: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
 - Why: Monday retarget opened LIVE Week focus 2026-11-02 and W460 closed the nine-exit reprint on `86d73b7`; GATE row 1 still names `f3c4aa0` while latest green on main is `3924267` (run 41410216310).
 - Verify: GATE row 1 names the latest green Actions run on main; `python3 -m pytest -q && python3 -m ruff check .` still green.
+
+## NEXT TICK (evening 2026-11-02)
+
+- W461: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: evening gates green on `1985f34` (CI run 41410694706, 164 pytest); W460 closed the nine-exit reprint on `86d73b7`. GATE §A row 1 still names `f3c4aa0` (run 41285583925) versus HEAD `1985f34`. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Verify: GATE §A row 1 names a green Actions run on current main; `python3 -m pytest -q && python3 -m ruff check .` green.
 

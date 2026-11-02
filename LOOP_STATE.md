@@ -487,7 +487,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W457 Sunday 2026-11-01: usefulness gate + growth pulse (2026-11-01)
 - [x] W458 Mon 2026-11-02 week retarget (LOOP_STATE header + BENCHMARK GATE week date); do not scaffold agent-trust-gate from this checkout (2026-11-02)
 - [x] W459 Refresh BENCHMARK GATE CI tip to `7b4fbc9` (run 41285232410) (2026-11-01)
-- [ ] W460 Local MATRIX nine-exit heartbeat on current main
+- [x] W460 Local MATRIX nine-exit heartbeat on `86d73b7` (2026-11-02)
+- [ ] W461 Refresh BENCHMARK GATE CI tip to the latest green Actions run on main
 
 ## Build log
 
@@ -913,6 +914,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-11-01: BENCHMARK GATE CI tip refreshed to `7b4fbc9` (run 41285232410).
 - 2026-11-01: Sunday usefulness gate re-verified on `f3c4aa0` (CI run 41285583925, ruff + 164 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` 3 / first_index=2 / slope=2.000).
 - 2026-11-02: week retarget Mon 2026-11-02; local gate still 164 pytest + ruff clean on `1fa3111`.
+- 2026-11-02: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `86d73b7`.
 
 ## SUNDAY CLOSE (2026-11-01)
 
@@ -1536,16 +1538,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-11-01 daily: W459 shipped; BENCHMARK GATE CI tip is `7b4fbc9` (run 41285232410). Next tick: W458 Monday week retarget 2026-11-02.
 - 2026-11-01 sunday: W457 usefulness gate re-verified on tip `f3c4aa0` (CI run 41285583925, ruff + 164 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000). Claim holds. Growth pulse: 1 star / 1 fork. Next tick: W458 Monday week retarget 2026-11-02.
 - 2026-11-02 daily: W458 shipped; LOOP_STATE header and GATE week line opened Mon 2026-11-02. Do not scaffold `agent-trust-gate` from this checkout. Next tick: W460 MATRIX heartbeat.
+- 2026-11-02 daily: W460 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `86d73b7`. Next tick: W461 GATE CI tip refresh.
 
 ## NEXT TICK (daily 2026-11-02)
 
-- W460: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: Monday retarget opened LIVE Week focus 2026-11-02; W459 already refreshed GATE CI tip. Next cadence is the nine-exit MATRIX heartbeat.
-- Verify: nine fixtures exit 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` still green.
+- W461: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W460 closed the live nine-exit reprint on `86d73b7`; GATE row 1 still names `f3c4aa0`. Refresh the CI tip before the next heartbeat.
+- Verify: GATE row 1 names the latest green Actions run on main; `python3 -m pytest -q && python3 -m ruff check .` still green.
 
 ## NEXT TICK (heartbeat 2026-10-30)
 
-- W460: Local MATRIX nine-exit heartbeat on current main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: Monday retarget opened LIVE Week focus 2026-11-02; remaining field is the nine-exit MATRIX heartbeat on current main.
-- Verify: nine fixtures exit 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` still green.
+- W461: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: W460 closed the live nine-exit reprint on `86d73b7`; remaining field is GATE row 1 still pointing at `f3c4aa0`.
+- Verify: GATE row 1 names the latest green Actions run on main; `python3 -m pytest -q && python3 -m ruff check .` still green.
 

@@ -1539,6 +1539,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-11-01 sunday: W457 usefulness gate re-verified on tip `f3c4aa0` (CI run 41285583925, ruff + 164 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000). Claim holds. Growth pulse: 1 star / 1 fork. Next tick: W458 Monday week retarget 2026-11-02.
 - 2026-11-02 daily: W458 shipped; LOOP_STATE header and GATE week line opened Mon 2026-11-02. Do not scaffold `agent-trust-gate` from this checkout. Next tick: W460 MATRIX heartbeat.
 - 2026-11-02 daily: W460 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `86d73b7`. Next tick: W461 GATE CI tip refresh.
+- 2026-11-02 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W460 matches `01f1235`; latest main CI `01f1235` run 41407482065; 164 pytest). HOLD. Next tick: W461 GATE CI tip refresh.
 
 ## NEXT TICK (daily 2026-11-02)
 
@@ -1546,9 +1547,9 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - Why: W460 closed the live nine-exit reprint on `86d73b7`; GATE row 1 still names `f3c4aa0`. Refresh the CI tip before the next heartbeat.
 - Verify: GATE row 1 names the latest green Actions run on main; `python3 -m pytest -q && python3 -m ruff check .` still green.
 
-## NEXT TICK (heartbeat 2026-10-30)
+## NEXT TICK (heartbeat 2026-11-02)
 
 - W461: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: W460 closed the live nine-exit reprint on `86d73b7`; remaining field is GATE row 1 still pointing at `f3c4aa0`.
+- Why: Monday retarget opened LIVE Week focus 2026-11-02 and W460 closed the nine-exit reprint on `86d73b7`; GATE row 1 still names `f3c4aa0` while latest green on main is `01f1235` (run 41407482065).
 - Verify: GATE row 1 names the latest green Actions run on main; `python3 -m pytest -q && python3 -m ruff check .` still green.
 

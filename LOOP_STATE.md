@@ -1554,6 +1554,7 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-11-04 daily: W463 shipped; BENCHMARK GATE CI tip is `a27038b` (run 41597445820). Next tick: W464 MATRIX heartbeat.
 - 2026-11-04 daily: W464 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `ec531ae`. Next tick: W465 GATE CI tip refresh.
 - 2026-11-04 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W463 matches `ec531ae`; W464 matches `58458c3`; latest main CI `58458c3` run 41793400155; 164 pytest). HOLD. Next tick: W465 GATE CI tip refresh.
+- 2026-11-04 heartbeat: OK (last product `d3c4f57` named `test_readme_first_screen_matches_top100_craft`; README first-screen DECAY + decaying 3 / first_index=2 / slope=2.000 still true; W463 matches `ec531ae`; W464 matches `58458c3`; latest main CI `a72911c` run 41796753654; 164 pytest). HOLD. Next tick: W465 GATE CI tip refresh.
 
 ## NEXT TICK (daily 2026-11-04)
 
@@ -1564,6 +1565,6 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 ## NEXT TICK (heartbeat 2026-11-04)
 
 - W465: Refresh BENCHMARK GATE CI tip to the latest green Actions run on main. Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: Hostile review of `d3c4f57` holds (named `test_readme_first_screen_matches_top100_craft`; live decaying audit still `verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000`). W464 closed the nine-exit reprint on `ec531ae`; GATE row 1 still names `a27038b` (run 41597445820) while latest green main is `58458c3` (run 41793400155).
+- Why: Hostile review of `d3c4f57` holds (named `test_readme_first_screen_matches_top100_craft`; live decaying audit still `verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000`). W464 closed the nine-exit reprint on `ec531ae`; GATE row 1 still names `a27038b` (run 41597445820) while latest green main is `a72911c` (run 41796753654).
 - Verify: GATE row 1 names the latest green Actions run on main; `python3 -m pytest -q && python3 -m ruff check .` still green.
 

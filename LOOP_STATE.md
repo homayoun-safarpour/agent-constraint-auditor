@@ -11,8 +11,8 @@ Week: opened Mon 2026-11-02 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-11-02 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `56fb307` (2026-11-07, run 42351714341); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 164 passed; `ruff check .` clean (2026-11-02 Monday retarget) |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `f2d1b66` (2026-11-08, run 42459277401); first public green `0a916b2` |
+| 2 | Named claim tests | PASS — `pytest` 164 passed; `ruff check .` clean (2026-11-08 Sunday gate) |
 | 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
 | 4 | Fork/implement under 30 min | PASS — README Quickstart |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
@@ -500,7 +500,8 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W470 Local MATRIX nine-exit heartbeat on `dcee718` (2026-11-07)
 - [x] W471 Refresh BENCHMARK GATE CI tip to `56fb307` (run 42351714341) (2026-11-08)
 - [x] W472 Local MATRIX nine-exit heartbeat on `5b7d494` (2026-11-08)
-- [ ] W473 Sunday 2026-11-08: usefulness gate + growth pulse
+- [x] W473 Sunday 2026-11-08: usefulness gate + growth pulse (2026-11-08)
+- [ ] W474 Mon 2026-11-09 week retarget (LOOP_STATE header + BENCHMARK GATE week date); do not scaffold agent-trust-gate from this checkout
 
 ## Build log
 
@@ -939,6 +940,33 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - 2026-11-07: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `dcee718`.
 - 2026-11-08: BENCHMARK GATE CI tip refreshed to `56fb307` (run 42351714341).
 - 2026-11-08: local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `5b7d494`.
+- 2026-11-08: Sunday usefulness gate green on `f2d1b66` (CI run 42459277401, ruff + 164 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` 3 / first_index=2 / slope=2.000).
+
+## SUNDAY CLOSE (2026-11-08)
+
+Week opened Mon 2026-11-02. Usefulness gate re-run on `f2d1b66` (HEAD = origin/main after W472 MATRIX heartbeat).
+
+| Signal | Result |
+| --- | --- |
+| CI status | PASS — Actions success 3.10 / 3.11 / 3.12 on `f2d1b66` ([run 42459277401](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/42459277401)) |
+| Local gate | PASS — `ruff check .` clean; `pytest` 164 passed |
+| Claim still true? | YES — YAML spec + loop-engine journal or JSONL → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000 |
+| Example still runnable? | YES — MATRIX 0/2/0/2/1/1/0/2/1 (stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying, jsonl_bad_timestamp); `--report` still opens `Verdict: CLEAN\|DECAY` |
+| README first screen | YES — H1 `constraint-auditor`, pip, one CLEAN audit + output before Interview pack |
+
+### LinkedIn draft (field pain first; no employer demand)
+
+1. Your agent can break a rule you wrote down and still look busy — that is a CI problem, not a chat complaint.
+2. I keep a narrow public CLI that audits *your* journal or JSONL events against *your* YAML constraint spec (regex/predicate, not an LLM judge).
+3. Exit contract: `0` CLEAN, `2` DECAY, `1` ERROR. Empty, headerless, or unreadable JSONL is ERROR, not a free CLEAN.
+4. Nine golden fixtures still reprint `0/2/0/2/1/1/0/2/1`; the decaying journal still reports 3 violations, first_index=2, slope=2.000.
+5. Fork path: README Quickstart + `examples/MATRIX.md` (nine worked exits including `examples/jsonl_bad_timestamp`), `pip install -e ".[dev]"`, under 30 minutes.
+
+Full paste: `docs/LINKEDIN_DRAFT.md`. Not a Ragas wrapper. Not a new repo this week.
+
+### Growth pulse
+
+Public GitHub as of 2026-11-08: 1 star, 0 forks. LinkedIn week-close paste remains the nine-exit lock. No second public repo this week.
 
 ## SUNDAY CLOSE (2026-11-01)
 
@@ -1580,16 +1608,17 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 - 2026-11-07 daily: W470 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `dcee718`. Next tick: W471 GATE CI tip refresh.
 - 2026-11-08 daily: W471 shipped; BENCHMARK GATE CI tip is `56fb307` (run 42351714341). Next tick: W472 MATRIX heartbeat.
 - 2026-11-08 daily: W472 shipped; local MATRIX heartbeat 0/2/0/2/1/1/0/2/1 on `5b7d494`. Next tick: W473 Sunday usefulness gate.
+- 2026-11-08 sunday: W473 usefulness gate green (CI `f2d1b66` run 42459277401, ruff + 164 pytest, MATRIX 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000). Claim holds. Growth pulse: 1 star / 0 forks. Next tick: W474 Monday week retarget 2026-11-09.
 
-## NEXT TICK (daily 2026-11-08)
+## NEXT TICK (sunday 2026-11-08)
 
-- W473: Sunday 2026-11-08 usefulness gate (CI 3.10/3.11/3.12 + ruff + pytest + MATRIX + decaying `--report` + growth pulse). Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: W472 closed the live nine-exit reprint on `5b7d494`; Sunday close is the remaining week field.
-- Verify: CI green on the latest main tip; nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W474: Mon 2026-11-09 week retarget (LOOP_STATE header + BENCHMARK GATE week date). Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: Sunday usefulness gate closed on `f2d1b66`; header and GATE week line still say opened Mon 2026-11-02. Monday is the week-boundary retarget before new production work.
+- Verify: header and BENCHMARK GATE week line read 2026-11-09; `python3 -m pytest -q && python3 -m ruff check .` still green.
 
 ## NEXT TICK (heartbeat 2026-11-08)
 
-- W473: Sunday 2026-11-08 usefulness gate (CI 3.10/3.11/3.12 + ruff + pytest + MATRIX + decaying `--report` + growth pulse). Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
-- Why: W472 closed the live nine-exit reprint on `5b7d494`; remaining week field is the Sunday usefulness gate.
-- Verify: CI green on the latest main tip; nine MATRIX exits 0/2/0/2/1/1/0/2/1; decaying `--report` still 3 / first_index=2 / slope=2.000; `python3 -m pytest -q && python3 -m ruff check .` green.
+- W474: Mon 2026-11-09 week retarget (LOOP_STATE header + BENCHMARK GATE week date). Do not scaffold `agent-trust-gate` from this checkout. Do not open a JSONL parser family.
+- Why: Sunday usefulness gate closed on `f2d1b66`; remaining freeze field is the week-open header (2026-11-02).
+- Verify: header and BENCHMARK GATE week line read 2026-11-09; `python3 -m pytest -q && python3 -m ruff check .` still green.
 

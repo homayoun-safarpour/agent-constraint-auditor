@@ -1,7 +1,6 @@
 ﻿# LOOP_STATE - agent-constraint-auditor (LIVE Week focus 2026-11-02)
 
 > Public: https://github.com/homayoun-safarpour/agent-constraint-auditor  
-> Local: `D:\ship\agent-constraint-auditor`
 
 ## BENCHMARK GATE
 
@@ -11,10 +10,10 @@ Week: opened Mon 2026-11-02 · repo: agent-constraint-auditor
 
 | # | Check | Status 2026-11-02 |
 | --- | --- | --- |
-| 1 | CI green 3.10 / 3.11 / 3.12 | PASS — Actions success on `56fb307` (2026-11-07, run 42351714341); first public green `0a916b2` |
-| 2 | Named claim tests | PASS — `pytest` 164 passed; `ruff check .` clean (2026-11-02 Monday retarget) |
-| 3 | Worked example real output | PASS — stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp |
-| 4 | Fork/implement under 30 min | PASS — README Quickstart |
+| 1 | CI green 3.10 / 3.11 / 3.12 | PASS: Actions success on `56fb307` (2026-11-07, run 42351714341); first public green `0a916b2`  |
+| 2 | Named claim tests | PASS: `pytest` 164 passed; `ruff check .` clean (2026-11-02 Monday retarget)  |
+| 3 | Worked example real output | PASS: stable/decaying + required_* + empty/headerless + jsonl_stable/jsonl_decaying + jsonl_bad_timestamp  |
+| 4 | Fork/implement under 30 min | PASS: README Quickstart  |
 | 5 | `public_git_guard.py` PASS | PASS (Homayoun) |
 | 6 | AI-tell README ban | PASS on publish commit |
 | 7 | `docs/INTERVIEW.md` | Present |
@@ -67,7 +66,7 @@ PASS - log: `D:\live_memory\logs\runtime\name_field_check_agent-constraint-audit
 - [x] W36 Prep Sunday: example matrix checklist under `examples/MATRIX.md` (2026-09-10)
 - [x] W37 CI tip green on main after matrix merge (run 34492448163) (2026-09-10)
 - [x] W38 README Quickstart links `examples/MATRIX.md` (2026-09-10)
-- [x] W39 Sat: dry-run full MATRIX commands locally (2026-09-10 — early; all 8 exits match)
+- [x] W39 Sat: dry-run full MATRIX commands locally (2026-09-10, early; all 8 exits match)
 - [x] W40 Fri: growth pulse + LinkedIn draft refresh in LOOP_STATE (2026-09-10)
 - [x] W41 Close stranded cursor/* draft PRs (2026-09-10)
 - [x] W42 BENCHMARK GATE pytest count bumped to 61 (2026-09-10)
@@ -946,15 +945,15 @@ Week opened Mon 2026-10-26. Usefulness gate re-run on `f3c4aa0` (HEAD = origin/m
 
 | Signal | Result |
 | --- | --- |
-| CI status | PASS — Actions success 3.10 / 3.11 / 3.12 on `f3c4aa0` ([run 41285583925](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/41285583925)) |
-| Local gate | PASS — `ruff check .` clean; `pytest` 164 passed |
-| Claim still true? | YES — YAML spec + loop-engine journal or JSONL → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000 |
-| Example still runnable? | YES — MATRIX 0/2/0/2/1/1/0/2/1 (stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying, jsonl_bad_timestamp); `--report` still opens `Verdict: CLEAN\|DECAY` |
-| README first screen | YES — H1 `constraint-auditor`, pip, one CLEAN audit + output before Interview pack |
+| CI status | PASS: Actions success 3.10 / 3.11 / 3.12 on `f3c4aa0` ([run 41285583925](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/41285583925))  |
+| Local gate | PASS: `ruff check .` clean; `pytest` 164 passed  |
+| Claim still true? | YES: YAML spec + loop-engine journal or JSONL → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000  |
+| Example still runnable? | YES: MATRIX 0/2/0/2/1/1/0/2/1 (stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying, jsonl_bad_timestamp); `--report` still opens `Verdict: CLEAN\|DECAY`  |
+| README first screen | YES: H1 `constraint-auditor`, pip, one CLEAN audit + output before Interview pack  |
 
 ### LinkedIn draft (field pain first; no employer demand)
 
-1. Your agent can break a rule you wrote down and still look busy — that is a CI problem, not a chat complaint.
+1. Your agent can break a rule you wrote down and still look busy, that is a CI problem, not a chat complaint.
 2. I keep a narrow public CLI that audits *your* journal or JSONL events against *your* YAML constraint spec (regex/predicate, not an LLM judge).
 3. Exit contract: `0` CLEAN, `2` DECAY, `1` ERROR. Empty, headerless, or unreadable JSONL is ERROR, not a free CLEAN.
 4. Nine golden fixtures still reprint `0/2/0/2/1/1/0/2/1`; the decaying journal still reports 3 violations, first_index=2, slope=2.000.
@@ -972,15 +971,15 @@ Week opened Mon 2026-10-19. Usefulness gate re-run on `c8146d3` (HEAD = origin/m
 
 | Signal | Result |
 | --- | --- |
-| CI status | PASS — Actions success 3.10 / 3.11 / 3.12 on `c8146d3` ([run 40173200518](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/40173200518)) |
-| Local gate | PASS — `ruff check .` clean; `pytest` 164 passed |
-| Claim still true? | YES — YAML spec + loop-engine journal or JSONL → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000 |
-| Example still runnable? | YES — MATRIX 0/2/0/2/1/1/0/2/1 (stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying, jsonl_bad_timestamp); `--report` still opens `Verdict: CLEAN\|DECAY` |
-| README first screen | YES — H1 `constraint-auditor`, pip, one CLEAN audit + output before Interview pack |
+| CI status | PASS: Actions success 3.10 / 3.11 / 3.12 on `c8146d3` ([run 40173200518](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/40173200518))  |
+| Local gate | PASS: `ruff check .` clean; `pytest` 164 passed  |
+| Claim still true? | YES: YAML spec + loop-engine journal or JSONL → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000  |
+| Example still runnable? | YES: MATRIX 0/2/0/2/1/1/0/2/1 (stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying, jsonl_bad_timestamp); `--report` still opens `Verdict: CLEAN\|DECAY`  |
+| README first screen | YES: H1 `constraint-auditor`, pip, one CLEAN audit + output before Interview pack  |
 
 ### LinkedIn draft (field pain first; no employer demand)
 
-1. Your agent can break a rule you wrote down and still look busy — that is a CI problem, not a chat complaint.
+1. Your agent can break a rule you wrote down and still look busy, that is a CI problem, not a chat complaint.
 2. I keep a narrow public CLI that audits *your* journal or JSONL events against *your* YAML constraint spec (regex/predicate, not an LLM judge).
 3. Exit contract: `0` CLEAN, `2` DECAY, `1` ERROR. Empty, headerless, or unreadable JSONL is ERROR, not a free CLEAN.
 4. Nine golden fixtures still reprint `0/2/0/2/1/1/0/2/1`; the decaying journal still reports 3 violations, first_index=2, slope=2.000.
@@ -998,15 +997,15 @@ Week opened Mon 2026-10-12. Usefulness gate re-run on `53ab9bc` (HEAD = origin/m
 
 | Signal | Result |
 | --- | --- |
-| CI status | PASS — Actions success 3.10 / 3.11 / 3.12 on `53ab9bc` ([run 39107972991](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/39107972991)) |
-| Local gate | PASS — `ruff check .` clean; `pytest` 164 passed |
-| Claim still true? | YES — YAML spec + loop-engine journal or JSONL → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000 |
-| Example still runnable? | YES — MATRIX 0/2/0/2/1/1/0/2/1 (stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying, jsonl_bad_timestamp); `--report` still opens `Verdict: CLEAN\|DECAY` |
-| README first screen | YES — H1 `constraint-auditor`, pip, one CLEAN audit + output before Interview pack |
+| CI status | PASS: Actions success 3.10 / 3.11 / 3.12 on `53ab9bc` ([run 39107972991](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/39107972991))  |
+| Local gate | PASS: `ruff check .` clean; `pytest` 164 passed  |
+| Claim still true? | YES: YAML spec + loop-engine journal or JSONL → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000  |
+| Example still runnable? | YES: MATRIX 0/2/0/2/1/1/0/2/1 (stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying, jsonl_bad_timestamp); `--report` still opens `Verdict: CLEAN\|DECAY`  |
+| README first screen | YES: H1 `constraint-auditor`, pip, one CLEAN audit + output before Interview pack  |
 
 ### LinkedIn draft (field pain first; no employer demand)
 
-1. Your agent can break a rule you wrote down and still look busy — that is a CI problem, not a chat complaint.
+1. Your agent can break a rule you wrote down and still look busy, that is a CI problem, not a chat complaint.
 2. I keep a narrow public CLI that audits *your* journal or JSONL events against *your* YAML constraint spec (regex/predicate, not an LLM judge).
 3. Exit contract: `0` CLEAN, `2` DECAY, `1` ERROR. Empty, headerless, or unreadable JSONL is ERROR, not a free CLEAN.
 4. Nine golden fixtures still reprint `0/2/0/2/1/1/0/2/1`; the decaying journal still reports 3 violations, first_index=2, slope=2.000.
@@ -1024,15 +1023,15 @@ Week still counted 2026-09-14 to 2026-09-20 (hold since W385). Usefulness gate r
 
 | Signal | Result |
 | --- | --- |
-| CI status | PASS — Actions success 3.10 / 3.11 / 3.12 on `9712099` ([run 38121755889](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/38121755889)) |
-| Local gate | PASS — `ruff check .` clean; `pytest` 164 passed |
-| Claim still true? | YES — YAML spec + loop-engine journal or JSONL → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000 |
-| Example still runnable? | YES — MATRIX 0/2/0/2/1/1/0/2/1 (stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying, jsonl_bad_timestamp); `--report` still opens `Verdict: CLEAN\|DECAY` |
-| README first screen | YES — H1 `constraint-auditor`, pip, one CLEAN audit + output before Interview pack |
+| CI status | PASS: Actions success 3.10 / 3.11 / 3.12 on `9712099` ([run 38121755889](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/38121755889))  |
+| Local gate | PASS: `ruff check .` clean; `pytest` 164 passed  |
+| Claim still true? | YES: YAML spec + loop-engine journal or JSONL → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000  |
+| Example still runnable? | YES: MATRIX 0/2/0/2/1/1/0/2/1 (stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying, jsonl_bad_timestamp); `--report` still opens `Verdict: CLEAN\|DECAY`  |
+| README first screen | YES: H1 `constraint-auditor`, pip, one CLEAN audit + output before Interview pack  |
 
 ### LinkedIn draft (field pain first; no employer demand)
 
-1. Your agent can break a rule you wrote down and still look busy — that is a CI problem, not a chat complaint.
+1. Your agent can break a rule you wrote down and still look busy, that is a CI problem, not a chat complaint.
 2. I keep a narrow public CLI that audits *your* journal or JSONL events against *your* YAML constraint spec (regex/predicate, not an LLM judge).
 3. Exit contract: `0` CLEAN, `2` DECAY, `1` ERROR. Empty, headerless, or unreadable JSONL is ERROR, not a free CLEAN.
 4. Nine golden fixtures still reprint `0/2/0/2/1/1/0/2/1`; the decaying journal still reports 3 violations, first_index=2, slope=2.000.
@@ -1050,11 +1049,11 @@ Week opened Mon 2026-09-14. Usefulness gate re-run on `ab5f8b9` (HEAD = origin/m
 
 | Signal | Result |
 | --- | --- |
-| CI status | PASS — Actions success 3.10 / 3.11 / 3.12 on `ab5f8b9` ([run 35495864557](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/35495864557)) |
-| Local gate | PASS — `ruff check .` clean; `pytest` 163 passed |
-| Claim still true? | YES — YAML spec + loop-engine journal or JSONL → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000 |
-| Example still runnable? | YES — MATRIX 0/2/0/2/1/1/0/2/1 (stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying, jsonl_bad_timestamp); `--report` still opens `Verdict: CLEAN\|DECAY` |
-| README first screen | YES — H1 `constraint-auditor`, pip, one CLEAN audit + output before Interview pack |
+| CI status | PASS: Actions success 3.10 / 3.11 / 3.12 on `ab5f8b9` ([run 35495864557](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/35495864557))  |
+| Local gate | PASS: `ruff check .` clean; `pytest` 163 passed  |
+| Claim still true? | YES: YAML spec + loop-engine journal or JSONL → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000  |
+| Example still runnable? | YES: MATRIX 0/2/0/2/1/1/0/2/1 (stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying, jsonl_bad_timestamp); `--report` still opens `Verdict: CLEAN\|DECAY`  |
+| README first screen | YES: H1 `constraint-auditor`, pip, one CLEAN audit + output before Interview pack  |
 
 ### LinkedIn draft (field pain first; no employer demand)
 
@@ -1070,11 +1069,11 @@ Week opened Mon 2026-09-07. Usefulness gate re-run on `ef1a532` (HEAD = origin/m
 
 | Signal | Result |
 | --- | --- |
-| CI status | PASS — Actions success 3.10 / 3.11 / 3.12 on `ef1a532` ([run 34745810671](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/34745810671)) |
-| Local gate | PASS — `ruff check .` clean; `pytest` 78 passed |
-| Claim still true? | YES — YAML spec + loop-engine journal or JSONL → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000 |
-| Example still runnable? | YES — MATRIX 0/2/0/2/1/1/0/2 (stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying); `--report` still opens `Verdict: CLEAN\|DECAY` |
-| README first screen | YES — H1 `constraint-auditor`, pip, one CLEAN audit + output before Interview pack |
+| CI status | PASS: Actions success 3.10 / 3.11 / 3.12 on `ef1a532` ([run 34745810671](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/34745810671))  |
+| Local gate | PASS: `ruff check .` clean; `pytest` 78 passed  |
+| Claim still true? | YES: YAML spec + loop-engine journal or JSONL → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000  |
+| Example still runnable? | YES: MATRIX 0/2/0/2/1/1/0/2 (stable, decaying, required_present, required_missing, empty, headerless, jsonl_stable, jsonl_decaying); `--report` still opens `Verdict: CLEAN\|DECAY`  |
+| README first screen | YES: H1 `constraint-auditor`, pip, one CLEAN audit + output before Interview pack  |
 
 ### LinkedIn draft (field pain first; no employer demand)
 
@@ -1086,10 +1085,10 @@ Week opened Mon 2026-08-31. Usefulness gate re-run on `ae1879c` (HEAD = origin/m
 
 | Signal | Result |
 | --- | --- |
-| CI status | PASS — Actions success 3.10 / 3.11 / 3.12 on `ae1879c` ([run 34019459544](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/34019459544)) |
-| Local gate | PASS — `ruff check .` clean; `pytest` 36 passed |
-| Claim still true? | YES — YAML spec + loop-engine journal → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000 |
-| Example still runnable? | YES — stable 0, decaying 2, required_present 0, required_missing 2, empty 1, headerless 1; `--report` still opens `Verdict: CLEAN\|DECAY` |
+| CI status | PASS: Actions success 3.10 / 3.11 / 3.12 on `ae1879c` ([run 34019459544](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/runs/34019459544))  |
+| Local gate | PASS: `ruff check .` clean; `pytest` 36 passed  |
+| Claim still true? | YES: YAML spec + loop-engine journal → deterministic CLEAN / DECAY / ERROR; decaying fixture still reports 3 violations, first_index=2, slope=2.000  |
+| Example still runnable? | YES: stable 0, decaying 2, required_present 0, required_missing 2, empty 1, headerless 1; `--report` still opens `Verdict: CLEAN\|DECAY`  |
 
 ### LinkedIn draft (field pain first; no employer demand)
 

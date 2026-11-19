@@ -1,4 +1,4 @@
-# Adapter notes — agent-loop-engine journals
+# Adapter notes: agent-loop-engine journals
 
 `constraintauditor.journal.parse_loop_engine_journal` reads the append-only markdown journal shape used by [agent-loop-engine](https://github.com/homayoun-safarpour/agent-loop-engine).
 
@@ -74,7 +74,7 @@ Use forbid rules for "never do X". Use required rules for "every event must stil
 ## What this does not do
 
 - Does not call a model to “judge” the agent
-- Does not invent constraints — you declare them in YAML
+- Does not invent constraints, you declare them in YAML
 
 ## Verify
 

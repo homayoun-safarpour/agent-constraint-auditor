@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "agent-constraint-auditor"
+type: software
+authors:
+  - family-names: Safarpour
+    given-names: Homayoun
+    affiliation: "University of Limerick"
+repository-code: "https://github.com/homayoun-safarpour/agent-constraint-auditor"
+url: "https://homayoun-safarpour.github.io"
+license: MIT
+version: "0.1.0"
+abstract: "Audit agent transcripts against declared constraints; report decay with exit 0/2."
+keywords:
+  - "ai-reliability"
+  - "ci"
+  - "constraint-auditor"
+  - "constraint-checking"
+  - "evaluation"
+  - "fail-closed"
+  - "llm-agents"
+  - "llm-evaluation"
+  - "python"
+  - "transcript-audit"

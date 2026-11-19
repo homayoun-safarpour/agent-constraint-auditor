@@ -1,7 +1,6 @@
 ﻿# LOOP_STATE - agent-constraint-auditor (LIVE Week focus 2026-11-02)
 
 > Public: https://github.com/homayoun-safarpour/agent-constraint-auditor  
-> Local: `D:\ship\agent-constraint-auditor`
 
 ## BENCHMARK GATE
 

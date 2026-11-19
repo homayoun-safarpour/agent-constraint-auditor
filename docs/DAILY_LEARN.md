@@ -1,23 +1,23 @@
-# Daily learning — 2026-10-23
+# Daily learning: 2026-10-23
 
 **Skill.** Exit 2 is what a decay gate fails on. This repo's Actions job does not run `audit` as a step; pytest `test_examples_matrix_live_exits_match_table` re-runs the nine audits and locks `0/2/0/2/1/1/0/2/1`. `loop-engine --gate` binds the same `return result.exit_code`. Grepping the hire line or opening `--report` is not the gate.
 
-**Why.** Mon–Wed: three descriptions of one audit. Thursday: process exit is the gate. Friday: who consumes it. INTERVIEW Q3 — exit 2 is measurable constraint decay. `check-constraints` / `parse-transcript` on decaying stay exit 0 and would pass a naive "command succeeded" gate.
+**Why.** Mon–Wed: three descriptions of one audit. Thursday: process exit is the gate. Friday: who consumes it. INTERVIEW Q3, exit 2 is measurable constraint decay. `check-constraints` / `parse-transcript` on decaying stay exit 0 and would pass a naive "command succeeded" gate.
 
 **Worked example** (this repo).
 
 ```bash
 constraint-auditor audit --constraints examples/decaying/constraints.yaml --transcript examples/decaying/journal.md
-# exit 2 — --gate / a decay CI step fail here
+# exit 2: --gate / a decay CI step fail here
 
 constraint-auditor audit --constraints examples/required_missing/constraints.yaml --transcript examples/required_missing/journal.md
-# DECAY exit=2 slope=0.000 — slope 0 is still a fail
+# DECAY exit=2 slope=0.000: slope 0 is still a fail
 
 constraint-auditor audit --constraints examples/empty/constraints.yaml --transcript examples/empty/journal.md
-# ERROR exit 1 — fail-closed, not a free CLEAN
+# ERROR exit 1: fail-closed, not a free CLEAN
 
 constraint-auditor check-constraints examples/decaying/constraints.yaml
-# OK: decaying-agent (2 constraints) — exit 0, compile only
+# OK: decaying-agent (2 constraints): exit 0, compile only
 
 python -m pytest tests/test_examples.py::test_examples_matrix_live_exits_match_table -q
 # this repo's CI lock of 0/2/0/2/1/1/0/2/1

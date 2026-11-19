@@ -1,4 +1,4 @@
-﻿# Benchmark gate paste — 2026-08-31 (Europe/Dublin)
+﻿# Benchmark gate paste: 2026-08-31 (Europe/Dublin)
 
 Commands run on local tree before first public push.
 

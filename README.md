@@ -6,7 +6,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![CI](https://github.com/homayoun-safarpour/agent-constraint-auditor/actions/workflows/ci.yml/badge.svg)
 
-Audit agent transcripts against declared rules and fail CI when a rule breaks (exit 0, 2 or 1).
+Agent reliability: audit agent transcripts against declared rules and fail CI when a rule breaks (exit 0, 2 or 1).
 
 constraint-auditor is a command-line check that tests every event in an AI agent's transcript against rules that a person has declared in YAML. We built it because an agent can keep passing its tests while it stops following its rules, such as advancing after a failed lint check, and only the transcript records that change. Given rules that are regular expressions, each forbidden or required in every event, it counts the violations in each quarter of the transcript and returns exit 0 (CLEAN), 2 (DECAY) or 1 (ERROR) with an optional Markdown report, so that a CI job or an agent loop can stop when a rule breaks.
 
@@ -21,6 +21,10 @@ verdict=DECAY exit=2 violations=3 first_index=2 slope=2.000
 ```
 
 That command exits 2. The same audit on `examples/stable/` exits 0.
+
+![agent-constraint-auditor: agent transcript is checked by YAML rules on every event; the result is DECAY with exit 2](docs/readme-flow.svg)
+
+[How it works](#how-it-works) · [Results](#what-each-result-means) · [Limits](#limits) · [Interview pack](docs/INTERVIEW.md) · [Cite](#citation) · Part of [a small open stack for checking AI agents and their judges](https://homayoun-safarpour.github.io)
 
 ## What each result means
 

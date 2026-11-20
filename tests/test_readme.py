@@ -27,7 +27,7 @@ def test_readme_first_screen_locks_clone_install_command_and_output():
     assert FIRST_SCREEN_OUTPUT in head
     assert "Interview pack" not in head
     assert "verdict=CLEAN" not in head
-    assert "—" not in head
+    assert "\u2014" not in head
 
 
 def test_readme_install_comes_before_problem_and_interview_pack():
@@ -51,7 +51,7 @@ def test_readme_opening_paragraph_sits_before_clone():
 
 
 def test_readme_has_no_em_dash():
-    assert "—" not in README
+    assert "\u2014" not in README
 
 
 def test_readme_first_screen_output_is_real(capsys):

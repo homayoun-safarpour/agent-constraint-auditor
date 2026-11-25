@@ -604,7 +604,7 @@ def test_parse_jsonl_empty_string_text_with_fields_uses_fields(tmp_path):
     assert events[0].fields == {"gates": "lint=PASS"}
 
 
-def test_parse_jsonl_nonempty_text_with_fields_uses_text(tmp_path):
+def test_parse_jsonl_nonempty_text_with_fields_uses_text_and_fields(tmp_path):
     path = tmp_path / "events.jsonl"
     path.write_text(
         '{"timestamp": "2026-08-11 09:00",'
@@ -614,7 +614,7 @@ def test_parse_jsonl_nonempty_text_with_fields_uses_text(tmp_path):
     )
     events = parse_jsonl_transcript(path)
     assert len(events) == 1
-    assert events[0].text == "- gates: from-text"
+    assert events[0].text == "- gates: from-text\n- gates: from-fields"
     assert events[0].fields == {"gates": "from-fields"}
 
 
@@ -643,3 +643,68 @@ def test_parse_loop_engine_journal_empty_bodied_event_among_valid_is_error(tmp_p
 
 def test_detect_format_keeps_dated_journal():
     assert detect_format(ROOT / "examples" / "stable" / "journal.md") == "journal"
+
+
+def test_journal_with_utf8_bom_keeps_first_event(tmp_path):
+    path = tmp_path / "bom.md"
+    path.write_bytes(
+        b"\xef\xbb\xbf## 2026-08-11 09:00\n- gates: lint=FAIL\n\n"
+        b"## 2026-08-11 10:00\n- gates: lint=PASS\n"
+    )
+    events = parse_loop_engine_journal(path)
+    assert [e.timestamp for e in events] == ["2026-08-11 09:00", "2026-08-11 10:00"]
+    assert events[0].fields["gates"] == "lint=FAIL"
+    assert detect_format(path) == "journal"
+
+
+def test_malformed_first_heading_is_transcript_error(tmp_path):
+    path = tmp_path / "pre.md"
+    path.write_text(
+        "## 2026-08-11 09:00 UTC\n- gates: lint=FAIL\n\n## 2026-08-11 10:00\n- gates: lint=PASS\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(TranscriptError, match="malformed journal heading at line 1"):
+        parse_loop_engine_journal(path)
+
+
+def test_malformed_later_heading_is_transcript_error_not_merged(tmp_path):
+    path = tmp_path / "merge.md"
+    path.write_text(
+        "## 2026-08-11 09:00\n- gates: lint=PASS\n\n## 2026-08-11 9:30\n- gates: lint=FAIL\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(TranscriptError, match="malformed journal heading at line 4"):
+        parse_loop_engine_journal(path)
+
+
+def test_field_line_before_first_heading_is_transcript_error(tmp_path):
+    path = tmp_path / "orphan.md"
+    path.write_text(
+        "# Journal\n- gates: lint=FAIL\n\n## 2026-08-11 10:00\n- gates: lint=PASS\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(TranscriptError, match="line 2 comes before the first dated heading"):
+        parse_loop_engine_journal(path)
+
+
+def test_title_line_before_first_heading_still_parses(tmp_path):
+    path = tmp_path / "titled.md"
+    path.write_text(
+        "# Journal\n\nSome notes.\n\n## 2026-08-11 10:00\n- gates: lint=PASS\n### detail\n",
+        encoding="utf-8",
+    )
+    events = parse_loop_engine_journal(path)
+    assert len(events) == 1
+    assert events[0].fields["gates"] == "lint=PASS"
+
+
+def test_jsonl_text_and_fields_are_both_matched(tmp_path):
+    path = tmp_path / "tf.jsonl"
+    path.write_text(
+        '{"timestamp": "2026-08-11 09:00", "text": "all good",'
+        ' "fields": {"gates": "lint=FAIL"}}\n',
+        encoding="utf-8",
+    )
+    events = parse_jsonl_transcript(path)
+    assert "all good" in events[0].text
+    assert "lint=FAIL" in events[0].text

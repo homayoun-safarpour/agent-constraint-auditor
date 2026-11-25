@@ -15,6 +15,7 @@ class TranscriptError(ValueError):
 HEADER_RE = re.compile(r"^##\s+(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2})\s*$")
 TIMESTAMP_RE = re.compile(r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$")
 LINE_RE = re.compile(r"^-\s+(?P<key>[^:]+):\s*(?P<value>.*)$")
+LEVEL2_RE = re.compile(r"^##(?!#)")
 
 
 @dataclass(frozen=True)
@@ -40,8 +41,8 @@ def parse_jsonl_transcript(path: str | Path) -> list[JournalEvent]:
     """Parse one JSON object per line into journal events.
 
     Each object requires ``timestamp`` of shape ``YYYY-MM-DD HH:MM`` plus
-    non-empty ``text`` and/or ``fields``. Matching text is ``text`` when set,
-    otherwise synthesized from ``fields``.
+    non-empty ``text`` and/or ``fields``. Matching text is ``text`` followed by
+    a body synthesized from ``fields``, so a rule sees both.
     """
     events: list[JournalEvent] = []
     for line_no, raw_line in enumerate(Path(path).read_text(encoding="utf-8").splitlines(), 1):
@@ -65,17 +66,21 @@ def parse_jsonl_transcript(path: str | Path) -> list[JournalEvent]:
         has_text = isinstance(text, str) and bool(text.strip())
         if not has_text and not fields:
             raise TranscriptError(f"JSONL line {line_no} needs text and/or fields")
-        body = text if has_text else _text_from_fields(fields)
+        parts = [text] if has_text else []
+        if fields:
+            parts.append(_text_from_fields(fields))
+        body = "\n".join(parts)
         events.append(JournalEvent(timestamp=timestamp, text=body, fields=fields))
     return events
 
 
 def parse_loop_engine_journal(path: str | Path) -> list[JournalEvent]:
-    lines = Path(path).read_text(encoding="utf-8").splitlines()
+    lines = Path(path).read_text(encoding="utf-8-sig").splitlines()
     events: list[JournalEvent] = []
     current_ts: str | None = None
     fields: dict[str, str] = {}
     blob: list[str] = []
+    orphan_line: int | None = None
 
     def flush() -> None:
         nonlocal current_ts, fields, blob
@@ -89,24 +94,34 @@ def parse_loop_engine_journal(path: str | Path) -> list[JournalEvent]:
         fields = {}
         blob = []
 
-    for line in lines:
+    for line_no, line in enumerate(lines, 1):
         hm = HEADER_RE.match(line)
         if hm:
             flush()
             current_ts = hm.group(1)
             continue
+        if LEVEL2_RE.match(line.strip()):
+            raise TranscriptError(
+                f"malformed journal heading at line {line_no}: expected ## YYYY-MM-DD HH:MM"
+            )
         if current_ts is None:
+            if orphan_line is None and LINE_RE.match(line.strip()):
+                orphan_line = line_no
             continue
         blob.append(line)
         lm = LINE_RE.match(line.strip())
         if lm:
             fields[lm.group("key").strip()] = lm.group("value").strip()
     flush()
+    if events and orphan_line is not None:
+        raise TranscriptError(
+            f"journal line {orphan_line} comes before the first dated heading"
+        )
     return events
 
 
 def detect_format(path: str | Path) -> str:
-    sample = Path(path).read_text(encoding="utf-8")[:2000]
+    sample = Path(path).read_text(encoding="utf-8-sig")[:2000]
     if HEADER_RE.search(sample):
         return "journal"
     for line in sample.splitlines():

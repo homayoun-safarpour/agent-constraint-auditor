@@ -29,7 +29,7 @@ class ConstraintSpec:
 
 
 def load_constraint_spec(path: str | Path) -> ConstraintSpec:
-    raw = Path(path).read_text(encoding="utf-8")
+    raw = Path(path).read_text(encoding="utf-8-sig")
     try:
         data = yaml.safe_load(raw)
     except yaml.YAMLError as exc:

@@ -32,7 +32,7 @@ That command exits 2. The same audit on `examples/stable/` exits 0.
 | --- | --- | --- |
 | `CLEAN` | 0 | No event matched a forbidden pattern, and every event matched every required pattern. |
 | `DECAY` | 2 | At least one event matched a forbidden pattern or had a missing required pattern. |
-| `ERROR` | 1 | The input could not be audited: bad arguments, a missing file, an invalid spec or invalid regex, an empty transcript or headerless transcript, a dated journal heading with no body, invalid or empty JSONL, a JSONL object missing timestamp, a JSONL timestamp not `YYYY-MM-DD HH:MM`, or a JSONL object missing text and fields. |
+| `ERROR` | 1 | The input could not be audited: bad arguments, a missing file, an invalid spec or invalid regex, an empty transcript or headerless transcript, a dated journal heading with no body, a malformed `##` journal heading, input that is not valid UTF-8, invalid or empty JSONL, a JSONL object missing timestamp, a JSONL timestamp not `YYYY-MM-DD HH:MM`, or a JSONL object missing text and fields. |
 
 A `CLEAN` shows that the transcript kept every rule written in the spec. It does not show that the agent behaved well in ways the spec does not name. The exit of each of the nine example fixtures is in [examples/MATRIX.md](examples/MATRIX.md), and the limits of the claim are in [docs/RELIABILITY_CARD.md](docs/RELIABILITY_CARD.md).
 
@@ -82,7 +82,7 @@ A clean run writes `Verdict: CLEAN` instead. `--json` prints the full result as 
 
 A journal is Markdown in which each event starts with a dated journal heading (`## YYYY-MM-DD HH:MM`), the shape that agent-loop-engine writes. With `--format jsonl`, or when the file has no dated heading and its first non-empty line starts with `{`, the tool reads one JSON object per line. Each object needs a non-empty string `timestamp` of shape `YYYY-MM-DD HH:MM` plus `text` and/or `fields`. `audit` and `parse-transcript` both accept `--format jsonl|journal|auto`.
 
-A line missing `timestamp`, a timestamp that is not `YYYY-MM-DD HH:MM`, a line that is valid JSON but not an object, a `fields` value that is not a mapping, and a dated journal heading with no body text or fields all exit 1. A timestamp-only line is ERROR for the same reason. `parse-transcript PATH [--format jsonl|journal|auto]` runs the parser alone, and empty or headerless input exits 1 instead of printing `OK: 0 events`. Every parser case is listed in [docs/ADAPTER.md](docs/ADAPTER.md).
+A line missing `timestamp`, a timestamp that is not `YYYY-MM-DD HH:MM`, a line that is valid JSON but not an object, a `fields` value that is not a mapping, a dated journal heading with no body text or fields, and a `##` heading that is not exactly `## YYYY-MM-DD HH:MM` all exit 1, so no event is dropped or merged in silence. A UTF-8 byte-order mark at the start of a journal or spec is ignored. A timestamp-only line is ERROR for the same reason. `parse-transcript PATH [--format jsonl|journal|auto]` runs the parser alone, and empty or headerless input exits 1 instead of printing `OK: 0 events`. Every parser case is listed in [docs/ADAPTER.md](docs/ADAPTER.md).
 
 ### The other fixtures
 

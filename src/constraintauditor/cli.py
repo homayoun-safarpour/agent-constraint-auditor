@@ -64,8 +64,6 @@ def main(argv: list[str] | None = None) -> int:
                 print("ERROR: missing constraints or transcript path", file=sys.stderr)
                 return 1
             result = run_audit(args.constraints, args.transcript, fmt=args.format)
-            if args.report:
-                write_report(result, args.report)
             if args.json:
                 print(json.dumps(result.to_jsonable(), indent=2))
             else:
@@ -75,6 +73,12 @@ def main(argv: list[str] | None = None) -> int:
                     f"first_index={result.decay.first_violation_index} "
                     f"slope={result.decay.decay_slope:.3f}"
                 )
+            if args.report:
+                try:
+                    write_report(result, args.report)
+                except OSError as exc:
+                    print(f"ERROR: report not written: {exc}", file=sys.stderr)
+                    return max(result.exit_code, 1)
             return result.exit_code
     except SpecError as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
@@ -84,6 +88,9 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     except OSError as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
+    except UnicodeDecodeError as exc:
+        print(f"ERROR: input is not valid UTF-8: {exc}", file=sys.stderr)
         return 1
     return 1
 

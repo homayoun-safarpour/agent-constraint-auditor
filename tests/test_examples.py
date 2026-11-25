@@ -91,6 +91,8 @@ def test_readme_mentions_exit_codes_0_and_2():
     assert "no body text or fields" in README
     assert "dated journal heading with no body" in README
     assert "JSONL object missing text and fields" in README
+    assert "a malformed `##` journal heading" in README
+    assert "input that is not valid UTF-8" in README
     assert "invalid or empty JSONL" in README
     assert "valid JSON but not an object" in README
     assert "`fields` value that is not a mapping" in README
@@ -493,8 +495,11 @@ def test_adapter_locks_two_key_fields_keep_insertion_order():
     assert "body lines follow that order" in ADAPTER
 
 
-def test_adapter_locks_nonempty_text_with_fields_uses_text():
-    assert "A JSONL object with non-empty `text` and `fields` uses the text body" in ADAPTER
+def test_adapter_locks_nonempty_text_with_fields_uses_text_and_fields():
+    assert (
+        "A JSONL object with non-empty `text` and `fields` is matched against the text body"
+        " followed by the fields body" in ADAPTER
+    )
     assert "fields still parse" in ADAPTER
 
 

@@ -553,3 +553,124 @@ def test_audit_json_output_schema(capsys):
     assert data["verdict"] == "CLEAN"
     assert "decay" in data
     assert "violations" in data
+
+
+DECAYING_SPEC = str(ROOT / "examples" / "decaying" / "constraints.yaml")
+
+
+def test_audit_journal_with_utf8_bom_reports_decay(tmp_path, capsys):
+    journal = tmp_path / "bom.md"
+    journal.write_bytes(
+        b"\xef\xbb\xbf## 2026-08-11 09:00\n- gates: tests=PASS, lint=FAIL\n\n"
+        b"## 2026-08-11 10:00\n- gates: tests=PASS, lint=PASS\n"
+    )
+    code = main(["audit", "--constraints", DECAYING_SPEC, "--transcript", str(journal)])
+    assert code == 2
+    assert "verdict=DECAY" in capsys.readouterr().out
+
+
+def test_spec_with_utf8_bom_loads(tmp_path, capsys):
+    spec = tmp_path / "bom.yaml"
+    spec.write_bytes(
+        b'\xef\xbb\xbfname: bom\nconstraints:\n  - id: r\n    pattern: "x"\n'
+    )
+    assert main(["check-constraints", str(spec)]) == 0
+    assert "OK: bom (1 constraints)" in capsys.readouterr().out
+
+
+def test_audit_malformed_first_heading_is_error_exit_1(tmp_path, capsys):
+    journal = tmp_path / "pre.md"
+    journal.write_text(
+        "## 2026-08-11 09:00 UTC\n- gates: lint=FAIL\n\n## 2026-08-11 10:00\n- gates: lint=PASS\n",
+        encoding="utf-8",
+    )
+    code = main(["audit", "--constraints", DECAYING_SPEC, "--transcript", str(journal)])
+    captured = capsys.readouterr()
+    assert code == 1
+    assert "malformed journal heading" in captured.err
+    assert "verdict=" not in captured.out
+
+
+def test_audit_malformed_later_heading_is_error_exit_1(tmp_path, capsys):
+    spec = tmp_path / "req.yaml"
+    spec.write_text(
+        'name: req\nconstraints:\n  - id: r\n    pattern: "lint=PASS"\n    forbid: false\n',
+        encoding="utf-8",
+    )
+    journal = tmp_path / "merge.md"
+    journal.write_text(
+        "## 2026-08-11 09:00\n- gates: lint=PASS\n\n## 2026-08-11 9:30\n- gates: lint=FAIL\n",
+        encoding="utf-8",
+    )
+    assert main(["audit", "--constraints", str(spec), "--transcript", str(journal)]) == 1
+    assert "malformed journal heading" in capsys.readouterr().err
+    assert main(["parse-transcript", str(journal)]) == 1
+    captured = capsys.readouterr()
+    assert "malformed journal heading" in captured.err
+    assert "OK:" not in captured.out
+
+
+def test_audit_non_utf8_transcript_is_error_exit_1(tmp_path, capsys):
+    journal = tmp_path / "latin.md"
+    journal.write_bytes(b"## 2026-08-11 09:00\n- note: caf\xe9 lint=FAIL\n")
+    code = main(["audit", "--constraints", DECAYING_SPEC, "--transcript", str(journal)])
+    captured = capsys.readouterr()
+    assert code == 1
+    assert captured.err.startswith("ERROR: ")
+    assert "not valid UTF-8" in captured.err
+    assert "Traceback" not in captured.err
+
+
+def test_check_constraints_non_utf8_spec_is_error_exit_1(tmp_path, capsys):
+    spec = tmp_path / "latin.yaml"
+    spec.write_bytes(b'name: caf\xe9\nconstraints:\n  - id: r\n    pattern: "x"\n')
+    assert main(["check-constraints", str(spec)]) == 1
+    captured = capsys.readouterr()
+    assert "not valid UTF-8" in captured.err
+    assert "OK:" not in captured.out
+
+
+def test_audit_jsonl_violation_only_in_fields_is_decay(tmp_path, capsys):
+    events = tmp_path / "tf.jsonl"
+    events.write_text(
+        '{"timestamp": "2026-08-11 09:00", "text": "all good",'
+        ' "fields": {"gates": "lint=FAIL"}}\n',
+        encoding="utf-8",
+    )
+    code = main(["audit", "--constraints", DECAYING_SPEC, "--transcript", str(events)])
+    assert code == 2
+    assert "verdict=DECAY" in capsys.readouterr().out
+
+
+def test_failed_report_write_keeps_decay_exit_2(tmp_path, capsys):
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            DECAYING_SPEC,
+            "--transcript",
+            str(ROOT / "examples" / "decaying" / "journal.md"),
+            "--report",
+            str(tmp_path / "nodir" / "r.md"),
+        ]
+    )
+    captured = capsys.readouterr()
+    assert code == 2
+    assert "verdict=DECAY" in captured.out
+    assert captured.err.startswith("ERROR: ")
+
+
+def test_failed_report_write_on_clean_is_error_exit_1(tmp_path, capsys):
+    code = main(
+        [
+            "audit",
+            "--constraints",
+            str(ROOT / "examples" / "stable" / "constraints.yaml"),
+            "--transcript",
+            str(ROOT / "examples" / "stable" / "journal.md"),
+            "--report",
+            str(tmp_path / "nodir" / "r.md"),
+        ]
+    )
+    assert code == 1
+    assert capsys.readouterr().err.startswith("ERROR: ")

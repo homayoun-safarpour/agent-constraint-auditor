@@ -18,8 +18,14 @@ from .journal import (
 from .spec import SpecError, load_constraint_spec
 
 
+class AuditArgumentParser(argparse.ArgumentParser):
+    def error(self, message: str) -> None:
+        self.print_usage(sys.stderr)
+        self.exit(1, f"{self.prog}: error: {message}\n")
+
+
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="constraint-auditor")
+    parser = AuditArgumentParser(prog="constraint-auditor")
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     sub = parser.add_subparsers(dest="cmd", required=True)
 
